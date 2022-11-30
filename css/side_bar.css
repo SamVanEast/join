@@ -9,6 +9,7 @@ body {
 .side_bar {
     position: absolute;
     left: 0px;
+    top: 0px;
 }
 
 .menu {
