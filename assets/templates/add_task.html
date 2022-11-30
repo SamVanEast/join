@@ -8,13 +8,16 @@
 
     <link rel="stylesheet" href="../../css/fonts.css">
     <link rel="stylesheet" href="../../css/add_task.css">
-    <script src="../../css/add_task.js"></script>
+    <script src="../../js/add_task.js"></script>
 
     <title>add_task</title>
 
 </head>
 
-<body>
+<body onload="includeHTML()">
+
+    <div>
+    <div w3-include-html="side_bar.html"></div>
 
     <div class="addTask">
         <div class="titleToAssigned">
@@ -75,6 +78,7 @@
             </div>
         </div>
     </div>
+</div>
 
 </body>
 
