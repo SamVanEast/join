@@ -8,8 +8,8 @@ body {
 .addTask {
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vh;
+    padding-left: 228px;
 }
 
 .titleToAssigned h1 {
