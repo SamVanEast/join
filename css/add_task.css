@@ -5,11 +5,17 @@ body {
     font-family: 'Inter';
 }
 
-.addTask {
-    height: 100vh;
+.addTaskContainer{
     display: flex;
-    width: 100vh;
-    padding-left: 228px;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding-left: 232px;
+}
+
+.addTask {
+    display: flex;
 }
 
 .titleToAssigned h1 {
@@ -42,14 +48,7 @@ body {
 }
 
 .borderLine {
-    /* Vector 4 */
-    /* position: absolute;
-    width: 0px; */
     height: 551px;
-    left: 369px;
-    top: 171px;
-
-    /* Style */
     border: 1px solid #D1D1D1;
 }
 
