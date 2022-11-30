@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="add_task.css">
-    <script src="add_task.js"></script>
+    <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/add_task.css">
+    <script src="../../css/add_task.js"></script>
 
     <title>add_task</title>
 
@@ -15,62 +16,64 @@
 
 <body>
 
-    <h1>Add Task</h1>
-
-    <div>
-        <div>
-            <p>Title</p>
-            <input type="text" placeholder="Enter a title">
+    <div class="addTask">
+        <div class="titleToAssigned">
+            <h1>Add Task</h1>
+            <div>
+                <p>Title</p>
+                <input type="text" placeholder="Enter a title">
+            </div>
+            <div>
+                <p>Descriptipn</p>
+                <input type="text" placeholder="Enter a Description">
+            </div>
+            <div>
+                <p>Category</p>
+                <select name="">
+                    <option value="taskcategory">Select task category</option>
+                    <option value="test">test</option>
+                    <option value="test2">test2</option>
+                    <option value="test3">test3</option>
+                    <option value="test4">test4</option>
+                    <option value="test5">test5</option>
+                </select>
+            </div>
+            <div>
+                <p>Assigned to</p>
+                <select name="">
+                    <option value="contactsToAssign">Select contacts to assign</option>
+                    <option value="test">test</option>
+                    <option value="test2">test2</option>
+                    <option value="test3">test3</option>
+                    <option value="test4">test4</option>
+                    <option value="test5">test5</option>
+                </select>
+            </div>
         </div>
-        <div>
-            <p>Descriptipn</p>
-            <input type="text" placeholder="Enter a Description">
+        <div class="borderLine"></div>
+        <div class="dateToButtons">
+            <div>
+                <p>Due date</p>
+                <input type="date">
+            </div>
+            <div class="prio">
+                <p>Prio</p>
+                <div class="prioButtons">
+                    <button>Urgent <img src="../../assets/img/add_task_img/urgent.png" alt=""></button>
+                    <button>Medium <img src="../../assets/img/add_task_img/medium.png" alt=""></button>
+                    <button>Low <img src="../../assets/img/add_task_img/low.png" alt=""></button>
+                </div>
+            </div>
+            <div>
+                <p>Subtasks</p>
+                <input type="text">
+                <input type="checkbox">
+            </div>
+            <div>
+                <button>CLear</button>
+                <button>Create Task</button>
+            </div>
         </div>
-        <div>
-            <p>Category</p>
-            <select name="">
-                <option value="taskcategory">Select task category</option>
-                <option value="test">test</option>
-                <option value="test2">test2</option>
-                <option value="test3">test3</option>
-                <option value="test4">test4</option>
-                <option value="test5">test5</option>
-            </select>
-        </div>
-        <div>
-            <p>Assigned to</p>
-            <select name="">
-                <option value="contactsToAssign">Select contacts to assign</option>
-                <option value="test">test</option>
-                <option value="test2">test2</option>
-                <option value="test3">test3</option>
-                <option value="test4">test4</option>
-                <option value="test5">test5</option>
-            </select>
-        </div>
-    </div>
-
-    <div>
-        <div>
-            <p>Due date</p>
-            <input type="date">
-        </div>
-        <div>
-            <p>Prio</p>
-            <button>Urgent</button>
-            <button>Medium</button>
-            <button>Low</button>
-        </div>
-        <div>
-            <p>Subtasks</p>
-            <input type="text">
-            <input type="checkbox">
-        </div>
-    </div>
-
-    <div>
-        <button>CLear</button>
-        <button>Create Task</button>
     </div>
 
 </body>

@@ -1,0 +1,98 @@
+body {
+    margin: 0px;
+    background: #F6F7F8;
+    font-family: 'Inter';
+}
+
+.addTask {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleToAssigned h1 {
+    /* Add Task */
+    width: 466px;
+    height: 78px;
+
+    /* Version 2/t1 */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    /* or 73px */
+
+    color: #000000;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.titleToAssigned {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.borderLine {
+    /* Vector 4 */
+    position: absolute;
+    width: 0px;
+    height: 551px;
+    left: 527px;
+    top: 171px;
+
+    /* Style */
+    border: 1px solid #D1D1D1;
+}
+
+.dateToButtons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.prio button {
+    font-family: Inter;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+
+    width: 136px;
+    height: 51px;
+
+    /* white */
+    background: #FFFFFF;
+
+    /* nuevo */
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.prioButtons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+}
