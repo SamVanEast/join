@@ -14,7 +14,8 @@ async function includeHTML() {
 }
 
 
-function openAddTask(){
-
+function closeOpenTask() {
+    document.getElementById('openTask').classList.add('d-none');
 }
+
 
