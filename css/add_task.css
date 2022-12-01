@@ -73,6 +73,8 @@ body {
     border: 1px solid #D1D1D1;
     align-self: flex-end;
     margin-top: 175px;
+    margin-left: 59px;
+    margin-right: 59px;
 }
 
 /* Date to Buttons */
@@ -187,4 +189,20 @@ body {
 
 .prio button:focus .low {
     content: url(../assets/img/add_task_img/lowSelected.png);
+}
+
+.subtasks span {
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.subtasks {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
 }
