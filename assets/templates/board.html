@@ -18,19 +18,41 @@
     <div class="addNewTask d-none">
         <div w3-include-html="add_task.html"></div>
     </div>
+    <div id="openTask" class="openTask">
+        <div class="openTaskKicker">
+            <div class="openTaskCategory c-design">Design</div>
+            <img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg">
+        </div>
+        <div>
+            <h2>Überschrift</h2>
+        </div>
+        <div>
+            <p id="openTaskDesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p><b>Due Date: </b>Monday</p>
+            <p><b>Priority: </b>High</p>
+        </div>
+        <div>
+            <p>Name 1</p>
+            <p>Name 2</p>
+            <p>Name 3</p>
+            <p>Name 4</p>
+        </div>
+        <div id="edit-btn"><img src="../img/board_img/edit-btn.png"></div>
+    </div>
     <div class="container">
         <div class="headlineAddTasks">
             <h1>Board</h1>
             <div class="inputAndButton">
                 <input placeholder="Find Task" src="../img/board_img/magnifying-glass.png   ">
-                <div><button>Add Task<img style="margin-left: 10px" src="../img/board_img/plus-button-white.png"></button></div>
+                <div><button>Add Task<img style="margin-left: 10px"
+                            src="../img/board_img/plus-button-white.png"></button></div>
             </div>
         </div>
         <div class="taskSection">
             <div class="tasks">
                 <div class="status">
                     <p>To Do</p>
-                    <img src="../img/board_img/plus-button.png" id="plus" onclick="openAddTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="openAddTask()">
                 </div>
                 <div class="taskBoxes">
                     <div class="singleTask">
@@ -58,7 +80,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>In Progress</p>
-                    <img src="../img/board_img/plus-button.png" id="plus">
+                    <img src="../img/board_img/plus-btn.png" id="plus">
                 </div>
                 <div class="taskBoxes">
                     <div class="singleTask">
@@ -79,7 +101,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>Awaiting Feedback</p>
-                    <img src="../img/board_img/plus-button.png" id="plus">
+                    <img src="../img/board_img/plus-btn.png" id="plus">
                 </div>
                 <div class="taskBoxes">
                     <div class="singleTask">
@@ -100,7 +122,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>Done</p>
-                    <img src="../img/board_img/plus-button.png" id="plus">
+                    <img src="../img/board_img/plus-btn.png" id="plus">
                 </div>
                 <div class="taskBoxes">
                     <div class="singleTask">

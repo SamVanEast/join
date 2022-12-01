@@ -2,11 +2,38 @@ body {
     margin: 0;
     background: #F6F7F8;
     font-family: 'Inter';
+    overflow: hidden;
 
 }
 
 .d-none {
-    display: none;
+    display: none !important;
+}
+
+
+.openTask {
+    position: fixed;
+    background-color: #FFFFFF;
+    height: 61vh;
+    width: 27vw;
+    z-index: 5;
+    left: 664px;
+    top: 148px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 50px;
+}
+
+.openTask h2 {
+    font-size: 3rem;
+}
+
+#openTaskDesc {
+    margin-top: -20px;
 }
 
 .addNewTask {
@@ -87,13 +114,9 @@ body {
 }
 
 #plus {
-    font-size: 32px;
-    border: 2px solid black;
-    text-align: center;
-    border-radius: 7px;
     padding: 5px;
-    height: 15px;
-    width: 15px;
+    height: 25px;
+    width: 25px;
 }
 
 .status {
@@ -211,4 +234,30 @@ body {
 
 .c-media {
     background-color: #FFC701;
+}
+
+.openTaskCategory {
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    padding: 4px 24px;
+    
+}
+
+.openTaskKicker {
+    display: flex;
+    justify-content: space-between;
+    
+    position: relative;
+    width: 100%;
+}
+
+#close {
+    height: 10px;
+    width: 10px;
+}
+
+#edit-btn {
+    text-align: right;
+    width: 100%;
 }
