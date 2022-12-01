@@ -22,12 +22,13 @@ body {
 
 .taskSection {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 90%;
 }
 
 .tasks {
     margin-right: 26px;
-    width: 250px;
+    width: 25%;
     height: 100%;
 }
 
