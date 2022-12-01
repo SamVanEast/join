@@ -57,6 +57,7 @@ body {
     border: 1px solid #D1D1D1;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
+    font-family: 'Inter';
 }
 
 .category select {
@@ -93,19 +94,16 @@ body {
     align-items: center;
     padding: 18px 21px;
     gap: 10px;
-    isolation: isolate;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
+    font-family: 'Inter';
+    color: #D1D1D1;
 }
 
 .prio button {
     font-family: 'Inter';
     font-size: 21px;
-    font-weight: 400;
-    line-height: 25px;
-    letter-spacing: 0em;
-    text-align: left;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -117,6 +115,8 @@ body {
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .prioButtons {
