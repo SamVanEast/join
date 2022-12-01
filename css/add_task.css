@@ -88,7 +88,7 @@ body {
     line-height: 120%;
 }
 
-/* .dateToButtons input {
+.inputDateTask {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -99,7 +99,7 @@ body {
     border-radius: 10px;
     font-family: 'Inter';
     color: #D1D1D1;
-} */
+}
 
 .prio button {
     font-family: 'Inter';
