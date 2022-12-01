@@ -270,7 +270,21 @@ body {
 }
 
 .clear:hover {
-    
+    border: 1px solid rgb(0, 174, 231);
+    color: rgb(0, 174, 231);
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.cross{
+    appearance: none;
+    content: url(../assets/img/add_task_img/cross.png);
+}
+
+.clear:hover .cross {
+    cursor: pointer;
+    content: url(../assets/img/add_task_img/crossHover.png);
 }
 
 .create {
