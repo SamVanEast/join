@@ -142,7 +142,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: row;
-    gap: 10px;
+    gap: 7px;
 }
 
 .prio button:hover {
@@ -278,7 +278,6 @@ body {
     border-radius: 10px;
     padding: 18px 10px 18px 10px;
     padding: 18px 10px;
-    gap: 10px;
     width: 177px;
     height: 61px;
     background: #2A3647;
