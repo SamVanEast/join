@@ -255,7 +255,6 @@ body {
 }
 
 .clear {
-    gap: 10px;
     width: 136px;
     height: 61px;
     border: 1px solid #2A3647;
@@ -270,22 +269,29 @@ body {
     color: #2A3647;
 }
 
+.clear:hover {
+    
+}
+
 .create {
-    height: 61px;
     width: 177px;
-    left: 161px;
-    top: 0px;
+    height: 61px;
+    border: 1px solid #2A3647;
     border-radius: 10px;
     padding: 18px 10px 18px 10px;
-    padding: 18px 10px;
-    width: 177px;
-    height: 61px;
     background: #2A3647;
-    border-radius: 10px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
     color: #FFFFFF;
+}
+
+.create:hover {
+    border-color: rgb(0, 174, 231);
+    background-color: rgb(0, 174, 231);
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
 }
