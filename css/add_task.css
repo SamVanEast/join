@@ -16,7 +16,6 @@ body {
 
 .addTask {
     display: flex;
-    flex-direction: row;
 }
 
 .addTask h1 {
