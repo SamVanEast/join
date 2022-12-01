@@ -15,20 +15,22 @@
 <body onload="includeHTML()">
 
     <div w3-include-html="side_bar.html"></div>
-
+    <div class="addNewTask d-none">
+        <div w3-include-html="add_task.html"></div>
+    </div>
     <div class="container">
         <div class="headlineAddTasks">
             <h1>Board</h1>
             <div class="inputAndButton">
-                <input placeholder="Find Task">
-                <button>Add Task +</button>
+                <input placeholder="Find Task" src="../img/board_img/magnifying-glass.png   ">
+                <div><button>Add Task<img style="margin-left: 10px" src="../img/board_img/plus-button-white.png"></button></div>
             </div>
         </div>
         <div class="taskSection">
             <div class="tasks">
                 <div class="status">
                     <p>To Do</p>
-                    <img src="../img/board_img/plus-button.png" id="plus">
+                    <img src="../img/board_img/plus-button.png" id="plus" onclick="openAddTask()">
                 </div>
                 <div class="taskBoxes">
                     <div class="singleTask">
