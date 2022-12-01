@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/board.css">
     <link rel="stylesheet" href="../../css/fonts.css">
+    <script src="../../js/board.js"></script>
 
     <title>Board</title>
 </head>
 
-<body>
+<body onload="includeHTML()">
+
+    <div w3-include-html="side_bar.html"></div>
+
     <div class="container">
         <div class="headlineAddTasks">
             <h1>Board</h1>
