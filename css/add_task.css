@@ -16,8 +16,8 @@ body {
 
 .addTask {
     display: flex;
-    margin-top: 100px;
-    margin-left: 70px;
+    padding-top: 70px;
+    padding-left: 10px;
 }
 
 .addTask h1 {
@@ -27,6 +27,7 @@ body {
     line-height: 73px;
     letter-spacing: 0em;
     text-align: left;
+    margin-bottom: 7px;
 }
 
 .addTaskLeftSide {
@@ -49,7 +50,8 @@ body {
 }
 
 .title input {
-    width: 422px;
+    cursor: pointer;
+    width: 378px;
     padding: 13px 21px;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
@@ -57,7 +59,8 @@ body {
 }
 
 .description textarea {
-    width: 422px;
+    cursor: pointer;
+    width: 378px;
     border-radius: 10px;
     padding: 18px 21px 18px 21px;
     border: 1px solid #D1D1D1;
@@ -67,8 +70,9 @@ body {
 }
 
 .category select {
-    height: 51px;
+    cursor: pointer;
     width: 422px;
+    height: 51px;
     border-radius: 10px;
     padding: 18px 21px 18px 21px;
     border: 1px solid #D1D1D1;
@@ -78,7 +82,7 @@ body {
     height: 551px;
     border: 1px solid #D1D1D1;
     align-self: flex-end;
-    margin-top: 175px;
+    margin-top: 150px;
     margin-left: 59px;
     margin-right: 59px;
 }
@@ -89,7 +93,6 @@ body {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    gap: 14px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -102,7 +105,8 @@ body {
     margin-top: 34px;
 }
 
-.inputDateTask {
+.dueDate input {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -113,13 +117,14 @@ body {
     border-radius: 10px;
     font-family: 'Inter';
     color: #D1D1D1;
+    width: 378px;
+    height: 13px;
 }
 
 .prio button {
     font-family: 'Inter';
     font-size: 21px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 18px 10px;
@@ -202,6 +207,27 @@ body {
     content: url(../assets/img/add_task_img/lowSelected.png);
 }
 
+.subtasks {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.subtasks input {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 21px;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-family: 'Inter';
+    color: #D1D1D1;
+}
+
 .subtasks span {
     font-family: 'Inter';
     font-size: 16px;
@@ -211,9 +237,12 @@ body {
     text-align: left;
 }
 
-.subtasks {
+.checkboxSubtask {
+    cursor: pointer;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
     flex-direction: row;
+}
+
+.clearAndCreate button:hover {
+    cursor: pointer;
 }
