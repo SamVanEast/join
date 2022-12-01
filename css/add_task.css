@@ -243,6 +243,50 @@ body {
     flex-direction: row;
 }
 
+.clearAndCreate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
 .clearAndCreate button:hover {
     cursor: pointer;
+}
+
+.clear {
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 18px 10px 18px 10px;
+    background-color: #F6F7F8;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #2A3647;
+}
+
+.create {
+    height: 61px;
+    width: 177px;
+    left: 161px;
+    top: 0px;
+    border-radius: 10px;
+    padding: 18px 10px 18px 10px;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 177px;
+    height: 61px;
+    background: #2A3647;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
 }
