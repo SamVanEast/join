@@ -88,7 +88,7 @@ body {
     line-height: 120%;
 }
 
-.dateToButtons input {
+/* .dateToButtons input {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -99,7 +99,7 @@ body {
     border-radius: 10px;
     font-family: 'Inter';
     color: #D1D1D1;
-}
+} */
 
 .prio button {
     font-family: 'Inter';
@@ -109,7 +109,6 @@ body {
     justify-content: center;
     align-items: center;
     padding: 18px 10px;
-    gap: 10px;
     width: 136px;
     height: 51px;
     background: #FFFFFF;
@@ -124,4 +123,67 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: row;
+    gap: 10px;
+}
+
+.prio button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.31);
+}
+
+.urgent {
+    appearance: none;
+    content: url(../assets/img/add_task_img/urgent.png);
+}
+
+.urgent:hover {
+    cursor: pointer;
+}
+
+.urgentButton:focus {
+    background-color: #FF1300;
+    color: white;
+}
+
+.prio button:focus .urgent {
+    content: url(../assets/img/add_task_img/urgentSelected.png);
+}
+
+.medium {
+    appearance: none;
+    content: url(../assets/img/add_task_img/medium.png);
+}
+
+.medium:hover {
+    cursor: pointer;
+}
+
+.mediumButton:focus {
+    background-color: #FFA300;
+    color: white;
+}
+
+.prio button:focus .medium {
+    content: url(../assets/img/add_task_img/mediumSelected.png);
+}
+
+.low {
+    appearance: none;
+    content: url(../assets/img/add_task_img/low.png);
+}
+
+.low:hover {
+    cursor: pointer;
+}
+
+.lowButton:focus {
+    background-color: #49E500;
+    color: white;
+}
+
+.prio button:focus .low {
+    content: url(../assets/img/add_task_img/lowSelected.png);
 }
