@@ -16,6 +16,8 @@ body {
 
 .addTask {
     display: flex;
+    margin-top: 100px;
+    margin-left: 70px;
 }
 
 .addTask h1 {
@@ -39,6 +41,11 @@ body {
     text-align: left;
     color: #000000;
     line-height: 120%;
+}
+
+.titleToAssigned p {
+    margin-bottom: 8px;
+    margin-top: 34px;
 }
 
 .title input {
@@ -88,6 +95,11 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
+}
+
+.dateToButtons p {
+    margin-bottom: 8px;
+    margin-top: 34px;
 }
 
 .inputDateTask {
