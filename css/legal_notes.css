@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    background: #F6F7F8;
+    font-family: 'Inter';
+    overflow: hidden;
+}
+
+.container {
+    
+    width: 100%;
+    padding-left: 270px;
+    padding-top: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90vh;
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+
+}
+
+.headline h1 {
+    font-weight: 700;
+    font-size: 61px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+p {
+    width: 80%;
+    
+}
+
+.legalText {
+    padding-bottom: 100px;
+}
