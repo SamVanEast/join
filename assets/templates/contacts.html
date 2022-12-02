@@ -8,79 +8,44 @@
     <script src="/js/script-contact.js"></script>
     <title>Contacts</title>
   </head>
-  <body class="body-contact" onload="includeHTML()">
+  <body class="body-contact" onload="render()">
     <div w3-include-html="side_bar.html"></div>
-
+    <div id="lightbox" class="lightbox d-none">
+      <div class="lightbox-container">
+        <div class="lightbox-container-left">
+          <div>Logo</div>
+          <h1>Add contact</h1>
+          <p>Tasks are better with a team</p>
+          <div class="underline"></div>
+        </div>
+        <div class="lightbox-container-right">
+          <div class="lightbox-img">
+            <div>IMG</div>
+          </div>
+          <div class="lightbox-input-pos">
+            <div>
+              <div>X</div>
+              <input placeholder="Name" type="text">
+              <input placeholder="Email" type="text">
+              <input placeholder="Phone" type="text">
+            </div>
+            <div class="lightbox-btn">
+              <button class="lightbox-btn-left" onclick="HideNewContactContainer()">Cancel x</button>
+              <button class="lightbox-btn-right">Create contact x</button>
+            </div>
+          </div>       
+        </div>
+      </div>
+    </div>
     <div class="container">
       <div class="container-left">
-        <div class="container-position">
-          <div class="first-letter">
-            <p>A</p>
-          </div>
-          <div class="between-line">
-            <p></p>
-          </div>
-          <div class="contact">
-            <div class="beginner-letter">
-                <div>
-                <p>AS</p>
-                </div>
-            </div>
-            <div style="gap: 5px">
-              <p class="contact-name">Anton Mayer</p>
-              <p class="contact-email">Schulz@hotmail.com</p>
-            </div>
-          </div>
+        <div id="contactList" class="container-position">
+          
         </div>
       </div>
 
-      <div class="container-right">
-        <div class="headline">
-          <h1>Contacts</h1>
-          <div></div>
-          <h3>Better with a Team</h3>
-        </div>
-      <div class="contact-information">
-        <div class="contact-information-up">
-          <div class="contact-icon">
-            <div class="contact-icon-bg">
-              <div>AM</div>
-            </div>
-          </div>
-          <div class="add-task">
-            <div class="add-task-name">
-              <div>Anton Mayer</div>
-            </div>
-            <div class="add-task-btn">
-              <div class="add-task-btn-plus">
-                <div class="add-task-btn-hori"></div>
-                <div class="add-task-btn-vert"></div>
-              </div>
-              <div class="add-task-btn-text">Add Task</div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-information-middle">
-          <div class="contact-information-text"> Contact Information</div>
-          <div class="edit-container">
-            <div class="edit-container-left"> 
-              <div class="edit-v6"></div>
-              <div class="edit-v7"></div>
-            </div>
-            <div>Edit Contact</div>
-          </div>
-        </div>
-        <div class="contact-information-down">
-          <div class="contact-information-fr102">
-            <div class="contact-information-fr102-email">Email</div>
-            <div class="contact-information-fr102-text">antom@gmail.com</div>
-          </div>
-          <div class="contact-information-fr103">
-            <div class="contact-information-fr103-phone">Phone</div>
-            <div class="contact-information-fr103-number">+49111111111</div>
-          </div>
-        </div>
-        <div class="add-contact-btn"></div>
+      <div id="containerRight" class="container-right">
+        
       </div>
     </div>
   </body>

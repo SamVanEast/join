@@ -12,9 +12,11 @@
 }
 
 .container-left {
+  overflow: overlay;
   position: absolute;
   width: 453px;
-  height: 935px;
+  height: 100%;
+  max-height: 90vh;
   left: 232px;
   top: 89px;
   background: #ffffff;
@@ -48,6 +50,7 @@
 }
 
 .first-letter p {
+  margin: 0;
   width: 282px;
   height: 40px;
   font-family: "Inter";
@@ -70,7 +73,6 @@
   gap: 10px;
   width: 347px;
   height: 28px;
-  flex: none;
   order: 1;
   flex-grow: 0;
 }
@@ -309,7 +311,7 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
-  font-size: 47px;
+  font-size: 34px;
   line-height: 120%;
   display: flex;
   align-items: center;
@@ -543,6 +545,7 @@ flex-grow: 0;
 }
 
 .add-contact-btn{
+  cursor: pointer;
   box-sizing: border-box;
 display: flex;
 flex-direction: row;
@@ -553,9 +556,183 @@ gap: 10px;
 position: absolute;
 width: 193px;
 height: 53px;
-left: 1195px;
-top: 907px;
+right: 50px;
+top: 780px;
 background: #2A3647;
 border: 1px solid #2A3647;
 border-radius: 10px;
+}
+
+.add-contact-text{
+  width: 130px;
+height: 25px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+color: #FFFFFF;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.add-contact-design1{
+  position: absolute;
+left: 87.36%;
+right: 5.18%;
+top: 50.85%;
+bottom: 21.98%;
+background: #FFFFFF;
+}
+
+.add-contact-design2{
+  position: absolute;
+left: 77.72%;
+right: 11.92%;
+top: 54.25%;
+bottom: 21.98%;
+background: #FFFFFF;
+}
+
+.add-contact-design3{
+  position: absolute;
+left: 80.13%;
+right: 11.48%;
+top: 21.98%;
+bottom: 47.45%;
+background: #FFFFFF;
+}
+
+
+/******ADD CONTACT FORM*******/
+
+.lightbox{
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.38);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-container{
+  display: flex;
+  width: 84%;
+  height: 60%;
+  border-radius: 30px;
+  background-color: #FFFFFF;
+}
+
+.lightbox-container-left{
+  background-color: #2A3647;
+  width: 600px;
+  min-width: 300px;
+  height: 100%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: white;
+  padding-left: 30px;
+  padding-left: 30px;
+}
+
+.lightbox-container-left h1{
+  margin: 6px 0 6px 0;
+  font-weight: 700;
+  font-size: 46px;
+}
+
+.lightbox-container-left p{
+  margin: 6px 0 8px 0;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.underline{
+  border: 2px solid #29ABE2;
+  width: 64px;
+  height: 0;
+}
+
+.lightbox-container-right{
+  display: flex;
+}
+
+.lightbox-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 300px;
+}
+
+.lightbox-img div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  background-color: gray
+}
+
+.lightbox-input-pos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 600px;
+}
+
+.lightbox-input-pos input{
+  height: 50px;
+  width: 500px;
+  margin: 10px 0 10px 0;
+  border-radius: 10px;
+  border: 0.5px solid #d1d1d1;
+}
+
+.lightbox-btn{
+  display: flex;
+  gap: 20px;
+}
+
+.lightbox-btn-left{
+  cursor: pointer;
+  height: 50px;
+  width: 160px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: 0.5px solid #2a3647;
+  font-size: 18px;
+}
+
+.lightbox-btn-left:hover {
+  border: 0.5px solid #29ABE2;
+  color: #29ABE2;
+}
+
+.lightbox-btn-right{
+  cursor: pointer;
+  font-weight: 700;
+  height: 50px;
+  width: 240px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  background-color: #2A3647;
+  border:#2A3647;
+  font-size: 18px;
+}
+
+.lightbox-btn-right:hover{
+  background-color: #29ABE2;
+}
+
+.d-none{
+  display: none;
 }
