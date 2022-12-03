@@ -8,17 +8,12 @@ body {
 .addTaskContainer {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     box-sizing: border-box;
 }
 
-.addTask {
-    display: flex;
-    padding-top: 70px;
-    padding-left: 10px;
-}
-
-.addTask h1 {
+.addTaskContainer h1 {
     font-family: 'Inter';
     font-size: 61px;
     font-weight: 700;
@@ -26,6 +21,13 @@ body {
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 7px;
+    padding-left: 123px;
+    margin-top: 82px;
+}
+
+.addTask {
+    display: flex;
+    padding-left: 123px;
 }
 
 .addTaskLeftSide {
