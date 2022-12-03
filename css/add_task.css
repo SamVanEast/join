@@ -157,7 +157,6 @@ body {
     align-items: center;
     padding: 18px 21px;
     gap: 10px;
-    background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-family: 'Inter';
@@ -167,7 +166,7 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    background: url(../assets/img/add_task_img/dueDate.png) no-repeat scroll 7px 7px;
+    background: #FFFFFF url(../assets/img/add_task_img/dueDate.png) no-repeat;
     background-position: right;
 }
 
@@ -275,11 +274,10 @@ body {
     align-items: center;
     padding: 18px 21px;
     gap: 10px;
-    background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-family: 'Inter';
-    background: url(../assets/img/add_task_img/plus.png) no-repeat scroll 7px 7px;
+    background: #FFFFFF url(../assets/img/add_task_img/plus.png) no-repeat;
     background-position: right;
 }
 
