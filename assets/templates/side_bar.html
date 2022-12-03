@@ -12,7 +12,7 @@
 
 </head>
 
-<body class="body">
+<body class="body" onload="loadContent('summary')">
 
 
     <div class="side_bar">
@@ -22,36 +22,36 @@
             </div>
             <div class="menu_under_logo">
                 <div class="menu_tabs">
-                    <div class="tab" onclick="loadContent()">
+                    <div id="tab-summary" class="tab" onclick="loadContent('summary')">
                         <div class="tab_icon">
                             <img src="../img/menu-img/summary-icon.svg" alt="">
                         </div>
                         <div class="tab_description">Summary</div>
                     </div>
-                    <div class="tab" onclick="loadContent('board')">
+                    <div id="tab-board" class="tab" onclick="loadContent('board')">
                         <div class="tab_icon">
                             <img src="../img/menu-img/board-icon.svg" alt="">
                         </div>
                         <div class="tab_description">Board</div>
                     </div>
-                    <div class="tab" onclick="loadContent('add_task')">
+                    <div id="tab-add_task" class="tab" onclick="loadContent('add_task')">
                         <div class="tab_icon">
                             <img src="../img/menu-img/add-task-icon.svg" alt="">
                         </div>
                         <div class="tab_description">Add Task</div>
                     </div>
-                    <div class="tab" onclick="loadContent('contacts')">
+                    <div id="tab-contacts" class="tab" onclick="loadContent('contacts')">
                         <div class="tab_icon">
                             <img src="../img/menu-img/contacts-icon.svg" alt="">
                         </div>
                         <div class="tab_description">Contacts</div>
                     </div>
                 </div>
-                <div class="tab_legal_notice">
+                <div id="tab-legal_notice" class="tab_legal_notice">
                     <div class="tab_icon_legal_notice">
                         <img src="../img/menu-img/legal-notice-icon.svg" alt="">
                     </div>
-                    <div class="tab_description_legal_notice" onclick="loadContent('legal_notes')">Legal notice
+                    <div class="tab_description_legal_notice" onclick="loadContent('legal_notice')">Legal notice
                     </div>
                 </div>
             </div>

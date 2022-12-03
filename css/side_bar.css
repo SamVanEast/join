@@ -1,12 +1,10 @@
 body {
     margin: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: 'Inter';
 }
 
-a { 
+a {
     text-decoration: none;
     cursor: pointer;
     color: #CDCDCD;
@@ -58,9 +56,12 @@ a {
     box-sizing: border-box;
 }
 
-.tab:hover{
+.tab:hover {
     cursor: pointer;
-    opacity: .8;
+}
+
+.tab:focus{
+    background: #091931;
 }
 
 .tab_icon {
@@ -76,6 +77,7 @@ a {
     font-weight: 400;
     font-size: 16px;
     color: #CDCDCD;
+    line-height: 120%;
 }
 
 .tab_legal_notice {
@@ -85,13 +87,21 @@ a {
     justify-content: center;
     gap: 20px;
     width: 100%;
-    padding-bottom: 112.03px;
+    margin-bottom: 112.03px;
 }
 
 .tab_description_legal_notice {
     font-weight: 400;
     font-size: 16px;
     color: #CDCDCD;
+}
+
+.tab_legal_notice:hover {
+    cursor: pointer;
+}
+
+.tab_legal_notice:focus{
+    background: #091931;
 }
 
 .header-content {
@@ -135,4 +145,8 @@ a {
     height: 935px;
     background-color: #F6F7F8;
     box-sizing: border-box;
+}
+
+.darkBlue{
+    background: #091931;
 }
