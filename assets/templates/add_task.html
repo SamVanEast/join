@@ -21,32 +21,33 @@
         <div class="addTask">
             <div class="addTaskLeftSide">
                 <div class="titleToAssigned">
-                    <div class="title">
-                        <p>Title</p>
-                        <input type="text" placeholder="Enter a title">
-                    </div>
-                    <div class="description">
-                        <p>Descriptipn</p>
-                        <textarea type="text" placeholder="Enter a Description"></textarea>
-                    </div>
-                    <div class="category">
-                        <p>Category</p>
-                        <select name="">
-                            <option value="taskcategory">Select task category</option>
-                            <option value="test">test</option>
-                            <option value="test2">test2</option>
-                            <option value="test3">test3</option>
-                        </select>
-                    </div>
-                    <div class="category">
-                        <p>Assigned to</p>
-                        <select name="">
-                            <option value="contactsToAssign">Select contacts to assign</option>
-                            <option value="test">test</option>
-                            <option value="test2">test2</option>
-                            <option value="test3">test3</option>
-                        </select>
-                    </div>
+                    <form action="" onsubmit="myFunction(); return false;">
+                        <div class="title">
+                            <p>Title</p>
+                            <input required minlength="1" type="text" placeholder="Enter a title">
+                        </div>
+                        <div class="description">
+                            <p>Descriptipn</p>
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description"></textarea>
+                        </div>
+                        <div class="category">
+                            <p>Category</p>
+                            <select name="" required>
+                                <option value="taskcategory">Select task category</option>
+                                <option value="test">test</option>
+                                <option value="test2">test2</option>
+                                <option value="test3">test3</option>
+                            </select>
+                        </div>
+                        <div class="category">
+                            <p>Assigned to</p>
+                            <select name="" required>
+                                <option value="contactsToAssign">Select contacts to assign</option>
+                                <option value="test">test</option>
+                                <option value="test2">test2</option>
+                                <option value="test3">test3</option>
+                            </select>
+                        </div>
                 </div>
             </div>
 
@@ -55,11 +56,11 @@
             <div class="dateToButtons">
                 <div class="dueDate">
                     <p>Due date</p>
-                    <input type="date">
+                    <input required minlength="1" type="date" placeholder="test">
                 </div>
                 <div class="prio">
                     <p>Prio</p>
-                    <div class="prioButtons">
+                    <div class="prioButtons" required>
                         <button class="urgentButton">Urgent <input class="urgent" type="checkbox"></button>
                         <button class="mediumButton">Medium <input class="medium" type="checkbox"></button>
                         <button class="lowButton">Low <input class="low" type="checkbox"></button>
@@ -67,16 +68,18 @@
                 </div>
                 <div class="subtasks">
                     <p>Subtasks</p>
-                    <input class="inputSubtask" type="text" placeholder="Add new subtask">
-                    <div class="checkboxSubtask">
+                    <input required minlength="1" class="inputSubtask" type="text" placeholder="Add new subtask">
+                    <div class="checkboxSubtask" required>
                         <input type="checkbox">
                         <span>Subtask 1</span>
                     </div>
                 </div>
                 <div class="clearAndCreate">
-                    <button class="clear">Clear <input class="cross" type="checkbox"></button>
-                    <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png" alt=""></button>
+                    <button class="clear" onclick="clearFields()">Clear <input class="cross" type="checkbox"></button>
+                    <button class="create" onclick="myFunction()">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                            alt=""></button>
                 </div>
+            </form>
             </div>
         </div>
     </div>
