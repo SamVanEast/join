@@ -77,7 +77,6 @@ body {
     height: 81px;
     border-radius: 10px;
     padding: 18px 21px 18px 21px;
-    background: #FFFFFF;
     border: 1px solid #D1D1D1;
     font-family: 'Inter';
     resize: none;
@@ -85,6 +84,8 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
+    background: #FFFFFF url(../assets/img/add_task_img/textareaSign.png) no-repeat;
+    background-position: 99% 95%;
 }
 
 .description textarea::placeholder {
