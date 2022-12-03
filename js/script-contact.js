@@ -28,7 +28,7 @@ let contacts = [
 function render(){
     includeHTML();
     generateAlphabet();
-    console.log(contacts[0]['firstname'].charAt(0))
+    generateContacts();
 }
 
 //Header and sidebar
@@ -48,8 +48,8 @@ async function includeHTML() {
 
 
 function generateAlphabet(){
-    for (var i = 0; i < alphabet.length; i++) {
-        let letter = alphabet[i];
+    for (let i = 0; i < alphabet.length; i++) {
+        const letter = alphabet[i];
 
         document.getElementById('contactList').innerHTML += /*html*/ `
         <div class="first-letter"> 
@@ -58,24 +58,19 @@ function generateAlphabet(){
                 <p></p>
             </div>
         </div>
-        <div id="contacts${letter}"></div>                
-        `; 
-        
+        <div id="contacts"></div>                  
+        `;   
     }
- generateContacts();
 }
 
 
 
 // generate the contactlist
 function generateContacts() {
-  
-    
-  
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];     
         
-        document.getElementById('contactsA').innerHTML +=/*html*/ `       
+        document.getElementById('contacts').innerHTML +=/*html*/ `       
           
           <div class="contact" onclick="showSingleContact(${i})">
             <div class="beginner-letter">
@@ -90,8 +85,7 @@ function generateContacts() {
           </div>  
         </div>
         `;
-      }
-    
+    }
 }
 
 function showSingleContact(i){       
@@ -152,15 +146,6 @@ function showSingleContact(i){
         `;
 }
 
-
-function AddContacts() {
-  let name = document.getElementById('AddName').value;
-  let email = document.getElementById('AddEmail').value;
-  let number = document.getElementById('AddNumber').value;
-  contacts.push({firstname:name});
-  
-}
-
 function showNewContactContainer() {
     document.getElementById('lightboxAddContact').classList.remove('d-none');
 }
@@ -174,6 +159,57 @@ function HideNewContactContainer() {
 
 
 
+/*
+let contacts = ['Anne Fischer', 'Bert Blödel', 'Claudine Kauf', 'Dirk Dach', 'Anton Ameise', 'Babette Bügel', 'Eugen Esel', 'Felicitas Fuchs'];
 
+let email = ['']
+
+
+var map = contacts.reduce((p, c) => {
+    let char = c.charAt(0).toUpperCase();
+    p[char] = [].concat((p[char] || []), c)
+    return p;
+  }, {});
+  
+  var result = Object.keys(map).map(k => ({
+    letter: k,
+    names: map[k],
+    email: map[k]
+  }));
+
+
+function render(){
+    
+    generateLetters();
+    
+    console.log(result);
+}
+
+function generateLetters(){
+    for (let i = 0; i < result.length; i++) {
+        const letter = result[i];
+        
+        document.getElementById('contactlist').innerHTML += /*html*//* ` 
+            <div class="letters">${letter['letter']}</div>
+            
+            <div id='letters${i}'></div>
+            `;
+
+        generateContacts(i);
+    }
+}
+
+function generateContacts(i){
+    for (let j = 0; j <  result[i]['names'].length; j++) {
+        const contact =  result[i]['names'][j];
+        console.log(contact)
+
+        document.getElementById(`letters${i}`).innerHTML += /*html*//* `
+        <div id='singleContact${j}'>${contact}</div>
+        `;
+    }
+}
+
+*/
 
 
