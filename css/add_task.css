@@ -279,6 +279,10 @@ body {
     font-family: 'Inter';
 }
 
+.subtasks input:required:invalid, input:focus:invalid {
+    border-color: #FF1300;
+}
+
 .inputSubtask {
     width: 378px;
     height: 13px;
