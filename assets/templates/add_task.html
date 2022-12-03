@@ -48,40 +48,43 @@
                                 <option value="test3">test3</option>
                             </select>
                         </div>
+                    </form>
                 </div>
             </div>
 
             <div class="borderLine"></div>
 
-            <div class="dateToButtons">
-                <div class="dueDate">
-                    <p>Due date</p>
-                    <input required minlength="1" type="date" placeholder="test">
-                </div>
-                <div class="prio">
-                    <p>Prio</p>
-                    <div class="prioButtons" required>
-                        <button class="urgentButton">Urgent <input class="urgent" type="checkbox"></button>
-                        <button class="mediumButton">Medium <input class="medium" type="checkbox"></button>
-                        <button class="lowButton">Low <input class="low" type="checkbox"></button>
+            <form action="" onsubmit="myFunction(); return false;">
+                <div class="dateToButtons">
+                    <div class="dueDate">
+                        <p>Due date</p>
+                        <input required minlength="1" type="date" placeholder="test">
                     </div>
-                </div>
-                <div class="subtasks">
-                    <p>Subtasks</p>
-                    <input required minlength="1" class="inputSubtask" type="text" placeholder="Add new subtask">
-                    <div class="checkboxSubtask" required>
-                        <input type="checkbox">
-                        <span>Subtask 1</span>
+                    <div class="prio">
+                        <p>Prio</p>
+                        <div class="prioButtons" required>
+                            <button class="urgentButton">Urgent <input class="urgent" type="checkbox"></button>
+                            <button class="mediumButton">Medium <input class="medium" type="checkbox"></button>
+                            <button class="lowButton">Low <input class="low" type="checkbox"></button>
+                        </div>
                     </div>
-                </div>
-                <div class="clearAndCreate">
-                    <button class="clear" onclick="clearFields()">Clear <input class="cross" type="checkbox"></button>
-                    <button class="create" onclick="myFunction()">Create Task <img src="../../assets/img/add_task_img/hook.png"
-                            alt=""></button>
-                </div>
+                    <div class="subtasks">
+                        <p>Subtasks</p>
+                        <input required minlength="1" class="inputSubtask" type="text" placeholder="Add new subtask">
+                        <div class="checkboxSubtask" required>
+                            <input type="checkbox">
+                            <span>Subtask 1</span>
+                        </div>
+                    </div>
+                    <div class="clearAndCreate">
+                        <button class="clear" onclick="clearFields()">Clear <input class="cross"
+                                type="checkbox"></button>
+                        <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                                alt=""></button>
+                    </div>
             </form>
-            </div>
         </div>
+    </div>
     </div>
 
 </body>
