@@ -167,6 +167,8 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
+    background: url(../assets/img/add_task_img/dueDate.png) no-repeat scroll 7px 7px;
+    background-position: right;
 }
 
 .dueDate input::placeholder {
@@ -277,11 +279,13 @@ body {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-family: 'Inter';
+    background: url(../assets/img/add_task_img/plus.png) no-repeat scroll 7px 7px;
+    background-position: right;
 }
 
-.subtasks input:required:invalid, input:focus:invalid {
+/* .subtasks input:required:invalid, input:focus:invalid {
     border-color: #FF1300;
-}
+} */
 
 .inputSubtask {
     width: 378px;
