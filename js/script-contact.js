@@ -47,17 +47,18 @@ async function includeHTML() {
 }
 
 
-function generateAlphabet(){
-  let content = document.getElementById('content');
+function generateAlphabet(filter){
+  let content = document.getElementById('contactList');
   content.innerHTML = '';
 
-  for (let i = 0; i < bundeslaender.length; i++) {
-      const land = bundeslaender[i];
-      const population = (land['population'] + '').replace('.', ',');
-      const firstLetter = land['name'].charAt(0);
+  for (let i = 0; i < contacts.length; i++) {
+      const contact = contacts[i];
+      const firstLetter = contact['firstname'].charAt(0);
+      const email = contact['email'];
+      const phonenumber = contact['phonenumber'];
 
       if (!filter || filter == firstLetter) {
-          content.innerHTML += generateLink(land, population);
+          content.innerHTML += generateContacts(contact, email, phonenumber);
       }
 
 
@@ -65,14 +66,24 @@ function generateAlphabet(){
           letters.push(firstLetter);
       }
   }
-    
- generateContacts();
+  renderLetters();
+}
+
+
+function renderLetters(){
+let letterbox = document.getElementById('letterbox');
+letterbox.innerHTML = '';
+
+for (let i = 0; i < letters.length; i++) {
+    const letter = letters[i];
+    letterbox.innerHTML += `<div onclick="setFilter('${letter}')" class="letter">${letter}</div>`;
+}
 }
 
 
 
 // generate the contactlist
-function generateContacts() {
+function generateContacts(contacts, email, phonenumber) {
   
     
   
@@ -84,12 +95,12 @@ function generateContacts() {
           <div class="contact" onclick="showSingleContact(${i})">
             <div class="beginner-letter">
                 <div>
-                    <p>${contact['firstname'].charAt(0)}${contact['lastname'].charAt(0)}</p>
+                    <p>${contacts.charAt(0)}</p>
                 </div>
             </div>
             <div>
-              <p class="contact-name">${contact['firstname']} ${contact['lastname']}</p>
-              <p class="contact-email">${contact['email']}</p>
+              <p class="contact-name">${contacts}</p>
+              <p class="contact-email">${email}</p>
             </div>
           </div>  
         </div>
