@@ -14,15 +14,6 @@
 
 <body class="body">
 
-    <div class="header-content">
-        <div class="header">
-            <div class="header_headline">Kanban Project Management Tool</div>
-            <div class="header_image">
-                <img src="../img/header-img/question-mark-icon.svg" alt="">
-                <img src="../img/header-img/profile-img.svg" alt="">
-            </div>
-        </div>
-    </div>
 
     <div class="side_bar">
         <div class="menu">
@@ -31,46 +22,54 @@
             </div>
             <div class="menu_under_logo">
                 <div class="menu_tabs">
-                    <div class="tab">
+                    <div class="tab" onclick="loadContent()">
                         <div class="tab_icon">
                             <img src="../img/menu-img/summary-icon.svg" alt="">
                         </div>
                         <div class="tab_description">Summary</div>
                     </div>
-                    <div class="tab">
+                    <div class="tab" onclick="loadContent('board')">
                         <div class="tab_icon">
                             <img src="../img/menu-img/board-icon.svg" alt="">
                         </div>
-                        <div class="tab_description"><a href="../templates/board.html">Board</a></div>
+                        <div class="tab_description">Board</div>
                     </div>
-                    <div class="tab">
+                    <div class="tab" onclick="loadContent('add_task')">
                         <div class="tab_icon">
-                            <a href="../templates/add_task.html">
-                                <img src="../img/menu-img/add-task-icon.svg" alt="">
+                            <img src="../img/menu-img/add-task-icon.svg" alt="">
                         </div>
                         <div class="tab_description">Add Task</div>
-                            </a>
                     </div>
-                    <div class="tab">
+                    <div class="tab" onclick="loadContent('contacts')">
                         <div class="tab_icon">
-                            <a href="/assets/templates/contacts.html ">
                             <img src="../img/menu-img/contacts-icon.svg" alt="">
                         </div>
                         <div class="tab_description">Contacts</div>
-                        </a>
                     </div>
                 </div>
                 <div class="tab_legal_notice">
                     <div class="tab_icon_legal_notice">
                         <img src="../img/menu-img/legal-notice-icon.svg" alt="">
                     </div>
-                    <div class="tab_description_legal_notice"><a href="../templates/legal_notes.html">Legal notice</a>
+                    <div class="tab_description_legal_notice" onclick="loadContent('legal_notes')">Legal notice
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="header-content">
+            <div class="header">
+                <div class="header_headline">Kanban Project Management Tool</div>
+                <div class="header_image">
+                    <img src="../img/header-img/question-mark-icon.svg" alt="">
+                    <img src="../img/header-img/profile-img.svg" alt="">
+                </div>
+            </div>
+
+            <div id="content"></div>
+
+        </div>
+    </div>
 </body>
 
 </html>
