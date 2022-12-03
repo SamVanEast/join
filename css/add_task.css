@@ -67,7 +67,7 @@ body {
     line-height: 120%;
 }
 
-.title input::placeholder{
+.title input::placeholder {
     color: #D1D1D1;
 }
 
@@ -87,7 +87,7 @@ body {
     line-height: 120%;
 }
 
-.description textarea::placeholder{
+.description textarea::placeholder {
     color: #D1D1D1;
 }
 
@@ -169,7 +169,7 @@ body {
     line-height: 120%;
 }
 
-.dueDate input::placeholder{
+.dueDate input::placeholder {
     color: #D1D1D1;
 }
 
@@ -277,7 +277,6 @@ body {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-family: 'Inter';
-    color: #D1D1D1;
 }
 
 .inputSubtask {
@@ -288,6 +287,9 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
+}
+
+.inputSubtask::placeholder {
     color: #D1D1D1;
 }
 
