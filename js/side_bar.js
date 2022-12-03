@@ -12,8 +12,20 @@ async function includeHTML() {
     }
 }
 
-function loadContent(wichContent){
+function loadContent(wichContent){//Den angeklickten Inhalt laden
     let content = document.getElementById('content');
+    let tab = document.getElementById(`tab-${wichContent}`);
+
     content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
+    // removeDarkBlue();
+    // tab.classList.add('darkBlue');
     includeHTML();
+}
+
+function removeDarkBlue(){//Überrall den dunkleren Farbton löschen.
+    document.getElementById('tab-summary').classList.remove('darkBlue');
+    document.getElementById('tab-board').classList.remove('darkBlue');
+    document.getElementById('tab-add_task').classList.remove('darkBlue');
+    document.getElementById('tab-contacts').classList.remove('darkBlue');
+    document.getElementById('tab-legal_notice').classList.remove('darkBlue');
 }
