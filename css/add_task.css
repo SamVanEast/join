@@ -167,7 +167,7 @@ body {
     font-size: 21px;
     line-height: 120%;
     background: #FFFFFF url(../assets/img/add_task_img/dueDate.png) no-repeat;
-    background-position: right;
+    background-position: 95% 50%;
 }
 
 .dueDate input::placeholder {
@@ -278,7 +278,7 @@ body {
     border-radius: 10px;
     font-family: 'Inter';
     background: #FFFFFF url(../assets/img/add_task_img/plus.png) no-repeat;
-    background-position: right;
+    background-position: 95% 50%;
 }
 
 /* .subtasks input:required:invalid, input:focus:invalid {
