@@ -1,4 +1,4 @@
-const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y", "Z",];
+let letters = [];
   
 let contacts = [
     {
@@ -48,20 +48,24 @@ async function includeHTML() {
 
 
 function generateAlphabet(){
-    for (var i = 0; i < alphabet.length; i++) {
-        let letter = alphabet[i];
+  let content = document.getElementById('content');
+  content.innerHTML = '';
 
-        document.getElementById('contactList').innerHTML += /*html*/ `
-        <div class="first-letter"> 
-            <p>${letter}</p>
-            <div class="between-line">
-                <p></p>
-            </div>
-        </div>
-        <div id="contacts${letter}"></div>                
-        `; 
-        
-    }
+  for (let i = 0; i < bundeslaender.length; i++) {
+      const land = bundeslaender[i];
+      const population = (land['population'] + '').replace('.', ',');
+      const firstLetter = land['name'].charAt(0);
+
+      if (!filter || filter == firstLetter) {
+          content.innerHTML += generateLink(land, population);
+      }
+
+
+      if (!letters.includes(firstLetter)) {
+          letters.push(firstLetter);
+      }
+  }
+    
  generateContacts();
 }
 
