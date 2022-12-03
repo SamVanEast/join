@@ -14,7 +14,6 @@ async function includeHTML() {
 
 function loadContent(wichContent){
     let content = document.getElementById('content');
-    content.innerHTML = '';
-    content.innerHTML= `<div w3-include-html="${wichContent}.html"></div>`;
+    content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
     includeHTML();
 }
