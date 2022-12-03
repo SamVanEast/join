@@ -607,7 +607,7 @@ background: #FFFFFF;
 
 /******ADD CONTACT FORM*******/
 
-.lightbox{
+.lightbox-add-contact{
   position: relative;
   z-index: 1;
   height: 100vh;
@@ -695,6 +695,14 @@ background: #FFFFFF;
   margin: 10px 0 10px 0;
   border-radius: 10px;
   border: 0.5px solid #d1d1d1;
+}
+
+.lightbox-input-pos-close{
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  right: 145px;
+  top: 220px;
 }
 
 .lightbox-btn{

@@ -147,11 +147,11 @@ function showSingleContact(i){
 }
 
 function showNewContactContainer() {
-    document.getElementById('lightbox').classList.remove('d-none');
+    document.getElementById('lightboxAddContact').classList.remove('d-none');
 }
 
 function HideNewContactContainer() {
-    document.getElementById('lightbox').classList.add('d-none');
+    document.getElementById('lightboxAddContact').classList.add('d-none');
 }
 
 
