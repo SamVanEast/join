@@ -20,7 +20,7 @@ body {
     line-height: 73px;
     letter-spacing: 0em;
     text-align: left;
-    margin-bottom: 7px;
+    margin-bottom: 41px;
     padding-left: 123px;
     margin-top: 82px;
 }
@@ -47,6 +47,10 @@ body {
 .titleToAssigned p {
     margin-bottom: 8px;
     margin-top: 34px;
+}
+
+.title p {
+    margin-top: 0px;
 }
 
 .title input {
@@ -113,8 +117,7 @@ body {
 .borderLine {
     height: 551px;
     border: 1px solid #D1D1D1;
-    align-self: flex-end;
-    margin-top: 150px;
+    align-self: flex-start;
     margin-left: 59px;
     margin-right: 59px;
 }
@@ -122,7 +125,7 @@ body {
 /* Date to Buttons */
 .dateToButtons {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
     font-family: 'Inter';
@@ -135,6 +138,10 @@ body {
 .dateToButtons p {
     margin-bottom: 8px;
     margin-top: 34px;
+}
+
+.dueDate p {
+    margin-top: 0px;
 }
 
 .dueDate input {
@@ -293,7 +300,7 @@ body {
 
 .clearAndCreate {
     display: flex;
-    margin-top: auto;
+    margin-top: 243px;
     margin-left: auto;
     gap: 25px;
 }
