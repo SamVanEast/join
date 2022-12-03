@@ -3,5 +3,5 @@ function myFunction(){
 }
 
 function clearFields(){
-    document.getElementById('titleInput').innerHTML = '';
+    document.getElementById('form').reset();
 }
