@@ -58,7 +58,7 @@
                     <div class="dueDate">
                         <p>Due date</p>
                         <form class="box" action="" method="POST" target="_self">
-                            <input placeholder="dd/mm/yyyy" type="text" onfocus="(this.value = Date())" required>
+                            <input placeholder="dd/mm/yyyy" type="text" onfocus="(this.value = new Date().toLocaleDateString())" required>
                         </form>
                     </div>
 
