@@ -300,6 +300,11 @@ body {
     color: #D1D1D1;
 }
 
+.inputSubtask:focus{
+    background: #FFFFFF url(../assets/img/add_task_img/cross.png) no-repeat;
+    background-position: 95% 50%;
+}
+
 .subtasks span {
     font-family: 'Inter';
     font-size: 16px;
