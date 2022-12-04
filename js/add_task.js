@@ -1,7 +1,7 @@
-function myFunction(){
+function myFunction() {
     console.log('Ready!');
 }
 
-function clearFields(){
+function clearFields() {
     document.getElementById('form').reset();
 }

@@ -54,15 +54,21 @@
                 <div class="borderLine"></div>
 
                 <div class="dateToButtons">
+
                     <div class="dueDate">
                         <p>Due date</p>
-                        <input type="text" placeholder="dd/mm/yyyy" required>
+                        <form class="box" action="" method="POST" target="_self">
+                            <input placeholder="dd/mm/yyyy" type="text" onfocus="(this.value = Date())" required>
+                        </form>
                     </div>
+
                     <div class="prio">
                         <p>Prio</p>
                         <div class="prioButtons">
-                            <button type="button" class="urgentButton">Urgent <input class="urgent" type="checkbox"></button>
-                            <button type="button" class="mediumButton">Medium <input class="medium" type="checkbox"></button>
+                            <button type="button" class="urgentButton">Urgent <input class="urgent"
+                                    type="checkbox"></button>
+                            <button type="button" class="mediumButton">Medium <input class="medium"
+                                    type="checkbox"></button>
                             <button type="button" class="lowButton">Low <input class="low" type="checkbox"></button>
                         </div>
                     </div>
@@ -75,8 +81,10 @@
                         </div>
                     </div>
                     <div class="clearAndCreate">
-                        <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross" type="checkbox"></button>
-                        <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png" alt=""></button>
+                        <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
+                                type="checkbox"></button>
+                        <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                                alt=""></button>
                     </div>
                 </div>
             </div>
