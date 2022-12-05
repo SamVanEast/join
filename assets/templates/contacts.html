@@ -14,26 +14,29 @@
     <div id="lightboxAddContact" class="lightbox-add-contact d-none">
       <div class="lightbox-container">
         <div class="lightbox-container-left">
-          <div>Logo</div>
+          <div><img src="/assets/img/menu-img/menu-logo.svg" alt=""></div>
           <h1>Add contact</h1>
           <p>Tasks are better with a team</p>
           <div class="underline"></div>
         </div>
         <div class="lightbox-container-right">
           <div class="lightbox-img">
-            <div>IMG</div>
+            <div><img src="/assets/img/contact-img/user-line.png" alt="" srcset=""></div>
           </div>
           <div class="lightbox-input-pos">
             <div>
               <div class="lightbox-input-pos-close" onclick="HideNewContactContainer()">X</div>
-              <input id="AddName" placeholder="Name" type="text">
-              <input id="AddEmail" placeholder="Email" type="text">
-              <input id="AddNumber" placeholder="Phone" type="text">
+              <form action="">
+              <input required id="AddName" placeholder="Name" type="text">
+              <input required id="AddEmail" placeholder="Email" type="email">
+              <input required id="AddNumber" placeholder="Phone" type="number">
             </div>
+          </form>
             <div class="lightbox-btn">
               <button class="lightbox-btn-left" onclick="HideNewContactContainer()">Cancel x</button>
-              <button class="lightbox-btn-right" onclick="c">Create contact x</button>
+              <button class="lightbox-btn-right" onclick="addContacts()">Create contact x</button>
             </div>
+            
           </div>       
         </div>
       </div>
@@ -41,9 +44,9 @@
 
     <div class="container">
       <div class="container-left">
-        <div id="contactList" class="container-position">
-        <div id="letterbox">435</div>
-        </div>
+        <div class="container-position" id="contactList"></div>
+       
+        
       </div>
 
       <div id="containerRight" class="container-right">

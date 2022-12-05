@@ -2,22 +2,19 @@ let letters = [];
   
 let contacts = [
     {
-        "firstname":"Anton",
-        "lastname":"Mayer",
+        "name":"Anton Mayer",
         "email":"antom@gmail.com",
         "phonenumber":"+491111111"
     },
 
     {
-        "firstname":"Anja",
-        "lastname":"Schulz",
+        "name":"Anja Schulz",
         "email":"schulz@hotmail.com",
         "phonenumber":"+495423411"
     },
 
     {
-        "firstname":"Bendedikt",
-        "lastname":"Ziegler",
+        "name":"Bendedikt Ziegler",
         "email":"benedikt@gmail.com",
         "phonenumber":"+498023471"
     },
@@ -27,8 +24,7 @@ let contacts = [
 
 function render(){
     includeHTML();
-    generateAlphabet();
-    console.log(contacts[0]['firstname'].charAt(0))
+    generateContactlist();
 }
 
 //Header and sidebar
@@ -47,66 +43,41 @@ async function includeHTML() {
 }
 
 
-function generateAlphabet(filter){
-  let content = document.getElementById('contactList');
-  content.innerHTML = '';
 
+function generateContactlist() {
+  
   for (let i = 0; i < contacts.length; i++) {
-      const contact = contacts[i];
-      const firstLetter = contact['firstname'].charAt(0);
-      const email = contact['email'];
-      const phonenumber = contact['phonenumber'];
-
-      if (!filter || filter == firstLetter) {
-          content.innerHTML += generateContacts(contact, email, phonenumber);
-      }
-
-
-      if (!letters.includes(firstLetter)) {
-          letters.push(firstLetter);
-      }
-  }
-  renderLetters();
-}
-
-
-function renderLetters(){
-let letterbox = document.getElementById('letterbox');
-letterbox.innerHTML = '';
-
-for (let i = 0; i < letters.length; i++) {
-    const letter = letters[i];
-    letterbox.innerHTML += `<div onclick="setFilter('${letter}')" class="letter">${letter}</div>`;
-}
-}
-
-
-
-// generate the contactlist
-function generateContacts(contacts, email, phonenumber) {
-  
+    const contact = contacts[i];
     
-  
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];     
+
+    let firstLetter = contact['name'].charAt(0);
+    if(!letters.includes(firstLetter)) {
+      letters.push(firstLetter);
+      console.log(firstLetter);
+      
+      document.getElementById('contactList').innerHTML +=/*html*/ `
+      <div class="letterbox"  id="letterbox${firstLetter}">
+      <div class="first-letter">
+        <p>${firstLetter}</p>
+      </div>
+      <div class="between-line"><p></p></div>
         
-        document.getElementById('contactsA').innerHTML +=/*html*/ `       
-          
-          <div class="contact" onclick="showSingleContact(${i})">
-            <div class="beginner-letter">
-                <div>
-                    <p>${contacts.charAt(0)}</p>
-                </div>
-            </div>
-            <div>
-              <p class="contact-name">${contacts}</p>
-              <p class="contact-email">${email}</p>
-            </div>
-          </div>  
+    </div>
+`; }
+      if (firstLetter === contact['name'].charAt(0)) {
+        document.getElementById(`letterbox${firstLetter}`).innerHTML +=/*html*/ `
+        <div class="contact" onclick="showSingleContact(${i})">
+        <p class="beginner-letter">${contact['name'].split(' ').map(word => word[0]).join('')}</p>
+        <div class="contact-name-div">
+          <div class="contact-name">${contact['name']}</div>
+          <div  class="contact-email">${contact['email']}</div>
         </div>
-        `;
+        </div> `;
       }
-    
+
+  }
+
+  
 }
 
 function showSingleContact(i){       
@@ -120,12 +91,12 @@ function showSingleContact(i){
       <div class="contact-information-up">
         <div class="contact-icon">
           <div class="contact-icon-bg">
-            <div>${contacts[i]['firstname'].charAt(0)}${contacts[i]['lastname'].charAt(0)}</div>
+            <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('')}</div>
           </div>
         </div>
         <div class="add-task">
           <div class="add-task-name">
-            <div>${contacts[i]['firstname']} ${contacts[i]['lastname']}</div>
+            <div>${contacts[i]['name']} </div>
           </div>
           <div class="add-task-btn">
             <div class="add-task-btn-plus">
@@ -160,19 +131,21 @@ function showSingleContact(i){
       <div class="add-contact-btn" onclick="showNewContactContainer()">
         <div class="add-contact-text">New contact</div>
         <div>
-          <div class="add-contact-design1"></div>
-          <div class="add-contact-design2"></div>
-          <div class="add-contact-design3"></div>
+          <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
+
         </div>
         `;
 }
 
 
-function AddContacts() {
+function addContacts() {
+  
   let name = document.getElementById('AddName').value;
   let email = document.getElementById('AddEmail').value;
   let number = document.getElementById('AddNumber').value;
-  contacts.push({firstname:name});
+  contacts.push({'name': name, 'email': email, 'phonenumber': number});
+  console.log(contacts);
+  render();
   
 }
 
