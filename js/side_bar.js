@@ -17,8 +17,8 @@ function loadContent(wichContent){//Den angeklickten Inhalt laden
     let tab = document.getElementById(`tab-${wichContent}`);
 
     content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
-    // removeDarkBlue();
-    // tab.classList.add('darkBlue');
+    removeDarkBlue();
+    tab.classList.add('darkBlue');
     includeHTML();
 }
 
