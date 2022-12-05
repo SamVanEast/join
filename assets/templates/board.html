@@ -12,12 +12,12 @@
     <title>Board</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="init()">
 
     <div class="addNewTask d-none">
         <div w3-include-html="add_task.html"></div>
     </div>
-    <div id="openTask" class="openTask">
+    <div id="openTask" class="openTask d-none">
         <div class="openTaskKicker">
             <div class="openTaskCategory c-design">Design</div>
             <img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg">
@@ -54,27 +54,8 @@
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="openAddTask()">
                 </div>
 
-                <div class="taskBoxes">
-                    <div class="singleTask">
-                        <div class="category c-design">Design</div>
-                        <div class="taskHeadline">Join fertigstellen</div>
-                        <div class="taskDescription">CSS bauen und JS programmieren</div>
-                        <div class="progressBar">
-                            <div class="progress">ProgBar</div>
-                            <div class="progressText">x/x Done</div>
-                        </div>
-                        <div class="peopleInvolvedPriority">
-                            <div class="peopleInvolved">
-                                <div class="people">SM</div>
-                                <div class="people">SH</div>
-                                <div class="people">TW</div>
-                                <div class="people">LD</div>
-
-
-                            </div>
-                            <div class="priority"></div>
-                        </div>
-                    </div>
+                <div class="dragArea" id="todo">
+                    
                 </div>
             </div>
 
@@ -83,62 +64,29 @@
                     <p>In Progress</p>
                     <img src="../img/board_img/plus-btn.png" id="plus">
                 </div>
-                <div class="taskBoxes">
-                    <div class="singleTask">
-                        <div class="category c-marketing">Marketing</div>
-                        <div class="taskHeadline"></div>
-                        <div class="taskDescription"></div>
-                        <div class="progressBar">
-                            <div class="progress">ProgBar</div>
-                            <div class="progressText">x/x Done</div>
-                        </div>
-                        <div class="peopleInvolvedPriority">
-                            <div class="peopleInvolved"></div>
-                            <div class="priority"></div>
-                        </div>
-                    </div>
+
+                <div class="dragArea" id="inProgress">
+                    
                 </div>
             </div>
-            <div class="tasks">
-                <div class="status">
-                    <p>Awaiting Feedback</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus">
-                </div>
-                <div class="taskBoxes">
-                    <div class="singleTask">
-                        <div class="category c-media">Media</div>
-                        <div class="taskHeadline"></div>
-                        <div class="taskDescription"></div>
-                        <div class="progressBar">
-                            <div class="progress">ProgBar</div>
-                            <div class="progressText">x/x Done</div>
-                        </div>
-                        <div class="peopleInvolvedPriority">
-                            <div class="peopleInvolved"></div>
-                            <div class="priority"></div>
-                        </div>
+                <div class="tasks">
+                    <div class="status">
+                        <p>Awaiting Feedback</p>
+                        <img src="../img/board_img/plus-btn.png" id="plus">
                     </div>
+
+                    <div class="dragArea" id="awaitingFeedback">
+                    
                 </div>
             </div>
-            <div class="tasks">
-                <div class="status">
-                    <p>Done</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus">
-                </div>
-                <div class="taskBoxes">
-                    <div class="singleTask">
-                        <div class="category c-backoffice">Backoffice</div>
-                        <div class="taskHeadline"></div>
-                        <div class="taskDescription"></div>
-                        <div class="progressBar">
-                            <div class="progress">ProgBar</div>
-                            <div class="progressText">x/x Done</div>
-                        </div>
-                        <div class="peopleInvolvedPriority">
-                            <div class="peopleInvolved"></div>
-                            <div class="priority"></div>
-                        </div>
+                <div class="tasks">
+                    <div class="status">
+                        <p>Done</p>
+                        <img src="../img/board_img/plus-btn.png" id="plus">
                     </div>
+                  
+                    <div class="dragArea" id="done">
+                    
                 </div>
             </div>
         </div>

@@ -49,7 +49,7 @@ body {
 .container {
 
 
-    width: 100%;
+    width: 90%;
     height: 100vh;
     padding-left: 270px;
     padding-top: 100px;
@@ -131,6 +131,7 @@ body {
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
     margin-top: 25px;
+    cursor: pointer;
 }
 
 .singleTask {
@@ -176,7 +177,9 @@ body {
 
 .progress {
     margin-right: 12px;
+  
 }
+
 
 .progressText {
     font-family: 'Inter';
@@ -211,29 +214,6 @@ body {
     margin-left: -8px;
 }
 
-/* category colors */
-
-.c-design {
-    background-color: #FF7A00;
-}
-
-.c-marketing {
-    background-color: #0038FF;
-}
-
-.c-sales {
-    background-color: #FC71FF;
-
-}
-
-.c-backoffice {
-    background-color: #1FD7C1;
-}
-
-.c-media {
-    background-color: #FFC701;
-}
-
 .openTaskCategory {
     border-radius: 8px;
     text-align: center;
@@ -253,6 +233,7 @@ body {
 #close {
     height: 10px;
     width: 10px;
+    cursor: pointer;
 }
 
 #edit-btn {
@@ -260,3 +241,32 @@ body {
     width: 100%;
 }
 
+.dragArea {
+    
+    border: 1px dotted black;
+}
+
+/* category colors */
+
+.Design {
+    background-color: #FF7A00;
+}
+
+.Marketing {
+    background-color: #0038FF;
+}
+
+.Sales {
+    background-color: #FC71FF;
+
+}
+
+.Backoffice {
+    background-color: #1FD7C1;
+}
+
+.Media {
+    background-color: #FFC701;
+}
+
+/* category colors end */
