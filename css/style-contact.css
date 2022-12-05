@@ -732,6 +732,10 @@ background: #FFFFFF;
   top: 220px;
 }
 
+.lightbox-input-pos-close-form{
+  font-weight: bold;
+}
+
 .lightbox-btn{
   display: flex;
   gap: 20px;

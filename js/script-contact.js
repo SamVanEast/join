@@ -112,7 +112,7 @@ function showSingleContact(i){
           <div class="edit-container-left"> 
             <img src="/assets/img/contact-img/edit.png" alt="" srcset="">
           </div>
-          <div class="edit-contact" onclick="openEditContact()">Edit Contact</div>
+          <div class="edit-contact" onclick="openEditContact(${i})">Edit Contact</div>
         </div>
       </div>
       <div class="contact-information-down">
@@ -135,8 +135,54 @@ function showSingleContact(i){
         `;
 }
 
-function openEditContact(){
+function openEditContact(i){
   document.getElementById('lightboxEditContact').classList.remove('d-none');
+  document.getElementById('lightboxEditContact').innerHTML = /*html*/ `
+  <div class="lightbox-container">
+        <div class="lightbox-container-left">
+          <div><img src="/assets/img/menu-img/menu-logo.svg" alt=""></div>
+          <h1>Edit Contact</h1>
+          <p>Tasks are better with a team</p>
+          <div class="underline"></div>
+        </div>
+        <div class="lightbox-container-right">
+          <div class="lightbox-img">
+            <div></div>
+          </div>
+          <div class="lightbox-input-pos">
+            <div>
+              <div onclick="closeEditContact()">X</div>
+              <form class="lightbox-input-pos-close-form"  action="">
+              <input id="editName" required id="AddName" placeholder="" type="text">
+              <input id="editEmail" required id="AddEmail" placeholder="${contacts[i]['email']}" type="email">
+              <input id="editNumber" required id="AddNumber" placeholder="${contacts[i]['phonenumber']}" type="text">
+            </div>
+          </form>
+            <div class="lightbox-btn">
+              
+              <button class="lightbox-btn-right" onclick="editContacts(${i})">Save</button>
+            </div>
+            
+          </div>       
+        </div>
+      </div>
+  `;
+  EditInput(i);
+}
+
+function EditInput(i){
+  document.getElementById('editName').value = `${contacts[i]['name']}`;
+  document.getElementById('editEmail').value = `${contacts[i]['email']}`;
+  document.getElementById('editNumber').value = `${contacts[i]['phonenumber']}`;
+}
+
+function editContacts(i) {
+  let name = document.getElementById('editName').value; 
+  let email = document.getElementById('editEmail').value; 
+  let number = document.getElementById('editNumber').value; 
+  contacts.splice(0,1);
+  contacts.push({'name': name, 'email': email, 'phonenumber': number});
+  generateContactlist();
 }
 
 function closeEditContact(){
