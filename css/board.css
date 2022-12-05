@@ -47,12 +47,9 @@ body {
 }
 
 .container {
-
-
     width: 90%;
-    height: 100vh;
     padding-left: 270px;
-    padding-top: 100px;
+    margin-top: -910px;
 
 }
 
@@ -242,8 +239,11 @@ body {
 }
 
 .dragArea {
-    min-height: 250px;
-    border: 1px dotted black;
+    min-height: 350px;
+}
+
+.dragAreaHighlight {
+    border: 1px dashed black;
 }
 
 /* category colors */

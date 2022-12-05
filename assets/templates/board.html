@@ -13,6 +13,7 @@
 </head>
 
 <body onload="init()">
+    <div w3-include-html="side_bar.html"></div>
 
     <div class="addNewTask d-none">
         <div w3-include-html="add_task.html"></div>
@@ -54,8 +55,9 @@
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="openAddTask()">
                 </div>
 
-                <div class="dragArea" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
-                    
+                <div class="dragArea" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')"
+                    ondragover="allowDrop(event); highlight('todo')">
+
                 </div>
             </div>
 
@@ -65,28 +67,32 @@
                     <img src="../img/board_img/plus-btn.png" id="plus">
                 </div>
 
-                <div class="dragArea" id="inProgress" ondrop="moveTo('progress')" ondragover="allowDrop(event)">
-                    
-                </div>
-            </div>
-                <div class="tasks">
-                    <div class="status">
-                        <p>Awaiting Feedback</p>
-                        <img src="../img/board_img/plus-btn.png" id="plus">
-                    </div>
+                <div class="dragArea" id="inProgress" ondrop="moveTo('progress')"
+                    ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')">
 
-                    <div class="dragArea" id="awaitingFeedback" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">
-                    
                 </div>
             </div>
-                <div class="tasks">
-                    <div class="status">
-                        <p>Done</p>
-                        <img src="../img/board_img/plus-btn.png" id="plus">
-                    </div>
-                  
-                    <div class="dragArea" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                    
+            <div class="tasks">
+                <div class="status">
+                    <p>Awaiting Feedback</p>
+                    <img src="../img/board_img/plus-btn.png" id="plus">
+                </div>
+
+                <div class="dragArea" id="awaitingFeedback" ondrop="moveTo('feedback')"
+                    ondragleave="removeHighlight('awaitingFeedback')"
+                    ondragover="allowDrop(event); highlight('awaitingFeedback')">
+
+                </div>
+            </div>
+            <div class="tasks">
+                <div class="status">
+                    <p>Done</p>
+                    <img src="../img/board_img/plus-btn.png" id="plus">
+                </div>
+
+                <div class="dragArea" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')"
+                    ondragover="allowDrop(event); highlight('done')">
+
                 </div>
             </div>
         </div>
