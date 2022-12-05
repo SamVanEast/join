@@ -100,8 +100,7 @@ function showSingleContact(i){
           </div>
           <div class="add-task-btn">
             <div class="add-task-btn-plus">
-              <div class="add-task-btn-hori"></div>
-              <div class="add-task-btn-vert"></div>
+              <div><img src="/assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
             </div>
             <div class="add-task-btn-text">Add Task</div>
           </div>
@@ -111,10 +110,9 @@ function showSingleContact(i){
         <div class="contact-information-text"> Contact Information</div>
         <div class="edit-container">
           <div class="edit-container-left"> 
-            <div class="edit-v6"></div>
-            <div class="edit-v7"></div>
+            <img src="/assets/img/contact-img/edit.png" alt="" srcset="">
           </div>
-          <div>Edit Contact</div>
+          <div class="edit-contact" onclick="openEditContact()">Edit Contact</div>
         </div>
       </div>
       <div class="contact-information-down">
@@ -135,6 +133,14 @@ function showSingleContact(i){
 
         </div>
         `;
+}
+
+function openEditContact(){
+  document.getElementById('lightboxEditContact').classList.remove('d-none');
+}
+
+function closeEditContact(){
+  document.getElementById('lightboxEditContact').classList.add('d-none');
 }
 
 
