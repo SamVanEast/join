@@ -42,8 +42,8 @@ function init() {
     filterDone();
 }
 
-function filterTodo(){
-    
+function filterTodo() {
+
     let todo = tasks.filter(t => t['status'] == 'todo');
 
     document.getElementById('todo').innerHTML = '';
@@ -64,7 +64,7 @@ function filterProgress() {
         const element = progress[i];
         document.getElementById('inProgress').innerHTML += newTaskHTML(element);
         checkBgColor(element);
-     }
+    }
 }
 
 function filterFeedback() {
@@ -113,7 +113,7 @@ function newTaskHTML(element) {
             </div>
         </div>
         </div>`;
-        
+
 }
 
 
@@ -123,9 +123,9 @@ function startDragging(id) {
 
 function checkBgColor(element) {
     let categoryBg = element['category'];
-        
+
     document.getElementById(`category${element['id']}`).classList.add(`${categoryBg}`);
-    
+
 }
 
 /**
@@ -133,7 +133,15 @@ function checkBgColor(element) {
  */
 function closeOpenTask() {
     document.getElementById('openTask').classList.add('d-none');
-    
+
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
 }
 
 
+function moveTo(status){
+    tasks[currentDraggedElement]['status'] = status;
+    init();
+}

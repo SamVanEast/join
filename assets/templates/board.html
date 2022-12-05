@@ -54,7 +54,7 @@
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="openAddTask()">
                 </div>
 
-                <div class="dragArea" id="todo">
+                <div class="dragArea" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
                     
                 </div>
             </div>
@@ -65,7 +65,7 @@
                     <img src="../img/board_img/plus-btn.png" id="plus">
                 </div>
 
-                <div class="dragArea" id="inProgress">
+                <div class="dragArea" id="inProgress" ondrop="moveTo('progress')" ondragover="allowDrop(event)">
                     
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         <img src="../img/board_img/plus-btn.png" id="plus">
                     </div>
 
-                    <div class="dragArea" id="awaitingFeedback">
+                    <div class="dragArea" id="awaitingFeedback" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">
                     
                 </div>
             </div>
@@ -85,7 +85,7 @@
                         <img src="../img/board_img/plus-btn.png" id="plus">
                     </div>
                   
-                    <div class="dragArea" id="done">
+                    <div class="dragArea" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
                     
                 </div>
             </div>

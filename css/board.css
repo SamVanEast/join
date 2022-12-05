@@ -242,7 +242,7 @@ body {
 }
 
 .dragArea {
-    
+    min-height: 250px;
     border: 1px dotted black;
 }
 
