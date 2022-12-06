@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="../../css/summary.css">
     <script src="../../js/summary.js"></script>
+    <script src="../../js/side_bar.js"></script>
 </head>
 
 <body>
@@ -20,24 +21,24 @@
         <div class="summary_content">
             <div class="overview">
                 <div class="board_infos">
-                    <div class="tasks">
+                    <div class="tasks" onclick="loadContent('board')">
                         <div>5</div>
                         <span>Tasks in<br>
                             Board</span>
                     </div>
-                    <div class="tasks">
+                    <div class="tasks" onclick="loadContent('board')">
                         <div>2</div>
                         <span>Tasks In<br>
                             Progress</span>
                     </div>
-                    <div class="tasks">
+                    <div class="tasks" onclick="loadContent('board')">
                         <div>2</div>
                         <span>Awaiting<br>
                             Feedback</span>
                     </div>
                 </div>
-                <div class="urgent_date">
-                    <div class="urgent">
+                <div class="urgent_date" onclick="loadContent('board')">
+                    <div class="urgent" >
                         <div class="urgent_img">
                             <img src="../img/summary-img/urgent.svg" alt="">
                         </div>
@@ -51,7 +52,7 @@
                         <div class="upcoming_deadline">Upcoming Deadline</div>
                     </div>
                 </div>
-                <div class="to_do_and_done">
+                <div class="to_do_and_done" onclick="loadContent('board')">
                     <div class="to_do_and_done_section">
                         <div id="to-do-img"></div>
                         <div class="to_do_and_done_content">
@@ -59,7 +60,7 @@
                             <span>To-do</span>
                         </div>
                     </div>
-                    <div class="to_do_and_done_section">
+                    <div class="to_do_and_done_section" onclick="loadContent('board')">
                         <div id="done-img"></div>
                         <div class="to_do_and_done_content">
                             <div>1</div>

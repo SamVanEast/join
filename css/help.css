@@ -1,0 +1,76 @@
+.help {
+    width: 100%;
+    padding-top: 82px;
+    padding-left: 123px;
+    padding-right: 128.17px;
+    box-sizing: border-box;
+}
+
+.help_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.help_header div {
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+}
+
+.help_header img {
+    height: 23.98px;
+    width: 24.66px;
+}
+
+.help_header img:hover{
+    cursor: pointer;
+}
+
+.app_description {
+    margin-top: 48px;
+}
+
+.app_description div {
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 120%;
+    padding-bottom: 10px;
+}
+
+.app_description span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+.how_to_use_it {
+    margin-top: 35px;
+}
+
+.how_to_use_it_headline {
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 120%;
+}
+
+.how_to_use_it_content {
+    margin-top: 35px;
+}
+
+.how_to_use_it_steps {
+    display: flex;
+    margin-top: 10px;
+}
+
+.how_to_use_it_steps div{
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 120%;
+    padding-right: 35px;
+}
+
+.how_to_use_it_steps span{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+}

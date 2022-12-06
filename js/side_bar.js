@@ -15,10 +15,14 @@ async function includeHTML() {
 function loadContent(wichContent){//Den angeklickten Inhalt laden
     let content = document.getElementById('content');
     let tab = document.getElementById(`tab-${wichContent}`);
-
+    if (wichContent == 'help') {
+        document.getElementById('qoestion-mark-img').classList.add('d-none');
+    }else{
+        document.getElementById('qoestion-mark-img').classList.remove('d-none');
+        tab.classList.add('darkBlue');
+    }
     content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
     removeDarkBlue();
-    tab.classList.add('darkBlue');
     includeHTML();
 }
 

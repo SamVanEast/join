@@ -4,15 +4,8 @@ body {
     font-family: 'Inter';
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
-    color: #CDCDCD;
-}
-
 .side_bar {
     display: flex;
-    
     height: 1024px;
 }
 
@@ -60,10 +53,6 @@ a {
     cursor: pointer;
 }
 
-.tab:focus{
-    background: #091931;
-}
-
 .tab_icon {
     display: flex;
     justify-content: center;
@@ -100,7 +89,7 @@ a {
     cursor: pointer;
 }
 
-.tab_legal_notice:focus{
+.tab_legal_notice:focus {
     background: #091931;
 }
 
@@ -135,9 +124,21 @@ a {
     align-items: center;
     padding: 0px;
     gap: 26px;
+}
 
-    width: 106px;
-    height: 49px;
+.qoestion_mark_img:hover {
+    cursor: pointer;
+}
+
+.profile_img {
+    height: 46.12px;
+    width: 46.12;
+    border: 3px solid #2A3647;
+    border-radius: 24.5px;
+}
+
+.profile_img:hover {
+    cursor: pointer;
 }
 
 #content {
@@ -145,8 +146,33 @@ a {
     height: 935px;
     background-color: #F6F7F8;
     box-sizing: border-box;
+    position: absolute;
 }
 
-.darkBlue{
+.log_out {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 18px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    text-align: center;
+    background: #2A3647;
+    color: white;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px 0px 20px 20px;
+    width: 130px;
+    height: 53px;
+    right: 0;
+    box-sizing: border-box;
+}
+
+.darkBlue {
     background: #091931;
+}
+
+.d-none {
+    display: none;
 }
