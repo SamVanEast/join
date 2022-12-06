@@ -12,7 +12,6 @@ a {
 
 .side_bar {
     display: flex;
-    
     height: 1024px;
 }
 
@@ -60,10 +59,6 @@ a {
     cursor: pointer;
 }
 
-.tab:focus{
-    background: #091931;
-}
-
 .tab_icon {
     display: flex;
     justify-content: center;
@@ -100,7 +95,7 @@ a {
     cursor: pointer;
 }
 
-.tab_legal_notice:focus{
+.tab_legal_notice:focus {
     background: #091931;
 }
 
@@ -140,6 +135,21 @@ a {
     height: 49px;
 }
 
+.qoestion_mark_img:hover {
+    cursor: pointer;
+}
+
+.profile_img {
+    height: 46.12px;
+    width: 46.12;
+    border: 3px solid #2A3647;
+    border-radius: 24.5px;
+}
+
+.profile_img:hover {
+    cursor: pointer;
+}
+
 #content {
     width: 100%;
     height: 935px;
@@ -147,6 +157,6 @@ a {
     box-sizing: border-box;
 }
 
-.darkBlue{
+.darkBlue {
     background: #091931;
 }
