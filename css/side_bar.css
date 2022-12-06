@@ -4,12 +4,6 @@ body {
     font-family: 'Inter';
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
-    color: #CDCDCD;
-}
-
 .side_bar {
     display: flex;
     height: 1024px;
@@ -151,6 +145,27 @@ a {
     width: 100%;
     height: 935px;
     background-color: #F6F7F8;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.log_out {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 18px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    text-align: center;
+    background: #2A3647;
+    color: white;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px 0px 20px 20px;
+    width: 130px;
+    height: 53px;
+    right: 0;
     box-sizing: border-box;
 }
 
