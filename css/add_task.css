@@ -1,6 +1,5 @@
 /* ADD TASK */
 body {
-    margin: 0px;
     background: #F6F7F8;
     font-family: 'Inter';
 }
@@ -78,6 +77,7 @@ body {
     border-radius: 10px;
     padding: 18px 21px 18px 21px;
     border: 1px solid #D1D1D1;
+    background: #FFFFFF;
     font-family: 'Inter';
     resize: none;
     font-style: normal;
@@ -92,9 +92,20 @@ body {
     color: #D1D1D1;
 }
 
-.category select {
+.category {
+    position: relative;
+    display: inline-block;
+}
+
+.categoryAssigned {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
+    background: #FFFFFF;
     cursor: pointer;
-    width: 422px;
+    width: 404px;
     height: 51px;
     border-radius: 10px;
     padding-left: 18px;
@@ -103,9 +114,8 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
-    line-height: 120%;
+    line-height: 51px;
     color: #000000;
-    appearance: none;
     background-image:
         linear-gradient(45deg, transparent 50%, black 50%),
         linear-gradient(135deg, black 50%, transparent 50%),
@@ -119,6 +129,11 @@ body {
         5px 5px,
         0px 1.5em;
     background-repeat: no-repeat;
+}
+
+.showAllCategorys{
+    height: 300px;
+    max-height: 300px;
 }
 
 .borderLine {
@@ -300,7 +315,7 @@ body {
     color: #D1D1D1;
 }
 
-.inputSubtask:focus{
+.inputSubtask:focus {
     background: #FFFFFF url(../assets/img/add_task_img/cross.png) no-repeat;
     background-position: 95% 50%;
 }
