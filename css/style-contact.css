@@ -163,7 +163,7 @@ align-items: flex-start;
 padding: 0px;
 gap: 5px;
 
-width: 140px;
+width: 250px;
 height: 49px;
 
 
@@ -640,7 +640,7 @@ background: #FFFFFF;
 
 .lightbox-container{
   display: flex;
-  width: 84%;
+  max-width: 80%;
   height: 60%;
   border-radius: 30px;
   background-color: #FFFFFF;
@@ -712,10 +712,11 @@ background: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
+max-width: 40vh;
 }
 
 .lightbox-input-pos input{
+  font-size: 20px;
   max-width: 500px;
   width: 100%;
   height: 50px;
@@ -727,9 +728,11 @@ background: #FFFFFF;
 .lightbox-input-pos-close{
   cursor: pointer;
   font-size: 24px;
-  position: absolute;
-  right: 145px;
-  top: 220px;
+display: flex;
+justify-content: flex-end;
+position: relative;
+bottom: 50px;
+max-width: 40vh;
 }
 
 .lightbox-input-pos-close-form{
@@ -778,6 +781,28 @@ background: #FFFFFF;
 
 .lightbox-btn-right:hover{
   background-color: #29ABE2;
+}
+
+/*DESIGN SCROLLBAR*/
+.container-left::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.container-left::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 6px;
+}
+ 
+/* Handle */
+.container-left::-webkit-scrollbar-thumb {
+  background: #ABABAB; 
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+.container-left::-webkit-scrollbar-thumb:hover {
+  
 }
 
 .d-none{

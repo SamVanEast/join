@@ -45,12 +45,13 @@ async function includeHTML() {
 
 
 function generateContactlist() {
-  
+  letters = [];
+  document.getElementById('contactList').innerHTML = '';
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     
 
-    let firstLetter = contact['name'].charAt(0);
+    let firstLetter = contact['name'].charAt(0).toUpperCase();
     if(!letters.includes(firstLetter)) {
       letters.push(firstLetter);
       console.log(firstLetter);
@@ -180,7 +181,7 @@ function editContacts(i) {
   let name = document.getElementById('editName').value; 
   let email = document.getElementById('editEmail').value; 
   let number = document.getElementById('editNumber').value; 
-  contacts.splice(0,1);
+  contacts.splice(i,1);
   contacts.push({'name': name, 'email': email, 'phonenumber': number});
   generateContactlist();
 }
