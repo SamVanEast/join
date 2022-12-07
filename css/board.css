@@ -37,8 +37,8 @@ body {
 .addNewTask {
     position: fixed;
     background-color: #FFFFFF;
-    height: 72vh;
-    width: 75vw;
+    height: 70%;
+    width: 80%;
     z-index: 5;
     left: 300px;
     top: 148px;

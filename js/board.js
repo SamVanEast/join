@@ -47,10 +47,18 @@ let tasks = [{
 let currentDraggedElement;
 
 function init() {
+
     filterTodo();
     filterProgress();
     filterFeedback();
     filterDone();
+}
+
+async function getTasks() {
+    let response = await fetch("tasks.json");
+    let responseAsJson = await response.json();
+    console.log(responseAsJson);
+
 }
 
 function filterTodo() {
@@ -166,3 +174,4 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
 }
+
