@@ -15,13 +15,12 @@ body {
     background-color: #2A3647;
 }
 
-.menu_logo_space{
+.menu_logo {
     height: 290.97px;
     width: 100%;
 }
 
-.menu_logo {
-    position: absolute;
+.menu_logo img {
     display: flex;
     justify-content: center;
     padding-left: 65.98px;
@@ -119,6 +118,10 @@ body {
     box-sizing: border-box;
 }
 
+.mobile_logo {
+    display: none;
+}
+
 .header_headline {
     font-size: 21px;
     font-weight: 400;
@@ -184,9 +187,9 @@ body {
     display: none;
 }
 
-@media (max-width: 700px) {
-    .side-bar {
-        height: auto;
+@media (max-width: 500px) {
+    .side_bar {
+        height: 100vh;
     }
 
     .menu {
@@ -195,11 +198,76 @@ body {
         right: 0;
         bottom: 0;
         height: 80px;
+        width: 100%;
     }
 
-    .menu_logo img{
+    .menu_logo {
+        display: none;
+    }
+
+    .menu_under_logo {
+        display: flex;
+        flex-direction: unset;
+        justify-content: space-between;
+        height: unset;
+    }
+
+    .menu_tabs {
+        justify-content: space-between;
+        flex-direction: unset;
+        height: 80px;
+        margin-left: 2.8%;
+        margin-right: 2.8%;
+    }
+
+    .tab {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 8px 0px;
+        gap: 10px;
+        width: 80px;
+        height: 80px;
+        box-sizing: border-box;
+    }
+
+    .tab_legal_notice {
+        display: none;
+    }
+
+    .header-content {
+        height: 100vh;
+    }
+
+    .header {
+        justify-content: flex-end;
+        position: relative;
+        height: 79.02px;
+    }
+
+    .mobile_logo {
+        display: unset;
         position: absolute;
-        top: 0;
-        right: 0;
+        height: 39.02px;
+        width: 32px;
+        top: 20px;
+        left: 25px;
+    }
+
+    .header_headline {
+        position: absolute;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        top: 114px;
+        left: 7.71%;
+    }
+
+    #qoestion-mark-img {
+        display: none;
+    }
+
+    #content {
+        height: 100%;
     }
 }

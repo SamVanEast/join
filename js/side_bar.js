@@ -34,7 +34,7 @@ async function loadContent(wichContent) {//Den angeklickten Inhalt laden
     wichOnloadFunction(wichContent);
 }
 /**
- * 
+ * frägt nach welcher content geladen ist und dann nur die dazu gehöhrige function ausgeführt wird
  * @param {string} wichContent um zu wissen welche onload function geladen werden muss je nach dem welches template geladen wird 
  */
 async function wichOnloadFunction(wichContent) {

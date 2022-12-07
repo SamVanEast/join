@@ -80,18 +80,13 @@
     box-sizing: border-box;
 }
 
-.tasks:hover{
-    background-color: #2A3647;;
+.tasks:hover {
+    background-color: #2A3647;
     cursor: pointer;
     color: white;
 }
 
 .tasks div {
-    width: 41px;
-    height: 77px;
-
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 600;
     font-size: 64px;
     line-height: 120%;
@@ -122,15 +117,17 @@
     margin-top: 35px;
 }
 
-.urgent_date:hover{
+.urgent_date:hover {
     cursor: pointer;
-    background-color: #2A3647;;
+    background-color: #2A3647;
     color: white;
 }
-.urgent_date:hover div{
+
+.urgent_date:hover div {
     color: white;
 }
-.urgent_date:hover span{
+
+.urgent_date:hover span {
     color: white;
 }
 
@@ -141,7 +138,7 @@
     gap: 18px;
 }
 
-.urgent_img {
+.urgent_img img {
     height: 60px;
     width: 60px;
 }
@@ -192,6 +189,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 35px;
 }
 
 .to_do_and_done_section {
@@ -205,29 +203,31 @@
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    margin-top: 35px;
 }
 
-.to_do_and_done_section:hover{
+.to_do_and_done_section:hover {
     cursor: pointer;
-    background-color:#2A3647;;
+    background-color: #2A3647;
+    ;
     color: white;
 }
 
-.to_do_and_done_section:hover span{
+.to_do_and_done_section:hover span {
     color: white;
 }
 
-.to_do_and_done_section:hover #to-do-img{
+.to_do_and_done_section:hover #to-do-img {
     background-image: url("../assets/img/summary-img/to-do-hover.svg");
     background-color: white;
-    background-color:  #2A3647;;
+    background-color: #2A3647;
+    ;
 }
 
-.to_do_and_done_section:hover #done-img{
+.to_do_and_done_section:hover #done-img {
     background-image: url("../assets/img/summary-img/done-hover.svg");
     background-color: white;
-    background-color:  #2A3647;;
+    background-color: #2A3647;
+    ;
 }
 
 .to_do_and_done_content {
@@ -253,7 +253,6 @@
     height: 69px;
     width: 69px;
     background-image: url("../assets/img/summary-img/to-do.svg");
-    background-color: white;
 }
 
 #done-img {
@@ -281,4 +280,216 @@
     font-size: 64px;
     line-height: 120%;
     color: #29ABE2;
+}
+
+@media (max-width: 500px) {
+    .summary {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 84.58%;
+        margin-left: 7.71%;
+        box-sizing: border-box;
+        height: unset;
+    }
+
+    .summary_header {
+        display: unset;
+        padding-left: 0;
+        gap: 20px;
+        width: 100%;
+        height: unset;
+        padding-top: 72.98px;
+    }
+
+    .summary_header div {
+        width: unset;
+        height: unset;
+        font-weight: 700;
+        font-size: 47px;
+        line-height: 120%;
+        padding-bottom: 20px;
+    }
+
+    .summary_header span {
+        display: flex;
+        align-items: center;
+        height: unset;
+        padding-left: 0;
+        padding-top: 0;
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 120%;
+        border-left: none;
+    }
+
+    .summary_content {
+        height: unset;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-top: 41px;
+        margin-bottom: 95px;
+    }
+
+    .overview {
+        width: 100%;
+    }
+
+    .board_infos {
+        justify-content: space-between;
+        height: unset;
+        gap: 15px;
+    }
+
+    .tasks {
+        height: 110px;
+        width: 110px;
+        border-radius: 20px;
+        padding: 0;
+    }
+
+    .tasks div {
+        height: unset;
+        width: unset;
+        font-weight: 600;
+        font-size: 47px;
+        line-height: 120%;
+    }
+
+    .tasks span {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 120%;
+    }
+
+    .urgent_date {
+        height: 110px;
+        gap: 20px;
+        background: #FFFFFF;
+        border-radius: 20px;
+        box-sizing: border-box;
+        margin-top: 24px;
+    }
+
+    .urgent_date:hover {
+        background-color: white;
+        color: unset;
+    }
+
+    .urgent_date:hover div {
+        color: unset;
+    }
+
+    .urgent_date:hover span {
+        color: unset;
+    }
+
+    .urgent {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .urgent_img img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .urgent_info {
+        text-align: center;
+    }
+
+    .urgent_info_number {
+        font-weight: 600;
+        font-size: 47px;
+        line-height: 120%;
+    }
+
+    .urgent_info_description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 120%;
+        color: #2A3647;
+
+    }
+
+    .upcoming_deadline_info {
+        padding-left: 20px;
+        gap: 8px;
+        height: 68px;
+        border-left: 2px solid #D1D1D1;
+        color: #2A3647;
+    }
+
+    .date {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 120%;
+    }
+
+    .upcoming_deadline {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 120%;
+    }
+
+    .to_do_and_done {
+        margin-top: 24px;
+    }
+
+    .to_do_and_done_section {
+        gap: 10px;
+        width: 177.5px;
+        height: 110px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+
+    .to_do_and_done_section:hover {
+        background-color: white;
+        color: unset;
+    }
+
+    .to_do_and_done_section:hover span {
+        color: unset;
+    }
+
+    #to-do-img {
+        background-size: 40px 40px;
+        height: 40px;
+        width: 40px;
+    }
+
+    #done-img {
+        background-size: 40px 40px;
+        height: 40px;
+        width: 40px;
+    }
+
+    .to_do_and_done_section:hover #to-do-img {
+        background-image: url("../assets/img/summary-img/to-do.svg");
+        background-color: white;
+
+    }
+
+    .to_do_and_done_section:hover #done-img {
+        background-image: url("../assets/img/summary-img/done.svg");
+        background-color: white;
+
+    }
+
+    .to_do_and_done_content div {
+        font-size: 47px;
+    }
+
+    .to_do_and_done_content span {
+        font-size: 14px;
+    }
+
+    .welcome {
+        display: none;
+    }
 }
