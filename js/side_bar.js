@@ -31,10 +31,17 @@ async function loadContent(wichContent) {//Den angeklickten Inhalt laden
     }
     content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
     await includeHTML();
-    if (wichContent== 'board') {
+    wichOnloadFunction(wichContent);
+}
+/**
+ * 
+ * @param {string} wichContent um zu wissen welche onload function geladen werden muss je nach dem welches template geladen wird 
+ */
+async function wichOnloadFunction(wichContent) {
+    if (wichContent == 'board') {
         init();
     }
-    if (wichContent== 'contacts') {
+    if (wichContent == 'contacts') {
         render();
     }
 }
@@ -57,7 +64,7 @@ function showLogOutButton() {
 /**
  * fügt dem log out buttton die Class d-none hinzu
  */
-function closeLogOutButton(){
+function closeLogOutButton() {
     document.getElementById('log-out').classList.add('d-none');
 }
 /**
