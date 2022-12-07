@@ -46,8 +46,8 @@ let tasks = [{
 
 let currentDraggedElement;
 
-function init() {
-
+async function init() {
+    await getTasks();
     filterTodo();
     filterProgress();
     filterFeedback();
@@ -55,9 +55,8 @@ function init() {
 }
 
 async function getTasks() {
-    let response = await fetch("tasks.json");
-    let responseAsJson = await response.json();
-    console.log(responseAsJson);
+    let response = await fetch("../../js/tasks.json");
+    console.log(response);
 
 }
 
