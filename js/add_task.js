@@ -4,12 +4,15 @@ function myFunction() {
 
 /**
  * Using an empty array in order to test the function addTask
+ * 
+ * @param {Array} tasks - This array is used to store data from add_task.html
  */
 
 let tasks = [];
 
 /**
  * Function that loads all the tasks 
+ * 
  */
 
 function loadAllTasks() {
