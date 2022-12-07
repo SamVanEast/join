@@ -118,7 +118,7 @@ border-radius: 10px;
     border: 0.5px solid #29ABE2;
 }
 
-.container-signup{
+.button-signup{
     position: relative;
     width: 250px;
     right: 50px;
@@ -128,11 +128,11 @@ border-radius: 10px;
     gap: 12px;
 }
 
-.container-signup p {
+.button-signup p {
     margin: 0px;
 }
 
-.container-signup button{
+.button-signup button{
     cursor: pointer;
     padding: 13px 10px 13px 10px;
     border: #2A3647;
@@ -141,4 +141,52 @@ border-radius: 10px;
     font-weight: 700;
     background: #2A3647;
     border-radius: 8px;
+}
+
+/* CSS FOR SIGN UP SCREEN */
+.container-signup {
+    height: 100vh;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-logo {
+    position: absolute;
+    left: 70px;
+    top: 70px;
+}
+
+
+
+.container-button-signup{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.container-signup-middle {
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 35px;
+width: 652px;
+height: 559px;
+background: #FFFFFF;
+box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+border-radius: 30px;
+}
+
+.go-back{
+    cursor: pointer;
+    position: relative;
+    right: 280px;
+    top: 26px;
+}
+
+
+.d-none{
+    display: none;
 }
