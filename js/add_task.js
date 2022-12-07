@@ -31,6 +31,7 @@ function clearFields() {
 
 /**
  * Function that gets all the values of the Add-Task-Page
+ * and defines a Json called "task"
  */
 
 function addTask() {
@@ -38,5 +39,21 @@ function addTask() {
     let description = document.getElementById('description').value;
     let category = document.getElementById('dropdownCategory').value;
     let duedate = document.getElementById('dueDate').value;
+
+    let task = {
+        'id': '',
+        'status': '',
+        'category': category,
+        'description': description,
+        'duedate': duedate,
+        'headline': headline,
+        'involved': '',
+        'priority': '',
+        'status': 'todo',
+        'subtasks': ''
+    }
+
+    tasks.push(task);
+
     console.log(headline, description, category, duedate);
 }

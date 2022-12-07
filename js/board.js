@@ -2,12 +2,14 @@ let currentDraggedElement;
 
 async function init() {
     await getTasks();
+    
 }
 
 async function getTasks() {
     let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/database.json`;
     let response = await fetch(url);
     let tasks = await response.json();
+    console.log(tasks);
     filterTodo(tasks);
     filterProgress(tasks);
     filterFeedback(tasks);
