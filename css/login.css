@@ -22,7 +22,6 @@ body{
 flex-direction: column;
 align-items: center;
 justify-content: center;
-padding: 35px 0px;
 gap: 35px;
 width: 652px;
 height: 513px;
@@ -117,4 +116,29 @@ border-radius: 10px;
 .guest-button:hover {
     color: #29ABE2;
     border: 0.5px solid #29ABE2;
+}
+
+.container-signup{
+    position: relative;
+    width: 250px;
+    right: 50px;
+    bottom: 350px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.container-signup p {
+    margin: 0px;
+}
+
+.container-signup button{
+    cursor: pointer;
+    padding: 13px 10px 13px 10px;
+    border: #2A3647;
+    color: #FFFFFF;
+    font-size: 21px;
+    font-weight: 700;
+    background: #2A3647;
+    border-radius: 8px;
 }
