@@ -22,13 +22,13 @@
             <div class="addTask">
                 <div class="addTaskLeftSide">
                     <div class="titleToAssigned">
-                        <div class="title">
+                        <div class="title" >
                             <p>Title</p>
-                            <input required minlength="1" type="text" placeholder="Enter a title">
+                            <input required minlength="1" type="text" placeholder="Enter a title" id="headline">
                         </div>
                         <div class="description">
                             <p>Description</p>
-                            <textarea required minlength="1" type="text" placeholder="Enter a Description"></textarea>
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="description"></textarea>
                         </div>
                         <div class="category">
                             <p>Category</p>
@@ -71,7 +71,7 @@
                     <div class="clearAndCreate">
                         <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
                                 type="checkbox"></button>
-                        <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                        <button class="create" onclick="addTask()">Create Task <img src="../../assets/img/add_task_img/hook.png"
                                 alt=""></button>
                     </div>
                 </div>

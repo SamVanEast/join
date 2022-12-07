@@ -28,3 +28,15 @@ function setDate() {
 function clearFields() {
     document.getElementById('form').reset();
 }
+
+/**
+ * Function that gets all the values of the Add-Task-Page
+ */
+
+function addTask() {
+    let headline = document.getElementById('headline').value;
+    let description = document.getElementById('description').value;
+    let category = document.getElementById('dropdownCategory').value;
+    
+    console.log(headline, description, category);
+}
