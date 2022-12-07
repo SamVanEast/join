@@ -2,6 +2,11 @@ function myFunction() {
     console.log('Ready!');
 }
 
+/**
+ * Using an empty array in order to test the function addTask
+ */
+
+let tasks = [];
 
 function renderCategorys(){
     document.getElementById('dropdownCategory').classList.add('showAllCategorys');
@@ -54,6 +59,7 @@ function addTask() {
     }
 
     tasks.push(task);
+    console.log(tasks);
 
     console.log(headline, description, category, duedate);
 }
