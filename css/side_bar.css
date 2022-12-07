@@ -15,7 +15,13 @@ body {
     background-color: #2A3647;
 }
 
-.menu_logo img {
+.menu_logo_space{
+    height: 290.97px;
+    width: 100%;
+}
+
+.menu_logo {
+    position: absolute;
     display: flex;
     justify-content: center;
     padding-left: 65.98px;
@@ -132,7 +138,7 @@ body {
 
 .profile_img {
     height: 46.12px;
-    width: 46.12;
+    width: 46.12px;
     border: 3px solid #2A3647;
     border-radius: 24.5px;
 }
@@ -146,14 +152,10 @@ body {
     height: 935px;
     background-color: #F6F7F8;
     box-sizing: border-box;
-    position: absolute;
 }
 
 .log_out {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    position: absolute;
     padding: 18px;
     font-weight: 400;
     font-size: 16px;
@@ -165,8 +167,13 @@ body {
     border-radius: 20px 0px 20px 20px;
     width: 130px;
     height: 53px;
-    right: 0;
+    top: 89px;
+    right: 33px;
     box-sizing: border-box;
+}
+
+.log_out:hover {
+    cursor: pointer;
 }
 
 .darkBlue {
@@ -175,4 +182,24 @@ body {
 
 .d-none {
     display: none;
+}
+
+@media (max-width: 700px) {
+    .side-bar {
+        height: auto;
+    }
+
+    .menu {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 80px;
+    }
+
+    .menu_logo img{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }

@@ -17,10 +17,10 @@
 
 <body class="body" onload="loadContent('summary')">
 
-    <div class="side_bar">
+    <div class="side_bar" onclick="closeLogOutButton()">
+        <img class="menu_logo" src="../img/menu-img/menu-logo.svg" alt="">
         <div class="menu">
-            <div class="menu_logo">
-                <img src="../img/menu-img/menu-logo.svg" alt="">
+            <div class="menu_logo_space">
             </div>
             <div class="menu_under_logo">
                 <div class="menu_tabs">
@@ -63,14 +63,15 @@
             <div class="header">
                 <div class="header_headline">Kanban Project Management Tool</div>
                 <div class="header_image">
-                    <img id="qoestion-mark-img" class="qoestion_mark_img" onclick="loadContent('help')" src="../img/header-img/question-mark-icon.svg" alt="">
-                    <img class="profile_img" src="../img/header-img/profile-img.svg" alt="">
+                    <img id="qoestion-mark-img" class="qoestion_mark_img" onclick="loadContent('help')"
+                        src="../img/header-img/question-mark-icon.svg" alt="">
+                    <img class="profile_img" onclick="showLogOutButton(), save(event)" src="../img/header-img/profile-img.svg" alt="">
                 </div>
+                <div id="log-out" class="log_out d-none" onclick="save(event)">Log out</div>
             </div>
 
             <div id="content"></div>
 
-            <div class="log_out">Log out</div>
 
         </div>
     </div>
