@@ -4,7 +4,10 @@ let tasks = [{
     "category": "Design",
     "headline": "Join fertigstellen",
     "description": "Bis Weihnachten das Projekt fertigstellen",
-    "involved": []
+    "involved": [],
+    "duedate": "",
+    "priority": "",
+    "subtasks": ""
 },
 {
     "id": 1,
@@ -12,7 +15,10 @@ let tasks = [{
     "category": "Marketing",
     "headline": "Projekt bewerben",
     "description": "Spread the word: Insta, TikTok, Myspace etc.",
-    "involved": []
+    "involved": [],
+    "duedate": "",
+    "priority": "",
+    "subtasks": ""
 },
 {
     "id": 2,
@@ -20,7 +26,10 @@ let tasks = [{
     "category": "Media",
     "headline": "Currywurst",
     "description": "Artikel über die Herkunft des Kraftriegels.",
-    "involved": []
+    "involved": [],
+    "duedate": "",
+    "priority": "",
+    "subtasks": ""
 },
 {
     "id": 3,
@@ -28,7 +37,10 @@ let tasks = [{
     "category": "Backoffice",
     "headline": "Steuern hinterziehen",
     "description": "Mit Uli H. und Alice S. kurzschließen",
-    "involved": []
+    "involved": [],
+    "duedate": "",
+    "priority": "",
+    "subtasks": ""
 }
 ];
 
