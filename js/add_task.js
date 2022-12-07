@@ -5,6 +5,16 @@ function myFunction() {
 
 function renderCategorys(){
     document.getElementById('dropdownCategory').classList.add('showAllCategorys');
+
+    let content = document.getElementById('dropdownCategory');
+
+    content.innerHTML = /*html*/ `
+    <div>Select task category</div>
+    <div>test</div>
+    <div>test</div>
+    <div>test</div>
+    <div>test</div>
+    <div>test</div>`;
 }
 
 
