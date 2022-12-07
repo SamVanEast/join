@@ -1,66 +1,21 @@
-let tasks = [{
-    "id": 0,
-    "status": "todo",
-    "category": "Design",
-    "headline": "Join fertigstellen",
-    "description": "Bis Weihnachten das Projekt fertigstellen",
-    "involved": [],
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 1,
-    "status": "progress",
-    "category": "Marketing",
-    "headline": "Projekt bewerben",
-    "description": "Spread the word: Insta, TikTok, Myspace etc.",
-    "involved": [],
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 2,
-    "status": "feedback",
-    "category": "Media",
-    "headline": "Currywurst",
-    "description": "Artikel über die Herkunft des Kraftriegels.",
-    "involved": [],
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 3,
-    "status": "done",
-    "category": "Backoffice",
-    "headline": "Steuern hinterziehen",
-    "description": "Mit Uli H. und Alice S. kurzschließen",
-    "involved": [],
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-}
-];
-
 let currentDraggedElement;
 
 async function init() {
     await getTasks();
-    filterTodo();
-    filterProgress();
-    filterFeedback();
-    filterDone();
 }
 
 async function getTasks() {
-    let response = await fetch("../../js/tasks.json");
-    console.log(response);
+    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/database.json`;
+    let response = await fetch(url);
+    let tasks = await response.json();
+    filterTodo(tasks);
+    filterProgress(tasks);
+    filterFeedback(tasks);
+    filterDone(tasks);
 
 }
 
-function filterTodo() {
+function filterTodo(tasks) {
 
     let todo = tasks.filter(t => t['status'] == 'todo');
 
@@ -73,7 +28,7 @@ function filterTodo() {
     }
 }
 
-function filterProgress() {
+function filterProgress(tasks) {
     let progress = tasks.filter(t => t['status'] == 'progress');
 
     document.getElementById('inProgress').innerHTML = '';
@@ -85,7 +40,7 @@ function filterProgress() {
     }
 }
 
-function filterFeedback() {
+function filterFeedback(tasks) {
     let feedback = tasks.filter(t => t['status'] == 'feedback');
 
     document.getElementById('awaitingFeedback').innerHTML = '';
@@ -97,7 +52,7 @@ function filterFeedback() {
     }
 }
 
-function filterDone() {
+function filterDone(tasks) {
     let done = tasks.filter(t => t['status'] == 'done');
 
     document.getElementById('done').innerHTML = '';
