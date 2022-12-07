@@ -8,6 +8,16 @@ function myFunction() {
 
 let tasks = [];
 
+/**
+ * Function that loads all the tasks 
+ */
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('all tasks');
+    tasks = JSON.parse(allTasksAsString);
+    console.log('Loaded all tasks: ', tasks);
+}
+
 function renderCategorys(){
     document.getElementById('dropdownCategory').classList.add('showAllCategorys');
 
@@ -59,7 +69,6 @@ function addTask() {
     }
 
     tasks.push(task);
-    console.log(tasks);
-
-    console.log(headline, description, category, duedate);
+    let allTasksAsString = JSON.stringify(tasks);
+    localStorage.setItem('all tasks', allTasksAsString);
 }

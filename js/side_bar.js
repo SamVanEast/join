@@ -44,6 +44,9 @@ async function wichOnloadFunction(wichContent) {
     if (wichContent == 'contacts') {
         render();
     }
+    if (wichContent == 'add_task') {
+        loadAllTasks();
+    }
 }
 /**
  * Es löscht von allen Reitern die diese Background-color haben könnten, diese.

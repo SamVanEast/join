@@ -14,7 +14,7 @@
 
 </head>
 
-<body onload="getTaskArray()">
+<body onload="loadAllTasks()"> <!-- added onload function -->
 
     <div class="addTaskContainer">
         <h1>Add Task</h1>
@@ -24,11 +24,11 @@
                     <div class="titleToAssigned">
                         <div class="title" >
                             <p>Title</p>
-                            <input required minlength="1" type="text" placeholder="Enter a title" id="headline">
+                            <input required minlength="1" type="text" placeholder="Enter a title" id="headline"> <!-- added ID "headline"-->
                         </div>
                         <div class="description">
                             <p>Description</p>
-                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="description"></textarea>
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="description"></textarea> <!-- added ID description-->
                         </div>
                         <div class="category">
                             <p>Category</p>
@@ -72,7 +72,7 @@
                         <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
                                 type="checkbox"></button>
                         <button class="create" onclick="addTask()">Create Task <img src="../../assets/img/add_task_img/hook.png"
-                                alt=""></button>
+                                alt=""></button> <!-- added onclick function addTask -->
                     </div>
                 </div>
             </div>
