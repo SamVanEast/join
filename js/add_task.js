@@ -37,6 +37,6 @@ function addTask() {
     let headline = document.getElementById('headline').value;
     let description = document.getElementById('description').value;
     let category = document.getElementById('dropdownCategory').value;
-    
-    console.log(headline, description, category);
+    let duedate = document.getElementById('dueDate').value;
+    console.log(headline, description, category, duedate);
 }
