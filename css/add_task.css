@@ -94,12 +94,10 @@ body {
 
 .category {
     position: relative;
-    display: inline-block;
 }
 
 .categoryAssigned {
     position: relative;
-    display: inline-block;
 }
 
 .dropdown {
