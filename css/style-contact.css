@@ -800,10 +800,7 @@ max-width: 40vh;
   border-radius: 6px;
 }
 
-/* Handle on hover */
-.container-left::-webkit-scrollbar-thumb:hover {
-  
-}
+
 
 .d-none{
   display: none;
