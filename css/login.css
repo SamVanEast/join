@@ -1,4 +1,5 @@
 body{
+    font-family: 'Inter';
     margin: 0;
 }
 
@@ -7,6 +8,13 @@ body{
     background: #f5f5f5;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.container img {
+    position: relative;
+    left: 70px;
+    bottom: 320px;
 }
 
 .container-login{
@@ -18,11 +26,95 @@ padding: 35px 0px;
 gap: 35px;
 width: 652px;
 height: 513px;
-
-
-
-
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 border-radius: 30px;
+}
+
+.container-up{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-login h1{
+    margin: 0;
+    font-family: 'Inter';
+    width: 315px;
+    height: 97px;
+    font-size: 61px;
+    text-align: center;
+}
+
+.underline-login{   
+width: 150px;
+height: 0px;
+border: 3px solid #29ABE2;
+
+}
+
+.container-input{
+    display: flex;
+    flex-direction: column;
+    gap: 49px;
+    width: 422px;   
+}
+
+.container-input input{
+    font-family: 'Inter';
+    font-size: 20px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+border-radius: 10px;
+}
+
+.container-remember{
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    height: 21px;
+    gap: 30px;
+}
+
+.container-remember p{
+    cursor: pointer;
+    margin: 0px;
+    color: #29ABE2;
+}
+
+.container-button{
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-button{
+    cursor: pointer;
+    padding: 13px 40px 13px 40px;
+    border: #2A3647;
+    color: #FFFFFF;
+    font-size: 21px;
+    font-weight: 700;
+    background: #2A3647;
+    border-radius: 8px;
+}
+
+.guest-button{
+    cursor: pointer;
+    padding: 13px 20px 13px 20px;
+    border: 0.5px solid #2A3647;
+    color: #2A3647;
+    font-size: 21px;
+    font-weight: 700;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+.login-button:hover{
+    background: #29ABE2;
+}
+
+.guest-button:hover {
+    color: #29ABE2;
+    border: 0.5px solid #29ABE2;
 }
