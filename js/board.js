@@ -114,6 +114,10 @@ function closeOpenTask() {
 
 }
 
+function closeAddTask() {
+    document.getElementById('addNewTask').classList.add('d-none');
+}
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -142,7 +146,8 @@ function addTask() {
     content.innerHTML = '';
 
     content.innerHTML += /*html*/ `
-<div class="addTaskContainer">
+    <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px" src="../img/board_img/close.svg"></div>
+    <div class="addTaskContainer">
         <h1>Add Task</h1>
         <form action="" id="form">
             <div class="addTask">

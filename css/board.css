@@ -270,6 +270,11 @@ body {
 
 /* category colors end */
 
+.exitBtn {
+    margin-right: 40px;
+    text-align: right;
+    margin-top: 30px;}
+
 /* Code from add_tasks.html */
 
 /* ADD TASK */
@@ -291,7 +296,6 @@ body {
     text-align: left;
     margin-bottom: 41px;
     padding-left: 123px;
-    margin-top: 82px;
 }
 
 .addTask {
