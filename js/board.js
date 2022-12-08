@@ -1,10 +1,10 @@
-let task; 
+let task;
 let currentDraggedElement;
 
 
 async function init() {
     await getTasks();
-    
+
 }
 
 async function getTasks() {
@@ -16,7 +16,7 @@ async function getTasks() {
     filterProgress();
     filterFeedback();
     filterDone();
-    
+
 }
 
 function filterTodo() {
@@ -119,7 +119,7 @@ function allowDrop(ev) {
 }
 
 
-function moveTo(status){
+function moveTo(status) {
     task[currentDraggedElement]['status'] = status;
     filterTodo();
     filterProgress();
@@ -138,5 +138,69 @@ function removeHighlight(id) {
 
 function addTask() {
     document.getElementById('addNewTask').classList.remove('d-none');
-    
+    let content = document.getElementById('addNewTask');
+    content.innerHTML = '';
+
+    content.innerHTML += /*html*/ `
+<div class="addTaskContainer">
+        <h1>Add Task</h1>
+        <form action="" id="form">
+            <div class="addTask">
+                <div class="addTaskLeftSide">
+                    <div class="titleToAssigned">
+                        <div class="title" >
+                            <p>Title</p>
+                            <input required minlength="1" type="text" placeholder="Enter a title" id="headline"> <!-- added ID "headline"-->
+                        </div>
+                        <div class="description">
+                            <p>Description</p>
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="description"></textarea> <!-- added ID description-->
+                        </div>
+                        <div class="category">
+                            <p>Category</p>
+                            <div class="dropdown" id="dropdownCategory" onclick="renderCategorys()" required>Select task category</div>
+                        </div>
+                        <div class="categoryAssigned">
+                            <p>Assigned to</p>
+                            <div class="dropdown" required>Select contacts to assign</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="borderLine"></div>
+
+                <div class="dateToButtons">
+
+                    <div class="dueDate">
+                        <p>Due date</p>    
+                            <input id="dueDate" placeholder="dd/mm/yyyy" type="text" onfocus="setDate()" required>
+                    </div>
+
+                    <div class="prio">
+                        <p>Prio</p>
+                        <div class="prioButtons">
+                            <button type="button" class="urgentButton">Urgent <input class="urgent"
+                                    type="checkbox"></button>
+                            <button type="button" class="mediumButton">Medium <input class="medium"
+                                    type="checkbox"></button>
+                            <button type="button" class="lowButton">Low <input class="low" type="checkbox"></button>
+                        </div>
+                    </div>
+                    <div class="subtasks">
+                        <p>Subtasks</p>
+                        <input class="inputSubtask" type="text" placeholder="Add new subtask" onfocus="value = 'Create new icons';" required>
+                        <div class="checkboxSubtask" required>
+                            <input type="checkbox" required>
+                            <span>Subtask 1</span>
+                        </div>
+                    </div>
+                    <div class="clearAndCreate">
+                        <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
+                                type="checkbox"></button>
+                        <button class="create" onclick="addTask()">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                                alt=""></button> <!-- added onclick function addTask -->
+                    </div>
+                </div>
+            </div>
+        </form>`
 }

@@ -5,8 +5,8 @@ body {
 }
 
 .container {
-    
-
+    padding-left: 123px;
+    padding-top: 82px;
     padding-left: 60px;
     overflow-y: auto;
     overflow-x: hidden;
