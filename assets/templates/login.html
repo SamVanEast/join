@@ -11,12 +11,12 @@
   </head>
   <body>
     <!-- Container for the log in Screen -->
-    <div class="container">
+    <div id="login" class="container">
       <div style="width: 250px">
         <img src="/assets/img/contact-img/logo.png" alt="" srcset="" />
       </div>
 
-      <div class="container-login">
+      <div  class="container-login">
         <div class="container-up">
           <h1>Log in</h1>
           <div class="underline-login"></div>
@@ -29,7 +29,7 @@
         <div class="container-remember">
           <input type="checkbox" id="remember" value="Boat" />
           <label for="remember"> Remember me</label>
-          <p>Forgot my Password</p>
+          <p onclick="showForgotScreen()">Forgot my Password</p>
         </div>
 
         <div class="container-button">
@@ -58,7 +58,7 @@
       <div class="container-signup-middle">
         
         <div class="container-up">
-          <img class="go-back" src="/assets/img/login-img/Vector.png" alt="">
+          <img onclick="backToLogin()" class="go-back" src="/assets/img/login-img/Vector.png" alt="">
           <h1>Sign up</h1>
           <div class="underline-login"> </div>           
         </div>
@@ -76,6 +76,59 @@
       </div>
       
     </div>
+
     <!-- Container for forgot password Screen -->
+<div class="container-signup d-none " id="forgot">
+      <div>
+        <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
+      </div>
+      <div class="container-signup-middle-forgot">
+        
+        <div class="container-up">
+          <img onclick="backToLogin()" class="go-back-forgot" src="/assets/img/login-img/Vector.png" alt="">
+          <h1>I forgot my password</h1>
+          <div class="underline-login"> </div>   
+          <p>Don't worry! We will send you an email with the instructions to reset your password.</p>        
+        </div>
+
+          <form class="container-input" action="">
+            <input type="email" name="" id="" placeholder="Email" />
+          </form>
+
+          <div class="container-button-signup">
+            <button class="login-button">Send me the email</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- SCREEN FOR RESET YOUR PASSWORD -->
+
+    <div class="container-signup d-none" id="reset">
+      <div>
+        <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
+      </div>
+      <div class="container-signup-middle-reset">
+        
+        <div class="container-up">
+          <img onclick="backToLogin()" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
+          <h1>Reset your password</h1>
+          <div class="underline-login"> </div>   
+          <p>Change your account password</p>        
+        </div>
+
+          <form class="container-input" action="">
+            <input type="password" placeholder="New password" />
+            <input type="password" placeholder="Confirm password" />
+          </form>
+
+          <div class="container-button-signup">
+            <button class="login-button">Log in</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
   </body>
 </html>
