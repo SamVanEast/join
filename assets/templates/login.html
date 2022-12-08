@@ -64,15 +64,18 @@
         <div class="underline-login"> </div>
       </div>
 
-      <form class="container-input" action="">
-        <input type="text" name="" id="" placeholder="Name" />
-        <input type="email" name="" id="" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+      <form class="container-input" action="" onsubmit="createNewUser(); return false;">
+        <input required type="text" name="" id="signupName" placeholder="Name" />
+        <input required type="email" name="" id="signupEmail" placeholder="Email" />
+        <input  required type="password" id="signupPassword"placeholder="Password" />
+        <div class="container-button-signup">
+          <button class="login-button">Sign up</button>
+        </div>
       </form>
 
-      <div class="container-button-signup">
-        <button class="login-button">Log in</button>
-      </div>
+
+
+     
     </div>
   </div>
 
@@ -94,7 +97,7 @@
       </div>
 
       <form class="container-input" action="">
-        <input type="email" name="" id="" placeholder="Email" />
+        <input type="email" name="" id="forgotEmail" placeholder="Email" />
       </form>
 
       <div class="container-button-signup">
