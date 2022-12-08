@@ -49,8 +49,10 @@
         <div class="taskSection">
             <div class="tasks">
                 <div class="status">
+                    <div>
                     <p>To Do</p>
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="openAddTask()">
+                    </div>
                 </div>
 
                 <div class="dragArea" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')"
@@ -61,8 +63,10 @@
 
             <div class="tasks">
                 <div class="status">
+                    <div>
                     <p>In Progress</p>
                     <img src="../img/board_img/plus-btn.png" id="plus">
+                    </div>
                 </div>
 
                 <div class="dragArea" id="inProgress" ondrop="moveTo('progress')"
@@ -72,8 +76,10 @@
             </div>
             <div class="tasks">
                 <div class="status">
+                    <div>
                     <p>Awaiting Feedback</p>
                     <img src="../img/board_img/plus-btn.png" id="plus">
+                    </div>
                 </div>
 
                 <div class="dragArea" id="awaitingFeedback" ondrop="moveTo('feedback')"
@@ -84,8 +90,10 @@
             </div>
             <div class="tasks">
                 <div class="status">
+                    <div>
                     <p>Done</p>
                     <img src="../img/board_img/plus-btn.png" id="plus">
+                    </div>
                 </div>
 
                 <div class="dragArea" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')"
