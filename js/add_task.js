@@ -23,7 +23,7 @@ function loadAllTasks() {
 
 
 function renderCategorys(){
-    document.getElementById('dropdownCategory').classList.add('showAllCategorys');
+    document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
 
     let content = document.getElementById('dropdownCategory');
 
@@ -38,7 +38,7 @@ function renderCategorys(){
 
 
 function renderAssignedTo(){
-    document.getElementById('dropdownAssignedTo').classList.add('showAllCategorys');
+    document.getElementById('dropdownAssignedTo').classList.toggle('showAllCategorys');
 
     let content = document.getElementById('dropdownAssignedTo');
 
