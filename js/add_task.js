@@ -21,6 +21,7 @@ function loadAllTasks() {
     console.log('Loaded all tasks: ', tasks);
 }
 
+
 function renderCategorys(){
     document.getElementById('dropdownCategory').classList.add('showAllCategorys');
 
@@ -28,11 +29,26 @@ function renderCategorys(){
 
     content.innerHTML = /*html*/ `
     <div>Select task category</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>`;
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>`;
+}
+
+
+function renderAssignedTo(){
+    document.getElementById('dropdownAssignedTo').classList.add('showAllCategorys');
+
+    let content = document.getElementById('dropdownAssignedTo');
+
+    content.innerHTML = /*html*/ `
+    <div>Select contacts to assign</div>
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>
+    <div class="categorysDropdown">test</div>`;
 }
 
 
