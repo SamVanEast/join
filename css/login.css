@@ -59,7 +59,7 @@ border: 3px solid #29ABE2;
     width: 422px;   
 }
 
-.container-input input{
+#loginPassword, #loginEmail {
     font-family: 'Inter';
     font-size: 20px;
     height: 50px;
@@ -82,9 +82,8 @@ border-radius: 10px;
 }
 
 .container-button{
-    width: 350px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around
 }
 
 .login-button{
