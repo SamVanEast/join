@@ -81,7 +81,7 @@
 
   </div>
 
-  <!-- Container for forgot password Screen -->
+  <!-- CONTAINER FOR FORGOT PASSWORD SCREEN -->
 
   <div class="container-signup d-none " id="forgot">
     <div>
@@ -96,13 +96,14 @@
         <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
       </div>
 
-      <form class="container-input" action="">
-        <input type="email" name="" id="forgotEmail" placeholder="Email" />
+      <form class="container-input" action="" onsubmit="SendEmailtoChangePassword(); return false;">
+        <input required type="email" name="" id="forgotEmail" placeholder="Email" />
+        <div class="container-button-signup">
+          <button class="login-button">Send me the email</button>
+        </div>
       </form>
 
-      <div class="container-button-signup">
-        <button class="login-button">Send me the email</button>
-      </div>
+      
     </div>
   </div>
 
@@ -110,27 +111,12 @@
 
   <!-- SCREEN FOR RESET YOUR PASSWORD -->
 
-  <div class="container-signup d-none" id="reset">
-    <div>
-      <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
-    </div>
-    <div class="container-signup-middle-reset">
+  
 
-      <div class="container-up">
-        <img onclick="backToLogin()" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
-        <h1>Reset your password</h1>
-        <div class="underline-login"> </div>
-        <p>Change your account password</p>
-      </div>
+      
+      
 
-      <form class="container-input" action="">
-        <input type="password" placeholder="New password" />
-        <input type="password" placeholder="Confirm password" />
-      </form>
-
-      <div class="container-button-signup">
-        <button class="login-button">Log in</button>
-      </div>
+    
     </div>
   </div>
 

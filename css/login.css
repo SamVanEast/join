@@ -166,7 +166,7 @@ border-radius: 10px;
     top: 85px;
 }
 
-#signupEmail, #signupPassword, #signupName, #forgotEmail{
+#signupEmail, #signupPassword, #signupName, #forgotEmail, #confirmPassword, #newPassword{
     font-family: 'Inter';
     font-size: 20px;
     height: 50px;
