@@ -14,7 +14,7 @@
 
 <body onload="init()">
 
-    <div class="addNewTask d-none">
+    <div class="addNewTask d-none" id="addNewTask">
         <div w3-include-html="add_task.html"></div>
     </div>
     <div id="openTask" class="openTask d-none">
@@ -43,8 +43,7 @@
             <h1>Board</h1>
             <div class="inputAndButton">
                 <input placeholder="Find Task" src="../img/board_img/magnifying-glass.png   ">
-                <div><button>Add Task<img style="margin-left: 10px"
-                            src="../img/board_img/plus-button-white.png"></button></div>
+                <div><button onclick="addTask()">Add Task<img style="margin-left: 10px" src="../img/board_img/plus-button-white.png"></button></div>
             </div>
         </div>
         <div class="taskSection">
