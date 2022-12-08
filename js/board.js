@@ -1,5 +1,5 @@
+let task; 
 let currentDraggedElement;
-
 
 
 async function init() {
@@ -10,18 +10,18 @@ async function init() {
 async function getTasks() {
     let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/database.json`;
     let response = await fetch(url);
-    let tasks = await response.json();
-    console.log(tasks);
-    filterTodo(tasks);
-    filterProgress(tasks);
-    filterFeedback(tasks);
-    filterDone(tasks);
+    task = await response.json();
+    console.log(task);
+    filterTodo();
+    filterProgress();
+    filterFeedback();
+    filterDone();
     
 }
 
-function filterTodo(tasks) {
+function filterTodo() {
 
-    let todo = tasks.filter(t => t['status'] == 'todo');
+    let todo = task.filter(t => t['status'] == 'todo');
 
     document.getElementById('todo').innerHTML = '';
 
@@ -32,8 +32,8 @@ function filterTodo(tasks) {
     }
 }
 
-function filterProgress(tasks) {
-    let progress = tasks.filter(t => t['status'] == 'progress');
+function filterProgress() {
+    let progress = task.filter(t => t['status'] == 'progress');
 
     document.getElementById('inProgress').innerHTML = '';
 
@@ -44,8 +44,8 @@ function filterProgress(tasks) {
     }
 }
 
-function filterFeedback(tasks) {
-    let feedback = tasks.filter(t => t['status'] == 'feedback');
+function filterFeedback() {
+    let feedback = task.filter(t => t['status'] == 'feedback');
 
     document.getElementById('awaitingFeedback').innerHTML = '';
 
@@ -56,8 +56,8 @@ function filterFeedback(tasks) {
     }
 }
 
-function filterDone(tasks) {
-    let done = tasks.filter(t => t['status'] == 'done');
+function filterDone() {
+    let done = task.filter(t => t['status'] == 'done');
 
     document.getElementById('done').innerHTML = '';
 
@@ -120,8 +120,11 @@ function allowDrop(ev) {
 
 
 function moveTo(status){
-    tasks[currentDraggedElement]['status'] = status;
-    init();
+    task[currentDraggedElement]['status'] = status;
+    filterTodo();
+    filterProgress();
+    filterFeedback();
+    filterDone();
 }
 
 function highlight(id) {

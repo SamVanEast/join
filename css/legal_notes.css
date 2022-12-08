@@ -6,12 +6,12 @@ body {
 
 .container {
     
-    width: 100%;
-    padding-left: 270px;
-    padding-top: 100px;
+
+    padding-left: 60px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 90vh;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 .headline {
