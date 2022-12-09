@@ -26,6 +26,12 @@ body {
     padding: 50px;
 }
 
+.openTaskCategory {
+    height: 20px;
+    width: 120px;
+    text-align: center;
+}
+
 .openTask h2 {
     font-size: 3rem;
 }
@@ -222,7 +228,7 @@ body {
 .openTaskKicker {
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
     position: relative;
     width: 100%;
 }

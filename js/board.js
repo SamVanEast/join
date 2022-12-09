@@ -70,8 +70,8 @@ function filterDone() {
 
 function newTaskHTML(element) {
     return `
-        <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})">
-        <div class="singleTask">
+        <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element.id})">
+        <div class="singleTask ${element.id}">
         <div id="category${element['id']}" class="category">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
         <div class="taskDescription">${element['description']}</div>
@@ -111,6 +111,20 @@ function checkBgColor(element) {
 
 function closeOpenTask() {
     document.getElementById('openTask').classList.add('d-none');
+
+}
+
+function openTask(element) {
+    let openedTask = document.getElementById(`openTask`);
+    openedTask.classList.remove('d-none');
+    openedTask.innerHTML = `<div class="openTaskKicker">
+    <div class="openTaskCategory c-design">Design</div>
+    <img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg">
+</div>
+<div>
+            <h2>${element}</h2>
+        </div>`;
+
 
 }
 
