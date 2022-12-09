@@ -127,26 +127,36 @@ body {
     background-repeat: no-repeat;
 }
 
-.showAllCategorys{
+.showAllCategorys {
     width: 420px;
     height: 100%;
     max-height: 204px;
     overflow: scroll;
 }
 
-.categorysDropdownSelectHTML{
+.categorysDropdownSelectHTML {
     padding-left: 18px;
 }
 
-.categorysDropdownSelect{
+.categorysDropdownSelect {
     padding-left: 18px;
 }
 
-.categorysDropdown span{
+.categorysOptions {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.categorysOptions a{
+    text-decoration: none;
+    color: black;
+    width: 100%;
     padding-left: 18px;
 }
 
-.categorysDropdown:hover {
+.categorysOptions a:hover {
     background-color: rgb(201, 201, 201);
 }
 

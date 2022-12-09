@@ -1,7 +1,3 @@
-function myFunction() {
-    console.log('Ready!');
-}
-
 /**
  * Using an empty array in order to test the function addTask
  * 
@@ -9,6 +5,7 @@ function myFunction() {
  */
 
 let tasks = [];
+let categorys = ['Sales', 'Backoffice'];
 
 /**
  * Function that loads all the tasks 
@@ -22,24 +19,36 @@ function loadAllTasks() {
 }
 
 
-function renderCategorys(){
+function renderCategorys() {
     document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
     document.getElementById('dropdownCategory').classList.remove('categorysDropdownSelectHTML');
 
     let content = document.getElementById('dropdownCategory');
 
+    for (let t = 0; t < categorys.length; t++) {
     content.innerHTML = /*html*/ `
-    <div class="categorysDropdownSelect">Select task category</div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
+        <div class="categorysDropdownSelect">Select task category</div>
+        <div id="categorysOptions" class="categorysOptions"></div>
     `;
+        renderCategorysOptions();
+    }
 }
 
 
-function renderAssignedTo(){
+function renderCategorysOptions() {
+    let names = document.getElementById('categorysOptions');
+
+    for (let i = 0; i < categorys.length; i++) {
+        const test = categorys[i];
+
+        names.innerHTML += /*html*/`
+        <a href="" class="categorysDropdown">${test}</a>
+        `;
+    }
+}
+
+
+function renderAssignedTo() {
     document.getElementById('dropdownAssignedTo').classList.toggle('showAllCategorys');
     document.getElementById('dropdownAssignedTo').classList.remove('categorysDropdownSelectHTML');
 
