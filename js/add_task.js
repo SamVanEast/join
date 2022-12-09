@@ -6,6 +6,7 @@
 
 let tasks = [];
 let categorys = ['Sales', 'Backoffice'];
+let contactsTest = ['1', '2', '3', '4', '5'];
 
 /**
  * Function that loads all the tasks 
@@ -37,11 +38,11 @@ function renderCategorys() {
 function renderCategorysOptions() {
     let options = document.getElementById('categorysOptions');
 
-    for (let i = 0; i < categorys.length; i++) {
-        const test = categorys[i];
+    for (let a = 0; a < categorys.length; a++) {
+        const category = categorys[a];
 
         options.innerHTML += /*html*/`
-        <a href="" class="categorysDropdown">${test}</a>
+        <a href="" class="categorysDropdown">${category}</a>
         `;
     }
 }
@@ -64,11 +65,11 @@ function renderAssignedTo() {
 function renderAssignedToOptions(){
     let names = document.getElementById('assignedToOptions');
 
-    for (let i = 0; i < tasks[0]['id'].length; i++) {
-        const test = tasks[0]['id'];
+    for (let b = 0; b < contactsTest.length; b++) {
+        const contact = contactsTest[b];
 
         names.innerHTML += /*html*/`
-        <a href="" class="categorysDropdown">${test}</a>
+        <a href="" class="categorysDropdown">${contact}</a>
         `;
     }
 }
