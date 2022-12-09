@@ -111,6 +111,7 @@ body {
     margin-right: 26px;
     width: 25%;
     height: 100%;
+
 }
 
 #plus {
@@ -141,7 +142,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
+    min-height: 300px;
 }
 
 .category {
@@ -180,7 +181,7 @@ body {
 
 .progress {
     margin-right: 12px;
-  
+
 }
 
 
@@ -222,7 +223,7 @@ body {
     text-align: center;
     color: white;
     padding: 4px 24px;
-    
+
 }
 
 .openTaskKicker {
@@ -245,7 +246,7 @@ body {
 }
 
 .dragArea {
-    min-height: 350px;
+    min-height: 60vh;
 }
 
 .dragAreaHighlight {
@@ -280,7 +281,8 @@ body {
 .exitBtn {
     margin-right: 40px;
     text-align: right;
-    margin-top: 30px;}
+    margin-top: 30px;
+}
 
 /* Code from add_tasks.html */
 
@@ -410,10 +412,10 @@ body {
     background-repeat: no-repeat;
 }
 
-.showAllCategorys{
+.showAllCategorys {
     height: 100%;
     max-height: 100%;
-    
+
 }
 
 .borderLine {
@@ -690,8 +692,43 @@ body {
     margin-left: 7px;
 }
 
+#addButton {
+    margin-left: 10px;
+    
+}
+
+.buttonAndText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toBeReplaced p {
+    margin: 2px;
+}
+
 /* End Code from add_task.html */
 
-@media (max-width: 1420px) {
+@media (max-width: 500px) {
+    .container {
+        padding: 35px;
+    }
 
+    .headlineAddTasks {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headlineAddTasks h1 {
+        font-size: 47px;
+    }
+
+    #toBeReplaced {
+        display: none;
+    }
+
+    #addButton {
+        margin-left: 0;
+        
+    }
 }

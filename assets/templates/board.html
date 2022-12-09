@@ -15,25 +15,28 @@
 <body onload="init()">
 
     <div class="addNewTask d-none" id="addNewTask">
-        
+
     </div>
     <div id="openTask" class="openTask d-none">
-        </div>
+    </div>
     <div class="container">
         <div class="headlineAddTasks">
             <h1>Board</h1>
             <div class="inputAndButton">
                 <input placeholder="Find Task" src="../img/board_img/magnifying-glass.png   ">
-                <div><button onclick="addTask()">Add Task<img style="margin-left: 10px" src="../img/board_img/plus-button-white.png"></button></div>
+                <div>
+                    <button class="buttonAndText" onclick="addTask()">
+                        <p id="toBeReplaced">Add Task</p>
+                        <img id="addButton" src="../img/board_img/plus-button-white.png">
+                    </button>
+                </div>
             </div>
         </div>
         <div class="taskSection">
             <div class="tasks">
                 <div class="status">
-                    <div>
                     <p>To Do</p>
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="openAddTask()">
-                    </div>
                 </div>
 
                 <div class="dragArea" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')"
@@ -44,10 +47,8 @@
 
             <div class="tasks">
                 <div class="status">
-                    <div>
                     <p>In Progress</p>
                     <img src="../img/board_img/plus-btn.png" id="plus">
-                    </div>
                 </div>
 
                 <div class="dragArea" id="inProgress" ondrop="moveTo('progress')"
@@ -57,10 +58,8 @@
             </div>
             <div class="tasks">
                 <div class="status">
-                    <div>
                     <p>Awaiting Feedback</p>
                     <img src="../img/board_img/plus-btn.png" id="plus">
-                    </div>
                 </div>
 
                 <div class="dragArea" id="awaitingFeedback" ondrop="moveTo('feedback')"
@@ -71,10 +70,8 @@
             </div>
             <div class="tasks">
                 <div class="status">
-                    <div>
                     <p>Done</p>
                     <img src="../img/board_img/plus-btn.png" id="plus">
-                    </div>
                 </div>
 
                 <div class="dragArea" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')"

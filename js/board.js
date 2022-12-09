@@ -125,10 +125,8 @@ function openTask(element) {
 
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
-    <div class="openTaskCategory">
     <div class="category ${task[element].category}">${task[element].category}</div>
     <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
-    </div>
     </div>
     <div>
             <h2>${task[element].headline}</h2>
