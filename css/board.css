@@ -91,14 +91,19 @@ body {
     margin-right: 26px;
     font-style: normal;
     font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
+    font-size: 13px;
     color: #FFFFFF;
     background-color: #2A3647;
     border: 1px solid #2A3647;
     border-radius: 10px;
-    padding: 10px 10px;
+    padding: 0px 10px;
     gap: 10px;
+    cursor: pointer;
+}
+
+.headlineAddTasks button:hover {
+    background-color: #3e4e64;
+    border: 1px solid #3e4e64;
 }
 
 .taskSection {
@@ -728,7 +733,7 @@ body {
     }
 
     #addButton {
-        margin-left: 0;
+        margin: 12px 2px;
         
     }
 }
