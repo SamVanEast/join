@@ -25,23 +25,22 @@ function renderCategorys() {
 
     let content = document.getElementById('dropdownCategory');
 
-    for (let t = 0; t < categorys.length; t++) {
     content.innerHTML = /*html*/ `
         <div class="categorysDropdownSelect">Select task category</div>
+        <div class="categorysNewCategory"><a href="" class="newCategory">New Category</a></div>
         <div id="categorysOptions" class="categorysOptions"></div>
     `;
         renderCategorysOptions();
-    }
 }
 
 
 function renderCategorysOptions() {
-    let names = document.getElementById('categorysOptions');
+    let options = document.getElementById('categorysOptions');
 
     for (let i = 0; i < categorys.length; i++) {
         const test = categorys[i];
 
-        names.innerHTML += /*html*/`
+        options.innerHTML += /*html*/`
         <a href="" class="categorysDropdown">${test}</a>
         `;
     }
@@ -56,12 +55,22 @@ function renderAssignedTo() {
 
     content.innerHTML = /*html*/ `
     <div class="categorysDropdownSelect">Select contacts to assign</div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
-    <div class="categorysDropdown"><span>test</span></div>
+    <div id="assignedToOptions" class="categorysOptions"></div>
     `;
+    renderAssignedToOptions();
+}
+
+
+function renderAssignedToOptions(){
+    let names = document.getElementById('assignedToOptions');
+
+    for (let i = 0; i < tasks[0]['id'].length; i++) {
+        const test = tasks[0]['id'];
+
+        names.innerHTML += /*html*/`
+        <a href="" class="categorysDropdown">${test}</a>
+        `;
+    }
 }
 
 

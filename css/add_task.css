@@ -149,6 +149,17 @@ body {
     flex-direction: column;
 }
 
+.newCategory {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    padding-left: 18px;
+}
+
+.categorysNewCategory:hover {
+    background-color: rgb(201, 201, 201);
+}
+
 .categorysOptions a{
     text-decoration: none;
     color: black;
