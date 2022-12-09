@@ -22,7 +22,15 @@ let contacts = [
 
 ]
 
+async function getTasks() {
+  let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/database.json`;
+  let response = await fetch(url);
+  task = await response.json();
+  console.log(task);
+}
+
 function render(){
+    getTasks();
     generateContactlist();
 }
 
@@ -74,7 +82,7 @@ function showSingleContact(i){
     <div class="contact-information">
       <div class="contact-information-up">
         <div class="contact-icon">
-          <div class="contact-icon-bg">
+          <div class="contact-icon-bg" id="bgColorSingle${i}">
             <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('')}</div>
           </div>
         </div>
@@ -117,6 +125,7 @@ function showSingleContact(i){
 
         </div>
         `;
+        
 }
 
 function openEditContact(i){
@@ -196,6 +205,8 @@ function randomBgColor(i) {
   document.getElementById(`bgColor${i}`).style.background = bgColor;
 console.log(bgColor);
 }
+
+
 
 function showNewContactContainer() {
     document.getElementById('lightboxAddContact').classList.remove('d-none');
