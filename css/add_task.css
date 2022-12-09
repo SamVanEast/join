@@ -4,6 +4,10 @@ body {
     font-family: 'Inter';
 }
 
+.d-none {
+    display: none;
+}
+
 .addTaskContainer {
     display: flex;
     justify-content: flex-start;
