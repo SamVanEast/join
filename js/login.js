@@ -35,32 +35,28 @@ function SendEmailtoChangePassword() {
     if (inputEmail === email) {
       alert("An Email has been send to you");
       document.getElementById("forgot").classList.add("d-none");
-      document.getElementById("reset").classList.remove("d-none");
       document.getElementById("containerReset").innerHTML = /*html*/ `
-<div class="container-signup d-none" id="reset">
-    <div>
-      <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
-    </div>
-    <div id="containerReset" class="container-signup-middle-reset">
+        <div class="container-signup" id="reset">
+            <div>
+                <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
+            </div>
+            <div id="containerReset" class="container-signup-middle-reset">
 
-    <div class="container-up">
-        <img onclick="backToLogin()" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
-        <h1>Reset your password</h1>
-        <div class="underline-login"> </div>
-        <p>Change your account password</p>
-      </div>
-
-
+            <div class="container-up">
+                <img onclick="backToLogin()" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
+                <h1>Reset your password</h1>
+                <div class="underline-login"> </div>
+                <p>Change your account password</p>
+            </div>
 
             <form class="container-input" action="" onsubmit="changePassword(i); return false;">
-            <input required type="password" placeholder="New password" id="newPassword" />
-            <input required type="password" placeholder="Confirm password" id="confirmPassword" />
-            <div class="container-button-signup">
-              <button class="login-button">Continue</button>
-            </div>
-          </form>
-
-
+                <input required type="password" placeholder="New password" id="newPassword" />
+                <input required type="password" placeholder="Confirm password" id="confirmPassword" />
+                <div class="container-button-signup">
+                    <button class="login-button">Continue</button>
+                </div>
+            </form>
+        </div>
             `;
     } else {
       console.log("wrong Email");
