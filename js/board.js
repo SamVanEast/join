@@ -1,5 +1,6 @@
 let task;
 let currentDraggedElement;
+let categoryBg;
 
 async function init() {
     await getTasks();
@@ -98,9 +99,10 @@ function startDragging(id) {
 }
 
 function checkBgColor(element) {
-    let categoryBg = element['category'];
+    categoryBg = element['category'];
 
     document.getElementById(`category${element['id']}`).classList.add(`${categoryBg}`);
+    
 
 }
 
@@ -116,15 +118,34 @@ function closeOpenTask() {
 function openTask(element) {
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
-    openedTask.innerHTML = `<div class="openTaskKicker">
-    <div class="openTaskCategory c-design">Design</div>
-    <img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg">
-</div>
-<div>
+    openedTask.innerHTML = openTaskHTML(element);
+    
+}
+
+
+function openTaskHTML(element) {
+    return `<div class="openTaskKicker">
+    <div class="openTaskCategory">
+    <div class="category ${task[element].category}">${task[element].category}</div>
+    <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
+    </div>
+    </div>
+    <div>
             <h2>${task[element].headline}</h2>
-        </div>`;
-
-
+        </div>
+        <div>
+            <p id="openTaskDesc">${task[element].description}</p>
+            <p><b>Due Date: </b>Monday</p>
+            <p><b>Priority: </b>High</p>
+        </div>
+        <div>
+            <p>Name 1</p>
+            <p>Name 2</p>
+            <p>Name 3</p>
+            <p>Name 4</p>
+        </div>
+        <div id="edit-btn"><img src="../img/board_img/edit-btn.png"></div>
+        </div> `;
 }
 
 function closeAddTask() {
