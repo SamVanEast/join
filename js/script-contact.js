@@ -50,12 +50,13 @@ function generateContactlist() {
       if (firstLetter === contact['name'].charAt(0)) {
         document.getElementById(`letterbox${firstLetter}`).innerHTML +=/*html*/ `
         <div class="contact" onclick="showSingleContact(${i})">
-        <p class="beginner-letter">${contact['name'].split(' ').map(word => word[0]).join('')}</p>
+        <p class="beginner-letter" id="bgColor${i}">${contact['name'].split(' ').map(word => word[0]).join('')}</p>
         <div class="contact-name-div">
           <div class="contact-name">${contact['name']}</div>
           <div  class="contact-email">${contact['email']}</div>
         </div>
         </div> `;
+        randomBgColor(i);
       }
 
   }
@@ -130,11 +131,11 @@ function openEditContact(i){
         </div>
         <div class="lightbox-container-right">
           <div class="lightbox-img">
-            <div></div>
+            <div> <img src="/assets/img/contact-img/user-line.png" alt="" srcset=""></div>
           </div>
           <div class="lightbox-input-pos">
             <div>
-              <div onclick="closeEditContact()">X</div>
+              <div onclick="closeEditContact()" class="lightbox-input-pos-close">X</div>
               <form class="lightbox-input-pos-close-form"  action="">
               <input id="editName" required id="AddName" placeholder="" type="text">
               <input id="editEmail" required id="AddEmail" placeholder="${contacts[i]['email']}" type="email">
@@ -180,8 +181,20 @@ function addContacts() {
   let number = document.getElementById('AddNumber').value;
   contacts.push({'name': name, 'email': email, 'phonenumber': number});
   console.log(contacts);
-  render();
+  generateContactlist();
   
+}
+
+/**
+ * generate a random color
+ */
+function randomBgColor(i) {
+  var x = Math.floor(Math.random() * 256);
+  var y = Math.floor(Math.random() * 256);
+  var z = Math.floor(Math.random() * 256);
+  var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  document.getElementById(`bgColor${i}`).style.background = bgColor;
+console.log(bgColor);
 }
 
 function showNewContactContainer() {

@@ -13,14 +13,13 @@ let user = [
 ];
 
 function changePassword(i) {
-  newPassword = document.getElementById("newPassword").value;
-  confirmPassword = document.getElementById("confirmPassword").value;
-  console.log(i);
+  let newPassword = document.getElementById("newPassword").value;
+  let confirmPassword = document.getElementById("confirmPassword").value;
+  console.log(newPassword, confirmPassword);
 
   if (newPassword === confirmPassword) {
-    user[i]["password"] = [];
-    user[i].push({ password: confirmPassword });
-    console.log(user);
+    user[i].password = newPassword;
+    
   } else {
     alert("password are different");
   }
@@ -35,8 +34,9 @@ function SendEmailtoChangePassword() {
     if (inputEmail === email) {
       alert("An Email has been send to you");
       document.getElementById("forgot").classList.add("d-none");
-      document.getElementById("containerReset").innerHTML = /*html*/ `
-        <div class="container-signup" id="reset">
+      document.getElementById("reset").classList.remove('d-none');
+      document.getElementById("reset").innerHTML = /*html*/ `
+        <div class="container-signup" >
             <div>
                 <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
             </div>
@@ -49,7 +49,7 @@ function SendEmailtoChangePassword() {
                 <p>Change your account password</p>
             </div>
 
-            <form class="container-input" action="" onsubmit="changePassword(i); return false;">
+            <form class="container-input" action="" onsubmit="changePassword(${i}); return false;">
                 <input required type="password" placeholder="New password" id="newPassword" />
                 <input required type="password" placeholder="Confirm password" id="confirmPassword" />
                 <div class="container-button-signup">
@@ -68,7 +68,7 @@ function createNewUser() {
   let name = document.getElementById("signupName").value;
   let email = document.getElementById("signupEmail").value;
   let password = document.getElementById("signupPassword").value;
-  user.push({ name: name, email: email, password: password });
+  user.push({ 'name': name, 'email': email, 'password': password });
   alert("you created a new User");
   console.log(user);
 }
