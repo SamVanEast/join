@@ -27,8 +27,8 @@ function renderCategorys() {
     let content = document.getElementById('dropdownCategory');
 
     content.innerHTML = /*html*/ `
-        <div class="categorysDropdownSelect">Select task category</div>
-        <div class="categorysNewCategory"><a href="" class="newCategory">New Category</a></div>
+        <div class="categorysDropdownSelect" id="test">Select task category</div>
+        <div class="categorysNewCategory"><span class="newCategory">New category</span></div>
         <div id="categorysOptions" class="categorysOptions"></div>
     `;
         renderCategorysOptions();
@@ -42,9 +42,18 @@ function renderCategorysOptions() {
         const category = categorys[a];
 
         options.innerHTML += /*html*/`
-        <a href="" class="categorysDropdown">${category}</a>
+        <span class="categorysDropdown">${category}</span>
         `;
     }
+}
+
+
+function addNewCategory(){
+   let test = document.getElementById('dropdownCategory');
+
+   test.innerHTML = /*html*/`
+   <input type="text" placeholder="test">
+   `;
 }
 
 
@@ -69,7 +78,7 @@ function renderAssignedToOptions(){
         const contact = contactsTest[b];
 
         names.innerHTML += /*html*/`
-        <a href="" class="categorysDropdown">${contact}</a>
+        <span class="categorysDropdown">${contact}</span>
         `;
     }
 }

@@ -134,6 +134,15 @@ body {
     overflow: scroll;
 }
 
+.categorysDropdown {
+    padding-left: 18px;
+    width: 100%;
+}
+
+.categorysDropdown:hover {
+    background-color: rgb(201, 201, 201);
+}
+
 .categorysDropdownSelectHTML {
     padding-left: 18px;
 }
@@ -157,17 +166,6 @@ body {
 }
 
 .categorysNewCategory:hover {
-    background-color: rgb(201, 201, 201);
-}
-
-.categorysOptions a{
-    text-decoration: none;
-    color: black;
-    width: 100%;
-    padding-left: 18px;
-}
-
-.categorysOptions a:hover {
     background-color: rgb(201, 201, 201);
 }
 
