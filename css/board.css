@@ -699,7 +699,7 @@ body {
 
 #addButton {
     margin-left: 10px;
-    
+
 }
 
 .buttonAndText {
@@ -734,6 +734,24 @@ body {
 
     #addButton {
         margin: 12px 2px;
-        
+
     }
+
+    .taskSection {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .tasks {
+        margin-right: 26px;
+        width: 100%;
+        margin-top: 24px;
+    
+    }
+
+    .dragArea {
+        min-height: 30vh;
+    }
+
 }
