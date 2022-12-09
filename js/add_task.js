@@ -24,31 +24,35 @@ function loadAllTasks() {
 
 function renderCategorys(){
     document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
+    document.getElementById('dropdownCategory').classList.remove('categorysDropdownSelectHTML');
 
     let content = document.getElementById('dropdownCategory');
 
     content.innerHTML = /*html*/ `
-    <div>Select task category</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>`;
+    <div class="categorysDropdownSelect">Select task category</div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    `;
 }
 
 
 function renderAssignedTo(){
     document.getElementById('dropdownAssignedTo').classList.toggle('showAllCategorys');
+    document.getElementById('dropdownAssignedTo').classList.remove('categorysDropdownSelectHTML');
 
     let content = document.getElementById('dropdownAssignedTo');
 
     content.innerHTML = /*html*/ `
-    <div>Select contacts to assign</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>
-    <div class="categorysDropdown">test</div>`;
+    <div class="categorysDropdownSelect">Select contacts to assign</div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    <div class="categorysDropdown"><span>test</span></div>
+    `;
 }
 
 

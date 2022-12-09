@@ -38,7 +38,6 @@ body {
     font-family: 'Inter';
     font-size: 21px;
     font-weight: 400;
-    text-align: left;
     color: #000000;
     line-height: 120%;
 }
@@ -103,11 +102,9 @@ body {
 .dropdown {
     background: #FFFFFF;
     cursor: pointer;
-    width: 404px;
     height: 51px;
     overflow: hidden;
     border-radius: 10px;
-    padding-left: 18px;
     border: 1px solid #D1D1D1;
     font-family: 'Inter';
     font-style: normal;
@@ -131,12 +128,25 @@ body {
 }
 
 .showAllCategorys{
+    width: 420px;
     height: 100%;
     max-height: 204px;
     overflow: scroll;
 }
 
-.categorysDropdown:hover{
+.categorysDropdownSelectHTML{
+    padding-left: 18px;
+}
+
+.categorysDropdownSelect{
+    padding-left: 18px;
+}
+
+.categorysDropdown span{
+    padding-left: 18px;
+}
+
+.categorysDropdown:hover {
     background-color: rgb(201, 201, 201);
 }
 
