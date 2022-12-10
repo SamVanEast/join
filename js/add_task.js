@@ -50,6 +50,7 @@ function renderCategorysOptions() {
 
 function addNewCategory() {
     document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
+    document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
 
     document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
         <div class="categoryContent">
@@ -61,7 +62,6 @@ function addNewCategory() {
             </div>
         </div>
     `;
-    document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
 }
 
 
