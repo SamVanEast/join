@@ -415,8 +415,15 @@ body {
 .checkboxSubtask {
     cursor: pointer;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 8px;
+}
+
+.newSubtasks{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
 }
 
 .clearAndCreate {

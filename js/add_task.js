@@ -5,8 +5,10 @@
  */
 
 let tasks = [];
+let subtask = [];
 let categorys = ['Sales', 'Backoffice'];
 let contactsTest = ['1', '2', '3', '4', '5'];
+load();
 
 /**
  * Function that loads all the tasks 
@@ -18,12 +20,13 @@ function loadAllTasks() {
     tasks = JSON.parse(allTasksAsString);
     console.log('Loaded all tasks: ', tasks);
 
+    load();
     renderSubtaskContent();
     renderCategoryContent();
 }
 
 
-function renderCategoryContent(){
+function renderCategoryContent() {
     document.getElementById('categoryContent').innerHTML = /*html*/ `
         <p>Category</p>
         <div class="dropdown" id="dropdownCategory">
@@ -112,33 +115,66 @@ function setDate() {
 }
 
 
-function renderSubtaskContent(){
+function renderSubtaskContent() {
     document.getElementById('subtasksContent').innerHTML = /*html*/ `
         <p>Subtasks</p>
         <div class="inputSubtask" id="inputSubtask">
             <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
         </div>
-        <div class="checkboxSubtask" required>
+        <div class="checkboxSubtask" id="newSubtask" required></div>
+    `;
+
+for (let i = 0; i < subtask.length; i++) {
+    document.getElementById('newSubtask').innerHTML += /*html*/`
+        <div class="newSubtasks">
             <input type="checkbox" required>
-            <span>Subtask 1</span>
+            <span>${subtask[i]}</span>
         </div>
     `;
+}
 }
 
 
 function renderSubtask() {
     document.getElementById('inputSubtask').classList.remove('inputSubtask');
 
-    document.getElementById('inputSubtask').innerHTML = /*html*/ `
+    let subtaskContent = document.getElementById('inputSubtask');
+    subtaskContent.innerHTML = /*html*/ `
     <div class="inputSubtask">
-        <input class="inputFieldSubtask" type="text" placeholder="Add new subtask">
+        <input class="inputFieldSubtask" id="inputFieldSubtask" type="text" placeholder="Add new subtask">
         <div class="subtaskImage">
             <img src="../../assets/img/add_task_img/cross.png" alt="" onclick="renderSubtaskContent()">
             <div class="inputBorder"></div>
-            <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
+            <img src="../../assets/img/add_task_img/hookBlack.png" alt="" onclick="addSubtask()">
         </div>
     </div>
     `;
+
+    document.getElementById('inputFieldSubtask').value = '';
+}
+
+
+function addSubtask() {
+    let newSubtask = document.getElementById('inputFieldSubtask').value;
+
+    subtask.push(newSubtask);
+
+    renderSubtaskContent();
+    save();
+}
+
+
+function save() {
+    let titleAsText = JSON.stringify(subtask);
+    localStorage.setItem('title', titleAsText);
+}
+
+
+function load() {
+    let titleAsText = localStorage.getItem('title');
+if (titleAsText){
+    subtask = JSON.parse(titleAsText);
+}
 }
 
 
