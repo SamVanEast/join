@@ -313,7 +313,7 @@ body {
     content: url(../assets/img/add_task_img/lowSelected.png);
 }
 
-.subtasks {
+.subtasksContent {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -329,8 +329,7 @@ body {
     gap: 10px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    background: #FFFFFF url(../assets/img/add_task_img/plus.png) no-repeat;
-    background-position: 95% 50%;
+    background-color: #FFFFFF;
     width: 378px;
     height: 13px;
     font-family: 'Inter';
@@ -338,23 +337,31 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-}
-
-.inputSubtask::placeholder{
     color: #D1D1D1;
 }
 
-.inputSubtask:focus{
-    border: 1px solid #D1D1D1;
-    background: none;
-    background-color: #FFFFFF;
+.inputSubtask img {
+    margin-left: auto;
 }
 
-.inputNewSubtask{
-    width: 400px;
+.subtaskImage {
+    margin-left: auto;
 }
 
-.inputNewSubtask input{
+.inputFieldSubtask{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    padding: 0px;
+}
+
+.inputFieldSubtask::placeholder{
+    color: #D1D1D1;
+}
+
+.inputSubtask input{
     border: unset;
     font-family: 'Inter';
     font-style: normal;
