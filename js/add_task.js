@@ -27,7 +27,7 @@ function renderCategorys() {
     let content = document.getElementById('dropdownCategory');
 
     content.innerHTML = /*html*/ `
-        <div class="categorysDropdownSelect" id="test2">Select task category</div>
+        <div class="categorysDropdownSelect" id="categorysDropdownSelect">Select task category</div>
         <div class="categorysNewCategory" onclick="addNewCategory()"><span class="newCategory">New category</span></div>
         <div id="categorysOptions" class="categorysOptions"></div>
     `;
@@ -49,9 +49,9 @@ function renderCategorysOptions() {
 
 
 function addNewCategory() {
-    document.getElementById('test2').classList.toggle('categorysDropdownSelect');
+    document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
 
-    let sumo = document.getElementById('test2');
+    let sumo = document.getElementById('categorysDropdownSelect');
     sumo.innerHTML = /*html*/`
     <div class="categoryContent">
         <input class="inputFieldSubtask" type="text" placeholder="New category name">
