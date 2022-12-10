@@ -349,6 +349,7 @@ body {
 }
 
 .inputFieldSubtask{
+    border: unset;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -359,15 +360,6 @@ body {
 
 .inputFieldSubtask::placeholder{
     color: #D1D1D1;
-}
-
-.inputSubtask input{
-    border: unset;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
 }
 
 .subtasks span {
