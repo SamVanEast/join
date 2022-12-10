@@ -8,7 +8,8 @@ let tasks = [];
 let subtask = [];
 let categorys = ['Sales', 'Backoffice'];
 let contactsTest = ['1', '2', '3', '4', '5'];
-load();
+// load();
+
 
 /**
  * Function that loads all the tasks 
@@ -20,7 +21,7 @@ function loadAllTasks() {
     tasks = JSON.parse(allTasksAsString);
     console.log('Loaded all tasks: ', tasks);
 
-    load();
+    // load();
     renderSubtaskContent();
     renderCategoryContent();
 }
@@ -160,22 +161,22 @@ function addSubtask() {
     subtask.push(newSubtask);
 
     renderSubtaskContent();
-    save();
+    // save();
 }
 
 
-function save() {
-    let titleAsText = JSON.stringify(subtask);
-    localStorage.setItem('title', titleAsText);
-}
+// function save() {
+//     let titleAsText = JSON.stringify(subtask);
+//     localStorage.setItem('title', titleAsText);
+// }
 
 
-function load() {
-    let titleAsText = localStorage.getItem('title');
-if (titleAsText){
-    subtask = JSON.parse(titleAsText);
-}
-}
+// function load() {
+//     let titleAsText = localStorage.getItem('title');
+// if (titleAsText){
+//     subtask = JSON.parse(titleAsText);
+// }
+// }
 
 
 function clearFields() {
