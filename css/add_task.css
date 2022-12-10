@@ -320,7 +320,7 @@ body {
     flex-direction: column;
 }
 
-.subtasks input {
+.inputSubtask {
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -329,16 +329,8 @@ body {
     gap: 10px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    font-family: 'Inter';
     background: #FFFFFF url(../assets/img/add_task_img/plus.png) no-repeat;
     background-position: 95% 50%;
-}
-
-/* .subtasks input:required:invalid, input:focus:invalid {
-    border-color: #FF1300;
-} */
-
-.inputSubtask {
     width: 378px;
     height: 13px;
     font-family: 'Inter';
@@ -348,14 +340,28 @@ body {
     line-height: 120%;
 }
 
-.inputSubtask::placeholder {
+.inputSubtask::placeholder{
     color: #D1D1D1;
 }
 
-/* .inputSubtask:focus {
-    background: #FFFFFF url(../assets/img/add_task_img/cross.png) no-repeat;
-    background-position: 95% 50%;
-} */
+.inputSubtask:focus{
+    border: 1px solid #D1D1D1;
+    background: none;
+    background-color: #FFFFFF;
+}
+
+.inputNewSubtask{
+    width: 400px;
+}
+
+.inputNewSubtask input{
+    border: unset;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
 
 .subtasks span {
     font-family: 'Inter';

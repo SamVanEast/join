@@ -91,14 +91,13 @@ function setDate() {
 
 
 function renderSubtask() {
-    document.getElementById('subtask').innerHTML = /*html*/ `
-    <div >
-        <input type="text">
+    document.getElementById('subtasks').innerHTML = /*html*/ `
+    <div class="inputNewSubtask">
+    <input class="inputSubtask" id="inputSubtask" type="text" placeholder="Add new subtask">
         <img src="../../assets/img/add_task_img/cross.png" alt="">
-        <img src="../../assets/img/add_task_img/hook.png" alt="">
+        <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
     </div>
     `;
-    console.log('ready');
 }
 
 
