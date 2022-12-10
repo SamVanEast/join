@@ -39,3 +39,8 @@ p {
 .legalText {
     padding-bottom: 100px;
 }
+
+#backTo {
+    margin-top: -75px;
+    cursor: pointer;
+}

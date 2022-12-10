@@ -178,7 +178,7 @@ function addTask() {
     content.innerHTML = '';
 
     content.innerHTML += /*html*/ `
-    <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px" src="../img/board_img/close.svg"></div>
+    <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
     <div class="addTaskContainer">
         <h1>Add Task</h1>
         <form action="" id="form">
