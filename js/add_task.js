@@ -98,6 +98,7 @@ function renderSubtask() {
         <input class="inputFieldSubtask" type="text" placeholder="Add new subtask">
         <div class="subtaskImage">
             <img src="../../assets/img/add_task_img/cross.png" alt="">
+            <div class="inputBorder"></div>
             <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
         </div>
     </div>

@@ -345,7 +345,18 @@ body {
 }
 
 .subtaskImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
     margin-left: auto;
+    gap: 10px;
+}
+
+.inputBorder{
+    width: 0px;
+    height: 20px;
+    border: 1px solid #D1D1D1;
 }
 
 .inputFieldSubtask{
