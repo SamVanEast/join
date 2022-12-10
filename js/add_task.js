@@ -7,7 +7,8 @@
 let tasks = [];
 let subtask = [];
 let categorys = ['Sales', 'Backoffice'];
-let contactsTest = ['1', '2', '3', '4', '5'];
+let contact = [];
+let contactsAddTask = ['1', '2', '3', '4', '5'];
 // load();
 
 
@@ -89,7 +90,7 @@ function renderAssignedTo() {
     let content = document.getElementById('dropdownAssignedTo');
 
     content.innerHTML = /*html*/ `
-    <div class="categorysDropdownSelect">Select contacts to assign</div>
+    <div class="categorysDropdownSelect" id="categorysDropdownSelect">Select contacts to assign</div>
     <div id="assignedToOptions" class="categorysOptions"></div>
     `;
     renderAssignedToOptions();
@@ -99,13 +100,22 @@ function renderAssignedTo() {
 function renderAssignedToOptions() {
     let names = document.getElementById('assignedToOptions');
 
-    for (let b = 0; b < contactsTest.length; b++) {
-        const contact = contactsTest[b];
+    for (let b = 0; b < contactsAddTask.length; b++) {
+        let contact = contactsAddTask[b];
 
         names.innerHTML += /*html*/`
-        <span class="categorysDropdown">${contact}</span>
+        <span class="categorysDropdown" onclick="renderAssignedToSelected(contact)">${contact}</span>
         `;
     }
+}
+
+
+function renderAssignedToSelected(contact){
+    document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
+    <div class="categorysDropdownSelect">${contact}</div>
+    `;
+    document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
+    event.stopPropagation();
 }
 
 
