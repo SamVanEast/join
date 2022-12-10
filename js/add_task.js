@@ -53,6 +53,8 @@ function addNewCategory() {
     sumo.innerHTML = /*html*/`
     <div class="categorysDropdownSelect">Sele</div>
     `;
+    document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
+    event.stopPropagation();
 }
 
 
