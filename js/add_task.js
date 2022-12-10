@@ -63,7 +63,6 @@ function addNewCategory() {
     </div>
     `;
     document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
-    event.stopPropagation();
 }
 
 
