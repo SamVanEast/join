@@ -33,13 +33,9 @@
                             <textarea required minlength="1" type="text" placeholder="Enter a Description"
                                 id="description"></textarea> <!-- added ID description-->
                         </div>
-                        <div class="category">
-                            <p>Category</p>
-                            <div class="dropdown" id="dropdownCategory">
-                                <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent"
-                                    onclick="renderCategorys()" required>Select task category</div>
-                            </div>
-                        </div>
+
+                        <div class="category" id="categoryContent"></div>
+
                         <div class="categoryAssigned">
                             <p>Assigned to</p>
                             <div class="dropdown categorysDropdownSelectHTML" id="dropdownAssignedTo"
@@ -67,17 +63,9 @@
                             <button type="button" class="lowButton">Low <input class="low" type="checkbox"></button>
                         </div>
                     </div>
-                    <div class="subtasksContent">
-                        <p>Subtasks</p>
-                        <div class="inputSubtask" id="inputSubtask">
-                            <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img
-                                    src="../img/add_task_img/plus.png" alt=""></div>
-                        </div>
-                        <div class="checkboxSubtask" required>
-                            <input type="checkbox" required>
-                            <span>Subtask 1</span>
-                        </div>
-                    </div>
+
+                    <div class="subtasksContent" id="subtasksContent"></div>
+
                     <div class="clearAndCreate">
                         <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
                                 type="checkbox"></button>

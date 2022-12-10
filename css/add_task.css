@@ -395,6 +395,10 @@ body {
     color: #D1D1D1;
 }
 
+.inputFieldSubtask:hover{
+    cursor: pointer;
+}
+
 .inputFieldSubtask:focus{
     outline: none;
 }

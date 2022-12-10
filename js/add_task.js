@@ -17,6 +17,19 @@ function loadAllTasks() {
     let allTasksAsString = localStorage.getItem('all tasks');
     tasks = JSON.parse(allTasksAsString);
     console.log('Loaded all tasks: ', tasks);
+
+    renderSubtaskContent();
+    renderCategoryContent();
+}
+
+
+function renderCategoryContent(){
+    document.getElementById('categoryContent').innerHTML = /*html*/ `
+        <p>Category</p>
+        <div class="dropdown" id="dropdownCategory">
+            <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent" onclick="renderCategorys()" required>Select task category</div>
+        </div>
+    `;
 }
 
 
@@ -56,7 +69,7 @@ function addNewCategory() {
         <div class="categoryContent">
             <input class="inputFieldSubtask" type="text" placeholder="New category name">
             <div class="subtaskImage">
-                <img src="../../assets/img/add_task_img/cross.png" alt="">
+                <img src="../../assets/img/add_task_img/cross.png" alt="" onclick="renderCategoryContent()">
                 <div class="inputBorder"></div>
                 <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
             </div>
@@ -99,6 +112,20 @@ function setDate() {
 }
 
 
+function renderSubtaskContent(){
+    document.getElementById('subtasksContent').innerHTML = /*html*/ `
+        <p>Subtasks</p>
+        <div class="inputSubtask" id="inputSubtask">
+            <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
+        </div>
+        <div class="checkboxSubtask" required>
+            <input type="checkbox" required>
+            <span>Subtask 1</span>
+        </div>
+    `;
+}
+
+
 function renderSubtask() {
     document.getElementById('inputSubtask').classList.remove('inputSubtask');
 
@@ -106,7 +133,7 @@ function renderSubtask() {
     <div class="inputSubtask">
         <input class="inputFieldSubtask" type="text" placeholder="Add new subtask">
         <div class="subtaskImage">
-            <img src="../../assets/img/add_task_img/cross.png" alt="">
+            <img src="../../assets/img/add_task_img/cross.png" alt="" onclick="renderSubtaskContent()">
             <div class="inputBorder"></div>
             <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
         </div>
