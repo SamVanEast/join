@@ -162,6 +162,25 @@ body {
     flex-direction: column;
 }
 
+.categoryContent{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 21px;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    width: 378px;
+    height: 13px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
+}
+
 .newCategory {
     text-decoration: none;
     color: black;
@@ -371,6 +390,10 @@ body {
 
 .inputFieldSubtask::placeholder{
     color: #D1D1D1;
+}
+
+.inputFieldSubtask:focus{
+    outline: none;
 }
 
 .subtasks span {
