@@ -426,6 +426,10 @@ body {
     flex-direction: row;
 }
 
+.newSubtasks input:hover{
+    cursor: pointer;
+}
+
 .clearAndCreate {
     display: flex;
     margin-top: 243px;
