@@ -359,8 +359,11 @@ body {
     color: #D1D1D1;
 }
 
-.inputSubtask img {
-    margin-left: auto;
+.subtaskRender{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .subtaskImage {

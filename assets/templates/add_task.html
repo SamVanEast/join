@@ -14,7 +14,8 @@
 
 </head>
 
-<body onload="loadAllTasks()"> <!-- added onload function -->
+<body onload="loadAllTasks()">
+    <!-- added onload function -->
 
     <div class="addTaskContainer">
         <h1>Add Task</h1>
@@ -22,23 +23,27 @@
             <div class="addTask">
                 <div class="addTaskLeftSide">
                     <div class="titleToAssigned">
-                        <div class="title" >
+                        <div class="title">
                             <p>Title</p>
-                            <input required minlength="1" type="text" placeholder="Enter a title" id="headline"> <!-- added ID "headline"-->
+                            <input required minlength="1" type="text" placeholder="Enter a title" id="headline">
+                            <!-- added ID "headline"-->
                         </div>
                         <div class="description">
                             <p>Description</p>
-                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="description"></textarea> <!-- added ID description-->
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description"
+                                id="description"></textarea> <!-- added ID description-->
                         </div>
                         <div class="category">
                             <p>Category</p>
                             <div class="dropdown" id="dropdownCategory">
-                            <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent" onclick="renderCategorys()" required>Select task category</div>
-                        </div>
+                                <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent"
+                                    onclick="renderCategorys()" required>Select task category</div>
+                            </div>
                         </div>
                         <div class="categoryAssigned">
                             <p>Assigned to</p>
-                            <div class="dropdown categorysDropdownSelectHTML" id="dropdownAssignedTo" onclick="renderAssignedTo()" required>Select contacts to assign</div>
+                            <div class="dropdown categorysDropdownSelectHTML" id="dropdownAssignedTo"
+                                onclick="renderAssignedTo()" required>Select contacts to assign</div>
                         </div>
                     </div>
                 </div>
@@ -48,8 +53,8 @@
                 <div class="dateToButtons">
 
                     <div class="dueDate">
-                        <p>Due date</p>    
-                            <input id="dueDate" placeholder="dd/mm/yyyy" type="text" onfocus="setDate()" required>
+                        <p>Due date</p>
+                        <input id="dueDate" placeholder="dd/mm/yyyy" type="text" onfocus="setDate()" required>
                     </div>
 
                     <div class="prio">
@@ -64,7 +69,10 @@
                     </div>
                     <div class="subtasksContent">
                         <p>Subtasks</p>
-                        <div class="inputSubtask" id="inputSubtask" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
+                        <div class="inputSubtask" id="inputSubtask">
+                            <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img
+                                    src="../img/add_task_img/plus.png" alt=""></div>
+                        </div>
                         <div class="checkboxSubtask" required>
                             <input type="checkbox" required>
                             <span>Subtask 1</span>
@@ -73,8 +81,9 @@
                     <div class="clearAndCreate">
                         <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
                                 type="checkbox"></button>
-                        <button class="create" onclick="addTask()">Create Task <img src="../../assets/img/add_task_img/hook.png"
-                                alt=""></button> <!-- added onclick function addTask -->
+                        <button class="create" onclick="addTask()">Create Task <img
+                                src="../../assets/img/add_task_img/hook.png" alt=""></button>
+                        <!-- added onclick function addTask -->
                     </div>
                 </div>
             </div>
