@@ -40,7 +40,7 @@ function renderCategorys() {
     let content = document.getElementById('dropdownCategory');
 
     content.innerHTML = /*html*/ `
-        <div class="categorysDropdownSelect" id="categorysDropdownSelect">Select task category</div>
+        <div class="categorysDropdownSelect" id="categorysDropdownSelect" onclick="renderCategoryContent()">Select task category</div>
         <div class="categorysNewCategory" onclick="addNewCategory()"><span class="newCategory">New category</span></div>
         <div id="categorysOptions" class="categorysOptions"></div>
     `;
