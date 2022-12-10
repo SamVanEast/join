@@ -51,16 +51,15 @@ function renderCategorysOptions() {
 function addNewCategory() {
     document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
 
-    let sumo = document.getElementById('categorysDropdownSelect');
-    sumo.innerHTML = /*html*/`
-    <div class="categoryContent">
-        <input class="inputFieldSubtask" type="text" placeholder="New category name">
-        <div class="subtaskImage">
-            <img src="../../assets/img/add_task_img/cross.png" alt="">
-            <div class="inputBorder"></div>
-            <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
+    document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
+        <div class="categoryContent">
+            <input class="inputFieldSubtask" type="text" placeholder="New category name">
+            <div class="subtaskImage">
+                <img src="../../assets/img/add_task_img/cross.png" alt="">
+                <div class="inputBorder"></div>
+                <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
+            </div>
         </div>
-    </div>
     `;
     document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
 }
