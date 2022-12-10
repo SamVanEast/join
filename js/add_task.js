@@ -31,7 +31,7 @@ function renderCategorys() {
         <div class="categorysNewCategory" onclick="addNewCategory()"><span class="newCategory">New category</span></div>
         <div id="categorysOptions" class="categorysOptions"></div>
     `;
-        renderCategorysOptions();
+    renderCategorysOptions();
 }
 
 
@@ -48,7 +48,7 @@ function renderCategorysOptions() {
 }
 
 
-function addNewCategory(){
+function addNewCategory() {
     let sumo = document.getElementById('test2');
     sumo.innerHTML = /*html*/`
     <div class="categorysDropdownSelect">Sele</div>
@@ -70,7 +70,7 @@ function renderAssignedTo() {
 }
 
 
-function renderAssignedToOptions(){
+function renderAssignedToOptions() {
     let names = document.getElementById('assignedToOptions');
 
     for (let b = 0; b < contactsTest.length; b++) {
@@ -87,6 +87,18 @@ function setDate() {
     var date = new Date();
     const formatDate = (date) => { let formatted_date = (date.getDate() < 10 ? '0' : '') + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(); return formatted_date; }
     document.getElementById('dueDate').value = formatDate(date);
+}
+
+
+function renderSubtask() {
+    document.getElementById('subtask').innerHTML = /*html*/ `
+    <div >
+        <input type="text">
+        <img src="../../assets/img/add_task_img/cross.png" alt="">
+        <img src="../../assets/img/add_task_img/hook.png" alt="">
+    </div>
+    `;
+    console.log('ready');
 }
 
 
