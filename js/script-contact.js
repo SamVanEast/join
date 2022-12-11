@@ -21,10 +21,10 @@ let contacts = [
 ];
 
 let users = [];
-setURL('http://gruppe-390.developerakademie.net/smallest_backend_ever');
 
 async function init() {
- 
+  setURL('http://gruppe-390.developerakademie.net/smallest_backend_ever');
+
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
     console.log(users);
