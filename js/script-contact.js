@@ -24,9 +24,10 @@ let users = [];
 setURL('http://gruppe-390.developerakademie.net/smallest_backend_ever');
 
 async function init() {
-  
+ 
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
+    console.log(users);
 
     
 }
