@@ -21,7 +21,7 @@ let contacts = [
 ];
 
 let users = [];
-setURL('http://f01546e2@gruppe-390.developerakademie.net/smallest_backend_ever');
+setURL('http://gruppe-390.developerakademie.net/smallest_backend_ever');
 
 async function init() {
   
