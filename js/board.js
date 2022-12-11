@@ -1,4 +1,3 @@
-let task;
 let currentDraggedElement;
 let categoryBg;
 
@@ -6,15 +5,14 @@ let categoryBg;
 let testz = [];
 
 async function init() {
-    await getTasks();
-    setURL('http://gruppe-390.developerakademie.com/smallest_backend_ever');
+    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     testz = JSON.parse(backend.getItem('testz')) || [];
 
 }
 
 async function getTasks() {
-    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever`;
+    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/`;
     let response = await fetch(url);
     task = await response.json();
     console.log(task);
@@ -22,12 +20,11 @@ async function getTasks() {
     filterProgress();
     filterFeedback();
     filterDone();
-
 }
 
 function filterTodo() {
 
-    let todo = task.filter(t => t['status'] == 'todo');
+    let todo = testz.filter(t => t['status'] == 'todo');
 
     document.getElementById('todo').innerHTML = '';
 
@@ -39,7 +36,7 @@ function filterTodo() {
 }
 
 function filterProgress() {
-    let progress = task.filter(t => t['status'] == 'progress');
+    let progress = testz.filter(t => t['status'] == 'progress');
 
     document.getElementById('inProgress').innerHTML = '';
 
@@ -51,7 +48,7 @@ function filterProgress() {
 }
 
 function filterFeedback() {
-    let feedback = task.filter(t => t['status'] == 'feedback');
+    let feedback = testz.filter(t => t['status'] == 'feedback');
 
     document.getElementById('awaitingFeedback').innerHTML = '';
 
@@ -80,7 +77,7 @@ function newTaskHTML(element) {
         <div class="singleTask ${element.id}">
         <div id="category${element['id']}" class="category">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
-        <div class="taskDescription">${element['description']}</div>
+        <div class="taskDescription">${element['desc']}</div>
         <div class="progressBar">
             <div class="progress">progressbar</div>
             <div class="progressText">x/x Done</div>
@@ -210,18 +207,18 @@ function submitTask() {
         'headline': headline,
         'desc': desc,
         'status': status,
-        'category': cat
+        'category': cat,
+        'status': 'feedback'
     };
 
-    addUser(testz, test);
+    addUser(testz, test)    
+
 }
 
 async function addUser(testz, test) {
     testz.push(test);
     await backend.setItem('testz', JSON.stringify(testz));
 }
-
-
 
 
 /*
@@ -268,5 +265,4 @@ async function addUser(testz, test) {
     "duedate": "",
     "priority": "",
     "subtasks": ""
-}]
-*/
+}]; */
