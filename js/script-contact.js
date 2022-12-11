@@ -20,19 +20,21 @@ let contacts = [
     },
 ];
 
-let contactBackend = [];
+let users = [];
+setURL('http://f01546e2@gruppe-390.developerakademie.net/smallest_backend_ever');
 
 async function init() {
-    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/contact.json`;
-    let response = await fetch(url);
-    contactBackend = await response.json();
-    console.log(contactBackend);
+  
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
+
+    
 }
 
-function addUser() {
-  contactBackend.push('Leo');
-  backend.setItem('contactBackend', JSON.stringify(contactBackend));
-  console.log(contactBackend);
+async function addUser() {
+  users.push('John');
+  await backend.setItem('users', JSON.stringify(users));
+
 }
 
 
@@ -52,7 +54,6 @@ function generateContactlist() {
     let firstLetter = contact['name'].charAt(0).toUpperCase();
     if(!letters.includes(firstLetter)) {
       letters.push(firstLetter);
-      console.log(firstLetter);
       
       document.getElementById('contactList').innerHTML +=/*html*/ `
       <div class="letterbox"  id="letterbox${firstLetter}">
@@ -211,7 +212,7 @@ function randomBgColor(i) {
   var z = Math.floor(Math.random() * 256);
   var bgColor = "rgb(" + x + "," + y + "," + z + ")";
   document.getElementById(`bgColor${i}`).style.background = bgColor;
-console.log(bgColor);
+
 }
 
 
