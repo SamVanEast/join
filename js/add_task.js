@@ -1,3 +1,18 @@
+let users = [];
+        setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever');
+
+        async function init() {
+            await downloadFromServer();
+            users = JSON.parse(backend.getItem('users')) || [];
+        }
+
+
+        function addUser() {
+            users.push(username.value);
+            backend.setItem('users', JSON.stringify(users));
+        }
+        
+
 /**
  * Using an empty array in order to test the function addTask
  * 
@@ -25,21 +40,6 @@ function loadAllTasks() {
     renderSubtaskContent();
     renderCategoryContent();
 }
-
-
-// let users = [];
-//         setURL('http://developerakademie.com/smallest_backend_ever');
-
-//         async function init() {
-//             await downloadFromServer();
-//             users = JSON.parse(backend.getItem('users')) || [];
-//         }
-
-
-//         function addUser() {
-//             users.push(username.value);
-//             backend.setItem('users', JSON.stringify(users));
-//         }
 
 
 function renderCategoryContent() {
