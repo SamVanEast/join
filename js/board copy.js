@@ -2,19 +2,13 @@ let task;
 let currentDraggedElement;
 let categoryBg;
 
-
-let testz = [];
-
 async function init() {
     await getTasks();
-    setURL('http://gruppe-390.developerakademie.com/smallest_backend_ever');
-    await downloadFromServer();
-    testz = JSON.parse(backend.getItem('testz')) || [];
 
 }
 
 async function getTasks() {
-    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/`;
+    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/database.json`;
     let response = await fetch(url);
     task = await response.json();
     console.log(task);
@@ -108,7 +102,7 @@ function checkBgColor(element) {
     categoryBg = element['category'];
 
     document.getElementById(`category${element['id']}`).classList.add(`${categoryBg}`);
-
+    
 
 }
 
@@ -125,7 +119,7 @@ function openTask(element) {
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
     openedTask.innerHTML = openTaskHTML(element);
-
+    
 }
 
 
@@ -185,88 +179,65 @@ function addTask() {
 
     content.innerHTML += /*html*/ `
     <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
-    <div style="display: flex; flex-direction: column; width: 25%;">
-    <input id="headline" placeholder="headline">
-    <input id="desc" placeholder="desc">
-    <input id="status" placeholder="status">
-    <select id="cat" placeholder="category">
-        <option>Media</option>
-        <option>Backoffice</option>
-        <option>Marketing</option>
-        <option>Design</option>
-    </select>
+    <div class="addTaskContainer">
+        <h1>Add Task</h1>
+        <form action="" id="form">
+            <div class="addTask">
+                <div class="addTaskLeftSide">
+                    <div class="titleToAssigned">
+                        <div class="title" >
+                            <p>Title</p>
+                            <input required minlength="1" type="text" placeholder="Enter a title" id="headline"> <!-- added ID "headline"-->
+                        </div>
+                        <div class="description">
+                            <p>Description</p>
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="description"></textarea> <!-- added ID description-->
+                        </div>
+                        <div class="category">
+                            <p>Category</p>
+                            <div class="dropdown" id="dropdownCategory" onclick="renderCategorys()" required>Select task category</div>
+                        </div>
+                        <div class="categoryAssigned">
+                            <p>Assigned to</p>
+                            <div class="dropdown" required>Select contacts to assign</div>
+                        </div>
+                    </div>
+                </div>
 
-    <button onclick="submitTask()">Abschicken</button>
-    `;
+                <div class="borderLine"></div>
+
+                <div class="dateToButtons">
+
+                    <div class="dueDate">
+                        <p>Due date</p>    
+                            <input id="dueDate" placeholder="dd/mm/yyyy" type="text" onfocus="setDate()" required>
+                    </div>
+
+                    <div class="prio">
+                        <p>Prio</p>
+                        <div class="prioButtons">
+                            <button type="button" class="urgentButton">Urgent <input class="urgent"
+                                    type="checkbox"></button>
+                            <button type="button" class="mediumButton">Medium <input class="medium"
+                                    type="checkbox"></button>
+                            <button type="button" class="lowButton">Low <input class="low" type="checkbox"></button>
+                        </div>
+                    </div>
+                    <div class="subtasks">
+                        <p>Subtasks</p>
+                        <input class="inputSubtask" type="text" placeholder="Add new subtask" onfocus="value = 'Create new icons';" required>
+                        <div class="checkboxSubtask" required>
+                            <input type="checkbox" required>
+                            <span>Subtask 1</span>
+                        </div>
+                    </div>
+                    <div class="clearAndCreate">
+                        <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
+                                type="checkbox"></button>
+                        <button class="create" onclick="addTask()">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                                alt=""></button> <!-- added onclick function addTask -->
+                    </div>
+                </div>
+            </div>
+        </form>`
 }
-
-function submitTask() {
-    let headline = document.getElementById('headline').value;
-    let desc = document.getElementById('desc').value;
-    let status = document.getElementById('status').value;
-    let cat = document.getElementById('cat').value;
-
-    let test = {
-        'headline': headline,
-        'desc': desc,
-        'status': status,
-        'category': cat
-    };
-
-    addUser(testz, test);
-}
-
-async function addUser(testz, test) {
-    testz.push(test);
-    await backend.setItem('testz', JSON.stringify(testz));
-}
-
-
-
-
-/*
-[{
-    "id": 0,
-    "status": "todo",
-    "category": "Design",
-    "headline": "Join fertigstellen",
-    "description": "Bis Weihnachten das Projekt fertigstellen",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 1,
-    "status": "progress",
-    "category": "Marketing",
-    "headline": "Projekt bewerben",
-    "description": "Spread the word: Insta, TikTok, Myspace etc.",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 2,
-    "status": "feedback",
-    "category": "Media",
-    "headline": "Currywurst",
-    "description": "Artikel über die Herkunft des Kraftriegels.",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 3,
-    "status": "done",
-    "category": "Backoffice",
-    "headline": "Steuern hinterziehen",
-    "description": "Mit Uli H. und Alice S. kurzschließen",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-}]
-*/
