@@ -1,16 +1,16 @@
-let users = [];
-        setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever');
+// let users = [];
+//         setURL('http://gruppe-390.developerakademie.net/smallest_backend_ever');
 
-        async function init() {
-            await downloadFromServer();
-            users = JSON.parse(backend.getItem('users')) || [];
-        }
+//         async function init() {
+//             await downloadFromServer();
+//             users = JSON.parse(backend.getItem('users')) || [];
+//         }
 
 
-        function addUser() {
-            users.push(username.value);
-            backend.setItem('users', JSON.stringify(users));
-        }
+//         function addUser() {
+//             users.push(username.value);
+//             backend.setItem('users', JSON.stringify(users));
+//         }
         
 
 /**
