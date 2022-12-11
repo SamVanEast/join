@@ -59,7 +59,7 @@ function renderCategorysOptions() {
         const category = categorys[a];
 
         options.innerHTML += /*html*/`
-        <span class="categorysDropdown">${category}</span>
+        <span class="categorysDropdown" onclick="renderSelectedCategory(${category})">${category}</span>
         `;
     }
 }
@@ -79,6 +79,13 @@ function addNewCategory() {
             </div>
         </div>
     `;
+}
+
+
+function renderSelectedCategory(category){
+    document.getElementById('selectTaskCategoryContent').innerHTML = /*html*/`
+        <div class="categorysDropdownSelect">${category}</div>
+        `;
 }
 
 
