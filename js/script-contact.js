@@ -18,19 +18,27 @@ let contacts = [
         "email":"benedikt@gmail.com",
         "phonenumber":"+498023471"
     },
+];
 
+let contactBackend = [];
 
-]
-
-async function getTasks() {
-  let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/database.json`;
-  let response = await fetch(url);
-  task = await response.json();
-  console.log(task);
+async function init() {
+    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/contact.json`;
+    let response = await fetch(url);
+    contactBackend = await response.json();
+    console.log(contactBackend);
 }
 
+function addUser() {
+  contactBackend.push('Leo');
+  backend.setItem('contactBackend', JSON.stringify(contactBackend));
+  console.log(contactBackend);
+}
+
+
+
 function render(){
-    getTasks();
+    init();
     generateContactlist();
 }
 
