@@ -74,7 +74,7 @@
          const category = categorys[a];
  
          options.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedCategory(${category})">${category}</span>
+         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}</span>
          `;
      }
  }
@@ -98,7 +98,7 @@
  
  
  function renderSelectedCategory(category){
-     document.getElementById('selectTaskCategoryContent').innerHTML = /*html*/`
+     document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
          <div class="categorysDropdownSelect">${category}</div>
          `;
  }

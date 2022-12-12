@@ -424,6 +424,8 @@ body {
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+    max-height: 200px;
+    overflow: scroll;
 }
 
 .newSubtasks input:hover{
