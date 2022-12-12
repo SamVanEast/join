@@ -8,14 +8,6 @@ async function init() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     testz = JSON.parse(backend.getItem('testz')) || [];
-
-}
-
-async function getTasks() {
-    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/`;
-    let response = await fetch(url);
-    task = await response.json();
-    console.log(task);
     filterTodo();
     filterProgress();
     filterFeedback();
