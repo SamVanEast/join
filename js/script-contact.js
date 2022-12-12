@@ -98,7 +98,7 @@ function showSingleContact(i){
         <h1>Contacts</h1>
         <div></div>
         <h3>Better with a Team</h3>
-      </div>
+          </div>
     <div class="contact-information">
       <div class="contact-information-up">
         <div class="contact-icon">
