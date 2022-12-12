@@ -166,7 +166,6 @@ function moveTo(status) {
     filterProgress();
     filterFeedback();
     filterDone();
-
 }
 
 function highlight(id) {
@@ -186,19 +185,21 @@ function addTask() {
     content.innerHTML += /*html*/ `
     <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
     <div style="display: flex; flex-direction: column; width: 25%;">
-    <input id="headline" placeholder="headline">
-    <input id="desc" placeholder="desc">
-    <input id="status" placeholder="status">
-    <select id="cat" placeholder="category">
-        <option>Media</option>
-        <option>Backoffice</option>
-        <option>Marketing</option>
-        <option>Design</option>
-    </select>
+    <form onsubmit="submitTask(); addId(); return false;">
+        <input id="headline" placeholder="headline">
+        <input id="desc" placeholder="desc">
+        <input id="status" placeholder="status">
+        <select id="cat" placeholder="category">
+            <option>Media</option>
+            <option>Backoffice</option>
+            <option>Marketing</option>
+            <option>Design</option>
+        </select>
 
-    <button onclick="submitTask(), addId()">Abschicken</button>
+        <button>Abschicken</button>
+    </form>
     `;
-    
+
 }
 
 function submitTask() {
@@ -212,7 +213,7 @@ function submitTask() {
         'desc': desc,
         'status': status,
         'category': cat,
-        'status': 'feedback'
+        'status': status
     };
 
 
