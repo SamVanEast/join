@@ -76,12 +76,19 @@ function filterBoard() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
 
+    
+    let test = document.getElementById('theTasks');
 
-    for (let i = 0; i < allTasks.headline.length; i++) {
-        let task = allTasks.headline[i];
+    test.innerHTML = '';
+
+    for (let i = 0; i < allTasks.length; i++) {
+        let headlines = allTasks[i]['headline'];
+        let descriptions = allTasks[i]['desc'];
         
-        if (task.headline.toLowerCase().includes(search)) {
-            console.log(task);
+        if (headlines.toLowerCase().includes(search)) {
+            let result = allTasks[i];
+            test.innerHTML += `${result}`;
+
         }
         }
     }
