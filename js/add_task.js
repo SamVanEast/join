@@ -100,7 +100,7 @@ function addNewCategory() {
 
 function renderSelectedCategory(category) {
     document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" onclick="event.stopPropagation()">${category}</div>
+         <div class="categorysDropdownSelect" onclick="event.stopPropagation(), renderCategorys()">${category}</div>
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
@@ -146,7 +146,7 @@ function renderAssignedToOptions() {
 
 function renderSelectedAssignedTo(contact) {
     document.getElementById('assignedTo').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect">${contact}</div>
+         <div class="categorysDropdownSelect" onclick="renderAssignedTo()">${contact}</div>
          `;
 
     document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
