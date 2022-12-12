@@ -2,21 +2,31 @@ let currentDraggedElement;
 let categoryBg;
 
 
-let testz = [];
+let allTasks;
+
 
 async function init() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
-    testz = JSON.parse(backend.getItem('testz')) || [];
+    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    addId();
     filterTodo();
     filterProgress();
     filterFeedback();
     filterDone();
 }
 
+async function addId() {
+    let i = 0;
+    await allTasks.map(n => {
+        n['id'] = i;
+        i++;
+    });
+}
+
 function filterTodo() {
 
-    let todo = testz.filter(t => t['status'] == 'todo');
+    let todo = allTasks.filter(t => t['status'] == 'todo');
 
     document.getElementById('todo').innerHTML = '';
 
@@ -28,7 +38,7 @@ function filterTodo() {
 }
 
 function filterProgress() {
-    let progress = testz.filter(t => t['status'] == 'progress');
+    let progress = allTasks.filter(t => t['status'] == 'progress');
 
     document.getElementById('inProgress').innerHTML = '';
 
@@ -40,7 +50,7 @@ function filterProgress() {
 }
 
 function filterFeedback() {
-    let feedback = testz.filter(t => t['status'] == 'feedback');
+    let feedback = allTasks.filter(t => t['status'] == 'feedback');
 
     document.getElementById('awaitingFeedback').innerHTML = '';
 
@@ -52,7 +62,7 @@ function filterFeedback() {
 }
 
 function filterDone() {
-    let done = task.filter(t => t['status'] == 'done');
+    let done = allTasks.filter(t => t['status'] == 'done');
 
     document.getElementById('done').innerHTML = '';
 
@@ -120,14 +130,14 @@ function openTask(element) {
 
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
-    <div class="category ${task[element].category}">${task[element].category}</div>
+    <div class="category ${allTasks[element].category}">${allTasks[element].category}</div>
     <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
     </div>
     <div>
-            <h2>${task[element].headline}</h2>
+            <h2>${allTasks[element].headline}</h2>
         </div>
         <div>
-            <p id="openTaskDesc">${task[element].description}</p>
+            <p id="openTaskDesc">${allTasks[element].desc}</p>
             <p><b>Due Date: </b>Monday</p>
             <p><b>Priority: </b>High</p>
         </div>
@@ -151,11 +161,12 @@ function allowDrop(ev) {
 
 
 function moveTo(status) {
-    task[currentDraggedElement]['status'] = status;
+    allTasks[currentDraggedElement]['status'] = status;
     filterTodo();
     filterProgress();
     filterFeedback();
     filterDone();
+
 }
 
 function highlight(id) {
@@ -185,8 +196,9 @@ function addTask() {
         <option>Design</option>
     </select>
 
-    <button onclick="submitTask()">Abschicken</button>
+    <button onclick="submitTask(), addId()">Abschicken</button>
     `;
+    
 }
 
 function submitTask() {
@@ -195,7 +207,7 @@ function submitTask() {
     let status = document.getElementById('status').value;
     let cat = document.getElementById('cat').value;
 
-    let test = {
+    let task = {
         'headline': headline,
         'desc': desc,
         'status': status,
@@ -203,13 +215,21 @@ function submitTask() {
         'status': 'feedback'
     };
 
-    addUser(testz, test)    
+
+
+    addNewTask(allTasks, task)
 
 }
 
-async function addUser(testz, test) {
-    testz.push(test);
-    await backend.setItem('testz', JSON.stringify(testz));
+
+async function addNewTask(allTasks, task) {
+    allTasks.push(task);
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+}
+
+async function deleteTasks() {
+    await backend.deleteItem('allTasks');
+
 }
 
 

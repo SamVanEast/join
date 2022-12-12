@@ -20,6 +20,7 @@ async function includeHTML() {
  * @param {string} wichContent gibt an welches HTML-template geladen werden muss, indem es ein Teil des Pfads ist
  */
 async function loadContent(wichContent) {//Den angeklickten Inhalt laden
+    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     let content = document.getElementById('content');
     let tab = document.getElementById(`tab-${wichContent}`);
     removeDarkBlue();
