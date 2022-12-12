@@ -34,7 +34,6 @@
   padding: 0px;
   min-width: 280px;
   max-width: 357px;
-  height: 1072px; 
 }
 
 .first-letter {
@@ -282,6 +281,7 @@ height: 49px;
   font-size: 47px;
   line-height: 120%;
   color: #ffffff;
+  display: contents;
 }
 
 .add-task {
@@ -773,7 +773,7 @@ max-width: 40vh;
   display: none;
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1290px) {
  
   .headline h1 {
     font-size: 32px;
@@ -792,9 +792,11 @@ max-width: 40vh;
 
 @media only screen and (max-width: 1060px) {
 
-  .container{
+  .container-left{
+    min-width: 0;
     display: flex;
     justify-content: center;
+    height: calc(100vh - 83px);
   }
 
   .container-right {
@@ -812,7 +814,49 @@ max-width: 40vh;
   .add-contact-btn {
     top: 774px;
   }
+
+  .container-position{
+    box-shadow: none;
+  }
+
+  .letterbox {
+    align-items: flex-start;
+  }
+
+  .contact {
+    width: 100%;
+  }
+
+  .add-contact-btn{
+    display: block;
+    position: absolute;
+  }
 }
 
 
+@media only screen and (max-width: 400px) {
+
+  .letterbox{
+    min-width: 0;
+  }
+
+  .container-position{
+    min-width: 0;
+  }
+
+  .between-line {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .between-line p{
+    min-width: 0;
+    width: 100%;
+  }
+
+  .contact-name {
+    font-size: 16px;
+  }
+
+}
 

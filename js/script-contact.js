@@ -138,12 +138,13 @@ function showSingleContact(i){
         </div>
       </div>
       </div>
-      <div class="add-contact-btn" onclick="showNewContactContainer()">
+      
+
+        </div>
+        <div class="add-contact-btn" onclick="showNewContactContainer()">
         <div class="add-contact-text">New contact</div>
         <div>
           <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
-
-        </div>
         `;
         
 }
