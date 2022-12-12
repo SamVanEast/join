@@ -120,7 +120,7 @@ function closeOpenTask() {
 
 }
 
-function openTask(i) {
+function openTask(element) {
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
     openedTask.innerHTML = openTaskHTML(element);
@@ -166,6 +166,7 @@ function moveTo(status) {
     filterProgress();
     filterFeedback();
     filterDone();
+
 }
 
 function highlight(id) {
