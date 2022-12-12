@@ -100,7 +100,7 @@ function addNewCategory() {
 
 function renderSelectedCategory(category) {
     document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect">${category}</div>
+         <div class="categorysDropdownSelect" onclick="event.stopPropagation()">${category}</div>
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
