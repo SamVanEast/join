@@ -1,60 +1,59 @@
 let letters = [];
   
-let contacts = [
-    {
-        "name":"Anton Mayer",
-        "email":"antom@gmail.com",
-        "phonenumber":"+491111111"
-    },
+let contacts = [];
 
-    {
-        "name":"Anja Schulz",
-        "email":"schulz@hotmail.com",
-        "phonenumber":"+495423411"
-    },
-
-    {
-        "name":"Bendedikt Ziegler",
-        "email":"benedikt@gmail.com",
-        "phonenumber":"+498023471"
-    },
-];
-
-let contact = [];
-
-async function init() {
+async function render() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
-    contact = JSON.parse(backend.getItem('contact')) || [];
-
+    contacts = JSON.parse(backend.getItem('contact')) || [];
+    sortArray();
+    console.log(contacts);
+    generateContactlist();
 }
 
-function submitTask() {
+function sortArray(){
+  letters.sort();
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i]['name'];
+    contacts.sort(function(a, b){
+      if(a.name < b.name) { return -1; }
+      if(a.name > b.name) { return 1; }
+      return 0;
+    })   
+  }
+}
 
+
+function submitContact() {
+  let name = document.getElementById('AddName').value;
+  let email = document.getElementById('AddEmail').value;
+  let number = document.getElementById('AddNumber').value;
+  var x = Math.floor(Math.random() * 256);
+  var y = Math.floor(Math.random() * 256);
+  var z = Math.floor(Math.random() * 256);
 
   let test = {
-      'name': 'leo',
-      'email': 'jdshflja',
-      'phone': '43214312'
+      'name': name.charAt(0).toUpperCase() + name.slice(1),
+      'email': email,
+      'phone': number,
+      'r': x,
+      'g': y,
+      'b': z
   };
 
-  addUser(contact, test);   
+  addUser(contacts, test);   
+  sortArray();
+  generateContactlist();
 
 }
 
 async function addUser(contact, test) {
   contact.push(test);
   await backend.setItem('contact', JSON.stringify(contact));
+  console.log(contacts);
 }
 
 
-
-
-
-function render(){
-    init();
-    generateContactlist();
-}
 
 function generateContactlist() {
   letters = [];
@@ -65,9 +64,11 @@ function generateContactlist() {
 
     let firstLetter = contact['name'].charAt(0).toUpperCase();
     if(!letters.includes(firstLetter)) {
+      
+      letters.sort();
       letters.push(firstLetter);
       
-      document.getElementById('contactList').innerHTML +=/*html*/ `
+      document.getElementById('contactList').innerHTML += /*html*/ `
       <div class="letterbox"  id="letterbox${firstLetter}">
       <div class="first-letter">
         <p>${firstLetter}</p>
@@ -76,22 +77,20 @@ function generateContactlist() {
         
     </div>
 `; }
-      if (firstLetter === contact['name'].charAt(0)) {
+      if (firstLetter === contact['name'].charAt(0).toUpperCase()) {
         document.getElementById(`letterbox${firstLetter}`).innerHTML +=/*html*/ `
         <div class="contact" onclick="showSingleContact(${i})">
-        <p class="beginner-letter" id="bgColor${i}">${contact['name'].split(' ').map(word => word[0]).join('')}</p>
+        <p class="beginner-letter" style="background: rgb(${contact['r']},${contact['b']},${contact['g']})">${contact['name'].split(' ').map(word => word[0]).join('').toUpperCase()}</p>
         <div class="contact-name-div">
           <div class="contact-name">${contact['name']}</div>
           <div  class="contact-email">${contact['email']}</div>
         </div>
         </div> `;
-        randomBgColor(i);
+
       }
-
-  }
-
-  
+  }  
 }
+
 
 function showSingleContact(i){       
         document.getElementById('containerRight').innerHTML = /*html*/ `
@@ -103,7 +102,7 @@ function showSingleContact(i){
     <div class="contact-information">
       <div class="contact-information-up">
         <div class="contact-icon">
-          <div class="contact-icon-bg" id="bgColorSingle${i}">
+          <div class="contact-icon-bg" style="background: rgb(${contacts[i]['r']},${contacts[i]['b']},${contacts[i]['g']}">
             <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('')}</div>
           </div>
         </div>
@@ -135,7 +134,7 @@ function showSingleContact(i){
         </div>
         <div class="contact-information-fr103">
           <div class="contact-information-fr103-phone">Phone</div>
-          <div class="contact-information-fr103-number">${contacts[i]['phonenumber']}</div>
+          <div class="contact-information-fr103-number">${contacts[i]['phone']}</div>
         </div>
       </div>
       </div>
@@ -169,7 +168,7 @@ function openEditContact(i){
               <form class="lightbox-input-pos-close-form"  action="">
               <input id="editName" required id="AddName" placeholder="" type="text">
               <input id="editEmail" required id="AddEmail" placeholder="${contacts[i]['email']}" type="email">
-              <input id="editNumber" required id="AddNumber" placeholder="${contacts[i]['phonenumber']}" type="text">
+              <input id="editNumber" required id="AddNumber" placeholder="${contacts[i]['phone']}" type="text">
             </div>
           </form>
             <div class="lightbox-btn">
@@ -187,7 +186,7 @@ function openEditContact(i){
 function EditInput(i){
   document.getElementById('editName').value = `${contacts[i]['name']}`;
   document.getElementById('editEmail').value = `${contacts[i]['email']}`;
-  document.getElementById('editNumber').value = `${contacts[i]['phonenumber']}`;
+  document.getElementById('editNumber').value = `${contacts[i]['phone']}`;
 }
 
 function editContacts(i) {
@@ -195,7 +194,13 @@ function editContacts(i) {
   let email = document.getElementById('editEmail').value; 
   let number = document.getElementById('editNumber').value; 
   contacts.splice(i,1);
-  contacts.push({'name': name, 'email': email, 'phonenumber': number});
+  let test = {
+    'name': name.charAt(0).toUpperCase() + name.slice(1),
+    'email': email,
+    'phone': number,
+  }
+  addUser(contacts, test);   
+  sortArray();
   generateContactlist();
 }
 
@@ -203,29 +208,6 @@ function closeEditContact(){
   document.getElementById('lightboxEditContact').classList.add('d-none');
 }
 
-
-function addContacts() {
-  
-  let name = document.getElementById('AddName').value;
-  let email = document.getElementById('AddEmail').value;
-  let number = document.getElementById('AddNumber').value;
-  contacts.push({'name': name, 'email': email, 'phonenumber': number});
-  console.log(contacts);
-  generateContactlist();
-  
-}
-
-/**
- * generate a random color
- */
-function randomBgColor(i) {
-  var x = Math.floor(Math.random() * 256);
-  var y = Math.floor(Math.random() * 256);
-  var z = Math.floor(Math.random() * 256);
-  var bgColor = "rgb(" + x + "," + y + "," + z + ")";
-  document.getElementById(`bgColor${i}`).style.background = bgColor;
-
-}
 
 
 

@@ -13,7 +13,7 @@
 .container-left {
   position: absolute;
   width: 453px;
-  height: 935px;
+  height: calc(100vh - 90.3px);
   left: 232px;
   top: 89px;
   background: #FFFFFF;
@@ -97,39 +97,27 @@
   justify-content: center;
   align-items: center;
   padding: 0px;
-  gap: 10px;
-  
+  gap: 10px; 
   width: 42px;
-  height: 42px;
-  
+  height: 42px; 
   background: #FF7A00;
   border-radius: 45px;
-  
-  /* Inside auto layout */
-  
   flex: none;
   order: 0;
   flex-grow: 0;
 }
 
 .contact p {
-
   left: 7px;
   top: 16px;
-  
-  /* Version 2/t7 */
-  
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
-  /* or 14px */
-  
   display: flex;
   align-items: center;
   text-align: center;
-  
   color: #FFFFFF;
   
 }
@@ -162,13 +150,8 @@ flex-direction: column;
 align-items: flex-start;
 padding: 0px;
 gap: 5px;
-
 width: 250px;
 height: 49px;
-
-
-/* Inside auto layout */
-
 flex: none;
 order: 1;
 flex-grow: 0;
@@ -794,12 +777,6 @@ max-width: 40vh;
   width: 10px;
 }
 
-/* Track */
-.container-left::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  border-radius: 6px;
-}
- 
 /* Handle */
 .container-left::-webkit-scrollbar-thumb {
   background: #ABABAB; 

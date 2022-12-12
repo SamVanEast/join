@@ -11,7 +11,7 @@
     
     <title>Contacts</title>
   </head>
-  <body class="body-contact" onload="init()">
+  <body class="body-contact" onload="render()">
 
     <div id="lightboxAddContact" class="lightbox-add-contact d-none">
       <div class="lightbox-container">
@@ -28,17 +28,18 @@
           <div class="lightbox-input-pos">
             <div>
               <div class="lightbox-input-pos-close" onclick="HideNewContactContainer()">X</div>
-              <form action="">
+              <form action="" onsubmit="submitContact(); return false">
               <input required id="AddName" placeholder="Name" type="text">
               <input required id="AddEmail" placeholder="Email" type="email">
               <input required id="AddNumber" placeholder="Phone" type="number">
+              <div class="lightbox-btn">
+                <button class="lightbox-btn-left" onclick="HideNewContactContainer()">Cancel x</button>
+                <button class="lightbox-btn-right" onclick="">Create contact <img src="/assets/img/contact-img/check.png" alt="" srcset=""></button>
+              </div>
+              
             </div>
           </form>
-            <div class="lightbox-btn">
-              <button class="lightbox-btn-left" onclick="HideNewContactContainer()">Cancel x</button>
-              <button class="lightbox-btn-right" onclick="addContacts()">Create contact <img src="/assets/img/contact-img/check.png" alt="" srcset=""></button>
-            </div>
-            
+           
           </div>       
         </div>
       </div>
@@ -56,7 +57,17 @@
       </div>
 
       <div id="containerRight" class="container-right">
-        
+        <div class="headline">
+          <h1>Contacts</h1>
+          <div></div>
+          <h3>Better with a Team</h3>
+        </div>
+        <div class="add-contact-btn" onclick="showNewContactContainer()">
+          <div class="add-contact-text">New contact</div>
+          <div>
+            <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
+  
+          </div>
       </div>
     </div>
   </body>
