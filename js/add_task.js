@@ -124,7 +124,7 @@ function renderAssignedTo() {
     let content = document.getElementById('dropdownAssignedTo');
 
     content.innerHTML = /*html*/ `
-     <div class="categorysDropdownSelect" id="assignedTo">Select contacts to assign</div>
+     <div class="categorysDropdownSelect" id="assignedTo" onclick="renderAssignedToContent()">Select contacts to assign</div>
      <div id="assignedToOptions" class="categorysOptions"></div>
      `;
     renderAssignedToOptions();
