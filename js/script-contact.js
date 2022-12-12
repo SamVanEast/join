@@ -20,23 +20,34 @@ let contacts = [
     },
 ];
 
-let users = [];
+let contact = [];
 
 async function init() {
-  setURL('http://gruppe-390.developerakademie.net/smallest_backend_ever');
-
+    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
-    console.log(users);
-
-    
-}
-
-async function addUser() {
-  users.push('John');
-  await backend.setItem('users', JSON.stringify(users));
+    contact = JSON.parse(backend.getItem('contact')) || [];
 
 }
+
+function submitTask() {
+
+
+  let test = {
+      'name': 'leo',
+      'email': 'jdshflja',
+      'phone': '43214312'
+  };
+
+  addUser(contact, test);   
+
+}
+
+async function addUser(contact, test) {
+  contact.push(test);
+  await backend.setItem('contact', JSON.stringify(contact));
+}
+
+
 
 
 
