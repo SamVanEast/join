@@ -72,6 +72,21 @@ function filterDone() {
     }
 }
 
+function filterBoard() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+
+    for (let i = 0; i < allTasks.headline.length; i++) {
+        let task = allTasks.headline[i];
+        
+        if (task.headline.toLowerCase().includes(search)) {
+            console.log(task);
+        }
+        }
+    }
+
+
 function newTaskHTML(element) {
     return `
         <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
@@ -159,12 +174,14 @@ function allowDrop(ev) {
 }
 
 
-function moveTo(status) {
+async function moveTo(status) {
     allTasks[currentDraggedElement]['status'] = status;
     filterTodo();
     filterProgress();
     filterFeedback();
     filterDone();
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+
 }
 
 
