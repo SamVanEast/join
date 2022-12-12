@@ -149,8 +149,8 @@ function renderSelectedAssignedTo(contact) {
          <div class="categorysDropdownSelect">${contact}</div>
          `;
 
-    // document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
-    // document.getElementById('dropdownAssignedTo').classList.toggle('categorysDropdownSelectHTML');
+    document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
+    document.getElementById('assignedTo').classList.toggle('categorysDropdownSelect');
 }
 
 
