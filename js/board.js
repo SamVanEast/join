@@ -1,7 +1,7 @@
 let currentDraggedElement;
 let categoryBg;
 
-
+let contacts;
 let allTasks;
 
 
@@ -9,6 +9,7 @@ async function init() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    contacts = JSON.parse(backend.getItem('contact')) || [];
     addId();
     filterTodo();
     filterProgress();
@@ -168,6 +169,8 @@ function moveTo(status) {
     filterDone();
 }
 
+
+
 function highlight(id) {
     document.getElementById(id).classList.add('dragAreaHighlight');
 }
@@ -213,69 +216,22 @@ function submitTask() {
         'desc': desc,
         'status': status,
         'category': cat,
-        'status': status
     };
 
 
 
-    addNewTask(allTasks, task)
+    addNewTask(task)
 
 }
 
 
-async function addNewTask(allTasks, task) {
+async function addNewTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    window.location.href = 'board.html';
 }
 
 async function deleteTasks() {
     await backend.deleteItem('allTasks');
 
 }
-
-
-/*
-[{
-    "id": 0,
-    "status": "todo",
-    "category": "Design",
-    "headline": "Join fertigstellen",
-    "description": "Bis Weihnachten das Projekt fertigstellen",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 1,
-    "status": "progress",
-    "category": "Marketing",
-    "headline": "Projekt bewerben",
-    "description": "Spread the word: Insta, TikTok, Myspace etc.",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 2,
-    "status": "feedback",
-    "category": "Media",
-    "headline": "Currywurst",
-    "description": "Artikel über die Herkunft des Kraftriegels.",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-},
-{
-    "id": 3,
-    "status": "done",
-    "category": "Backoffice",
-    "headline": "Steuern hinterziehen",
-    "description": "Mit Uli H. und Alice S. kurzschließen",
-    "involved": "",
-    "duedate": "",
-    "priority": "",
-    "subtasks": ""
-}]; */
