@@ -87,7 +87,7 @@ function addNewCategory() {
 
     document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
          <div class="categoryContent">
-             <input class="inputFieldSubtask" type="text" placeholder="New category name">
+             <input class="inputFieldSubtask" type="text" placeholder="New category name" onclick="event.stopPropagation()">
              <div class="subtaskImage">
                  <img src="../../assets/img/add_task_img/cross.png" alt="" onclick="renderCategoryContent()">
                  <div class="inputBorder"></div>
