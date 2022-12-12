@@ -1,7 +1,6 @@
 let currentDraggedElement;
 let categoryBg;
 
-let contacts;
 let allTasks;
 
 
@@ -9,7 +8,6 @@ async function init() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    contacts = JSON.parse(backend.getItem('contact')) || [];
     addId();
     filterTodo();
     filterProgress();
