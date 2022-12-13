@@ -77,7 +77,7 @@ function filterBoard() {
     search = search.toLowerCase();
 
     
-    let test = document.getElementById('theTasks');
+    let test = document.getElementById('todo');
 
     test.innerHTML = '';
 
@@ -85,12 +85,38 @@ function filterBoard() {
         let headlines = allTasks[i]['headline'];
         let descriptions = allTasks[i]['desc'];
         
-        if (headlines.toLowerCase().includes(search)) {
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
             let result = allTasks[i];
-            test.innerHTML += `${result}`;
-
+            
+            test.innerHTML += `
+            
+            <div class="taskBoxes" draggable="true" ondragstart="startDragging(${result['id']})" onclick="openTask(${result['id']})">
+        <div class="singleTask ${result.id}">
+        <div id="category${result['id']}" class="category">${result['category']}</div>
+        <div class="taskHeadline">${result['headline']}</div>
+        <div class="taskDescription">${result['desc']}</div>
+        <div class="progressBar">
+            <div class="progress">progressbar</div>
+            <div class="progressText">x/x Done</div>
+        </div>
+        <div class="peopleInvolvedPriority">
+            <div class="peopleInvolved">
+                <div class="people">SM</div>
+                <div class="people">SH</div>
+                <div class="people">TW</div>
+                <div class="people">LD</div>
+            </div>
+            <div class="priority"></div>
+            </div>
+        </div>
+        </div>`;
+        
         }
         }
+        filterTodo();
+        filterProgress();
+        filterFeedback();
+        filterDone();
     }
 
 
