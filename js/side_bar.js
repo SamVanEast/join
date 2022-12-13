@@ -1,4 +1,5 @@
 let wichContent = '';
+let isWelcomeAlready = false; //damit soll verhindert werden das die Welcome Seite mehrmals geladen wird
 /**
  * Sucht nach dem Attribute w3-include-html um darin ein HtMl-template rein zu laden
  */
@@ -25,23 +26,23 @@ async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     removeDarkBlue();
     showHelpIcon();
-    await showContent();
+    showContent();
     await includeHTML();
     wichOnloadFunction();
 }
-
-async function showContent(){
+/**
+ * lädt den content rein und wenn die Seite zu schmal ist wird noch ein Begrüßungscontent davor geladen 
+ */
+function showContent() {
     let content = document.getElementById('content');
-    if (window.innerWidth < 1440) {
-        wichContent = 'welcome';
-        content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
-        wichContent = 'summary'
+    if (window.innerWidth < 1440 && isWelcomeAlready == false) {
+        content.innerHTML = `<div w3-include-html="welcome.html"></div>`;
+        content.innerHTML += `<div w3-include-html="summary.html"></div>`;
         setTimeout(() => {
-            content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
-            includeHTML();
+            document.getElementById('welcome-responsive').classList.add('hide_welcome');
         }, 1500);
-
-    }else{
+        isWelcomeAlready = true;
+    } else {
         content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
     }
 }
@@ -54,7 +55,7 @@ window.addEventListener('resize', () => {
 /**
  * überpüft ob der Help-icon angezeigt werden soll und ob darkBlue einer der menü-Reiter hinzugefügt werden muss
  */
-function showHelpIcon(){
+function showHelpIcon() {
     let tab = document.getElementById(`tab-${wichContent}`);
     if (wichContent == 'help' || window.innerWidth < 1060) {
         document.getElementById('qoestion-mark-img').classList.add('d-none');

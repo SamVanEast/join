@@ -1,4 +1,5 @@
 .welcome_responsive {
+    position: absolute;
     z-index: 1;
     width: 100%;
     height: 935px;
@@ -6,6 +7,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #F6F7F8;
+    box-sizing: border-box;
 }
 
 .good_morning_responsive {
@@ -22,13 +25,32 @@
     color: #29ABE2;
 }
 
-@media (max-width: 1060px) {
-    
-    .welcome_responsive{
-        height: 100vh;
+@media (max-width: 1440px) {
+    .hide_welcome {
+        transform: scale(0);
+        animation: opacity 225ms ease-in-out;
     }
 
-    .side_bar{
+    @keyframes opacity {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        to {
+            opacity: 0;
+            transform: scale(0);
+        }
+    }
+}
+
+@media (max-width: 1060px) {
+
+    .welcome_responsive {
+        height: calc(100vh - 160px);
+    }
+
+    .side_bar {
         overflow: hidden;
     }
 }

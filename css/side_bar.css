@@ -11,6 +11,7 @@ body {
 }
 
 .menu {
+    z-index: 2;
     width: 232px;
     height: 100%;
     background-color: #2A3647;
@@ -152,6 +153,7 @@ body {
 }
 
 #content {
+    position: relative;
     width: 100%;
     height: 935px;
     box-sizing: border-box;
