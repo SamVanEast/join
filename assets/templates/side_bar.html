@@ -14,11 +14,11 @@
     <script src="../../js/add_task.js"></script>
     <script src="../../js/board.js"></script>
     <script src="../../mini_backend.js"></script>
-    
+
 </head>
 
 <body class="body" onload="loadContent('summary')">
-    
+
     <div id="side-bar" class="side_bar" onclick="closeLogOutButton()">
         <div class="menu">
             <div class="menu_logo">
@@ -64,13 +64,19 @@
         <div class="header-content">
             <div class="header">
                 <img class="mobile_logo" src="../img/header-img/join-logo.svg" alt="">
-                <div id="header-headline" class="header_headline" style="display: none;">Kanban Project Management Tool</div>
+                <div id="header-headline" class="header_headline" style="display: none;">Kanban Project Management Tool
+                </div>
                 <div id="header-image" class="header_image">
                     <img id="qoestion-mark-img" class="qoestion_mark_img" onclick="loadContent('help')"
                         src="../img/header-img/question-mark-icon.svg" alt="">
-                    <img class="profile_img" onclick="showLogOutButton(), save(event)" src="../img/header-img/profile-img.png" alt="">
+                    <img class="profile_img" onclick="showLogOutButton(), save(event)"
+                        src="../img/header-img/profile-img.png" alt="">
                 </div>
-                <div id="log-out" class="log_out d-none" onclick="save(event)">Log out</div>
+                <div id="log-out-area" class="log_out" style="display: none;" onclick="save(event)">
+                    <div id="log-out-area-help" style="display: none;" onclick="loadContent('help')">Help</div>
+                    <div id="log-out-area-legale_notice" style="display: none;" onclick="loadContent('legal_notice')">Legal notice</div>
+                    <div id="log-out-area-log-out" style="display: none;">Log out</div>
+                </div>
             </div>
 
             <div id="content"></div>

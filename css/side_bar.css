@@ -107,6 +107,7 @@ body {
 
 .header {
     z-index: 1;
+    position: relative;
     background-color: white;
     display: flex;
     align-items: center;
@@ -177,6 +178,10 @@ body {
     top: 89px;
     right: 33px;
     box-sizing: border-box;
+}
+
+.log_out div {
+
 }
 
 .log_out:hover {
@@ -265,6 +270,24 @@ body {
         line-height: 120%;
         top: 114px;
         left: 7.71%;
+    }
+
+    .log_out{
+        width: 130px;
+        height: auto;
+        top: 79.02px;
+        padding: 0;
+        padding-bottom: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .log_out div{
+        padding-top: 18px;
+        padding-left: 18px;
+        padding-right: 18px;
+        
     }
 
     #qoestion-mark-img {

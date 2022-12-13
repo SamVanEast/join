@@ -29,6 +29,7 @@ async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
     showContent();
     await includeHTML();
     wichOnloadFunction();
+    closeLogOutButton();
 }
 /**
  * lädt den content rein und wenn die Seite zu schmal ist wird noch ein Begrüßungscontent davor geladen 
@@ -49,7 +50,7 @@ function showContent() {
  * ladet die Begrüßungsseite beim laden der side_bar.html
  * @param {id} content //to get the div with the ID content
  */
-function loadWelcomeContent(content){
+function loadWelcomeContent(content) {
     content.innerHTML = `<div w3-include-html="welcome.html"></div>`;
     content.innerHTML += `<div w3-include-html="summary.html"></div>`;
     document.getElementById('side-bar').style = 'overflow: hidden';
@@ -62,17 +63,17 @@ function loadWelcomeContent(content){
 /**
  * wenn der content von contacts geladen wird soll die header_headline nicht mehr angezeigt werden
  */
-function checkIFWichContentContacts(){
+function checkIFWichContentContacts() {
     if (wichContent == 'contacts') {
         document.getElementById('header-headline').style = 'display: none';
-    }else{
+    } else {
         document.getElementById('header-headline').style = '';
     }
 }
 /**
  * wenn der content von add_task geladen wird, soll der div header-image nicht mehr angezeigt werden
  */
-function checkIFWichContentAddTasks(){
+function checkIFWichContentAddTasks() {
     if (wichContent == 'add_task') {
         document.getElementById('header-image').style = 'display: none';
     } else {
@@ -124,16 +125,27 @@ function removeDarkBlue() {//Überrall den dunkleren Farbton löschen.
     document.getElementById('tab-legal_notice').classList.remove('darkBlue');
 }
 /**
- * entfernt dem log out button die class d-none 
+ * entfernt den divs im Menu unter dem Logo, jenachdem wie breit die Website ist display:none
  */
 function showLogOutButton() {
-    document.getElementById('log-out').classList.remove('d-none');
+    document.getElementById('log-out-area').style = '';
+    if (window.innerWidth <= 1060) {
+        document.getElementById('log-out-area-help').style = '';
+        document.getElementById('log-out-area-legale_notice').style = '';
+        document.getElementById('log-out-area-log-out').style = '';
+    } else {
+        document.getElementById('log-out-area-log-out').style = '';
+    }
+
 }
 /**
- * fügt dem log out buttton die Class d-none hinzu
+ * fügt den divs im Menu unter dem Logo display:none hinzu
  */
 function closeLogOutButton() {
-    document.getElementById('log-out').classList.add('d-none');
+    document.getElementById('log-out-area').style = 'display: none';
+    document.getElementById('log-out-area-help').style = 'display: none';
+    document.getElementById('log-out-area-legale_notice').style = 'display: none';
+    document.getElementById('log-out-area-log-out').style = 'display: none';
 }
 /**
  * sorgt dafür das diese div aufwelche geklickt wird nicht von einer anderen function beeinflusst wird
