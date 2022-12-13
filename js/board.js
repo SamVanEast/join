@@ -5,12 +5,14 @@ let feedback;
 let progress;
 let done;
 let allTasks;
+let contacts;
 
 
 async function init() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    contacts = JSON.parse(backend.getItem('contact'))  || [];
     addId();
     filterStatus();
 }
@@ -93,10 +95,7 @@ function newTaskHTML(element) {
         </div>
         <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
-                <div class="people">SM</div>
-                <div class="people">SH</div>
-                <div class="people">TW</div>
-                <div class="people">LD</div>
+                <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div>
             </div>
             <div class="priority"></div>
             </div>
