@@ -9,6 +9,10 @@ async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     addId();
+    filterStatus();
+}
+
+function filterStatus() {
     filterTodo();
     filterProgress();
     filterFeedback();
@@ -110,13 +114,11 @@ function filterBoard() {
             </div>
         </div>
         </div>`;
+        checkBgColor(result);
+        filterStatus(result);
+        }
+        }
         
-        }
-        }
-        filterTodo();
-        filterProgress();
-        filterFeedback();
-        filterDone();
     }
 
 
