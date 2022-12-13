@@ -16,7 +16,9 @@
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    contact = JSON.parse(backend.getItem('contact'))  || [];
     console.log(allTasks);
+    console.log(contact);
 
     renderSubtaskContent();
     renderCategoryContent();
@@ -115,11 +117,11 @@ function renderAssignedTo() {
 function renderAssignedToOptions() {
     let names = document.getElementById('assignedToOptions');
 
-    for (let b = 0; b < contacts.length; b++) {
-        const contact = contacts[b];
+    for (let b = 0; b < contact.length; b++) {
+        const contacts = contact[b];
 
         names.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedAssignedTo('${contact}')">${contact}</span>
+         <span class="categorysDropdown" onclick="renderSelectedAssignedTo('${contacts}')">${contacts}</span>
          `;
     }
 }
