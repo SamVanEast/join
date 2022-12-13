@@ -1,0 +1,30 @@
+.welcome_responsive {
+    z-index: 1;
+    width: 100%;
+    height: 935px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.good_morning_responsive {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 120%;
+    color: #2A3647;
+}
+
+.account_name_responsive {
+    font-weight: 700;
+    font-size: 47px;
+    line-height: 120%;
+    color: #29ABE2;
+}
+
+@media (max-width: 1060px) {
+    
+    .welcome_responsive{
+        height: 100vh;
+    }
+}

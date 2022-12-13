@@ -22,17 +22,26 @@ async function includeHTML() {
 async function loadContent(wichContent) {//Den angeklickten Inhalt laden
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     let content = document.getElementById('content');
-    let tab = document.getElementById(`tab-${wichContent}`);
     removeDarkBlue();
-    if (wichContent == 'help') {
-        document.getElementById('qoestion-mark-img').classList.add('d-none');
-    } else {
-        document.getElementById('qoestion-mark-img').classList.remove('d-none');
-        tab.classList.add('darkBlue');
-    }
+    showHelpIcon(wichContent);
     content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
     await includeHTML();
     wichOnloadFunction(wichContent);
+}
+/**
+ * überpüft ob der Help-icon angezeigt werden soll und ob darkBlue einer der menü-Reiter hinzugefügt werden muss
+ * @param {string} wichContent gibt an welches HTML-template geladen werden muss, indem es ein Teil des Pfads ist
+ */
+function showHelpIcon(wichContent){
+    let tab = document.getElementById(`tab-${wichContent}`);
+    if (wichContent == 'help' || window.innerWidth < 1060) {
+        document.getElementById('qoestion-mark-img').classList.add('d-none');
+    } else {
+        document.getElementById('qoestion-mark-img').classList.remove('d-none');
+        if (!wichContent == 'welcome') {
+            tab.classList.add('darkBlue');
+        }
+    }
 }
 /**
  * frägt nach welcher content geladen ist und dann nur die dazu gehöhrige function ausgeführt wird
