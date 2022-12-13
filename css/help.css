@@ -74,3 +74,15 @@
     font-size: 16px;
     line-height: 120%;
 }
+
+@media (max-width: 1060px) {
+    .help{
+        padding-left: 7.71%;
+        padding-right: 7.71%;
+        padding-bottom: 90px;
+    }
+
+    .help_header img{
+        margin-top: -50px;
+    }
+}

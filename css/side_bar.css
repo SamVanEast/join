@@ -180,10 +180,6 @@ body {
     box-sizing: border-box;
 }
 
-.log_out div {
-
-}
-
 .log_out:hover {
     cursor: pointer;
 }
