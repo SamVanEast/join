@@ -36,14 +36,47 @@ async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
 function showContent() {
     let content = document.getElementById('content');
     if (window.innerWidth < 1440 && isWelcomeAlready == false) {
-        content.innerHTML = `<div w3-include-html="welcome.html"></div>`;
-        content.innerHTML += `<div w3-include-html="summary.html"></div>`;
-        setTimeout(() => {
-            document.getElementById('welcome-responsive').classList.add('hide_welcome');
-        }, 1500);
-        isWelcomeAlready = true;
+        loadWelcomeContent(content);
+        document.getElementById('header-headline').style = '';
     } else {
+        checkIFWichContentContacts();
+        checkIFWichContentAddTasks();
         content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
+        document.getElementById('header-headline').style = '';
+    }
+}
+/**
+ * ladet die Begrüßungsseite beim laden der side_bar.html
+ * @param {id} content //to get the div with the ID content
+ */
+function loadWelcomeContent(content){
+    content.innerHTML = `<div w3-include-html="welcome.html"></div>`;
+    content.innerHTML += `<div w3-include-html="summary.html"></div>`;
+    document.getElementById('side-bar').style = 'overflow: hidden';
+    setTimeout(() => {
+        document.getElementById('welcome-responsive').classList.add('hide_welcome');
+        document.getElementById('side-bar').style = '';
+    }, 1500);
+    isWelcomeAlready = true;
+}
+/**
+ * wenn der content von contacts geladen wird soll die header_headline nicht mehr angezeigt werden
+ */
+function checkIFWichContentContacts(){
+    if (wichContent == 'contacts') {
+        document.getElementById('header-headline').style = 'display: none';
+    }else{
+        document.getElementById('header-headline').style = '';
+    }
+}
+/**
+ * wenn der content von add_task geladen wird, soll der div header-image nicht mehr angezeigt werden
+ */
+function checkIFWichContentAddTasks(){
+    if (wichContent == 'add_task') {
+        document.getElementById('header-image').style = 'display: none';
+    } else {
+        document.getElementById('header-image').style = '';
     }
 }
 /**

@@ -19,7 +19,7 @@
 
 <body class="body" onload="loadContent('summary')">
     
-    <div class="side_bar" onclick="closeLogOutButton()">
+    <div id="side-bar" class="side_bar" onclick="closeLogOutButton()">
         <div class="menu">
             <div class="menu_logo">
                 <img src="../img/menu-img/menu-logo.svg" alt="">
@@ -64,8 +64,8 @@
         <div class="header-content">
             <div class="header">
                 <img class="mobile_logo" src="../img/header-img/join-logo.svg" alt="">
-                <div class="header_headline">Kanban Project Management Tool</div>
-                <div class="header_image">
+                <div id="header-headline" class="header_headline" style="display: none;">Kanban Project Management Tool</div>
+                <div id="header-image" class="header_image">
                     <img id="qoestion-mark-img" class="qoestion_mark_img" onclick="loadContent('help')"
                         src="../img/header-img/question-mark-icon.svg" alt="">
                     <img class="profile_img" onclick="showLogOutButton(), save(event)" src="../img/header-img/profile-img.png" alt="">
