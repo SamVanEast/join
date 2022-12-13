@@ -1,18 +1,3 @@
-// let users = [];
-//         setURL('http://gruppe-390.developerakademie.net/smallest_backend_ever');
-
-//         async function init() {
-//             await downloadFromServer();
-//             users = JSON.parse(backend.getItem('users')) || [];
-//         }
-
-
-//         function addUser() {
-//             users.push(username.value);
-//             backend.setItem('users', JSON.stringify(users));
-//         }
-
-
 /**
  * Using an empty array in order to test the function addTask
  * 
@@ -23,7 +8,6 @@ let tasks = [];
 let subtask = [];
 let categorys = ['Sales', 'Backoffice'];
 let contactsTest = ['1', '2', '3', '4', '5'];
-// load();
 
 
 /**
@@ -36,7 +20,6 @@ function loadAllTasks() {
     tasks = JSON.parse(allTasksAsString);
     console.log('Loaded all tasks: ', tasks);
 
-    // load();
     renderSubtaskContent();
     renderCategoryContent();
     renderAssignedToContent();
@@ -206,22 +189,7 @@ function addSubtask() {
     subtask.push(newSubtask);
 
     renderSubtaskContent();
-    // save();
 }
-
-
-// function save() {
-//     let titleAsText = JSON.stringify(subtask);
-//     localStorage.setItem('title', titleAsText);
-// }
-
-
-// function load() {
-//     let titleAsText = localStorage.getItem('title');
-// if (titleAsText){
-//     subtask = JSON.parse(titleAsText);
-// }
-// }
 
 
 function clearFields() {
