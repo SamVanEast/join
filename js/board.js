@@ -1,6 +1,9 @@
 let currentDraggedElement;
 let categoryBg;
-
+let todo;
+let feedback;
+let progress;
+let done;
 let allTasks;
 
 
@@ -29,7 +32,7 @@ async function addId() {
 
 function filterTodo() {
 
-    let todo = allTasks.filter(t => t['status'] == 'todo');
+    todo = allTasks.filter(t => t['status'] == 'todo');
 
     document.getElementById('todo').innerHTML = '';
 
@@ -41,7 +44,7 @@ function filterTodo() {
 }
 
 function filterProgress() {
-    let progress = allTasks.filter(t => t['status'] == 'progress');
+    progress = allTasks.filter(t => t['status'] == 'progress');
 
     document.getElementById('inProgress').innerHTML = '';
 
@@ -53,7 +56,7 @@ function filterProgress() {
 }
 
 function filterFeedback() {
-    let feedback = allTasks.filter(t => t['status'] == 'feedback');
+    feedback = allTasks.filter(t => t['status'] == 'feedback');
 
     document.getElementById('awaitingFeedback').innerHTML = '';
 
@@ -65,7 +68,7 @@ function filterFeedback() {
 }
 
 function filterDone() {
-    let done = allTasks.filter(t => t['status'] == 'done');
+    done = allTasks.filter(t => t['status'] == 'done');
 
     document.getElementById('done').innerHTML = '';
 
@@ -75,49 +78,6 @@ function filterDone() {
         checkBgColor(element);
     }
 }
-
-function filterBoard() {
-    let search = document.getElementById('search').value;
-    search = search.toLowerCase();
-
-    
-    let test = document.getElementById('todo');
-    test.innerHTML = '';
-
-    for (let i = 0; i < allTasks.length; i++) {
-        let headlines = allTasks[i]['headline'];
-        let descriptions = allTasks[i]['desc'];
-        
-        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
-            let result = allTasks[i];
-            
-            test.innerHTML += `
-            
-            <div class="taskBoxes" draggable="true" ondragstart="startDragging(${result['id']})" onclick="openTask(${result['id']})">
-        <div class="singleTask ${result.id}">
-        <div id="category${result['id']}" class="category">${result['category']}</div>
-        <div class="taskHeadline">${result['headline']}</div>
-        <div class="taskDescription">${result['desc']}</div>
-        <div class="progressBar">
-            <div class="progress">progressbar</div>
-            <div class="progressText">x/x Done</div>
-        </div>
-        <div class="peopleInvolvedPriority">
-            <div class="peopleInvolved">
-                <div class="people">SM</div>
-                <div class="people">SH</div>
-                <div class="people">TW</div>
-                <div class="people">LD</div>
-            </div>
-            <div class="priority"></div>
-            </div>
-        </div>
-        </div>`;
-        checkBgColor(result);
-        }
-        }
-        
-    }
 
 
 function newTaskHTML(element) {
@@ -283,3 +243,129 @@ async function deleteTasks() {
     await backend.deleteItem('allTasks');
 
 }
+
+/**
+ * Search Function
+ */
+
+function filterBoard() {
+    filterBoardTodo();
+    filterBoardProgress();
+    filterBoardFeedback();
+    filterBoardDone();
+}
+
+
+function filterBoardTodo() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+
+    let filter = document.getElementById('todo');
+    filter.innerHTML = '';
+
+    for (let i = 0; i < todo.length; i++) {
+        let headlines = todo[i]['headline'];
+        let descriptions = todo[i]['desc'];
+
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+            let result = todo[i];
+
+            filter.innerHTML += filterBoardHTML(result);
+            checkBgColor(result);
+        }
+    }
+
+}
+
+function filterBoardProgress() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+
+    let filter = document.getElementById('inProgress');
+    filter.innerHTML = '';
+
+    for (let i = 0; i < progress.length; i++) {
+        let headlines = progress[i]['headline'];
+        let descriptions = progress[i]['desc'];
+
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+            let result = progress[i];
+
+            filter.innerHTML += filterBoardHTML(result);
+            checkBgColor(result);
+        }
+    }
+
+}
+
+
+function filterBoardFeedback() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+
+    let filter = document.getElementById('awaitingFeedback');
+    filter.innerHTML = '';
+
+    for (let i = 0; i < feedback.length; i++) {
+        let headlines = feedback[i]['headline'];
+        let descriptions = feedback[i]['desc'];
+
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+            let result = feedback[i];
+
+            filter.innerHTML += filterBoardHTML(result);
+            checkBgColor(result);
+        }
+    }
+
+}
+
+function filterBoardDone() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+
+    let filter = document.getElementById('done');
+    filter.innerHTML = '';
+
+    for (let i = 0; i < done.length; i++) {
+        let headlines = done[i]['headline'];
+        let descriptions = done[i]['desc'];
+
+        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+            let result = done[i];
+
+            filter.innerHTML += filterBoardHTML(result);
+            checkBgColor(result);
+        }
+    }
+
+}
+
+function filterBoardHTML(result) {
+    return `<div class="taskBoxes" draggable="true" ondragstart="startDragging(${result['id']})" onclick="openTask(${result['id']})">
+<div class="singleTask ${result.id}">
+<div id="category${result['id']}" class="category">${result['category']}</div>
+<div class="taskHeadline">${result['headline']}</div>
+<div class="taskDescription">${result['desc']}</div>
+<div class="progressBar">
+    <div class="progress">progressbar</div>
+    <div class="progressText">x/x Done</div>
+</div>
+<div class="peopleInvolvedPriority">
+    <div class="peopleInvolved">
+        <div class="people">SM</div>
+        <div class="people">SH</div>
+        <div class="people">TW</div>
+        <div class="people">LD</div>
+    </div>
+    <div class="priority"></div>
+    </div>
+</div>
+</div>`;
+}
+
+
