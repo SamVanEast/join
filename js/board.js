@@ -5,7 +5,6 @@ let feedback;
 let progress;
 let done;
 let allTasks;
-let contacts;
 
 
 async function init() {
