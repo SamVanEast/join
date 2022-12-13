@@ -85,14 +85,18 @@ function generateContactlist() {
           <div class="contact-name">${contact['name']}</div>
           <div  class="contact-email">${contact['email']}</div>
         </div>
-        </div> `;
+        </div>
+     
+        `;
 
       }
+
   }  
 }
 
 
 function showSingleContact(i){       
+        if(window.innerWidth > 1060 ){
         document.getElementById('containerRight').innerHTML = /*html*/ `
         <div class="headline">
         <h1>Contacts</h1>
@@ -146,7 +150,9 @@ function showSingleContact(i){
         <div>
           <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
         `;
-        
+        } else {
+          document.getElementById('containerRight').classList.remove('d-none');
+        }
 }
 
 function openEditContact(i){
@@ -154,6 +160,9 @@ function openEditContact(i){
   document.getElementById('lightboxEditContact').innerHTML = /*html*/ `
   <div class="lightbox-container">
         <div class="lightbox-container-left">
+          <div class="contact-close-mobile d-none">
+            <div class="lightbox-input-pos-close-mobile" onclick="closeEditContact()">X</div>
+          </div>
           <div><img src="/assets/img/menu-img/menu-logo.svg" alt=""></div>
           <h1>Edit Contact</h1>
           <p>Tasks are better with a team</p>

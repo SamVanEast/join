@@ -613,7 +613,7 @@ background: #FFFFFF;
 
 .lightbox-container{
   display: flex;
-  max-width: 80%;
+  max-width: 90%;
   height: 60%;
   border-radius: 30px;
   background-color: #FFFFFF;
@@ -621,8 +621,6 @@ background: #FFFFFF;
 
 .lightbox-container-left{
   background-color: #2A3647;
-  width: 300px;
-  min-width: 300px;
   height: 100%;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -632,7 +630,7 @@ background: #FFFFFF;
   flex-direction: column;
   color: white;
   padding-left: 30px;
-  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .lightbox-container-left img{
@@ -668,7 +666,7 @@ background: #FFFFFF;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 300px;
+  width: 100%;
 }
 
 .lightbox-img div{
@@ -678,14 +676,16 @@ background: #FFFFFF;
   height: 100px;
   width: 100px;
   border-radius: 50px;
-  background-color: gray
+  background-color: gray;
+  border: 3px solid #FFFFFF ;
+  
 }
 
 .lightbox-input-pos {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-max-width: 40vh;
+
 }
 
 .lightbox-input-pos input{
@@ -696,6 +696,7 @@ max-width: 40vh;
   margin: 10px 0 10px 0;
   border-radius: 10px;
   border: 0.5px solid #d1d1d1;
+  padding: 0;
 }
 
 .lightbox-input-pos-close{
@@ -705,7 +706,6 @@ display: flex;
 justify-content: flex-end;
 position: relative;
 bottom: 50px;
-max-width: 40vh;
 }
 
 .lightbox-input-pos-close-form{
@@ -767,7 +767,40 @@ max-width: 40vh;
   border-radius: 6px;
 }
 
+/* MOBILE DESIGN */
 
+.add-contact-btn-mobile{
+
+  cursor: pointer;
+  box-sizing: border-box;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 18px 10px;
+gap: 10px;
+width: 193px;
+height: 53px;
+right: 50px;
+top: 824px;
+background: #2A3647;
+border: 1px solid #2A3647;
+border-radius: 10px;
+}
+
+.add-contact-text-mobile{
+  width: 130px;
+  height: 25px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 120%;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
 
 .d-none{
   display: none;
@@ -797,15 +830,28 @@ max-width: 40vh;
     display: flex;
     justify-content: center;
     height: calc(100vh - 83px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-mobile-btn{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .add-contact-btn-mobile{
+    margin: 16px;
+    display: flex;
   }
 
   .container-right {
     display: none;
   }
 
-  .container-left {
-    width: 100%;
-  }
+ 
 
   .container-position {
     max-width: none;
@@ -831,6 +877,71 @@ max-width: 40vh;
     display: block;
     position: absolute;
   }
+
+  .lightbox-container{
+    flex-direction: column;
+    align-items: center;
+    height: 82%;
+  }
+
+  .lightbox-container-left{
+    padding: 0;
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 30px;
+    height: 45%;
+    align-items: center;
+  }
+
+  .lightbox-container-right{
+    flex-direction: column;
+  }
+
+  .lightbox-container-left img {
+    display: none;
+  }
+
+  .lightbox-img{
+    position: relative;
+    bottom: 80px;
+  }
+
+  .lightbox-img div{
+    height: 120px;
+    width: 120px;
+    border-radius: 60px;
+  }
+
+  .lightbox-btn-left{
+    display: none;
+  }
+
+  .lightbox-btn {
+    justify-content: center;
+  }
+
+  .contact-close-mobile{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .lightbox-input-pos-close-mobile{
+    font-size: 24px;
+    padding-right: 26px;
+    position: relative;
+    bottom: 70px;
+    cursor: pointer;
+  }
+
+  .lightbox-input-pos{
+    position: relative;
+    bottom: 50px;
+  }
+
+  .lightbox-input-pos-close{
+    display: none;
+  }
 }
 
 
@@ -852,6 +963,14 @@ max-width: 40vh;
   .between-line p{
     min-width: 0;
     width: 100%;
+  }
+
+  .lightbox-container-left h1 {
+    font-size: 36px;
+  }
+
+  .lightbox-container-left p {
+    font-size: 16px;
   }
 
   .contact-name {

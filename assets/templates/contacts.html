@@ -13,9 +13,14 @@
   </head>
   <body class="body-contact" onload="render()">
 
+    
+
     <div id="lightboxAddContact" class="lightbox-add-contact d-none">
       <div class="lightbox-container">
         <div class="lightbox-container-left">
+          <div class="contact-close-mobile d-none">
+            <div class="lightbox-input-pos-close-mobile" onclick="HideNewContactContainer()">X</div>
+          </div>
           <div><img src="/assets/img/menu-img/menu-logo.svg" alt=""></div>
           <h1>Add contact</h1>
           <p>Tasks are better with a team</p>
@@ -35,25 +40,27 @@
               <div class="lightbox-btn">
                 <button class="lightbox-btn-left" onclick="HideNewContactContainer()">Cancel x</button>
                 <button class="lightbox-btn-right" onclick="">Create contact <img src="/assets/img/contact-img/check.png" alt="" srcset=""></button>
-              </div>
-              
+              </div>              
             </div>
-          </form>
-           
+          </form>          
           </div>       
         </div>
       </div>
     </div>
 
-    <div id="lightboxEditContact" class="lightbox-edit-contact d-none">
-      
-    </div>
+    <div id="lightboxEditContact" class="lightbox-edit-contact d-none"></div>
 
     <div class="container">
       <div class="container-left">
-        <div class="container-position" id="contactList"></div>
-       
-        
+        <div class="container-mobile-btn">
+          <div class="add-contact-btn-mobile d-none" onclick="showNewContactContainer()">
+            <div class="add-contact-text-mobile">New contact</div>
+            <div>
+              <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
+            </div>
+          </div>
+        </div>  
+        <div class="container-position" id="contactList"></div>       
       </div>
 
       <div id="containerRight" class="container-right">
@@ -65,10 +72,9 @@
         <div class="add-contact-btn" onclick="showNewContactContainer()">
           <div class="add-contact-text">New contact</div>
           <div>
-            <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
-  
+            <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div> 
           </div>
+        </div>
       </div>
-    </div>
   </body>
 </html>
