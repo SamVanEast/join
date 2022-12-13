@@ -1,3 +1,4 @@
+let wichContent = '';
 /**
  * Sucht nach dem Attribute w3-include-html um darin ein HtMl-template rein zu laden
  */
@@ -17,22 +18,43 @@ async function includeHTML() {
 /**
  * Je nachdem auf welchem Reiter man klickt wird das entsprechende template geladen
  * ebenso wird dem angeklickten Reiter eine andere Background-color gegeben
- * @param {string} wichContent gibt an welches HTML-template geladen werden muss, indem es ein Teil des Pfads ist
+ * @param {string} wichHtmlPage gibt an welches HTML-template geladen werden muss, indem es ein Teil des Pfads ist
  */
-async function loadContent(wichContent) {//Den angeklickten Inhalt laden
+async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
+    wichContent = wichHtmlPage;
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
-    let content = document.getElementById('content');
     removeDarkBlue();
-    showHelpIcon(wichContent);
-    content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
+    showHelpIcon();
+    await showContent();
     await includeHTML();
-    wichOnloadFunction(wichContent);
+    wichOnloadFunction();
+}
+
+async function showContent(){
+    let content = document.getElementById('content');
+    if (window.innerWidth < 1440) {
+        wichContent = 'welcome';
+        content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
+        wichContent = 'summary'
+        setTimeout(() => {
+            content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
+            includeHTML();
+        }, 1500);
+
+    }else{
+        content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
+    }
 }
 /**
- * überpüft ob der Help-icon angezeigt werden soll und ob darkBlue einer der menü-Reiter hinzugefügt werden muss
- * @param {string} wichContent gibt an welches HTML-template geladen werden muss, indem es ein Teil des Pfads ist
+ * wenn sich width vom der Seite ändert, soll eine Function ausgeführt werden
  */
-function showHelpIcon(wichContent){
+window.addEventListener('resize', () => {
+    showHelpIcon(); // meine funktion die ich ausführen möchte
+})
+/**
+ * überpüft ob der Help-icon angezeigt werden soll und ob darkBlue einer der menü-Reiter hinzugefügt werden muss
+ */
+function showHelpIcon(){
     let tab = document.getElementById(`tab-${wichContent}`);
     if (wichContent == 'help' || window.innerWidth < 1060) {
         document.getElementById('qoestion-mark-img').classList.add('d-none');
@@ -45,9 +67,8 @@ function showHelpIcon(wichContent){
 }
 /**
  * frägt nach welcher content geladen ist und dann nur die dazu gehöhrige function ausgeführt wird
- * @param {string} wichContent um zu wissen welche onload function geladen werden muss je nach dem welches template geladen wird 
  */
-async function wichOnloadFunction(wichContent) {
+async function wichOnloadFunction() {
     if (wichContent == 'board') {
         init();
     }

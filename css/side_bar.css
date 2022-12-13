@@ -7,6 +7,7 @@ body {
 .side_bar {
     display: flex;
     height: 1024px;
+    background-color: #F6F7F8;
 }
 
 .menu {
@@ -153,7 +154,6 @@ body {
 #content {
     width: 100%;
     height: 935px;
-    background-color: #F6F7F8;
     box-sizing: border-box;
 }
 

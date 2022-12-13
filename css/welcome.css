@@ -27,4 +27,8 @@
     .welcome_responsive{
         height: 100vh;
     }
+
+    .side_bar{
+        overflow: hidden;
+    }
 }

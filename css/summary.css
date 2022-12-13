@@ -288,6 +288,10 @@
 
 @media (max-width: 1060px) {
 
+    .side_bar {
+        overflow: unset;
+    }
+    
     .summary {
         height: unset;
         box-sizing: unset;
@@ -301,13 +305,13 @@
 
     .summary_content {
         height: unset;
-        padding-bottom: 80px;
         padding-left: unset;
         display: flex;
         justify-content: center;
         box-sizing: border-box;
         padding-top: 41px;
         padding-bottom: 100px;
+        overflow: hidden;
     }
 }
 
