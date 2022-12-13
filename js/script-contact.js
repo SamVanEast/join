@@ -151,7 +151,62 @@ function showSingleContact(i){
           <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
         `;
         } else {
-          document.getElementById()
+          document.getElementById('container').classList.add('d-none');
+          document.getElementById('lightboxMobileContact').innerHTML = /*html*/`
+          <div class="headline">
+        <h1>Contacts</h1>
+        <div></div>
+        <h3>Better with a Team</h3>
+          </div>
+    <div class="contact-information">
+      <div class="contact-information-up">
+        <div class="contact-icon">
+          <div class="contact-icon-bg" style="background: rgb(${contacts[i]['r']},${contacts[i]['b']},${contacts[i]['g']}">
+            <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('')}</div>
+          </div>
+        </div>
+        <div class="add-task">
+          <div class="add-task-name">
+            <div>${contacts[i]['name']} </div>
+          </div>
+          <div class="add-task-btn">
+            <div class="add-task-btn-plus">
+              <div><img src="/assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
+            </div>
+            <div class="add-task-btn-text">Add Task</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-information-middle">
+        <div class="contact-information-text"> Contact Information</div>
+        <div class="edit-container">
+          <div class="edit-container-left"> 
+            <img src="/assets/img/contact-img/edit.png" alt="" srcset="">
+          </div>
+          <div class="edit-contact" onclick="openEditContact(${i})">Edit Contact</div>
+        </div>
+      </div>
+      <div class="contact-information-down">
+        <div class="contact-information-fr102">
+          <div class="contact-information-fr102-email">Email</div>
+          <div class="contact-information-fr102-text">${contacts[i]['email']}</div>
+        </div>
+        <div class="contact-information-fr103">
+          <div class="contact-information-fr103-phone">Phone</div>
+          <div class="contact-information-fr103-number">${contacts[i]['phone']}</div>
+        </div>
+      </div>
+      </div>
+      
+
+        </div>
+        <div class="add-contact-btn" onclick="showNewContactContainer()">
+        <div class="add-contact-text">New contact</div>
+        <div>
+          <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
+          
+          
+          `;
         }
 }
 
