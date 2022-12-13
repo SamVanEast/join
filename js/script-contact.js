@@ -151,7 +151,7 @@ function showSingleContact(i){
           <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
         `;
         } else {
-          document.getElementById('containerRight').classList.remove('d-none');
+          document.getElementById()
         }
 }
 
