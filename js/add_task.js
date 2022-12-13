@@ -226,6 +226,8 @@ function addSubtask() {
 
 function clearFields() {
     document.getElementById('form').reset();
+    renderCategoryContent();
+    renderAssignedToContent();
 }
 
 /**
