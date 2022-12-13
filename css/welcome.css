@@ -50,7 +50,4 @@
         height: calc(100vh - 160px);
     }
 
-    .side_bar {
-        overflow: hidden;
-    }
 }
