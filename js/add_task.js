@@ -4,10 +4,7 @@
  * @param {Array} tasks - This array is used to store data from add_task.html
  */
 
-let tasks = [];
-let subtask = [];
-let categorys = ['Sales', 'Backoffice'];
-let contactsTest = ['1', '2', '3', '4', '5'];
+// let allTasks;
 
 
 /**
@@ -15,10 +12,11 @@ let contactsTest = ['1', '2', '3', '4', '5'];
  * 
  */
 
-function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('all tasks');
-    tasks = JSON.parse(allTasksAsString);
-    console.log('Loaded all tasks: ', tasks);
+ async function init() {
+    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+    await downloadFromServer();
+    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    console.log(allTasks);
 
     renderSubtaskContent();
     renderCategoryContent();
@@ -27,7 +25,7 @@ function loadAllTasks() {
 
 
 function renderCategoryContent() {
-    document.getElementById('categoryContent').innerHTML = /*html*/ `
+    document.getElementById('cat').innerHTML = /*html*/ `
          <p>Category</p>
          <div class="dropdown" id="dropdownCategory">
              <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent" onclick="renderCategorys()">Select task category</div>
@@ -92,7 +90,7 @@ function renderSelectedCategory(category) {
 
 
 function renderAssignedToContent() {
-    document.getElementById('categoryAssigned').innerHTML = /*html*/ `
+    document.getElementById('assigned').innerHTML = /*html*/ `
         <p>Assigned to</p>
         <div class="dropdown" id="dropdownAssignedTo">
             <div class="categorysDropdownSelectHTML" id="dropdownAssignedTo" onclick="renderAssignedTo()">Select contacts to assign</div>
@@ -117,8 +115,8 @@ function renderAssignedTo() {
 function renderAssignedToOptions() {
     let names = document.getElementById('assignedToOptions');
 
-    for (let b = 0; b < contactsTest.length; b++) {
-        const contact = contactsTest[b];
+    for (let b = 0; b < contacts.length; b++) {
+        const contact = contacts[b];
 
         names.innerHTML += /*html*/`
          <span class="categorysDropdown" onclick="renderSelectedAssignedTo('${contact}')">${contact}</span>
@@ -145,7 +143,7 @@ function setDate() {
 
 
 function renderSubtaskContent() {
-    document.getElementById('subtasksContent').innerHTML = /*html*/ `
+    document.getElementById('subs').innerHTML = /*html*/ `
          <p>Subtasks</p>
          <div class="inputSubtask" id="inputSubtask">
              <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
@@ -196,33 +194,4 @@ function clearFields() {
     document.getElementById('form').reset();
     renderCategoryContent();
     renderAssignedToContent();
-}
-
-/**
- * Function that gets all the values of the Add-Task-Page
- * and defines a Json called "task"
- */
-
-function addTask() {
-    let headline = document.getElementById('headline').value;
-    let description = document.getElementById('description').value;
-    let category = document.getElementById('dropdownCategory').value;
-    let duedate = document.getElementById('dueDate').value;
-
-    let task = {
-        'id': '',
-        'status': '',
-        'category': category,
-        'description': description,
-        'duedate': duedate,
-        'headline': headline,
-        'involved': '',
-        'priority': '',
-        'status': 'todo',
-        'subtasks': ''
-    }
-
-    tasks.push(task);
-    let allTasksAsString = JSON.stringify(tasks);
-    localStorage.setItem('all tasks', allTasksAsString);
 }

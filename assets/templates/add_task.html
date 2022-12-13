@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="../../css/fonts.css">
     <link rel="stylesheet" href="../../css/add_task.css">
     <script src="../../js/add_task.js"></script>
-    <script src="/mini_backend.js"></script>
+    <script src="../../mini_backend.js"></script>
 
     <title>add_task</title>
 
 </head>
 
-<body onload="loadAllTasks()">
+<body onload="init()">
     <!-- added onload function -->
 
     <div class="addTaskContainer">
@@ -30,20 +30,19 @@
                         </div>
                         <div class="description">
                             <p>Description</p>
-                            <textarea required minlength="1" type="text" placeholder="Enter a Description"
-                                id="description"></textarea> <!-- added ID description-->
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="desc"></textarea> <!-- added ID description-->
                         </div>
 
-                        <div class="category" id="categoryContent"></div>
+                        <div class="category" id="cat"></div>
 
-                        <div class="categoryAssigned" id="categoryAssigned"></div>
-                        
+                        <div class="categoryAssigned" id="assigned"></div>
+
                     </div>
                 </div>
 
                 <div class="borderLine"></div>
 
-                <div class="dateToButtons">
+                <div class="dateToButtons" id="dateButtons">
 
                     <div class="dueDate">
                         <p>Due date</p>
@@ -53,15 +52,13 @@
                     <div class="prio">
                         <p>Prio</p>
                         <div class="prioButtons">
-                            <button type="button" class="urgentButton">Urgent <input class="urgent"
-                                    type="checkbox"></button>
-                            <button type="button" class="mediumButton">Medium <input class="medium"
-                                    type="checkbox"></button>
+                            <button type="button" class="urgentButton">Urgent <input class="urgent" type="checkbox"></button>
+                            <button type="button" class="mediumButton">Medium <input class="medium" type="checkbox"></button>
                             <button type="button" class="lowButton">Low <input class="low" type="checkbox"></button>
                         </div>
                     </div>
 
-                    <div class="subtasksContent" id="subtasksContent"></div>
+                    <div class="subtasksContent" id="subs"></div>
 
                     <div class="clearAndCreate">
                         <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"

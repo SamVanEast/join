@@ -111,7 +111,7 @@ async function wichOnloadFunction() {
         render();
     }
     if (wichContent == 'add_task') {
-        loadAllTasks();
+        init();
     }
 }
 /**
