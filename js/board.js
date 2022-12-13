@@ -115,7 +115,6 @@ function filterBoard() {
         </div>
         </div>`;
         checkBgColor(result);
-        filterStatus(result);
         }
         }
         
