@@ -82,7 +82,6 @@ function filterBoard() {
 
     
     let test = document.getElementById('todo');
-
     test.innerHTML = '';
 
     for (let i = 0; i < allTasks.length; i++) {
