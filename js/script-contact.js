@@ -151,12 +151,19 @@ function showSingleContact(i){
           <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
         `;
         } else {
+          document.getElementById('lightboxMobileContact').classList.remove('d-none')
           document.getElementById('container').classList.add('d-none');
           document.getElementById('lightboxMobileContact').innerHTML = /*html*/`
-          <div class="headline">
-        <h1>Contacts</h1>
-        <div></div>
-        <h3>Better with a Team</h3>
+          <div class="mobile-headline">
+            <div class="headline">
+              <p>Kanban Project Management Tools</p>    
+              <h1>Contacts</h1>        
+              <h3>Better with a Team</h3>
+              <div></div>
+            </div>
+            <div class="mobile-back">
+              <img src="/assets/img/contact-img/arrow-left-line.png" alt="" onclick="hideMobileContacts()">
+            </div>
           </div>
     <div class="contact-information">
       <div class="contact-information-up">
@@ -200,14 +207,18 @@ function showSingleContact(i){
       
 
         </div>
-        <div class="add-contact-btn" onclick="showNewContactContainer()">
-        <div class="add-contact-text">New contact</div>
-        <div>
-          <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
+        <div class="edit-contact-mobile" onclick="openEditContact(${i})">
+          <div><img src="/assets/img/contact-img/edit-mobile.png" alt="" srcset=""></div>
+        </div>
           
           
           `;
         }
+}
+
+function hideMobileContacts(){
+  document.getElementById('container').classList.remove('d-none');
+  document.getElementById('lightboxMobileContact').classList.add('d-none');
 }
 
 function openEditContact(i){

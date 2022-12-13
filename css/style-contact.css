@@ -22,7 +22,6 @@
 .container-position {
   min-width: 300px;
   max-width: 453px;
-  height: 935px;
   background: #FFFFFF;
   box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
 }
@@ -837,7 +836,7 @@ border-radius: 10px;
     min-width: 0;
     display: flex;
     justify-content: center;
-    height: calc(100vh - 83px);
+    height: calc(100vh - 162px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -848,6 +847,7 @@ border-radius: 10px;
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    padding-top: 80px;
   }
 
   .add-contact-btn-mobile{
@@ -855,17 +855,113 @@ border-radius: 10px;
     display: flex;
   }
 
+  .mobile-edit-btn{
+
+  }
+
   .container-right {
     display: none;
+  }
+
+  .header_headline{
+    display: none;
+  }
+
+  .headline{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 35px;
+    height: auto;
+  }
+
+  .mobile-headline{
+    display: flex;
+
+  }
+
+  .mobile-back{
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-back img{
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    bottom: 20%;
+    left: 10%;
+  }
+
+  .edit-container{
+    display: none;
+  }
+
+  .contact-information {
+    gap: 0;
+    position: relative;
+    right: 5%;
+  }
+
+  .contact-information-middle{
+    width: auto;
+  }
+
+  .add-task{
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .add-task-name{
+    height: auto;
+  }
+
+  .add-task-name div{
+    height: auto;
+    font-size: 36px;
+  }
+
+  .contact-icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+  }
+
+  .contact-icon-bg {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+  }
+
+  .contact-information-up{
+    gap: 18px;
+    height: auto;
+  }
+
+  .headline p {
+    margin: 0;
+  }
+
+  .headline h1{
+    height: auto;
+    margin: 0;
+    font-size: 47px;
+  }
+
+  .headline div {
+    height: 0;
+    width: 90px;
   }
 
  
 
   .container-position {
     max-width: none;
+    height: -webkit-fill-available;
   }
 
-  .add-contact-btn {
+  .add-contact-btn-mob {
     top: 774px;
   }
 
@@ -884,6 +980,25 @@ border-radius: 10px;
   .add-contact-btn{
     display: block;
     position: absolute;
+  }
+
+  .edit-contact-mobile{
+    position: absolute;
+    cursor: pointer;
+    box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  gap: 10px;
+  width: auto;
+  height: 50px;
+  right: 20px;
+  top: 700px;
+  background: #2A3647;
+  border: 1px solid #2A3647;
+  border-radius: 10px;
   }
 
   .lightbox-container{
