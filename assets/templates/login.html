@@ -13,7 +13,7 @@
 
 <body>
   <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
-  <!-- Container for the log in Screen -->
+  <!-- CONTAINER FOR LOGIN SCREEN -->
  
 
   <div id="login" class="container">
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <!-- Container for the Sign Up Screen-->
+  <!-- CONTAINER FOR SIGN UP SCREEN-->
 
   <div class="container-signup d-none" id="signUp">
     <div>
@@ -55,13 +55,16 @@
     </div>
     <div class="container-signup-middle">
 
-      <div class="container-up">
+      <div class="go-back-signup">
         <img onclick="backToLogin()" class="go-back" src="/assets/img/login-img/Vector.png" alt="">
-        <h1>Sign up</h1>
+      </div>
+
+      <div class="container-up-signup">
+        <h1 class="signup-headline">Sign up</h1>
         <div class="underline-login"> </div>
       </div>
 
-      <form class="container-input" action="" onsubmit="createNewUser(); return false;">
+      <form class="container-input-signup" action="" onsubmit="createNewUser(); return false;">
         <input required type="text" name="" id="signupName" placeholder="Name" />
         <input required type="email" name="" id="signupEmail" placeholder="Email" />
         <input  required type="password" id="signupPassword"placeholder="Password" />
@@ -69,33 +72,31 @@
           <button class="login-button">Sign up</button>
         </div>
       </form>
-
-
-
-     
+      
     </div>
   </div>
 
-  </div>
+  
 
   <!-- CONTAINER FOR FORGOT PASSWORD SCREEN -->
 
   <div class="container-signup d-none " id="forgot">
-    <img onclick="backToLogin()" class="go-back-forgot" src="/assets/img/login-img/Vector.png" alt="">
- 
+    
 
     <div class="container-signup-middle-forgot">
-
+      <div class="go-back-forgot-container">
+        <img onclick="backToLogin()" class="go-back-forgot" src="/assets/img/login-img/Vector.png" alt="">
+      </div>
       <div class="container-up">
-        <h1>I forgot my password</h1>
+        <h1 class="forgot-headline">I forgot my password</h1>
         <div class="underline-login"> </div>
-        <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
+        <p class="forgot-text">Don't worry! We will send you an email with the instructions to reset your password.</p>
       </div>
 
-      <form class="container-input" action="" onsubmit="SendEmailtoChangePassword(); return false;">
-        <input required type="email" name="" id="forgotEmail" placeholder="Email" />
+      <form class="container-input-forgot" action="" onsubmit="SendEmailtoChangePassword(); return false;">
+        <input class="forgot-input" required type="email" name="" id="forgotEmail" placeholder="Email" />
         <div class="container-button-signup">
-          <button class="login-button">Send me the email</button>
+          <button class="forgot-button">Send me the email</button>
         </div>
       </form>
 
@@ -103,13 +104,11 @@
     </div>
   </div>
 
-  </div>
+  
 
-  <!-- SCREEN FOR RESET YOUR PASSWORD -->
+  <!-- CONTAINER FOR FORGOT PASSWORD SCREEN -->
 
-  <div class="container-signup d-none " id="reset">
-
-  </div>
+  <div class="container-reset d-none " id="reset"></div>
 
       
       

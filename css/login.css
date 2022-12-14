@@ -35,12 +35,12 @@ margin-top: 37px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 24px;
 }
 
 .container-login h1{
     margin: 0;
     font-family: 'Inter';
-    height: 97px;
     font-size: 61px;
     text-align: center;
 }
@@ -48,7 +48,7 @@ margin-top: 37px;
 .underline-login{   
 width: 150px;
 height: 0px;
-border: 3px solid #29ABE2;
+border: 2px solid #29ABE2;
 
 }
 
@@ -170,9 +170,9 @@ border: 3px solid #29ABE2;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
-
-.container-signup h1{
+.signup-headline {
     margin: 0;
     font-family: 'Inter';
     height: 97px;
@@ -180,6 +180,22 @@ border: 3px solid #29ABE2;
     text-align: center;
 }
 
+.container-up-signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 90%;
+}
+
+
+.container-input-signup{
+    display: flex;
+    flex-direction: column;
+    gap: 49px;
+    width: 75%;
+    align-items: center;
+}
 
 .signup-logo {
     position: absolute;
@@ -187,12 +203,37 @@ border: 3px solid #29ABE2;
     top: 85px;
 }
 
-#signupEmail, #signupPassword, #signupName, #forgotEmail, #confirmPassword, #newPassword{
+#signupEmail, #signupPassword, #signupName  {
     font-family: 'Inter';
     font-size: 20px;
     height: 50px;
     border: 1px solid #D1D1D1;
-border-radius: 10px;
+    border-radius: 10px;
+    width: 75%;
+    background: url(/assets/img/login-img/letter.png) no-repeat;
+    background-position: 97%;
+}
+
+#signupPassword  {
+    font-family: 'Inter';
+    font-size: 20px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 75%;
+    background: url(/assets/img/login-img/safe.png) no-repeat;
+    background-position: 97%;
+}
+
+#signupName  {
+    font-family: 'Inter';
+    font-size: 20px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 75%;
+    background: url(/assets/img/login-img/name.png) no-repeat;
+    background-position: 97%;
 }
 
 
@@ -209,8 +250,7 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 35px;
-width: 652px;
-height: 559px;
+width: 50%;
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 border-radius: 30px;
@@ -218,14 +258,26 @@ border-radius: 30px;
 
 .go-back{
     cursor: pointer;
+
+
+}
+
+.go-back-signup{
+
     position: relative;
-    right: 280px;
-    top: 26px;
+    left: 5%;
+    top: 40px;
+    width: 100%;
 }
 
 
 .d-none{
     display: none;
+}
+
+.d-none-reset{
+    display: none;
+    height: 0vh;
 }
 
 /******************CONTAINER FOR FORGOTTEN PASSWORD */
@@ -236,41 +288,158 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 35px;
-width: 826px;
-height: 462px;
+width: 60%;
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 border-radius: 30px;
 }
 
-.go-back-forgot{
-    cursor: pointer;
+.go-back-forgot-container{
+    display: flex;
+    justify-content: flex-start;
+    width: 90%;
     position: relative;
-    left: 5%;
-    bottom: 22%;
+    top: 10%;
+}
+
+.forgot-headline{
+    margin: 0;
+    font-family: 'Inter';
+    font-size: 61px;
+    text-align: center;
+    height: 60px;
+}
+
+.container-input-forgot{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 49px;
+    width: 75%;
+}
+
+.forgot-text{
+    width: 80%;
+    text-align: center;
+}
+
+#forgotEmail{
+    font-family: 'Inter';
+    font-size: 20px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 65%;
+    background: url(/assets/img/login-img/letter.png) no-repeat;
+    background-position: 97%;
+}
+
+.forgot-button{
+    cursor: pointer;
+    padding: 13px 40px 13px 40px;
+    border: #2A3647;
+    color: #FFFFFF;
+    font-size: 21px;
+    font-weight: 700;
+    background: #2A3647;
+    border-radius: 8px;
 }
 
 /* CSS FOR RESET PASSWORD SCREEN */
+
+
+.container-reset{
+    height: 100vh;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-signup-reset{
+    width: 60%;
+}
+
+.container-up-reset{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.container-up-reset h1{
+    font-size: 60px;
+    margin: 10px;
+    text-align: center;
+    width: 90%;
+}
+
+.container-up-reset p{
+    font-size: 20px;
+    text-align: center;
+}
+
+.container-input-reset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 49px;
+    width: 65%;
+}
+
+#newPassword, #confirmPassword{
+    width: 80%;
+    font-family: 'Inter';
+    font-size: 20px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
 
 .container-signup-middle-reset {
     display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-gap: 35px;
-width: 826px;
-height: 537px;
+width: 60%;
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 border-radius: 30px;
+width: 100%;
+}
+
+.go-back-reset-container{
+    display: flex;
+    justify-content: flex-start;
+    width: 90%;
+    position: relative;
+    top: 27px;
 }
 
 .go-back-reset{
     cursor: pointer;
-    position: relative;
-    right: 365px;
-    top: 10px;
+    width: 24px;
+    height: 24px;
+    
 }
+
+
+@media only screen and (max-width: 1300px) {
+
+    .forgot-headline{
+        font-size: 50px;
+        width: 80%;
+        height: 105px;
+    }
+
+    .go-back-forgot-container{
+        top: 6%;
+    }
+    
+}
+
 
 @media only screen and (max-width: 960px) {
 
@@ -299,19 +468,101 @@ border-radius: 30px;
         flex-direction: column;
     }
 
+
+    .container-signup-middle{
+        
+    }
+
     .container-login{
-        margin-top: 215px;
+        margin-top: 110px;
         width: 65%;
+    }
+
+    .container-signup-reset{
+        margin-top: 110px;
     }
 
     .signup-logo{
         left: 30px;
         top: 50px;
+        height: 90px;
+    }
+
+    .forgot-headline{
+        height: 105px;
+    }
+
+    #forgotEmail{
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 650px){
+
+    .forgot-headline{
+        font-size: 48px;
+    }
+
+    .container-signup-middle-forgot{
+        width: 90%;
+    }
+
+    .container-up-reset h1{
+        margin-top: 30px;
+        font-size: 48px;
+    }
+
+    .container-signup-reset{
+        width: 90%;
+    }
+
+    #newPassword{
+        width: 100%;
+    }
+
+    #confirmPassword{
+        width: 100%;
+    }
+
+}
+
+
+@media only screen and (max-width: 400px){
+
+    .forgot-button{
+        padding: 13px 20px 13px 10px;
+    }
+
+    #forgotEmail{
+        width: 120%;
+        font-size: 16px;
+    }
+
+    #newPassword{
+        width: 120%;
+    }
+
+    #confirmPassword{
+        width: 120%;
     }
 
 }
 
 @media only screen and (max-width: 350px) {
+
+
+    .forgot-headline{
+        font-size: 38px;
+    }
+
+    .container-up-reset h1{
+        font-size: 38px;
+    }
+
+    .container-login h1{
+        font-size: 38px;
+    }
 
     .login-button{
         padding: 13px 28px 13px 28px;
@@ -323,6 +574,11 @@ border-radius: 30px;
 
     .container-remember p{
         font-size: 14px;
+    }
+
+    .forgot-button{
+        font-weight: 100;
+        font-size: 18px;
     }
 
 
