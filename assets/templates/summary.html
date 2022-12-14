@@ -24,17 +24,17 @@
             <div class="overview">
                 <div class="board_infos">
                     <div class="tasks" onclick="loadContent('board')">
-                        <div>5</div>
+                        <div id="tasks-in-board">5</div>
                         <span>Tasks in<br>
                             Board</span>
                     </div>
                     <div class="tasks" onclick="loadContent('board')">
-                        <div>2</div>
+                        <div id="tasks-in-progress">8</div>
                         <span>Tasks In<br>
                             Progress</span>
                     </div>
                     <div class="tasks" onclick="loadContent('board')">
-                        <div>2</div>
+                        <div id="tasks-in-feedback">8</div>
                         <span>Awaiting<br>
                             Feedback</span>
                     </div>
@@ -45,12 +45,12 @@
                             <img src="../img/summary-img/urgent.svg" alt="">
                         </div>
                         <div class="urgent_info">
-                            <div class="urgent_info_number">1</div>
+                            <div id="urgent-info-number" class="urgent_info_number">1</div>
                             <div class="urgent_info_description">Urgent</div>
                         </div>
                     </div>
                     <div class="upcoming_deadline_info">
-                        <div class="date">October 16, 2022</div>
+                        <div id="date-of-urgent" class="date">October 16, 2022</div>
                         <div class="upcoming_deadline">Upcoming Deadline</div>
                     </div>
                 </div>
@@ -58,14 +58,14 @@
                     <div class="to_do_and_done_section">
                         <div id="to-do-img"></div>
                         <div class="to_do_and_done_content">
-                            <div>1</div>
+                            <div id="to-do-number">8</div>
                             <span>To-do</span>
                         </div>
                     </div>
                     <div class="to_do_and_done_section" onclick="loadContent('board')">
                         <div id="done-img"></div>
                         <div class="to_do_and_done_content">
-                            <div>1</div>
+                            <div id="done-number">8</div>
                             <span>Done</span>
                         </div>
                     </div>

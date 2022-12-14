@@ -119,6 +119,9 @@ async function wichOnloadFunction() {
     if (wichContent == 'add_task') {
         init();
     }
+    if (wichContent == 'summary') {
+        summaryInit();
+    }
 }
 /**
  * Es löscht von allen Reitern die diese Background-color haben könnten, diese.
