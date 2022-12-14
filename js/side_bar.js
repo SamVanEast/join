@@ -48,6 +48,7 @@ function showContent() {
         checkIFWichContentAddTasks();
         content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
         document.getElementById('header-headline').style = '';
+        isWelcomeAlready = true;
     }
 }
 /**
@@ -83,7 +84,7 @@ function checkIFWichContentContacts() {
  * wenn der content von add_task geladen wird, soll der div header-image nicht mehr angezeigt werden
  */
 function checkIFWichContentAddTasks() {
-    if (wichContent == 'add_task') {
+    if (wichContent == 'add_task' && window.innerWidth < 1060) {
         document.getElementById('header-image').style = 'display: none';
     } else {
         document.getElementById('header-image').style = '';
@@ -94,6 +95,8 @@ function checkIFWichContentAddTasks() {
  */
 window.addEventListener('resize', () => {
     showHelpIcon(); // meine funktion die ich ausführen möchte
+    checkIFWichContentContacts();
+    checkIFWichContentAddTasks();
 })
 /**
  * überpüft ob der Help-icon angezeigt werden soll und ob darkBlue einer der menü-Reiter hinzugefügt werden muss
@@ -170,18 +173,37 @@ function save(event) {
  * ist eine Abfrage um zu wissen ob man sich als guest oder user einloggt
  */
 function whoToWelcome() {
-    let welcome = document.getElementById('welcome');
-    let welcomeResponsive = document.getElementById('welcome-responsive');
-    if (currentUser) {
-        welcome.innerHTML = `${htmlUser()}`;
-        if (welcomeIsShowing == true) {
-            welcomeResponsive.innerHTML = `${htmlUser()}`;
+    if (wichContent == 'summary') {
+        let welcome = document.getElementById('welcome');
+        let welcomeResponsive = document.getElementById('welcome-responsive');
+        if (currentUser) {
+            loadUser(welcome, welcomeResponsive);
+        } else {
+            loadGuest(welcome, welcomeResponsive);
         }
-    } else {
-        welcome.innerHTML = `${htmlGuest()}`;
-        if (welcomeIsShowing == true) {
-            welcomeResponsive.innerHTML = `${htmlGuest()}`;
-        }
+    }
+
+}
+/**
+ * ladet die user Begrüßung
+ * @param {*id} welcome Die Id vom welcome div
+ * @param {*id} welcomeResponsive Die Id vom welcome-responsive div
+ */
+function loadUser(welcome, welcomeResponsive) {
+    welcome.innerHTML = `${htmlUser()}`;
+    if (welcomeIsShowing == true) {
+        welcomeResponsive.innerHTML = `${htmlUser()}`;
+    }
+}
+/**
+ * ladet die guest Begrüßung
+ * @param {id} welcome Die Id vom welcome div
+ * @param {id} welcomeResponsive Die Id vom welcome-responsive div
+ */
+function loadGuest(welcome, welcomeResponsive) {
+    welcome.innerHTML = `${htmlGuest()}`;
+    if (welcomeIsShowing == true) {
+        welcomeResponsive.innerHTML = `${htmlGuest()}`;
     }
 }
 /**
