@@ -30,6 +30,7 @@ async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
         showHelpIcon();
         showContent();
         await includeHTML();
+        whoToWelcome();
         wichOnloadFunction();
         closeLogOutButton();
     }
@@ -53,7 +54,7 @@ function showContent() {
  * ladet die Begrüßungsseite beim laden der side_bar.html
  * @param {id} content //to get the div with the ID content
  */
-function loadWelcomeContent(content) {
+async function loadWelcomeContent(content) {
     welcomeIsShowing = true;
     content.innerHTML = `<div w3-include-html="welcome.html"></div>`;
     content.innerHTML += `<div w3-include-html="summary.html"></div>`;
@@ -63,8 +64,10 @@ function loadWelcomeContent(content) {
         document.getElementById('side-bar').style = '';
         welcomeIsShowing = false;
         isWelcomeAlready = true;
+        setTimeout(() => {//falls jmd die widht von der website ändert nicht immer wieder die animation von class= "hide_welcome" ausgeführt wird
+            document.getElementById('welcome-responsive').classList.add('d-none');
+        }, 500);
     }, 1500);
-
 }
 /**
  * wenn der content von contacts geladen wird soll die header_headline nicht mehr angezeigt werden
@@ -163,5 +166,38 @@ function closeLogOutButton() {
 function save(event) {
     event.stopPropagation();
 }
-
-
+/**
+ * ist eine Abfrage um zu wissen ob man sich als guest oder user einloggt
+ */
+function whoToWelcome() {
+    let welcome = document.getElementById('welcome');
+    let welcomeResponsive = document.getElementById('welcome-responsive');
+    if (currentUser) {
+        welcome.innerHTML = `${htmlUser()}`;
+        if (welcomeIsShowing == true) {
+            welcomeResponsive.innerHTML = `${htmlUser()}`;
+        }
+    } else {
+        welcome.innerHTML = `${htmlGuest()}`;
+        if (welcomeIsShowing == true) {
+            welcomeResponsive.innerHTML = `${htmlGuest()}`;
+        }
+    }
+}
+/**
+ * 
+ * @returns Gibt den HTML content für den user 
+ */
+function htmlUser() {
+    return `<span class="good_morning_responsive">Good morning,</span><br>
+            <span class="account_name_responsive">${currentUser.name}</span>
+            `;
+}
+/**
+ * 
+ * @returns Gibt den HTML content für den guest
+ */
+function htmlGuest() {
+    return `<span class="good_morning_responsive">Good morning</span><br>
+            `;
+}

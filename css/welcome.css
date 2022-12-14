@@ -25,6 +25,12 @@
     color: #29ABE2;
 }
 
+@media (min-width: 1440px) {
+    .welcome_responsive {
+        display: none;
+    }
+}
+
 @media (max-width: 1440px) {
     .hide_welcome {
         transform: scale(0);
@@ -45,10 +51,7 @@
 }
 
 @media (max-width: 1060px) {
-
     .welcome_responsive {
         height: calc(100vh - 160px);
     }
-
-
 }
