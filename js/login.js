@@ -19,6 +19,9 @@ function changePassword(i) {
 
   if (newPassword === confirmPassword) {
     user[i].password = newPassword;
+    console.log('password changed');
+    document.getElementById('reset').innerHTML=" ";
+    document.getElementById('login').classList.remove('d-none');
     
   } else {
     alert("password are different");
@@ -35,27 +38,28 @@ function SendEmailtoChangePassword() {
       alert("An Email has been send to you");
       document.getElementById("forgot").classList.add("d-none");
       document.getElementById("reset").classList.remove('d-none');
-      document.getElementById("reset").innerHTML = /*html*/ `
-        <div class="container-signup" >
-            <div>
-                <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
-            </div>
-            <div id="containerReset" class="container-signup-middle-reset">
+      document.getElementById("reset").innerHTML += /*html*/ `
+        <div class="container-signup-reset" >
+            
+          <div id="containerReset" class="container-signup-middle-reset">
 
-            <div class="container-up">
+              <div class="go-back-reset-container">
                 <img onclick="backToLogin()" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
-                <h1>Reset your password</h1>
-                <div class="underline-login"> </div>
-                <p>Change your account password</p>
-            </div>
+              </div>  
+              <div class="container-up-reset">
+                  <h1>Reset your password</h1>
+                  <div class="underline-login"> </div>
+                  <p>Change your account password</p>
+              </div>
 
-            <form class="container-input" action="" onsubmit="changePassword(${i}); return false;">
-                <input required type="password" placeholder="New password" id="newPassword" />
-                <input required type="password" placeholder="Confirm password" id="confirmPassword" />
-                <div class="container-button-signup">
-                    <button class="login-button">Continue</button>
-                </div>
-            </form>
+              <form class="container-input-reset" action="" onsubmit="changePassword(${i}); return false;">
+                  <input required type="password" placeholder="New password" id="newPassword" />
+                  <input required type="password" placeholder="Confirm password" id="confirmPassword" />
+                  <div class="container-button-signup">
+                      <button class="login-button">Continue</button>
+                  </div>
+              </form>
+          </div>
         </div>
             `;
     } else {
@@ -99,6 +103,8 @@ function checkLogin() {
 function openSignUp() {
   document.getElementById("signUp").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
+  document.getElementById("reset").classList.add("d-none");
+  document.getElementById("forgot").classList.add("d-none");
 }
 
 function backToLogin() {
@@ -111,4 +117,6 @@ function backToLogin() {
 function showForgotScreen() {
   document.getElementById("forgot").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
+  document.getElementById("signUp").classList.add("d-none");
+  document.getElementById("reset").classList.add("d-none");
 }
