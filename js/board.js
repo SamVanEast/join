@@ -82,19 +82,22 @@ function filterDone() {
 
 
 function newTaskHTML(element) {
-    return `
+    return /*html*/`
         <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
         <div class="singleTask ${element.id}">
         <div id="category${element['id']}" class="category">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
         <div class="taskDescription">${element['desc']}</div>
-        <div class="progressBar">
-            <div class="progress">progressbar</div>
-            <div class="progressText">x/x Done</div>
+        
+        <div class="progressbar">    
+            <div class="progressbar-grey">
+                <div id="progressbar-blue" class="progressbar-blue" style="width: 50%"></div>
+            </div>
+            <div id="done-counter">1/2 Done</div>
         </div>
-        <div class="peopleInvolvedPriority">
+                <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
-                <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div>
+                
             </div>
             <div class="priority"></div>
             </div>
@@ -367,3 +370,4 @@ function filterBoardHTML(result) {
 }
 
 
+/* Contact: <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div> */
