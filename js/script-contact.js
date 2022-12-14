@@ -247,9 +247,9 @@ function openEditContact(i){
               <input id="editNumber" required id="AddNumber" placeholder="${contacts[i]['phone']}" type="text">
             </div>
           </form>
-            <div class="lightbox-btn">
+            <div class="lightbox-btn-edit">
               
-              <button class="lightbox-btn-right" onclick="editContacts(${i})">Save</button>
+              <button class="lightbox-btn-right-edit" onclick="editContacts(${i})">Save</button>
             </div>
             
           </div>       
