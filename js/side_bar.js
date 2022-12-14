@@ -1,5 +1,6 @@
 let wichContent = '';
 let isWelcomeAlready = false; //damit soll verhindert werden das die Welcome Seite mehrmals geladen wird
+let welcomeIsShowing = false;
 /**
  * Sucht nach dem Attribute w3-include-html um darin ein HtMl-template rein zu laden
  */
@@ -22,14 +23,16 @@ async function includeHTML() {
  * @param {string} wichHtmlPage gibt an welches HTML-template geladen werden muss, indem es ein Teil des Pfads ist
  */
 async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
-    wichContent = wichHtmlPage;
-    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
-    removeDarkBlue();
-    showHelpIcon();
-    showContent();
-    await includeHTML();
-    wichOnloadFunction();
-    closeLogOutButton();
+    if (welcomeIsShowing == false) {
+        wichContent = wichHtmlPage;
+        setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+        removeDarkBlue();
+        showHelpIcon();
+        showContent();
+        await includeHTML();
+        wichOnloadFunction();
+        closeLogOutButton();
+    }
 }
 /**
  * lädt den content rein und wenn die Seite zu schmal ist wird noch ein Begrüßungscontent davor geladen 
@@ -51,14 +54,17 @@ function showContent() {
  * @param {id} content //to get the div with the ID content
  */
 function loadWelcomeContent(content) {
+    welcomeIsShowing = true;
     content.innerHTML = `<div w3-include-html="welcome.html"></div>`;
     content.innerHTML += `<div w3-include-html="summary.html"></div>`;
     document.getElementById('side-bar').style = 'overflow: hidden';
     setTimeout(() => {
         document.getElementById('welcome-responsive').classList.add('hide_welcome');
         document.getElementById('side-bar').style = '';
+        welcomeIsShowing = false;
+        isWelcomeAlready = true;
     }, 1500);
-    isWelcomeAlready = true;
+
 }
 /**
  * wenn der content von contacts geladen wird soll die header_headline nicht mehr angezeigt werden

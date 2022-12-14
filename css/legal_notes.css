@@ -7,11 +7,9 @@ body {
 .container {
     padding-left: 123px;
     padding-top: 82px;
-    padding-left: 60px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 100vh;
+    height: 935px;
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 .headline {
@@ -22,25 +20,61 @@ body {
 
 }
 
-.headline h1 {
+.headline div {
     font-weight: 700;
     font-size: 61px;
-}
-
-h2 {
-    font-size: 40px;
+    margin-bottom: 48px;
 }
 
 p {
     width: 80%;
-    
 }
 
-.legalText {
-    padding-bottom: 100px;
+.legalText div {
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 120%;
+}
+
+.legalText p {
+    margin-bottom: 35px;
+}
+
+.contact {
+    padding-bottom: 15px;
 }
 
 #backTo {
     margin-top: -75px;
     cursor: pointer;
+}
+
+@media (max-width: 1060px) {
+    .container {
+        padding-bottom: 80px;
+        padding-left: 7.71%;
+        padding-top: 82px;
+        padding-right: 7.71%;
+        height: unset;
+        box-sizing: unset;
+        overflow: unset;
+    }
+
+    .headline {
+        width: unset;
+    }
+
+    p {
+        width: unset;
+    }
+
+    #backTo {
+        margin-top: -200px;
+    }
+}
+
+@media (max-width: 485px) {
+    #backTo {
+        margin-top: -275px;
+    }
 }
