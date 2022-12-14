@@ -30,6 +30,7 @@ async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
         showHelpIcon();
         showContent();
         await includeHTML();
+        whoToWelcome();
         wichOnloadFunction();
         closeLogOutButton();
     }
@@ -47,13 +48,14 @@ function showContent() {
         checkIFWichContentAddTasks();
         content.innerHTML = `<div w3-include-html="${wichContent}.html"></div>`;
         document.getElementById('header-headline').style = '';
+        isWelcomeAlready = true;
     }
 }
 /**
  * ladet die Begrüßungsseite beim laden der side_bar.html
  * @param {id} content //to get the div with the ID content
  */
-function loadWelcomeContent(content) {
+async function loadWelcomeContent(content) {
     welcomeIsShowing = true;
     content.innerHTML = `<div w3-include-html="welcome.html"></div>`;
     content.innerHTML += `<div w3-include-html="summary.html"></div>`;
@@ -63,8 +65,10 @@ function loadWelcomeContent(content) {
         document.getElementById('side-bar').style = '';
         welcomeIsShowing = false;
         isWelcomeAlready = true;
+        setTimeout(() => {//falls jmd die widht von der website ändert nicht immer wieder die animation von class= "hide_welcome" ausgeführt wird
+            document.getElementById('welcome-responsive').classList.add('d-none');
+        }, 500);
     }, 1500);
-
 }
 /**
  * wenn der content von contacts geladen wird soll die header_headline nicht mehr angezeigt werden
@@ -80,7 +84,7 @@ function checkIFWichContentContacts() {
  * wenn der content von add_task geladen wird, soll der div header-image nicht mehr angezeigt werden
  */
 function checkIFWichContentAddTasks() {
-    if (wichContent == 'add_task') {
+    if (wichContent == 'add_task' && window.innerWidth < 1060) {
         document.getElementById('header-image').style = 'display: none';
     } else {
         document.getElementById('header-image').style = '';
@@ -91,6 +95,8 @@ function checkIFWichContentAddTasks() {
  */
 window.addEventListener('resize', () => {
     showHelpIcon(); // meine funktion die ich ausführen möchte
+    checkIFWichContentContacts();
+    checkIFWichContentAddTasks();
 })
 /**
  * überpüft ob der Help-icon angezeigt werden soll und ob darkBlue einer der menü-Reiter hinzugefügt werden muss
@@ -163,5 +169,57 @@ function closeLogOutButton() {
 function save(event) {
     event.stopPropagation();
 }
+/**
+ * ist eine Abfrage um zu wissen ob man sich als guest oder user einloggt
+ */
+function whoToWelcome() {
+    if (wichContent == 'summary') {
+        let welcome = document.getElementById('welcome');
+        let welcomeResponsive = document.getElementById('welcome-responsive');
+        if (currentUser) {
+            loadUser(welcome, welcomeResponsive);
+        } else {
+            loadGuest(welcome, welcomeResponsive);
+        }
+    }
 
-
+}
+/**
+ * ladet die user Begrüßung
+ * @param {*id} welcome Die Id vom welcome div
+ * @param {*id} welcomeResponsive Die Id vom welcome-responsive div
+ */
+function loadUser(welcome, welcomeResponsive) {
+    welcome.innerHTML = `${htmlUser()}`;
+    if (welcomeIsShowing == true) {
+        welcomeResponsive.innerHTML = `${htmlUser()}`;
+    }
+}
+/**
+ * ladet die guest Begrüßung
+ * @param {id} welcome Die Id vom welcome div
+ * @param {id} welcomeResponsive Die Id vom welcome-responsive div
+ */
+function loadGuest(welcome, welcomeResponsive) {
+    welcome.innerHTML = `${htmlGuest()}`;
+    if (welcomeIsShowing == true) {
+        welcomeResponsive.innerHTML = `${htmlGuest()}`;
+    }
+}
+/**
+ * 
+ * @returns Gibt den HTML content für den user 
+ */
+function htmlUser() {
+    return `<span class="good_morning_responsive">Good morning,</span><br>
+            <span class="account_name_responsive">${currentUser.name}</span>
+            `;
+}
+/**
+ * 
+ * @returns Gibt den HTML content für den guest
+ */
+function htmlGuest() {
+    return `<span class="good_morning_responsive">Good morning</span><br>
+            `;
+}

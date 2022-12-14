@@ -20,9 +20,9 @@
     console.log(allTasks);
     console.log(contact);
 
-    renderSubtaskContent();
     renderCategoryContent();
     renderAssignedToContent();
+    // renderSubtaskContent();
 }
 
 
@@ -144,24 +144,24 @@ function setDate() {
 }
 
 
-function renderSubtaskContent() {
-    document.getElementById('subs').innerHTML = /*html*/ `
-         <p>Subtasks</p>
-         <div class="inputSubtask" id="inputSubtask">
-             <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
-         </div>
-         <div class="checkboxSubtask" id="newSubtask" required></div>
-     `;
+// function renderSubtaskContent() {
+//     document.getElementById('subs').innerHTML = /*html*/ `
+//          <p>Subtasks</p>
+//          <div class="inputSubtask" id="inputSubtask">
+//              <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
+//          </div>
+//          <div class="checkboxSubtask" id="newSubtask" required></div>
+//      `;
 
-    for (let i = 0; i < subtask.length; i++) {
-        document.getElementById('newSubtask').innerHTML += /*html*/`
-         <div class="newSubtasks">
-             <input type="checkbox" required>
-             <span>${subtask[i]}</span>
-         </div>
-     `;
-    }
-}
+//     for (let i = 0; i < subtask.length; i++) {
+//         document.getElementById('newSubtask').innerHTML += /*html*/`
+//          <div class="newSubtasks">
+//              <input type="checkbox" required>
+//              <span>${subtask[i]}</span>
+//          </div>
+//      `;
+//     }
+// }
 
 
 function renderSubtask() {
@@ -196,4 +196,26 @@ function clearFields() {
     document.getElementById('form').reset();
     renderCategoryContent();
     renderAssignedToContent();
+}
+
+
+function submitTask() {
+    let headline = document.getElementById('headline').value;
+    let desc = document.getElementById('desc').value;
+    let cat = document.getElementById('cat').value;
+
+    let task = {
+        'headline': headline,
+        'desc': desc,
+        'status': 'todo',
+        'category': cat,
+    };
+
+    addNewTask(task);
+}
+
+
+async function addNewTask(task) {
+    allTasks.push(task);
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
 }

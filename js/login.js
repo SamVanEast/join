@@ -11,6 +11,7 @@ let user = [
     password: "nardo1",
   },
 ];
+let currentUser;
 
 function changePassword(i) {
   let newPassword = document.getElementById("newPassword").value;
@@ -93,6 +94,7 @@ function checkLogin() {
     const password = user[i]["password"];
 
     if (email === inputEmail && password === inputPassword) {
+      currentUser = user[i];
       location.replace("/assets/templates/side_bar.html");
     } else {
       console.log("wrong password");
