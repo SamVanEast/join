@@ -16,7 +16,7 @@
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    contact = JSON.parse(backend.getItem('contact'))  || [];
+    // contact = JSON.parse(backend.getItem('contact'))  || [];
     console.log(allTasks);
     console.log(contact);
 
