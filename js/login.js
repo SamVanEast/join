@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 let user = [
   {
     name: "leo",
@@ -27,10 +26,6 @@ async function loginInit() {
   await downloadFromServer();
   await backend.setItem('currentUser', JSON.stringify(currentUser));
 }
-=======
-let user = [];
-let currentUser;
->>>>>>> Stashed changes
 
 async function render() {
   setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
@@ -78,19 +73,13 @@ function changePassword(i) {
 
   if (newPassword === confirmPassword) {
     user[i].password = newPassword;
-<<<<<<< Updated upstream
     passwordChanged(lightboxReset);
 
-=======
-    passwordChangedScreen(lightboxReset);
-    
->>>>>>> Stashed changes
   } else {
     alert("password are different");
   }
 }
 
-<<<<<<< Updated upstream
 function passwordChanged() {
   console.log('password changed');
   lightboxReset.classList.remove('d-none')
@@ -99,18 +88,6 @@ function passwordChanged() {
     document.getElementById('reset').classList.add('d-none');
     document.getElementById('login').classList.remove('d-none');
   }, 3000);
-=======
-/**
- * Show the screen if password was correct changed
- */
-function passwordChangedScreen(){;
-  lightboxReset.classList.remove('d-none');
-  setTimeout(()=>{
-    lightboxReset.classList.add('d-none');
-    document.getElementById('reset').classList.add('d-none');
-    document.getElementById('login').classList.remove('d-none');
-  },3000);
->>>>>>> Stashed changes
 }
 
 /**
@@ -123,7 +100,6 @@ function SendEmailtoChangePassword() {
 
     if (inputEmail === email) {
       lightboxEmail.classList.remove('d-none');
-<<<<<<< Updated upstream
       setTimeout(() => {
         lightboxEmail.classList.add('d-none');
         document.getElementById("forgot").classList.add("d-none");
@@ -156,13 +132,6 @@ function SendEmailtoChangePassword() {
     } else {
 
 
-=======
-      setTimeout(()=>{
-        hideForgotScreen();
-        document.getElementById("reset").innerHTML = renderResetContainer(i);
-      },3000) ;break;
-    } else  {
->>>>>>> Stashed changes
       alert("This Email does not exist");
     }
   }
@@ -170,15 +139,6 @@ function SendEmailtoChangePassword() {
 
 
 
-
-function createNewUser() {
-  let name = document.getElementById("signupName").value;
-  let email = document.getElementById("signupEmail").value;
-  let password = document.getElementById("signupPassword").value;
-  user.push({ 'name': name, 'email': email, 'password': password });
-  alert("you created a new User");
-  console.log(user);
-}
 
 /**
  * This function is used to check if the password and email is correct
@@ -202,6 +162,7 @@ async function checkLogin() {
     }
   }
 }
+
 /**
  * lädt die Information über den User hoch, der sich gerade angemeldet hat 
  */
