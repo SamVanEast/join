@@ -97,7 +97,7 @@ function newTaskHTML(element) {
         </div>
                 <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
-                
+            <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div>
             </div>
             <div class="priority"></div>
             </div>
@@ -352,16 +352,15 @@ function filterBoardHTML(result) {
 <div id="category${result['id']}" class="category">${result['category']}</div>
 <div class="taskHeadline">${result['headline']}</div>
 <div class="taskDescription">${result['desc']}</div>
-<div class="progressBar">
-    <div class="progress">progressbar</div>
-    <div class="progressText">x/x Done</div>
-</div>
+<div class="progressbar">    
+            <div class="progressbar-grey">
+                <div id="progressbar-blue" class="progressbar-blue" style="width: 50%"></div>
+            </div>
+            <div id="done-counter">1/2 Done</div>
+        </div>
 <div class="peopleInvolvedPriority">
     <div class="peopleInvolved">
-        <div class="people">SM</div>
-        <div class="people">SH</div>
-        <div class="people">TW</div>
-        <div class="people">LD</div>
+    <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div>
     </div>
     <div class="priority"></div>
     </div>
@@ -370,4 +369,4 @@ function filterBoardHTML(result) {
 }
 
 
-/* Contact: <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div> */
+/* Contact:  */
