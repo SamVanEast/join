@@ -4,7 +4,8 @@
  * @param {Array} tasks - This array is used to store data from add_task.html
  */
 
-// let allTasks;
+let allTasks;
+let contact;
 
 
 /**
@@ -16,13 +17,13 @@
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    // contact = JSON.parse(backend.getItem('contact'))  || [];
+    contact = JSON.parse(backend.getItem('contact'))  || [];
     console.log(allTasks);
     console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
-    // renderSubtaskContent();
+    renderSubtaskContent();
 }
 
 
@@ -118,7 +119,7 @@ function renderAssignedToOptions() {
     let names = document.getElementById('assignedToOptions');
 
     for (let b = 0; b < contact.length; b++) {
-        const contacts = contact[b];
+        const contacts = contact[b]['name'];
 
         names.innerHTML += /*html*/`
          <span class="categorysDropdown" onclick="renderSelectedAssignedTo('${contacts}')">${contacts}</span>
@@ -144,24 +145,24 @@ function setDate() {
 }
 
 
-// function renderSubtaskContent() {
-//     document.getElementById('subs').innerHTML = /*html*/ `
-//          <p>Subtasks</p>
-//          <div class="inputSubtask" id="inputSubtask">
-//              <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
-//          </div>
-//          <div class="checkboxSubtask" id="newSubtask" required></div>
-//      `;
+function renderSubtaskContent() {
+    document.getElementById('subs').innerHTML = /*html*/ `
+         <p>Subtasks</p>
+         <div class="inputSubtask" id="inputSubtask">
+             <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
+         </div>
+         <div class="checkboxSubtask" id="newSubtask" required></div>
+     `;
 
-//     for (let i = 0; i < subtask.length; i++) {
-//         document.getElementById('newSubtask').innerHTML += /*html*/`
-//          <div class="newSubtasks">
-//              <input type="checkbox" required>
-//              <span>${subtask[i]}</span>
-//          </div>
-//      `;
-//     }
-// }
+    for (let i = 0; i < subtask.length; i++) {
+        document.getElementById('newSubtask').innerHTML += /*html*/`
+         <div class="newSubtasks">
+             <input type="checkbox" required>
+             <span>${subtask[i]}</span>
+         </div>
+     `;
+    }
+}
 
 
 function renderSubtask() {
