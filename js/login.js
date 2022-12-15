@@ -1,23 +1,7 @@
-let user = [
-  {
-    name: "leo",
-    email: "leo@gmx.de",
-    password: "nardo",
-  },
-
-  {
-    name: "leon",
-    email: "leonardo@gmx.de",
-    password: "nardo1",
-  },
-
-  {
-    name: "Samuel",
-    email: "samuel@1",
-    password: "samuel",
-  }
-];
+let allUser;
 let currentUser = [];
+
+
 /**
  * Falls auf dem Backend noch nicht currentUser besteht, einen hinzufügen
  */
@@ -30,8 +14,8 @@ async function loginInit() {
 async function render() {
   setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
   await downloadFromServer();
-  user = JSON.parse(backend.getItem('users')) || [];
-  console.log(user);
+  allUser = JSON.parse(backend.getItem('allUser')) || [];
+  console.log(allUser);
 }
 
 function submitUser() {
@@ -39,13 +23,13 @@ function submitUser() {
   let email = document.getElementById('signupEmail').value;
   let password = document.getElementById('signupPassword').value;
 
-  let testUser = {
+  let user = {
       'name': name,
       'email': email,
       'password': password,
   };
 
-  addUser(user, testUser);   
+  addUser(user);   
 }
 
 
@@ -55,10 +39,10 @@ function submitUser() {
  * @param {string} users key 
  * @param {string} test array
  */
-async function addUser(users, testUser) {
-  user.push(testUser);
-  await backend.setItem('users', JSON.stringify(users));
-  console.log(user);
+async function addUser(user) {
+  allUser.push(user);
+  await backend.setItem('allUser', JSON.stringify(allUser));
+  console.log(allUser);
 }
 
 
@@ -72,7 +56,7 @@ function changePassword(i) {
   let confirmPassword = document.getElementById("confirmPassword").value;
 
   if (newPassword === confirmPassword) {
-    user[i].password = newPassword;
+    allUser[i].password = newPassword;
     passwordChanged(lightboxReset);
 
   } else {
@@ -80,6 +64,10 @@ function changePassword(i) {
   }
 }
 
+
+/**
+ * confirm scrren that password changed
+ */
 function passwordChanged() {
   console.log('password changed');
   lightboxReset.classList.remove('d-none')
@@ -95,8 +83,8 @@ function passwordChanged() {
  */
 function SendEmailtoChangePassword() {
   let inputEmail = document.getElementById("forgotEmail").value;
-  for (let i = 0; i < user.length; i++) {
-    const email = user[i]["email"];
+  for (let i = 0; i < allUser.length; i++) {
+    const email = allUser[i]["email"];
 
     if (inputEmail === email) {
       lightboxEmail.classList.remove('d-none');
@@ -115,8 +103,6 @@ function SendEmailtoChangePassword() {
 }
 
 
-
-
 /**
  * This function is used to check if the password and email is correct
  *
@@ -126,15 +112,15 @@ async function checkLogin() {
   let inputPassword = document.getElementById("loginPassword").value;
   let inputEmail = document.getElementById("loginEmail").value;
 
-  for (let i = 0; i < user.length; i++) {
-    const email = user[i]["email"];
-    const password = user[i]["password"];
+  for (let i = 0; i < allUser.length; i++) {
+    const email = allUser[i]["email"];
+    const password = allUser[i]["password"];
 
     if (email === inputEmail && password === inputPassword) {
-      currentUser = [user[i]];
+      currentUser = [allUser[i]];
       await saveCurrentUser();
       location.replace("/assets/templates/side_bar.html");
-    } else if(i==user.length) {
+    } else if(i==allUser.length) {
       alert("wrong password or wrong email");
     }
   }
