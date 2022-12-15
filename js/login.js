@@ -11,7 +11,13 @@ let user = [
     password: "nardo1",
   },
 ];
-let currentUser;
+let currentUser = [];
+
+async function loginInit(){
+  setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+  await downloadFromServer();
+  await backend.setItem('currentUser', JSON.stringify(currentUser));
+}
 
 function changePassword(i) {
   let newPassword = document.getElementById("newPassword").value;
@@ -83,7 +89,7 @@ function createNewUser() {
  *
  *
  */
-function checkLogin() {
+async function checkLogin() {
   let inputPassword = document.getElementById("loginPassword").value;
   let inputEmail = document.getElementById("loginEmail").value;
   console.log(inputPassword, inputEmail);
@@ -95,11 +101,18 @@ function checkLogin() {
 
     if (email === inputEmail && password === inputPassword) {
       currentUser = user[i];
+      saveCurrentUser();
       location.replace("/assets/templates/side_bar.html");
     } else {
       console.log("wrong password");
     }
   }
+}
+
+async function saveCurrentUser(){
+  await backend.setItem('currentUser', JSON.stringify(currentUser));
+  console.log(currentUser);
+  debugger;
 }
 
 function openSignUp() {
