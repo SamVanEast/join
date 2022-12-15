@@ -25,7 +25,7 @@ async function includeHTML() {
 async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
     if (welcomeIsShowing == false) {
         wichContent = wichHtmlPage;
-        setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+        await loadBackend();
         removeDarkBlue();
         showHelpIcon();
         showContent();
@@ -34,6 +34,14 @@ async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
         wichOnloadFunction();
         closeLogOutButton();
     }
+}
+/**
+ * soll die Information herrunter laden über den User der sich angemeldet hat, wenn man sich als Guest angemeldet hat soll ein leeres Array geladen werden
+ */
+async function loadBackend() {
+    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+    await downloadFromServer();
+    currentUser = JSON.parse(backend.getItem('currentUser')) || [];
 }
 /**
  * lädt den content rein und wenn die Seite zu schmal ist wird noch ein Begrüßungscontent davor geladen 
@@ -176,7 +184,7 @@ function whoToWelcome() {
     if (wichContent == 'summary') {
         let welcome = document.getElementById('welcome');
         let welcomeResponsive = document.getElementById('welcome-responsive');
-        if (currentUser) {
+        if (currentUser.length > 0) {
             loadUser(welcome, welcomeResponsive);
         } else {
             loadGuest(welcome, welcomeResponsive);
@@ -212,7 +220,7 @@ function loadGuest(welcome, welcomeResponsive) {
  */
 function htmlUser() {
     return `<span class="good_morning_responsive">Good morning,</span><br>
-            <span class="account_name_responsive">${currentUser.name}</span>
+            <span class="account_name_responsive">${currentUser[0].name}</span>
             `;
 }
 /**

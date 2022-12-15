@@ -10,10 +10,18 @@ let user = [
     email: "leonardo@gmx.de",
     password: "nardo1",
   },
+
+  {
+    name: "Samuel",
+    email: "samuel@1",
+    password: "samuel",
+  }
 ];
 let currentUser = [];
-
-async function loginInit(){
+/**
+ * Falls auf dem Backend noch nicht currentUser besteht, einen hinzufügen
+ */
+async function loginInit() {
   setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
   await downloadFromServer();
   await backend.setItem('currentUser', JSON.stringify(currentUser));
@@ -32,20 +40,20 @@ function changePassword(i) {
   if (newPassword === confirmPassword) {
     user[i].password = newPassword;
     passwordChanged(lightboxReset);
-    
+
   } else {
     alert("password are different");
   }
 }
 
-function passwordChanged(){
+function passwordChanged() {
   console.log('password changed');
   lightboxReset.classList.remove('d-none')
-  setTimeout(()=>{
-  lightboxReset.classList.add('d-none');
-  document.getElementById('reset').classList.add('d-none');
-  document.getElementById('login').classList.remove('d-none');
-},3000);
+  setTimeout(() => {
+    lightboxReset.classList.add('d-none');
+    document.getElementById('reset').classList.add('d-none');
+    document.getElementById('login').classList.remove('d-none');
+  }, 3000);
 }
 
 function SendEmailtoChangePassword() {
@@ -56,11 +64,11 @@ function SendEmailtoChangePassword() {
 
     if (inputEmail === email) {
       lightboxEmail.classList.remove('d-none');
-      setTimeout(()=>{
+      setTimeout(() => {
         lightboxEmail.classList.add('d-none');
-      document.getElementById("forgot").classList.add("d-none");
-      document.getElementById("reset").classList.remove('d-none');
-      document.getElementById("reset").innerHTML += /*html*/ `
+        document.getElementById("forgot").classList.add("d-none");
+        document.getElementById("reset").classList.remove('d-none');
+        document.getElementById("reset").innerHTML += /*html*/ `
         <div class="container-signup-reset" >
             
           <div id="containerReset" class="container-signup-middle-reset">
@@ -83,8 +91,9 @@ function SendEmailtoChangePassword() {
               </form>
           </div>
         </div>
-            `;},3000) ;break;
-    } else  {
+            `;
+      }, 3000); break;
+    } else {
 
 
       alert("This Email does not exist");
@@ -117,19 +126,27 @@ async function checkLogin() {
     const password = user[i]["password"];
 
     if (email === inputEmail && password === inputPassword) {
-      currentUser = user[i];
-      saveCurrentUser();
+      currentUser = [user[i]];
+      await saveCurrentUser();
       location.replace("/assets/templates/side_bar.html");
     } else {
       console.log("wrong password");
     }
   }
 }
-
-async function saveCurrentUser(){
+/**
+ * lädt die Information über den User hoch, der sich gerade angemeldet hat 
+ */
+async function saveCurrentUser() {
   await backend.setItem('currentUser', JSON.stringify(currentUser));
-  console.log(currentUser);
-  debugger;
+}
+/**
+ * falls man sich als Guest anmeldet, soll die alten Information überschrieben werden 
+ */
+async function saveCurrentUserAsGuest(){
+  currentUser = [];
+  await backend.setItem('currentUser', JSON.stringify(currentUser));
+  location.href='/assets/templates/side_bar.html';
 }
 
 function openSignUp() {
