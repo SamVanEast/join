@@ -104,30 +104,7 @@ function SendEmailtoChangePassword() {
         lightboxEmail.classList.add('d-none');
         document.getElementById("forgot").classList.add("d-none");
         document.getElementById("reset").classList.remove('d-none');
-        document.getElementById("reset").innerHTML += /*html*/ `
-        <div class="container-signup-reset" >
-            
-          <div id="containerReset" class="container-signup-middle-reset">
-
-              <div class="go-back-reset-container">
-                <img onclick="backToLogin()" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
-              </div>  
-              <div class="container-up-reset">
-                  <h1>Reset your password</h1>
-                  <div class="underline-login"> </div>
-                  <p>Change your account password</p>
-              </div>
-
-              <form class="container-input-reset" action="" onsubmit="changePassword(${i}); return false;">
-                  <input required type="password" placeholder="New password" id="newPassword" />
-                  <input required type="password" placeholder="Confirm password" id="confirmPassword" />
-                  <div class="container-button-signup">
-                      <button class="login-button">Continue</button>
-                  </div>
-              </form>
-          </div>
-        </div>
-            `;
+        document.getElementById("reset").innerHTML += renderResetContainer(i);
       }, 3000); break;
     } else {
 
@@ -157,7 +134,7 @@ async function checkLogin() {
       currentUser = [user[i]];
       await saveCurrentUser();
       location.replace("/assets/templates/side_bar.html");
-    } else {
+    } else if(i==user.length) {
       alert("wrong password or wrong email");
     }
   }
