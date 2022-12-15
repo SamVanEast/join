@@ -23,7 +23,7 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 35px;
-width: 45%;
+width: 38%;
 padding: 20px;
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -36,6 +36,7 @@ margin-top: 37px;
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    width: 100%;
 }
 
 .container-login h1{
@@ -175,7 +176,6 @@ border: 2px solid #29ABE2;
 .signup-headline {
     margin: 0;
     font-family: 'Inter';
-    height: 97px;
     font-size: 61px;
     text-align: center;
 }
@@ -250,7 +250,7 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 35px;
-width: 50%;
+width: 652px;
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 border-radius: 30px;
@@ -284,7 +284,7 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 35px;
-width: 60%;
+width: 830px;
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 border-radius: 30px;
@@ -303,7 +303,6 @@ border-radius: 30px;
     font-family: 'Inter';
     font-size: 61px;
     text-align: center;
-    height: 60px;
 }
 
 .container-input-forgot{
@@ -401,11 +400,10 @@ border-radius: 30px;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-width: 60%;
 background: #FFFFFF;
 box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 border-radius: 30px;
-width: 60%;
+width: 830px;
 }
 
 .go-back-reset-container{
@@ -490,8 +488,36 @@ width: 60%;
     
 }
 
+@media only screen and (max-width: 1100px) {
+
+    .login-button{
+        padding: 13px 20px 13px 20px;
+    }
+
+    .guest-button{
+        padding: 13px 20px 13px 20px;
+    }
+    
+    .container-signup-middle{
+        width: 55%;
+    }
+}
+
 
 @media only screen and (max-width: 960px) {
+
+    .container-signup-middle-reset{
+        width: 90%;
+    }
+
+
+    .container-signup-middle-forgot{
+        width: 90%;
+    }
+
+    .container-signup-middle{
+        width: 90%;
+    }
 
     .button-signup{
         position: unset;
@@ -518,14 +544,9 @@ width: 60%;
         flex-direction: column;
     }
 
-
-    .container-signup-middle{
-        
-    }
-
     .container-login{
         margin-top: 110px;
-        width: 65%;
+        width: 77%;
     }
 
     .container-signup-middle-reset{
@@ -561,10 +582,6 @@ width: 60%;
     .container-up-reset h1{
         margin-top: 30px;
         font-size: 48px;
-    }
-
-    .container-signup-reset{
-        width: 90%;
     }
 
     #newPassword{
@@ -611,6 +628,10 @@ width: 60%;
     }
 
     .container-login h1{
+        font-size: 38px;
+    }
+
+    .signup-headline{
         font-size: 38px;
     }
 

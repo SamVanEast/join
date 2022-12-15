@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 let user = [
   {
     name: "leo",
@@ -26,6 +27,44 @@ async function loginInit() {
   await downloadFromServer();
   await backend.setItem('currentUser', JSON.stringify(currentUser));
 }
+=======
+let user = [];
+let currentUser;
+>>>>>>> Stashed changes
+
+async function render() {
+  setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+  await downloadFromServer();
+  user = JSON.parse(backend.getItem('users')) || [];
+  console.log(user);
+}
+
+function submitUser() {
+  let name = document.getElementById('signupName').value;
+  let email = document.getElementById('signupEmail').value;
+  let password = document.getElementById('signupPassword').value;
+
+  let testUser = {
+      'name': name,
+      'email': email,
+      'password': password,
+  };
+
+  addUser(user, testUser);   
+}
+
+
+/**
+ * add User to backend
+ * 
+ * @param {string} users key 
+ * @param {string} test array
+ */
+async function addUser(users, testUser) {
+  user.push(testUser);
+  await backend.setItem('users', JSON.stringify(users));
+  console.log(user);
+}
 
 
 /** this function is for change an exist password
@@ -39,13 +78,19 @@ function changePassword(i) {
 
   if (newPassword === confirmPassword) {
     user[i].password = newPassword;
+<<<<<<< Updated upstream
     passwordChanged(lightboxReset);
 
+=======
+    passwordChangedScreen(lightboxReset);
+    
+>>>>>>> Stashed changes
   } else {
     alert("password are different");
   }
 }
 
+<<<<<<< Updated upstream
 function passwordChanged() {
   console.log('password changed');
   lightboxReset.classList.remove('d-none')
@@ -54,16 +99,31 @@ function passwordChanged() {
     document.getElementById('reset').classList.add('d-none');
     document.getElementById('login').classList.remove('d-none');
   }, 3000);
+=======
+/**
+ * Show the screen if password was correct changed
+ */
+function passwordChangedScreen(){;
+  lightboxReset.classList.remove('d-none');
+  setTimeout(()=>{
+    lightboxReset.classList.add('d-none');
+    document.getElementById('reset').classList.add('d-none');
+    document.getElementById('login').classList.remove('d-none');
+  },3000);
+>>>>>>> Stashed changes
 }
 
+/**
+ * show send email screen and shows the reset password screen
+ */
 function SendEmailtoChangePassword() {
   let inputEmail = document.getElementById("forgotEmail").value;
-  let lightboxEmail = document.getElementById('lightboxEmail');
   for (let i = 0; i < user.length; i++) {
     const email = user[i]["email"];
 
     if (inputEmail === email) {
       lightboxEmail.classList.remove('d-none');
+<<<<<<< Updated upstream
       setTimeout(() => {
         lightboxEmail.classList.add('d-none');
         document.getElementById("forgot").classList.add("d-none");
@@ -96,10 +156,20 @@ function SendEmailtoChangePassword() {
     } else {
 
 
+=======
+      setTimeout(()=>{
+        hideForgotScreen();
+        document.getElementById("reset").innerHTML = renderResetContainer(i);
+      },3000) ;break;
+    } else  {
+>>>>>>> Stashed changes
       alert("This Email does not exist");
     }
   }
 }
+
+
+
 
 function createNewUser() {
   let name = document.getElementById("signupName").value;
@@ -118,10 +188,8 @@ function createNewUser() {
 async function checkLogin() {
   let inputPassword = document.getElementById("loginPassword").value;
   let inputEmail = document.getElementById("loginEmail").value;
-  console.log(inputPassword, inputEmail);
 
   for (let i = 0; i < user.length; i++) {
-    const element = user[i];
     const email = user[i]["email"];
     const password = user[i]["password"];
 
@@ -130,7 +198,7 @@ async function checkLogin() {
       await saveCurrentUser();
       location.replace("/assets/templates/side_bar.html");
     } else {
-      console.log("wrong password");
+      alert("wrong password or wrong email");
     }
   }
 }
@@ -167,5 +235,10 @@ function showForgotScreen() {
   document.getElementById("forgot").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
   document.getElementById("signUp").classList.add("d-none");
+}
 
+function hideForgotScreen(){
+  document.getElementById('lightboxEmail').classList.add('d-none');
+  document.getElementById("forgot").classList.add("d-none");
+  document.getElementById("reset").classList.remove('d-none');
 }
