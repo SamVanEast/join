@@ -19,30 +19,45 @@ async function loginInit(){
   await backend.setItem('currentUser', JSON.stringify(currentUser));
 }
 
+
+/** this function is for change an exist password
+ * 
+ * @param {number of array} i 
+ */
 function changePassword(i) {
+  let lightboxReset = document.getElementById('lightboxReset');
   let newPassword = document.getElementById("newPassword").value;
   let confirmPassword = document.getElementById("confirmPassword").value;
-  console.log(newPassword, confirmPassword);
 
   if (newPassword === confirmPassword) {
     user[i].password = newPassword;
-    console.log('password changed');
-    document.getElementById('reset').innerHTML=" ";
-    document.getElementById('login').classList.remove('d-none');
+    passwordChanged(lightboxReset);
     
   } else {
     alert("password are different");
   }
 }
 
+function passwordChanged(){
+  console.log('password changed');
+  lightboxReset.classList.remove('d-none')
+  setTimeout(()=>{
+  lightboxReset.classList.add('d-none');
+  document.getElementById('reset').classList.add('d-none');
+  document.getElementById('login').classList.remove('d-none');
+},3000);
+}
+
 function SendEmailtoChangePassword() {
   let inputEmail = document.getElementById("forgotEmail").value;
-
+  let lightboxEmail = document.getElementById('lightboxEmail');
   for (let i = 0; i < user.length; i++) {
     const email = user[i]["email"];
 
     if (inputEmail === email) {
-      alert("An Email has been send to you");
+      lightboxEmail.classList.remove('d-none');
+      setTimeout(()=>{
+        lightboxEmail.classList.add('d-none');
       document.getElementById("forgot").classList.add("d-none");
       document.getElementById("reset").classList.remove('d-none');
       document.getElementById("reset").innerHTML += /*html*/ `
@@ -68,9 +83,11 @@ function SendEmailtoChangePassword() {
               </form>
           </div>
         </div>
-            `;
-    } else {
-      console.log("wrong Email");
+            `;},3000) ;break;
+    } else  {
+
+
+      alert("This Email does not exist");
     }
   }
 }
@@ -133,5 +150,5 @@ function showForgotScreen() {
   document.getElementById("forgot").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
   document.getElementById("signUp").classList.add("d-none");
-  document.getElementById("reset").classList.add("d-none");
+
 }
