@@ -200,6 +200,7 @@ function clearFields() {
 
 
 function submitTask() {
+    debugger;
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('cat').value;

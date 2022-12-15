@@ -20,7 +20,7 @@
 
     <div class="addTaskContainer">
         <h1>Add Task</h1>
-        <form action="" id="form">
+        <form id="form" onsubmit="submitTask(); return false;">
             <div class="addTask">
                 <div class="addTaskLeftSide">
                     <div class="titleToAssigned">
@@ -62,11 +62,8 @@
                     <div class="subtasksContent" id="subs"></div>
 
                     <div class="clearAndCreate">
-                        <button type="button" class="clear" onclick="clearFields()">Clear <input class="cross"
-                                type="checkbox"></button>
-                        <button class="create" onclick="submitTask()">Create Task <img
-                                src="../../assets/img/add_task_img/hook.png" alt=""></button>
-                        <!-- added onclick function addTask -->
+                        <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross" type="checkbox"></button>
+                        <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png" alt=""></button>
                     </div>
                 </div>
             </div>
