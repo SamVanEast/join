@@ -7,13 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/login.css" />
   <link rel="stylesheet" href="/css/fonts.css" />
+  <script src="/mini_backend.js"></script>
   <script src="/js/login.js"></script>
+  <script src="/js/templates/login-templates.js"></script>
   <title>Login</title>
 </head>
 
 <body>
   <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
   <!-- CONTAINER FOR LOGIN SCREEN -->
+
+  <div class="lightbox d-none" id="lightboxReset">
+    <span class="lightbox-reset">
+      <p>You reset your password</p>
+    </span>
+  </div>
+
+  <div class="lightbox d-none " id="lightboxEmail">
+    <span class="lightbox-email">
+      <p><img src="/assets/img/login-img/SendCheck.png" alt="">An E-mail has been sent to you </p>
+    </span>
+  </div>
  
 
   <div id="login" class="container">
