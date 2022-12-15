@@ -1,14 +1,41 @@
 let letters = [];
   
-let contacts = [];
+let contacts;
 
 async function render() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
-    contacts = JSON.parse(backend.getItem('contact')) || [];
-    sortArray();
+    contacts = JSON.parse(backend.getItem('contacts')) || [];  
     console.log(contacts);
     generateContactlist();
+}
+
+function submitContact() {
+  let name = document.getElementById('AddName').value;
+  let email = document.getElementById('AddEmail').value;
+  let number = document.getElementById('AddNumber').value;
+  var x = Math.floor(Math.random() * 256);
+  var y = Math.floor(Math.random() * 256);
+  var z = Math.floor(Math.random() * 256);
+
+  let contact = {
+      'name': name.charAt(0).toUpperCase() + name.slice(1),
+      'email': email,
+      'phone': number,
+      'r': x,
+      'g': y,
+      'b': z
+  };
+
+  addUser(contact);   
+  generateContactlist();
+}
+  
+
+async function addUser(contact) {
+  contacts.push(contact);
+  await backend.setItem('contacts', JSON.stringify(contacts));
+  console.log(contacts);
 }
 
 function sortArray(){
@@ -21,36 +48,6 @@ function sortArray(){
       return 0;
     })   
   }
-}
-
-
-function submitContact() {
-  let name = document.getElementById('AddName').value;
-  let email = document.getElementById('AddEmail').value;
-  let number = document.getElementById('AddNumber').value;
-  var x = Math.floor(Math.random() * 256);
-  var y = Math.floor(Math.random() * 256);
-  var z = Math.floor(Math.random() * 256);
-
-  let test = {
-      'name': name.charAt(0).toUpperCase() + name.slice(1),
-      'email': email,
-      'phone': number,
-      'r': x,
-      'g': y,
-      'b': z
-  };
-
-  addUser(contacts, test);   
-  sortArray();
-  generateContactlist();
-
-}
-
-async function addUser(contact, test) {
-  contact.push(test);
-  await backend.setItem('contact', JSON.stringify(contact));
-  console.log(contacts);
 }
 
 

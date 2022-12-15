@@ -1,5 +1,5 @@
 let allUser;
-let currentUser = [];
+let currentUser;
 
 
 /**
