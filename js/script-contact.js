@@ -2,10 +2,10 @@ let letters = [];
   
 let contacts;
 
-async function render() {
+async function initContacts() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
-    contacts = JSON.parse(backend.getItem('contacts')) || [];  
+    contacts = JSON.parse(backend.getItem('contact')) || [];  
     console.log(contacts);
     generateContactlist();
 }
@@ -27,14 +27,14 @@ function submitContact() {
       'b': z
   };
 
-  addUser(contact);   
+  addContact(contact);   
   generateContactlist();
 }
   
 
-async function addUser(contact) {
+async function addContact(contact) {
   contacts.push(contact);
-  await backend.setItem('contacts', JSON.stringify(contacts));
+  await backend.setItem('contact', JSON.stringify(contacts));
   console.log(contacts);
 }
 
@@ -267,12 +267,12 @@ function editContacts(i) {
   let email = document.getElementById('editEmail').value; 
   let number = document.getElementById('editNumber').value; 
   contacts.splice(i,1);
-  let test = {
+  let contacts = {
     'name': name.charAt(0).toUpperCase() + name.slice(1),
     'email': email,
-    'phone': number,
+    'phone': number
   }
-  addUser(contacts, test);   
+  addContact(contacts);   
   sortArray();
   generateContactlist();
 }

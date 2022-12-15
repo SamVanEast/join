@@ -128,7 +128,7 @@ async function wichOnloadFunction() {
         init();
     }
     if (wichContent == 'contacts') {
-        render();
+        initContacts();
     }
     if (wichContent == 'add_task') {
         init();
