@@ -12,6 +12,10 @@ body {
     overflow: scroll;
 }
 
+.container::-webkit-scrollbar {
+    display: none;
+  }
+
 .headline {
     display: flex;
     justify-content: space-between;
