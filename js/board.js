@@ -201,7 +201,7 @@ function addTask() {
     content.innerHTML += /*html*/ `
     <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
     <div style="display: flex; flex-direction: column; width: 25%;">
-    <form onsubmit="submitTask(); addId(); return false;">
+    <form onsubmit="getAndPushTask(); addId(); return false;">
         <input id="headline" placeholder="headline">
         <input id="desc" placeholder="desc">
         <input id="status" placeholder="status">
@@ -218,7 +218,7 @@ function addTask() {
 
 }
 
-function submitTask() {
+function getAndPushTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let status = document.getElementById('status').value;

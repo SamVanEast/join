@@ -214,20 +214,19 @@ function submitTask() {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
-        'category': cat,
-        'assignedTo': assigned,
-        'dueDate': dueDate,
+        'category': 'Media',
+        // 'assignedTo': assigned,
+        // 'dueDate': dueDate,
         // 'prio': prio,
         'subtask': subtask,
     };
 
-    addNewTask(task);
+    addThisTask(task);
 }
 
 
-async function addNewTask(task) {
+async function addThisTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    window.location.href = 'add_task.html';
     console.log(allTasks);
 }
