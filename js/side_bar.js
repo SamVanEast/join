@@ -74,7 +74,7 @@ async function loadWelcomeContent(content) {
         welcomeIsShowing = false;
         isWelcomeAlready = true;
         setTimeout(() => {//falls jmd die widht von der website ändert nicht immer wieder die animation von class= "hide_welcome" ausgeführt wird
-            document.getElementById('welcome-responsive').classList.add('d-none');
+            // document.getElementById('welcome-responsive').classList.add('d-none'); //Habe ich auskommentiert da es bei mir Probleme mit der add_Task und dem hochpushen ins baackend gemacht hat
         }, 500);
     }, 1500);
 }
