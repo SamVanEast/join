@@ -125,7 +125,7 @@ function showHelpIcon() {
  */
 async function wichOnloadFunction() {
     if (wichContent == 'board') {
-        init();
+        initBoard();
     }
     if (wichContent == 'contacts') {
         initContacts();

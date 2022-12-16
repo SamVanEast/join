@@ -7,7 +7,7 @@ let done;
 let allTasks;
 
 
-async function init() {
+async function initBoard() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
@@ -141,19 +141,18 @@ function openTaskHTML(element) {
     <div class="category ${allTasks[element].category}">${allTasks[element].category}</div>
     <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
     </div>
-    <div>
+    <div id="openTaskHMobile">
             <h2>${allTasks[element].headline}</h2>
         </div>
-        <div>
+        <div id="pMobile">
             <p id="openTaskDesc">${allTasks[element].desc}</p>
             <p><b>Due Date: </b>Monday</p>
             <p><b>Priority: </b>High</p>
         </div>
-        <div>
-            <p>Name 1</p>
-            <p>Name 2</p>
-            <p>Name 3</p>
-            <p>Name 4</p>
+        <div id="assignedMobile">
+        <p><b>Assigned to:</b></p>
+        <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']}); margin-left: 2px">${contacts[0].name}</div>
+            
         </div>
         <div id="edit-btn"><img src="../img/board_img/edit-btn.png"></div>
         </div> `;

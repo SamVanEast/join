@@ -4,7 +4,6 @@
  * @param {Array} tasks - This array is used to store data from add_task.html
  */
 
-let allTasks;
 let contact;
 
 
