@@ -24,7 +24,8 @@ function submitContact() {
       'bgcolor':result
   };
   sortArray();
-  addContact(contact);   
+  addContact(contact);
+  HideNewContactContainer();
   generateContactlist();
 }
 
@@ -142,8 +143,6 @@ function editContacts(i) {
   sortArray();
   generateContactlist();
 }
-
-
 
 
 /*Functions to hide or show different screens*/
