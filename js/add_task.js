@@ -5,6 +5,7 @@
  */
 
 let contact;
+let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 
 
 /**
@@ -212,7 +213,7 @@ function submitTask() {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
-        // 'category': cat,
+        'category': 'Media',
         // 'assignedTo': assigned,
         // 'dueDate': dueDate,
         // 'prio': prio,
