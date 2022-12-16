@@ -249,9 +249,6 @@ async function deleteTasks() {
 
 }
 
-/**
- * Search Function
- */
 
 function filterBoard() {
     filterBoardTodo();
