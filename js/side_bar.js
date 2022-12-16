@@ -131,7 +131,7 @@ async function wichOnloadFunction() {
         initContacts();
     }
     if (wichContent == 'add_task') {
-        init();
+        initAddTask();
     }
     if (wichContent == 'summary') {
         summaryInit();

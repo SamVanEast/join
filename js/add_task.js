@@ -12,7 +12,7 @@ let contact;
  * 
  */
 
- async function init() {
+ async function initAddTask() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
@@ -200,24 +200,23 @@ function clearFields() {
 
 
 function submitTask() {
-    debugger;
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
-    let cat = document.getElementById('cat').value;
-    let assigned = document.getElementById('assigned').value;
-    let dueDate = document.getElementById('dueDate').value;
-    let prio = document.getElementById('prio').value;
-    let subtask = document.getElementById('subs').value;
+    // let cat = document.getElementById('cat').value;
+    // let assigned = document.getElementById('assigned').value;
+    // let dueDate = document.getElementById('dueDate').value;
+    // let prio = document.getElementById('prio').value;
+    // let subtask = document.getElementById('subs').value;
 
     let task = {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
-        'category': cat,
-        'assignedTo': assigned,
-        'dueDate': dueDate,
-        'prio': prio,
-        'subtask': subtask,
+        // 'category': cat,
+        // 'assignedTo': assigned,
+        // 'dueDate': dueDate,
+        // 'prio': prio,
+        // 'subtask': subtask,
     };
 
     addNewTask(task);
@@ -227,4 +226,6 @@ function submitTask() {
 async function addNewTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    window.location.href = 'add_task.html';
+    console.log(allTasks);
 }
