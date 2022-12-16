@@ -15,30 +15,44 @@ function submitContact() {
   let name = document.getElementById('AddName').value;
   let email = document.getElementById('AddEmail').value;
   let number = document.getElementById('AddNumber').value;
-  var x = Math.floor(Math.random() * 256);
-  var y = Math.floor(Math.random() * 256);
-  var z = Math.floor(Math.random() * 256);
+  randomBgColor();
 
   let contact = {
       'name': name.charAt(0).toUpperCase() + name.slice(1),
       'email': email,
       'phone': number,
-      'r': x,
-      'g': y,
-      'b': z
+      'bgcolor':result
   };
   sortArray();
   addContact(contact);   
   generateContactlist();
 }
-  
 
+
+/**
+ * generate a random string for a gb color
+ */
+function randomBgColor(){
+  let x = Math.floor(Math.random() * 256);
+  var y = Math.floor(Math.random() * 256);
+  var z = Math.floor(Math.random() * 256);
+  result = `${x},`+`${y},`+`${z}`;
+  console.log(result)
+}
+  
+/**
+ * Add new contact to Arrray
+ * @param {JSON} contact 
+ */
 async function addContact(contact) {
   contacts.push(contact);
   await backend.setItem('contact', JSON.stringify(contacts));
   console.log(contacts);
 }
 
+/**
+ * function to sort the array alphabetical
+ */
 function sortArray(){
   letters.sort();
   for (let i = 0; i < contacts.length; i++) {
@@ -51,230 +65,96 @@ function sortArray(){
   }
 }
 
-
-
+/**
+ * generate the contactlist with data from array contacts
+ */
 function generateContactlist() {
   letters = [];
   document.getElementById('contactList').innerHTML = '';
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     
-
     let firstLetter = contact['name'].charAt(0).toUpperCase();
-    if(!letters.includes(firstLetter)) {
-      
+    if(!letters.includes(firstLetter)) {     
       letters.sort();
       letters.push(firstLetter);     
       document.getElementById('contactList').innerHTML += generateLetterbox(firstLetter);
     }
-      if (firstLetter === contact['name'].charAt(0).toUpperCase()) {
-        document.getElementById(`letterbox${firstLetter}`).innerHTML +=/*html*/ `
-        <div class="contact" onclick="showSingleContact(${i})">
-        <p class="beginner-letter" style="background: rgb(${contact['r']},${contact['b']},${contact['g']})">${contact['name'].split(' ').map(word => word[0]).join('').toUpperCase()}</p>
-        <div class="contact-name-div">
-          <div class="contact-name">${contact['name']}</div>
-          <div  class="contact-email">${contact['email']}</div>
-        </div>
-        </div>
-     
-        `;
-
-      }
-
+    if (firstLetter === contact['name'].charAt(0).toUpperCase()) {
+      document.getElementById(`letterbox${firstLetter}`).innerHTML +=
+      generateContactinConttaclist(i, contact);
+    }
   }  
 }
 
-
+/**
+ * function to show the single contact on the right side and on the mobile scrren
+ * @param {number} i // number of array
+ */
 function showSingleContact(i){       
-        if(window.innerWidth > 1060 ){
-        document.getElementById('containerRight').innerHTML = /*html*/ `
-        <div class="headline">
-        <h1>Contacts</h1>
-        <div></div>
-        <h3>Better with a Team</h3>
-          </div>
-    <div class="contact-information">
-      <div class="contact-information-up">
-        <div class="contact-icon">
-          <div class="contact-icon-bg" style="background: rgb(${contacts[i]['r']},${contacts[i]['b']},${contacts[i]['g']}">
-            <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('')}</div>
-          </div>
-        </div>
-        <div class="add-task">
-          <div class="add-task-name">
-            <div>${contacts[i]['name']} </div>
-          </div>
-          <div class="add-task-btn">
-            <div class="add-task-btn-plus">
-              <div><img src="/assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
-            </div>
-            <div class="add-task-btn-text">Add Task</div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-information-middle">
-        <div class="contact-information-text"> Contact Information</div>
-        <div class="edit-container">
-          <div class="edit-container-left"> 
-            <img src="/assets/img/contact-img/edit.png" alt="" srcset="">
-          </div>
-          <div class="edit-contact" onclick="openEditContact(${i})">Edit Contact</div>
-        </div>
-      </div>
-      <div class="contact-information-down">
-        <div class="contact-information-fr102">
-          <div class="contact-information-fr102-email">Email</div>
-          <div class="contact-information-fr102-text">${contacts[i]['email']}</div>
-        </div>
-        <div class="contact-information-fr103">
-          <div class="contact-information-fr103-phone">Phone</div>
-          <div class="contact-information-fr103-number">${contacts[i]['phone']}</div>
-        </div>
-      </div>
-      </div>
-      
-
-        </div>
-        <div class="add-contact-btn" onclick="showNewContactContainer()">
-        <div class="add-contact-text">New contact</div>
-        <div>
-          <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
-        `;
-        } else {
-          document.getElementById('lightboxMobileContact').classList.remove('d-none')
-          document.getElementById('container').classList.add('d-none');
-          document.getElementById('lightboxMobileContact').innerHTML = /*html*/`
-          <div class="mobile-headline">
-            <div class="headline">
-              <p>Kanban Project Management Tools</p>    
-              <h1>Contacts</h1>        
-              <h3>Better with a Team</h3>
-              <div></div>
-            </div>
-            <div class="mobile-back">
-              <img src="/assets/img/contact-img/arrow-left-line.png" alt="" onclick="hideMobileContacts()">
-            </div>
-          </div>
-    <div class="contact-information">
-      <div class="contact-information-up">
-        <div class="contact-icon">
-          <div class="contact-icon-bg" style="background: rgb(${contacts[i]['r']},${contacts[i]['b']},${contacts[i]['g']}">
-            <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('')}</div>
-          </div>
-        </div>
-        <div class="add-task">
-          <div class="add-task-name">
-            <div>${contacts[i]['name']} </div>
-          </div>
-          <div class="add-task-btn">
-            <div class="add-task-btn-plus">
-              <div><img src="/assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
-            </div>
-            <div class="add-task-btn-text">Add Task</div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-information-middle">
-        <div class="contact-information-text"> Contact Information</div>
-        <div class="edit-container">
-          <div class="edit-container-left"> 
-            <img src="/assets/img/contact-img/edit.png" alt="" srcset="">
-          </div>
-          <div class="edit-contact" onclick="openEditContact(${i})">Edit Contact</div>
-        </div>
-      </div>
-      <div class="contact-information-down">
-        <div class="contact-information-fr102">
-          <div class="contact-information-fr102-email">Email</div>
-          <div class="contact-information-fr102-text">${contacts[i]['email']}</div>
-        </div>
-        <div class="contact-information-fr103">
-          <div class="contact-information-fr103-phone">Phone</div>
-          <div class="contact-information-fr103-number">${contacts[i]['phone']}</div>
-        </div>
-      </div>
-      </div>
-      
-
-        </div>
-        <div class="edit-contact-mobile" onclick="openEditContact(${i})">
-          <div><img src="/assets/img/contact-img/edit-mobile.png" alt="" srcset=""></div>
-        </div>
-          
-          
-          `;
-        }
+  if(window.innerWidth > 1060 ){
+    document.getElementById('containerRight').innerHTML = showSingleContactTemplate(i);
+  } else {
+    MobileSingleContactScreen();
+    document.getElementById('lightboxMobileContact').innerHTML = showSingleContactMobileTemplate(i);
+  }
 }
 
-function hideMobileContacts(){
-  document.getElementById('container').classList.remove('d-none');
-  document.getElementById('lightboxMobileContact').classList.add('d-none');
-}
-
+/**
+ * function to show the edit contact screen
+ * @param {number} i // number of array
+ */
 function openEditContact(i){
   document.getElementById('lightboxEditContact').classList.remove('d-none');
-  document.getElementById('lightboxEditContact').innerHTML = /*html*/ `
-  <div class="lightbox-container">
-        <div class="lightbox-container-left">
-          <div class="contact-close-mobile d-none">
-            <div class="lightbox-input-pos-close-mobile" onclick="closeEditContact()">X</div>
-          </div>
-          <div><img src="/assets/img/menu-img/menu-logo.svg" alt=""></div>
-          <h1>Edit Contact</h1>
-          <p>Tasks are better with a team</p>
-          <div class="underline"></div>
-        </div>
-        <div class="lightbox-container-right">
-          <div class="lightbox-img">
-            <div> <img src="/assets/img/contact-img/user-line.png" alt="" srcset=""></div>
-          </div>
-          <div class="lightbox-input-pos">
-            <div>
-              <div onclick="closeEditContact()" class="lightbox-input-pos-close">X</div>
-              <form class="lightbox-input-pos-close-form"  action="">
-              <input id="editName" required id="AddName" placeholder="" type="text">
-              <input id="editEmail" required id="AddEmail" placeholder="${contacts[i]['email']}" type="email">
-              <input id="editNumber" required id="AddNumber" placeholder="${contacts[i]['phone']}" type="text">
-            </div>
-          </form>
-            <div class="lightbox-btn-edit">
-              
-              <button class="lightbox-btn-right-edit" onclick="editContacts(${i})">Save</button>
-            </div>
-            
-          </div>       
-        </div>
-      </div>
-  `;
+  document.getElementById('lightboxEditContact').innerHTML = 
+  showEditContact(i);
   EditInput(i);
 }
 
+
+/**
+ * put the actual strings in the inputfield from edit contact
+ * @param {number} i // number of array
+ */
 function EditInput(i){
   document.getElementById('editName').value = `${contacts[i]['name']}`;
   document.getElementById('editEmail').value = `${contacts[i]['email']}`;
   document.getElementById('editNumber').value = `${contacts[i]['phone']}`;
 }
 
+/**
+ * function to edit contacts
+ * @param {number} i // number of array 
+ */
 function editContacts(i) {
   let name = document.getElementById('editName').value; 
   let email = document.getElementById('editEmail').value; 
   let number = document.getElementById('editNumber').value; 
+  randomBgColor();
   contacts.splice(i,1);
-  let contacts = {
+  let contact = {
     'name': name.charAt(0).toUpperCase() + name.slice(1),
     'email': email,
-    'phone': number
+    'phone': number,
+    'bgcolor': result
   }
-  addContact(contacts);   
+  addContact(contact);   
   sortArray();
   generateContactlist();
 }
 
+
+
+
+/*Functions to hide or show different screens*/
 function closeEditContact(){
   document.getElementById('lightboxEditContact').classList.add('d-none');
 }
 
-
+function hideMobileContacts(){
+  document.getElementById('container').classList.remove('d-none');
+  document.getElementById('lightboxMobileContact').classList.add('d-none');
+}
 
 
 function showNewContactContainer() {
@@ -283,6 +163,11 @@ function showNewContactContainer() {
 
 function HideNewContactContainer() {
     document.getElementById('lightboxAddContact').classList.add('d-none');
+}
+
+function MobileSingleContactScreen(){
+  document.getElementById('lightboxMobileContact').classList.remove('d-none')
+  document.getElementById('container').classList.add('d-none');
 }
 
 
