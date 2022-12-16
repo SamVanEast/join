@@ -6,6 +6,7 @@
 
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
+let subtask = [];
 
 
 /**
@@ -134,7 +135,7 @@ function renderSelectedAssignedTo(contact) {
          `;
 
     document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
-    document.getElementById('assignedTo').classList.toggle('categorysDropdownSelect');
+    // document.getElementById('assignedTo').classList.toggle('categorysDropdownSelect');
 }
 
 
@@ -158,7 +159,7 @@ function renderSubtaskContent() {
         document.getElementById('newSubtask').innerHTML += /*html*/`
          <div class="newSubtasks">
              <input type="checkbox" required>
-             <span>${subtask[i]}</span>
+             <span id="selectedSubtask">${subtask[i]}</span>
          </div>
      `;
     }
@@ -203,21 +204,21 @@ function clearFields() {
 function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
-    let cat = document.getElementById('dropdownCategory').value;
-    // let assigned = document.getElementById('assigned').value;
-    // let dueDate = document.getElementById('dueDate').value;
+    let cat = document.getElementById('cat').value;
+    let assigned = document.getElementById('assigned').value;
+    let dueDate = document.getElementById('dueDate').value;
     // let prio = document.getElementById('prio').value;
-    // let subtask = document.getElementById('subs').value;
+    let subtask = document.getElementById('selectedSubtask').value;
 
     let task = {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
         'category': cat,
-        // 'assignedTo': assigned,
-        // 'dueDate': dueDate,
+        'assignedTo': assigned,
+        'dueDate': dueDate,
         // 'prio': prio,
-        // 'subtask': subtask,
+        'subtask': subtask,
     };
 
     addNewTask(task);
