@@ -137,11 +137,11 @@ function renderSelectedAssignedTo(contact) {
 }
 
 
-function setDate() {
-    var date = new Date();
-    const formatDate = (date) => { let formatted_date = (date.getDate() < 10 ? '0' : '') + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(); return formatted_date; }
-    document.getElementById('dueDate').value = formatDate(date);
-}
+// function setDate() {
+//     var date = new Date();
+//     const formatDate = (date) => { let formatted_date = (date.getDate() < 10 ? '0' : '') + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(); return formatted_date; }
+//     document.getElementById('dueDate').value = formatDate(date);
+// }
 
 
 function renderSubtaskContent() {
@@ -206,15 +206,15 @@ function submitTask() {
     let assigned = document.getElementById('assigned').value;
     let dueDate = document.getElementById('dueDate').value;
     // let prio = document.getElementById('prio').value;
-    //let subtask = document.getElementById('selectedSubtask').value;
+    let subtask = document.getElementById('selectedSubtask').value;
 
     let task = {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
         'category': 'Media',
-        // 'assignedTo': assigned,
-        // 'dueDate': dueDate,
+        'assignedTo': assigned,
+        'dueDate': dueDate,
         // 'prio': prio,
         'subtask': subtask,
     };
