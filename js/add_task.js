@@ -227,6 +227,5 @@ function submitTask() {
 async function addThisTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    window.location.href = 'add_task.html';
     console.log(allTasks);
 }
