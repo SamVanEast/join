@@ -213,7 +213,7 @@ function submitTask() {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
-        'category': 'Media',
+        'category': cat,
         // 'assignedTo': assigned,
         // 'dueDate': dueDate,
         // 'prio': prio,
