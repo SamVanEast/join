@@ -660,6 +660,7 @@ background: #FFFFFF;
   display: flex;
   width: 60%;
   padding-right: 50px;
+  align-items: center;
 }
 
 .lightbox-img{
@@ -668,6 +669,24 @@ background: #FFFFFF;
   align-items: center;
   height: 100%;
   width: 100%;
+}
+
+.lightbox-img-edit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.lightbox-img-edit div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  border: 3px solid #FFFFFF ;
 }
 
 .lightbox-img div{
@@ -679,7 +698,6 @@ background: #FFFFFF;
   border-radius: 50px;
   background-color: gray;
   border: 3px solid #FFFFFF ;
-  
 }
 
 .lightbox-input-pos {
