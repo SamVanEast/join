@@ -124,6 +124,8 @@ function checkBgColor(element) {
  */
 
 function closeOpenTask() {
+    document.body.classList.remove('noScroll');
+
     document.getElementById('openTask').classList.add('d-none');
 
 }
@@ -131,6 +133,7 @@ function closeOpenTask() {
 function openTask(element) {
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
+    document.body.classList.add('noScroll');
     openedTask.innerHTML = openTaskHTML(element);
 
 }
@@ -151,8 +154,10 @@ function openTaskHTML(element) {
         </div>
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
+        <div>
         <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']}); margin-left: 2px">${contacts[0].name}</div>
-            
+        <p>Leo</p>
+        </div>
         </div>
         <div id="edit-btn"><img src="../img/board_img/edit-btn.png"></div>
         </div> `;
