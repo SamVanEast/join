@@ -7,6 +7,7 @@ async function initContacts() {
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contact')) || [];  
     console.log(contacts);
+    sortArray();
     generateContactlist();
 }
 
@@ -26,7 +27,7 @@ function submitContact() {
       'g': y,
       'b': z
   };
-
+  sortArray();
   addContact(contact);   
   generateContactlist();
 }
@@ -63,17 +64,9 @@ function generateContactlist() {
     if(!letters.includes(firstLetter)) {
       
       letters.sort();
-      letters.push(firstLetter);
-      
-      document.getElementById('contactList').innerHTML += /*html*/ `
-      <div class="letterbox"  id="letterbox${firstLetter}">
-      <div class="first-letter">
-        <p>${firstLetter}</p>
-      </div>
-      <div class="between-line"><p></p></div>
-        
-    </div>
-`; }
+      letters.push(firstLetter);     
+      document.getElementById('contactList').innerHTML += generateLetterbox(firstLetter);
+    }
       if (firstLetter === contact['name'].charAt(0).toUpperCase()) {
         document.getElementById(`letterbox${firstLetter}`).innerHTML +=/*html*/ `
         <div class="contact" onclick="showSingleContact(${i})">

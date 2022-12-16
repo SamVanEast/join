@@ -30,6 +30,7 @@ function submitUser() {
   };
 
   addUser(user);   
+  backToLogin();
 }
 
 
@@ -69,7 +70,6 @@ function changePassword(i) {
  * confirm scrren that password changed
  */
 function passwordChanged() {
-  console.log('password changed');
   lightboxReset.classList.remove('d-none')
   setTimeout(() => {
     lightboxReset.classList.add('d-none');
@@ -90,13 +90,10 @@ function SendEmailtoChangePassword() {
       lightboxEmail.classList.remove('d-none');
       setTimeout(() => {
         lightboxEmail.classList.add('d-none');
-        document.getElementById("forgot").classList.add("d-none");
-        document.getElementById("reset").classList.remove('d-none');
+        backToLogin();
         document.getElementById("reset").innerHTML += renderResetContainer(i);
       }, 3000); break;
-    } else {
-
-
+    } else if(i==allUser.length) {
       alert("This Email does not exist");
     }
   }
@@ -105,7 +102,6 @@ function SendEmailtoChangePassword() {
 
 /**
  * This function is used to check if the password and email is correct
- *
  *
  */
 async function checkLogin() {
