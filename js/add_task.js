@@ -206,7 +206,7 @@ function submitTask() {
     let assigned = document.getElementById('assigned').value;
     let dueDate = document.getElementById('dueDate').value;
     // let prio = document.getElementById('prio').value;
-    let subtask = document.getElementById('selectedSubtask').value;
+    //let subtask = document.getElementById('selectedSubtask').value;
 
     let task = {
         'headline': headline,
