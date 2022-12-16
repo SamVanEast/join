@@ -88,7 +88,7 @@ function renderSelectedCategory(category) {
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
-    document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
+    // document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
 }
 
 
@@ -203,7 +203,7 @@ function clearFields() {
 function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
-    let cat = document.getElementById('cat').value;
+    let cat = document.getElementById('dropdownCategory').value;
     // let assigned = document.getElementById('assigned').value;
     // let dueDate = document.getElementById('dueDate').value;
     // let prio = document.getElementById('prio').value;
