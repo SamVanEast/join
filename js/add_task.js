@@ -72,14 +72,21 @@ function addNewCategory() {
 
     document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
          <div class="categoryContent">
-             <input class="inputFieldSubtask" type="text" placeholder="New category name" onclick="event.stopPropagation()">
+             <input class="inputFieldSubtask" id="inputFieldCategory" type="text" placeholder="New category name" onclick="event.stopPropagation()">
              <div class="subtaskImage">
-                 <img src="../../assets/img/add_task_img/cross.png" alt="" onclick="renderCategoryContent()">
+                 <img src="../../assets/img/add_task_img/cross.png" onclick="renderCategoryContent()">
                  <div class="inputBorder"></div>
-                 <img src="../../assets/img/add_task_img/hookBlack.png" alt="">
+                 <img src="../../assets/img/add_task_img/hookBlack.png" onclick="pushNewCategory()">
              </div>
          </div>
      `;
+}
+
+
+function pushNewCategory(){
+    let newCategory = document.getElementById('inputFieldCategory').value;
+
+    categorys.push(newCategory);
 }
 
 
