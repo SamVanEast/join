@@ -226,6 +226,10 @@ function submitTask() {
 async function addThisTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    window.location.href = 'side_bar.html';
     console.log(allTasks);
+    clearForm();
+}
+
+function clearForm() {
+    document.getElementById("form").reset();
 }
