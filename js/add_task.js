@@ -89,7 +89,6 @@ function renderSelectedCategory(category) {
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
-    // document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
 }
 
 
@@ -135,7 +134,6 @@ function renderSelectedAssignedTo(contact) {
          `;
 
     document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
-    // document.getElementById('assignedTo').classList.toggle('categorysDropdownSelect');
 }
 
 
