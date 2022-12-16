@@ -220,6 +220,7 @@ function submitTask() {
     };
 
     addThisTask(task);
+    clearForm();
 }
 
 
@@ -227,7 +228,7 @@ async function addThisTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log(allTasks);
-    clearForm();
+    
 }
 
 function clearForm() {
