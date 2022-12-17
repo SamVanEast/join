@@ -177,7 +177,7 @@ function renderSubtaskContent() {
     for (let i = 0; i < subtask.length; i++) {
         document.getElementById('newSubtask').innerHTML += /*html*/`
          <div class="newSubtasks">
-             <input type="checkbox" required>
+             <input type="checkbox" id="checkboxSubtask" value="${subtask[i]}">
              <span id="selectedSubtask">${subtask[i]}</span>
          </div>
      `;
@@ -227,22 +227,38 @@ function submitTask() {
     let assigned = document.getElementById('selectedContact').innerText;
     let dueDate = document.getElementById('dueDate').value;
     // let prio = checkboxes[y].value;
-    // let subtask = document.getElementById('selectedSubtask').value;
+    let subtask = document.getElementById('checkboxSubtask');
 
-    let task = {
-        'headline': headline,
-        'desc': desc,
-        'status': 'todo',
-        'category': cat,
-        'assignedTo': assigned,
-        'dueDate': dueDate,
-        // 'prio': prio,
-        // 'subtask': subtask,
-    };
-    addThisTask(task);
-    clearForm();
-    renderCategoryContent();
-    renderAssignedToContent();
+    if (subtask.checked == true) {
+        let task = {
+            'headline': headline,
+            'desc': desc,
+            'status': 'todo',
+            'category': cat,
+            'assignedTo': assigned,
+            'dueDate': dueDate,
+            // 'prio': prio,
+            'subtask': document.getElementById('checkboxSubtask').value,
+        };
+        addThisTask(task);
+        clearForm();
+        renderCategoryContent();
+        renderAssignedToContent();
+    }else{
+        let task = {
+            'headline': headline,
+            'desc': desc,
+            'status': 'todo',
+            'category': cat,
+            'assignedTo': assigned,
+            'dueDate': dueDate,
+            // 'prio': prio,
+        };
+        addThisTask(task);
+        clearForm();
+        renderCategoryContent();
+        renderAssignedToContent();
+    } 
 }
 
 
