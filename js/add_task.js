@@ -41,6 +41,8 @@ function renderCategoryContent() {
              <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent" onclick="renderCategorys()">Select task category</div>
          </div>
      `;
+     document.getElementById('categoryColors').classList.add('d-none');
+     document.getElementById('categoryColors').classList.remove('categoryColors');
 }
 
 
@@ -87,14 +89,18 @@ function addNewCategory() {
              </div>
          </div>
      `;
+     renderCategoryColors();
 }
 
 
 function renderCategoryColors() {
+    document.getElementById('categoryColors').classList.remove('d-none');
+    document.getElementById('categoryColors').classList.add('categoryColors');
+
     for (let g = 0; g < categoryColors.length; g++) {
         const color = categoryColors[g];
 
-        document.getElementById('categoryColors').innerHTML = /*html*/ `
+        document.getElementById('categoryColors').innerHTML += /*html*/ `
             <div class="colorContent">
                 <div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div>
             </div>
