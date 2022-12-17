@@ -110,7 +110,6 @@ function renderCategoryColors() {
 
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
-    let newCategoryColor = document.getElementById('colorDot');
 
     categorys.push(newCategory);
 }
