@@ -8,6 +8,7 @@ let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let prios = ['Urgent', 'Medium', 'Low'];
 let allSubtasks = [];
+let checkedSubtasks = [];
 
 
 /**
@@ -202,6 +203,8 @@ function addSubtask() {
 
     allSubtasks.push(newSubtask);
 
+    console.log(allSubtasks);
+
     renderSubtaskContent();
 }
 
@@ -224,9 +227,13 @@ function submitTask() {
 
     let dueDate = document.getElementById('dueDate').value;
     let prio = document.getElementById('urgent').value;
-    let subtask = document.getElementById('checkboxSubtask');
+    
+    const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
+    const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
+    const checkedSubtask = checkedSubtasks.map(cb => cb.name);
 
-    if (subtask.checked == true) {
+    console.log(checkedSubtasks);
+
         let task = {
             'headline': headline,
             'desc': desc,
@@ -235,27 +242,12 @@ function submitTask() {
             'assignedTo': checkedNames,
             'dueDate': dueDate,
             'prio': prio,
-            'subtask': subtask.value,
+            'subtask': checkedSubtask,
         };
         addThisTask(task);
         clearForm();
         renderCategoryContent();
         renderAssignedToContent();
-    } else {
-        let task = {
-            'headline': headline,
-            'desc': desc,
-            'status': 'todo',
-            'category': cat,
-            'assignedTo': checkedNames,
-            'dueDate': dueDate,
-            'prio': prio,
-        };
-        addThisTask(task);
-        clearForm();
-        renderCategoryContent();
-        renderAssignedToContent();
-    }
 }
 
 
