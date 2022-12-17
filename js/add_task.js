@@ -1,9 +1,8 @@
 /**
- * Using an empty array in order to test the function addTask
+ * Alle benötigten globalen Variablen mit Ihren Arrays
  * 
- * @param {Array} tasks - This array is used to store data from add_task.html
+ *
  */
-
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
