@@ -218,9 +218,9 @@ function submitTask() {
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
 
-    const checkboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
-    const checkedCheckboxes = [...checkboxes].filter(cb => cb.checked);
-    const checkedNames = checkedCheckboxes.map(cb => cb.name);
+    const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
+    const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
+    const checkedNames = checkedContacts.map(cb => cb.name);
 
     let dueDate = document.getElementById('dueDate').value;
     let prio = document.getElementById('urgent').value;
