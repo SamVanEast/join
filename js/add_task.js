@@ -241,6 +241,8 @@ function submitTask() {
     };
     addThisTask(task);
     clearForm();
+    renderCategoryContent();
+    renderAssignedToContent();
 }
 
 
