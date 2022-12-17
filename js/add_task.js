@@ -6,7 +6,8 @@
 
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
-let categoryColors = ['#83A5FF', '#FF0000', '#00D700', '#FF8200'];
+let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
+let newCategoryColors = ['#00D700', '#FF8200', '#F700C4', '#0039FF'];
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let checkedPrios = [];
@@ -97,12 +98,12 @@ function renderCategoryColors() {
     document.getElementById('categoryColors').classList.remove('d-none');
     document.getElementById('categoryColors').classList.add('categoryColors');
 
-    for (let g = 0; g < categoryColors.length; g++) {
-        const color = categoryColors[g];
+    for (let g = 0; g < newCategoryColors.length; g++) {
+        const color = newCategoryColors[g];
 
         document.getElementById('categoryColors').innerHTML += /*html*/ `
             <div class="colorContent">
-                <div class="colorDot" style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div>
+                <div class="colorDot" style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 20px;"></div>
             </div>
         `;
     }
