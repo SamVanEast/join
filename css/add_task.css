@@ -216,11 +216,11 @@ body {
     margin-top: 10px;
 }
 
-.colorDot{
-    display: inline-block; 
-    width: 15px; 
-    height: 15px; 
-    border-radius: 50%; 
+.colorDot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
     margin-left: 20px;
 }
 

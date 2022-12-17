@@ -117,7 +117,7 @@ function pushNewCategory() {
 
 function renderSelectedCategory(category, color) {
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div>
+         <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div class="colorDot" style="background-color: ${color};"></div>
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
