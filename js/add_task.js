@@ -6,7 +6,6 @@
 
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
-let category = [];
 let prios = ['Urgent', 'Medium', 'Low'];
 let subtask = [];
 
@@ -150,15 +149,6 @@ function checkContactCheckbox() {
 }
 
 
-// function renderSelectedAssignedTo(contact) {
-//     document.getElementById('dropdownAssignedTo').innerHTML = /*html*/`
-//          <div class="categorysDropdownSelect" id="selectedContact" onclick="renderAssignedTo()">${contact}</div>
-//          `;
-
-//     document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
-// }
-
-
 function renderPrioButtons() {
     document.getElementById('prioButtons').innerHTML = /*html*/`
             <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
@@ -179,8 +169,8 @@ function renderSubtaskContent() {
 
     for (let i = 0; i < subtask.length; i++) {
         document.getElementById('newSubtask').innerHTML += /*html*/`
-         <div class="newSubtasks">
-             <input type="checkbox" id="checkboxSubtask" value="${subtask[i]}">
+         <div class="newSubtasks" id="newSubtasks">
+             <input type="checkbox" id="checkboxSubtask" value="${subtask[i]}" name="${subtask[i]}">
              <span id="selectedSubtask">${subtask[i]}</span>
          </div>
      `;
