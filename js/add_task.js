@@ -149,9 +149,9 @@ function renderSelectedAssignedTo(contact) {
 
 function renderPrioButtons(){
         document.getElementById('prioButtons').innerHTML = /*html*/`
-            <button type="button" class="urgentButton">Urgent<input class="urgent" id="prio[0]" type="checkbox" value="Urgent"></button>
-            <button type="button" class="mediumButton">Medium<input class="medium" id="prio[1]" type="checkbox" value="Medium"></button>
-            <button type="button" class="lowButton">Low<input class="low" id="prio[2]" type="checkbox" value="Low"></button>
+            <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
+            <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium"></button>
+            <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low"></button>
     `;
     }
 
@@ -220,7 +220,7 @@ function submitTask() {
     let prio = document.getElementById('urgent').value;
     let subtask = document.getElementById('checkboxSubtask');
 
-    if (subtask.checked == true && prio.checked == true) {
+    if (subtask.checked == true) {
         let task = {
             'headline': headline,
             'desc': desc,
@@ -228,7 +228,7 @@ function submitTask() {
             'category': cat,
             'assignedTo': assigned,
             'dueDate': dueDate,
-            'prio': prio.value,
+            'prio': prio,
             'subtask': subtask.value,
         };
         addThisTask(task);
@@ -243,7 +243,7 @@ function submitTask() {
             'category': cat,
             'assignedTo': assigned,
             'dueDate': dueDate,
-            'prio': prio.value,
+            'prio': prio,
         };
         addThisTask(task);
         clearForm();
