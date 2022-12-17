@@ -226,7 +226,7 @@ function submitTask() {
     let cat = document.getElementById('selectedCategory').innerText;
     let assigned = document.getElementById('selectedContact').innerText;
     let dueDate = document.getElementById('dueDate').value;
-    // let prio = checkboxes[y].value;
+    let prio = document.getElementById('urgent').value;
     let subtask = document.getElementById('checkboxSubtask');
 
     if (subtask.checked == true) {
@@ -237,8 +237,8 @@ function submitTask() {
             'category': cat,
             'assignedTo': assigned,
             'dueDate': dueDate,
-            // 'prio': prio,
-            'subtask': document.getElementById('checkboxSubtask').value,
+            'prio': prio,
+            'subtask': subtask.value,
         };
         addThisTask(task);
         clearForm();
@@ -252,7 +252,7 @@ function submitTask() {
             'category': cat,
             'assignedTo': assigned,
             'dueDate': dueDate,
-            // 'prio': prio,
+            'prio': prio,
         };
         addThisTask(task);
         clearForm();
