@@ -203,8 +203,6 @@ function addSubtask() {
 
     allSubtasks.push(newSubtask);
 
-    console.log(allSubtasks);
-
     renderSubtaskContent();
 }
 
@@ -231,8 +229,6 @@ function submitTask() {
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
-
-    console.log(checkedSubtasks);
 
         let task = {
             'headline': headline,
