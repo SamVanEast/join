@@ -132,28 +132,40 @@ function renderAssignedToOptions() {
         const contacts = contact[b]['name'];
 
         names.innerHTML += /*html*/`
-         <div class="contactOptions"><span class="categorysDropdown" onclick="renderSelectedAssignedTo('${contacts}')">${contacts}</span><input type="checkbox"></div>
+         <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox()"><span class="categorysDropdown" onclick="checkContactCheckbox()">${contacts}</span><input id="checkbox-input" type="checkbox"></div>
          `;
     }
 }
 
 
-function renderSelectedAssignedTo(contact) {
-    document.getElementById('dropdownAssignedTo').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" id="selectedContact" onclick="renderAssignedTo()">${contact}</div>
-         `;
+function checkContactCheckbox() {
+    const divContainers = document.querySelectorAll('.div-container');
 
-    document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
+    divContainers.forEach(divContainer => {
+      divContainer.addEventListener('click', () => {
+        const checkboxInput = divContainer.querySelector('input[type="checkbox"]');
+        checkboxInput.checked = !checkboxInput.checked;
+      });
+    });    
 }
 
 
-function renderPrioButtons(){
-        document.getElementById('prioButtons').innerHTML = /*html*/`
+// function renderSelectedAssignedTo(contact) {
+//     document.getElementById('dropdownAssignedTo').innerHTML = /*html*/`
+//          <div class="categorysDropdownSelect" id="selectedContact" onclick="renderAssignedTo()">${contact}</div>
+//          `;
+
+//     document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
+// }
+
+
+function renderPrioButtons() {
+    document.getElementById('prioButtons').innerHTML = /*html*/`
             <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
             <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium"></button>
             <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low"></button>
     `;
-    }
+}
 
 
 function renderSubtaskContent() {
