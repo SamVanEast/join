@@ -220,7 +220,7 @@ function clearFields() {
 }
 
 
-async function submitTask(category) {
+function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     // let cat = document.getElementById(`${category}`).innerText;
