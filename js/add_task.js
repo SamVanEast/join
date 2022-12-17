@@ -7,6 +7,7 @@
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let category = [];
+let prios = ['Urgent', 'Medium', 'Low'];
 let subtask = [];
 
 
@@ -15,11 +16,11 @@ let subtask = [];
  * 
  */
 
- async function initAddTask() {
+async function initAddTask() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    contact = JSON.parse(backend.getItem('contact'))  || [];
+    contact = JSON.parse(backend.getItem('contact')) || [];
     console.log(allTasks);
     console.log(contact);
 
@@ -85,7 +86,7 @@ function addNewCategory() {
 }
 
 
-function pushNewCategory(){
+function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
 
     categorys.push(newCategory);
@@ -147,12 +148,12 @@ function renderSelectedAssignedTo(contact) {
 
 
 function renderPrioButtons(){
-    document.getElementById('prioButtons').innerHTML = /*html*/`
-        <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
-        <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium"></button>
-        <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low"></button>
+        document.getElementById('prioButtons').innerHTML = /*html*/`
+            <button type="button" class="urgentButton">Urgent<input class="urgent" id="prio[0]" type="checkbox" value="Urgent"></button>
+            <button type="button" class="mediumButton">Medium<input class="medium" id="prio[1]" type="checkbox" value="Medium"></button>
+            <button type="button" class="lowButton">Low<input class="low" id="prio[2]" type="checkbox" value="Low"></button>
     `;
-}
+    }
 
 
 function renderSubtaskContent() {
@@ -219,7 +220,7 @@ function submitTask() {
     let prio = document.getElementById('urgent').value;
     let subtask = document.getElementById('checkboxSubtask');
 
-    if (subtask.checked == true) {
+    if (subtask.checked == true && prio.checked == true) {
         let task = {
             'headline': headline,
             'desc': desc,
@@ -227,14 +228,14 @@ function submitTask() {
             'category': cat,
             'assignedTo': assigned,
             'dueDate': dueDate,
-            'prio': prio,
+            'prio': prio.value,
             'subtask': subtask.value,
         };
         addThisTask(task);
         clearForm();
         renderCategoryContent();
         renderAssignedToContent();
-    }else{
+    } else {
         let task = {
             'headline': headline,
             'desc': desc,
@@ -242,13 +243,13 @@ function submitTask() {
             'category': cat,
             'assignedTo': assigned,
             'dueDate': dueDate,
-            'prio': prio,
+            'prio': prio.value,
         };
         addThisTask(task);
         clearForm();
         renderCategoryContent();
         renderAssignedToContent();
-    } 
+    }
 }
 
 
@@ -256,7 +257,7 @@ async function addThisTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log(allTasks);
-    
+
 }
 
 function clearForm() {
