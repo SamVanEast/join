@@ -153,11 +153,23 @@ function checkContactCheckbox() {
 
 function renderPrioButtons() {
     document.getElementById('prioButtons').innerHTML = /*html*/`
-            <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
-            <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium"></button>
-            <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low"></button>
+      <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
+      <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium"></button>
+      <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low"></button>
     `;
-}
+    
+    // Alle Button-Elemente auswählen
+    const buttons = document.querySelectorAll('#prioButtons button');
+    
+    // Für jedes Button-Element einen Event-Listener hinzufügen
+    buttons.forEach(button => {
+      button.addEventListener('click', event => {
+        // Checkbox-Element auswählen und deren "checked"-Eigenschaft auf "true" setzen
+        const checkbox = button.querySelector('input[type="checkbox"]');
+        checkbox.checked = true;
+      });
+    });
+}  
 
 
 function renderSubtaskContent() {
