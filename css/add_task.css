@@ -163,7 +163,7 @@ body {
     flex-direction: column;
 }
 
-.categoryContent{
+.categoryContent {
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -191,6 +191,21 @@ body {
 
 .categorysNewCategory:hover {
     background-color: rgb(201, 201, 201);
+}
+
+.contactOptions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.contactOptions input {
+    margin-right: 15px;
+}
+
+.contactOptions input:hover {
+    cursor: pointer;
 }
 
 .borderLine {
@@ -358,7 +373,7 @@ body {
     color: #D1D1D1;
 }
 
-.subtaskRender{
+.subtaskRender {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -374,13 +389,13 @@ body {
     gap: 10px;
 }
 
-.inputBorder{
+.inputBorder {
     width: 0px;
     height: 20px;
     border: 1px solid #D1D1D1;
 }
 
-.inputFieldSubtask{
+.inputFieldSubtask {
     border: unset;
     font-family: 'Inter';
     font-style: normal;
@@ -390,15 +405,15 @@ body {
     padding: 0px;
 }
 
-.inputFieldSubtask::placeholder{
+.inputFieldSubtask::placeholder {
     color: #D1D1D1;
 }
 
-.inputFieldSubtask:hover{
+.inputFieldSubtask:hover {
     cursor: pointer;
 }
 
-.inputFieldSubtask:focus{
+.inputFieldSubtask:focus {
     outline: none;
 }
 
@@ -418,7 +433,7 @@ body {
     margin-top: 8px;
 }
 
-.newSubtasks{
+.newSubtasks {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -427,7 +442,7 @@ body {
     overflow: scroll;
 }
 
-.newSubtasks input:hover{
+.newSubtasks input:hover {
     cursor: pointer;
 }
 

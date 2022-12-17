@@ -132,7 +132,7 @@ function renderAssignedToOptions() {
         const contacts = contact[b]['name'];
 
         names.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedAssignedTo('${contacts}')">${contacts}</span>
+         <div class="contactOptions"><span class="categorysDropdown" onclick="renderSelectedAssignedTo('${contacts}')">${contacts}</span><input type="checkbox"></div>
          `;
     }
 }
