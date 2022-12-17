@@ -25,6 +25,7 @@ let subtask = [];
 
     renderCategoryContent();
     renderAssignedToContent();
+    renderPrioButtons();
     renderSubtaskContent();
 }
 
@@ -145,24 +146,13 @@ function renderSelectedAssignedTo(contact) {
 }
 
 
-// function setDate() {
-//     var date = new Date();
-//     const formatDate = (date) => { let formatted_date = (date.getDate() < 10 ? '0' : '') + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(); return formatted_date; }
-//     document.getElementById('dueDate').value = formatDate(date);
-// }
-
-
-// function getValue() {
-//     let checkboxes = document.getElementsByName('prio');
-
-//     let result = "";
-
-//     for (let y = 0; y < checkboxes.length; y++) {
-//         if (checkboxes[y].checked) {
-//             result += checkboxes[y].value;
-//         }
-//     }
-// }
+function renderPrioButtons(){
+    document.getElementById('prioButtons').innerHTML = /*html*/`
+        <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
+        <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium"></button>
+        <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low"></button>
+    `;
+}
 
 
 function renderSubtaskContent() {
