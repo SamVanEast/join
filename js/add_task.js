@@ -154,9 +154,9 @@ function checkContactCheckbox() {
 
 function renderPrioButtons() {
     document.getElementById('prioButtons').innerHTML = /*html*/`
-      <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent"></button>
-      <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium"></button>
-      <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low"></button>
+      <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent" name="Urgent"></button>
+      <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium" name="Medium"></button>
+      <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low" name="Low"></button>
     `;
     
     // Alle Button-Elemente auswählen
