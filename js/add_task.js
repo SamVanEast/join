@@ -132,7 +132,7 @@ function renderAssignedToOptions() {
         const contacts = contact[b]['name'];
 
         names.innerHTML += /*html*/`
-         <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox()"><span class="categorysDropdown" onclick="checkContactCheckbox()">${contacts}</span><input id="checkbox-input" type="checkbox"></div>
+         <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox()"><span class="categorysDropdown" onclick="checkContactCheckbox()">${contacts}</span><input id="checkbox-input" type="checkbox" name="${contacts}"></div>
          `;
     }
 }
@@ -227,7 +227,9 @@ function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
-    let assigned = document.getElementById('selectedContact').innerText;
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkedCheckboxes = [...checkboxes].filter(cb => cb.checked);
+    const checkedNames = checkedCheckboxes.map(cb => cb.name);
     let dueDate = document.getElementById('dueDate').value;
     let prio = document.getElementById('urgent').value;
     let subtask = document.getElementById('checkboxSubtask');
@@ -238,7 +240,7 @@ function submitTask() {
             'desc': desc,
             'status': 'todo',
             'category': cat,
-            'assignedTo': assigned,
+            'assignedTo': checkedNames,
             'dueDate': dueDate,
             'prio': prio,
             'subtask': subtask.value,
@@ -253,7 +255,7 @@ function submitTask() {
             'desc': desc,
             'status': 'todo',
             'category': cat,
-            'assignedTo': assigned,
+            'assignedTo': checkedNames,
             'dueDate': dueDate,
             'prio': prio,
         };
