@@ -67,7 +67,7 @@ function renderCategorysOptions() {
         const color = categoryColors[a % categoryColors.length];
 
         options.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%;"></div></span>
+         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div></span>
          `;
     }
 }
