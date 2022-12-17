@@ -140,7 +140,7 @@ function pushNewCategory() {
 /**
  * Funktion, die die ausgewählte Kategorie anzeigt
  * 
- * @param {string} category 
+ * @param {string} category
  */
 function renderSelectedCategory(category, color) {
 
