@@ -152,6 +152,19 @@ function renderSelectedAssignedTo(contact) {
 // }
 
 
+function getValue() {
+    let checkboxes = document.getElementsByName('prio');
+
+    let result = "";
+
+    for (let y = 0; y < checkboxes.length; y++) {
+        if (checkboxes[y].checked) {
+            result += checkboxes[y].value;
+        }
+    }
+}
+
+
 function renderSubtaskContent() {
     document.getElementById('subs').innerHTML = /*html*/ `
          <p>Subtasks</p>
@@ -207,23 +220,23 @@ function clearFields() {
 }
 
 
-function submitTask() {
+async function submitTask(checkboxes, y) {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
-    let cat = document.getElementById(`${category}`).innerText;
+    // let cat = document.getElementById(`${category}`).innerText;
     let assigned = document.getElementById('assigned').value;
     let dueDate = document.getElementById('dueDate').value;
-    // let prio = document.getElementById('prio').value;
+    let prio = checkboxes[y].value;
     let subtask = document.getElementById('selectedSubtask').value;
 
     let task = {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
-        'category': cat,
+        // 'category': cat,
         'assignedTo': assigned,
         'dueDate': dueDate,
-        // 'prio': prio,
+        'prio': prio,
         'subtask': subtask,
     };
 
