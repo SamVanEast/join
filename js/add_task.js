@@ -240,8 +240,9 @@ function submitTask() {
 
     const prioCheckboxes = document.querySelectorAll('#prioButtons input[type="checkbox"]');
     const checkedPrio = [...prioCheckboxes].filter(cb => cb.checked);
-    if (checkedPrio.length > 1) {
-        checkedPrio.length = 1;
+    const checkedPrios = checkedPrio.map(cb => cb.name);
+    if (checkedPrios.length > 1) {
+        checkedPrios.length = 1;
       }
     
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
