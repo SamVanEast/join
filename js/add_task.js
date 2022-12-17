@@ -16,10 +16,9 @@ let checkedSubtasks = [];
 
 
 /**
- * Function that loads all the tasks 
+ * Funktion, die alle Aufgaben lädt
  * 
  */
-
 async function initAddTask() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
@@ -35,6 +34,10 @@ async function initAddTask() {
 }
 
 
+/**
+ * Funktion, die den Kategorie-Inhalt anzeigt
+ * 
+ */
 function renderCategoryContent() {
     document.getElementById('cat').innerHTML = /*html*/ `
          <p>Category</p>
@@ -47,6 +50,10 @@ function renderCategoryContent() {
 }
 
 
+/**
+ * Funktion, die den Kategorie-Grundaufbau anzeigt
+ * 
+ */
 function renderCategorys() {
     document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
     document.getElementById('dropdownCategory').classList.remove('categorysDropdownSelectHTML');
@@ -62,6 +69,10 @@ function renderCategorys() {
 }
 
 
+/**
+ * Funktion, die die verschiedenen Kategorie-Optionen anzeigt
+ * 
+ */
 function renderCategorysOptions() {
     let options = document.getElementById('categorysOptions');
 
@@ -76,6 +87,10 @@ function renderCategorysOptions() {
 }
 
 
+/**
+ * Funktion, die eine neue Kategorie hinzufügt
+ * 
+ */
 function addNewCategory() {
     document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
@@ -94,6 +109,10 @@ function addNewCategory() {
 }
 
 
+/**
+ * Funktion, die die neuen möglichen Farben für eine neue Kategorie anzeigt
+ * 
+ */
 function renderCategoryColors() {
     document.getElementById('categoryColors').classList.remove('d-none');
     document.getElementById('categoryColors').classList.add('categoryColors');
@@ -108,6 +127,10 @@ function renderCategoryColors() {
 }
 
 
+/**
+ * Funktion, die eine neue Kategorie zum Array hinzufügt
+ * 
+ */
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
 
@@ -115,6 +138,11 @@ function pushNewCategory() {
 }
 
 
+/**
+ * Funktion, die die ausgewählte Kategorie anzeigt
+ * 
+ * @param {string} category 
+ */
 function renderSelectedCategory(category, color) {
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
          <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div class="colorDot" style="background-color: ${color};"></div>
@@ -124,6 +152,10 @@ function renderSelectedCategory(category, color) {
 }
 
 
+/**
+ * Funktion, die den Kontakte-Inhalt anzeigt
+ * 
+ */
 function renderAssignedToContent() {
     document.getElementById('assigned').innerHTML = /*html*/ `
         <p>Assigned to</p>
@@ -133,6 +165,10 @@ function renderAssignedToContent() {
 }
 
 
+/**
+ * Funktion, die den Kontakte-Grundaufbau anzeigt
+ * 
+ */
 function renderAssignedTo() {
     document.getElementById('dropdownAssignedTo').classList.toggle('showAllCategorys');
     document.getElementById('dropdownAssignedTo').classList.remove('categorysDropdownSelectHTML');
@@ -147,6 +183,10 @@ function renderAssignedTo() {
 }
 
 
+/**
+ * Funktion, die die verschiedenen Kontakte-Optionen anzeigt
+ * 
+ */
 function renderAssignedToOptions() {
     let names = document.getElementById('assignedToOptions');
 
@@ -160,11 +200,18 @@ function renderAssignedToOptions() {
 }
 
 
+/**
+ * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
+ */
 function checkContactCheckbox() {
+
+    // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
 
+    // Für jedes "div-container"-Element einen Event-Listener hinzufügen
     divContainers.forEach(divContainer => {
         divContainer.addEventListener('click', () => {
+            // Checkbox-Element auswählen und deren "checked"-Eigenschaft auf "true" setzen
             const checkboxInput = divContainer.querySelector('#assigned input[type="checkbox"]');
             checkboxInput.checked = !checkboxInput.checked;
         });
@@ -172,6 +219,9 @@ function checkContactCheckbox() {
 }
 
 
+/**
+ * Funktion, die die Prioritäts-Buttons anzeigt
+ */
 function renderPrioButtons() {
     document.getElementById('prioButtons').innerHTML = /*html*/`
       <button type="button" class="urgentButton">Urgent<input class="urgent" id="urgent" type="checkbox" value="Urgent" name="Urgent"></button>
@@ -193,6 +243,10 @@ function renderPrioButtons() {
 }
 
 
+/**
+ * Funktion, die den Unteraufgaben-Inhalt anzeigt
+ * 
+ */
 function renderSubtaskContent() {
     document.getElementById('subs').innerHTML = /*html*/ `
          <p>Subtasks</p>
@@ -213,6 +267,10 @@ function renderSubtaskContent() {
 }
 
 
+/**
+ * Funktion, die den Unteraufgaben-Grundaufbau anzeigt
+ * 
+ */
 function renderSubtask() {
     document.getElementById('inputSubtask').classList.remove('inputSubtask');
 
@@ -232,6 +290,10 @@ function renderSubtask() {
 }
 
 
+/**
+ * Funktion, die eine neue Unteraufgabe zum Array hinzufügt
+ * 
+ */
 function addSubtask() {
     let newSubtask = document.getElementById('inputFieldSubtask').value;
 
@@ -241,6 +303,10 @@ function addSubtask() {
 }
 
 
+/**
+ * Funktion, die alle Felder leert
+ * 
+ */
 function clearFields() {
     document.getElementById('form').reset();
     renderCategoryContent();
@@ -248,28 +314,45 @@ function clearFields() {
 }
 
 
+/**
+ * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
+ */
 function submitTask() {
+
+    // Headline, Beschreibung, Kategorie und Kontakte aus den entsprechenden Formularfeldern auslesen
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
 
+    // Alle Checkboxen für die Kontakte auswählen
     const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
+    // Alle ausgewählten Kontakte aus den Checkboxen filtern
     const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
+    // Namen der ausgewählten Kontakte aus den Checkboxen auslesen
     const checkedNames = checkedContacts.map(cb => cb.name);
 
+    // Fälligkeitsdatum aus dem Formularfeld auslesen
     let dueDate = document.getElementById('dueDate').value;
 
+    // Alle Checkboxen für die Prioritäten auswählen
     const prioCheckboxes = document.querySelectorAll('#prioButtons input[type="checkbox"]');
+    // Alle ausgewählten Prioritäten aus den Checkboxen filtern
     const allPrios = [...prioCheckboxes].filter(cb => cb.checked);
+    // Namen der ausgewählten Prioritäten aus den Checkboxen auslesen
     const checkedPrios = allPrios.map(cb => cb.name);
+    // Falls mehr als eine Priorität ausgewählt wurde, die Liste auf ein Element verkürzen
     if (checkedPrios.length > 1) {
         checkedPrios.length = 1;
     }
 
+    // Alle Checkboxen für die Subtasks auswählen
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
+    // Alle ausgewählten Subtasks aus den Checkboxen filtern
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
+    // Namen der ausgewählten Subtasks aus den Checkboxen auslesen
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
 
+    // Neue Task mit den ausgelesenen Werten erstellen
     let task = {
         'headline': headline,
         'desc': desc,
@@ -280,20 +363,35 @@ function submitTask() {
         'prio': checkedPrios,
         'subtask': checkedSubtask,
     };
+
+    // Task zu der Liste aller Tasks hinzufügen und auf dem Server speichern
     addThisTask(task);
+    // Formular zurücksetzen
     clearForm();
+    // Kategorie-Auswahl auf den Standardwert zurücksetzen
     renderCategoryContent();
+    // Kontakte auf den Standardwert zurücksetzen
     renderAssignedToContent();
 }
 
 
+/**
+ * Funktion, die eine Task zu der Liste aller Tasks hinzufügt und auf dem Server speichert
+ * 
+ * @param {Object} task - Task, die hinzugefügt werden soll
+ */
 async function addThisTask(task) {
+    // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
+    // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log(allTasks);
-
 }
 
+
+/**
+ * Funktion, die das Formular zurücksetzt
+ */
 function clearForm() {
     document.getElementById("form").reset();
 }
