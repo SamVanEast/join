@@ -67,7 +67,7 @@ function renderCategorysOptions() {
         const color = categoryColors[a % categoryColors.length];
 
         options.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div></span>
+         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}${color}')">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div></span>
          `;
     }
 }
@@ -90,6 +90,19 @@ function addNewCategory() {
 }
 
 
+function renderCategoryColors() {
+    for (let g = 0; g < categoryColors.length; g++) {
+        const color = categoryColors[g];
+
+        document.getElementById('categoryColors').innerHTML = /*html*/ `
+            <div class="colorContent">
+                <div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div>
+            </div>
+        `;
+    }
+}
+
+
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
 
@@ -97,9 +110,9 @@ function pushNewCategory() {
 }
 
 
-function renderSelectedCategory(category) {
+function renderSelectedCategory(category, color) {
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}</div>
+         <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div>
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
@@ -160,19 +173,19 @@ function renderPrioButtons() {
       <button type="button" class="mediumButton">Medium<input class="medium" id="medium" type="checkbox" value="Medium" name="Medium"></button>
       <button type="button" class="lowButton">Low<input class="low" id="low" type="checkbox" value="Low" name="Low"></button>
     `;
-    
+
     // Alle Button-Elemente auswählen
     const buttons = document.querySelectorAll('#prioButtons button');
-    
+
     // Für jedes Button-Element einen Event-Listener hinzufügen
     buttons.forEach(button => {
-      button.addEventListener('click', event => {
-        // Checkbox-Element auswählen und deren "checked"-Eigenschaft auf "true" setzen
-        const checkbox = button.querySelector('input[type="checkbox"]');
-        checkbox.checked = true;
-      });
+        button.addEventListener('click', event => {
+            // Checkbox-Element auswählen und deren "checked"-Eigenschaft auf "true" setzen
+            const checkbox = button.querySelector('input[type="checkbox"]');
+            checkbox.checked = true;
+        });
     });
-}  
+}
 
 
 function renderSubtaskContent() {
@@ -246,26 +259,26 @@ function submitTask() {
     const checkedPrios = allPrios.map(cb => cb.name);
     if (checkedPrios.length > 1) {
         checkedPrios.length = 1;
-      }
-    
+    }
+
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
 
-        let task = {
-            'headline': headline,
-            'desc': desc,
-            'status': 'todo',
-            'category': cat,
-            'assignedTo': checkedNames,
-            'dueDate': dueDate,
-            'prio': checkedPrios,
-            'subtask': checkedSubtask,
-        };
-        addThisTask(task);
-        clearForm();
-        renderCategoryContent();
-        renderAssignedToContent();
+    let task = {
+        'headline': headline,
+        'desc': desc,
+        'status': 'todo',
+        'category': cat,
+        'assignedTo': checkedNames,
+        'dueDate': dueDate,
+        'prio': checkedPrios,
+        'subtask': checkedSubtask,
+    };
+    addThisTask(task);
+    clearForm();
+    renderCategoryContent();
+    renderAssignedToContent();
 }
 
 
