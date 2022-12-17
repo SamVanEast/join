@@ -216,7 +216,7 @@ body {
     margin-top: 10px;
 }
 
-.colorContent:hover {
+.colorDot:hover {
     cursor: pointer;
     transform: scale(1.1);
 }

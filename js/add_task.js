@@ -102,7 +102,7 @@ function renderCategoryColors() {
 
         document.getElementById('categoryColors').innerHTML += /*html*/ `
             <div class="colorContent">
-                <div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div>
+                <div class="colorDot" style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div>
             </div>
         `;
     }
