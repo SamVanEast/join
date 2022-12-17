@@ -102,9 +102,7 @@ function renderCategoryColors() {
         const color = newCategoryColors[g];
 
         document.getElementById('categoryColors').innerHTML += /*html*/ `
-            <div class="colorContent">
                 <div class="colorDot" style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 20px;"></div>
-            </div>
         `;
     }
 }
