@@ -80,7 +80,7 @@ function renderCategorysOptions() {
         const color = categoryColors[a % categoryColors.length];
 
         options.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}${color}')">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 15px;"></div></span>
+         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}<div class="colorDot" style="background-color: ${color};"></div></span>
          `;
     }
 }
@@ -117,10 +117,10 @@ function renderCategoryColors() {
     document.getElementById('categoryColors').classList.add('categoryColors');
 
     for (let g = 0; g < newCategoryColors.length; g++) {
-        const color = newCategoryColors[g];
+        const newColor = newCategoryColors[g];
 
         document.getElementById('categoryColors').innerHTML += /*html*/ `
-                <div class="colorDot" id="colorDot" style="background-color: ${color};"></div>
+                <div class="colorDot" id="colorDot" style="background-color: ${newColor};"></div>
         `;
     }
 }
@@ -143,9 +143,10 @@ function pushNewCategory() {
  * @param {string} category 
  */
 function renderSelectedCategory(category, color) {
+
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div class="colorDot" style="background-color: ${color};"></div></div>
-         `;
+     <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div class="colorDot" style="background-color: ${color};"></div></div>
+     `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
 }
