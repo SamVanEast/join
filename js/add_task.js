@@ -7,7 +7,8 @@
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let prios = ['Urgent', 'Medium', 'Low'];
-let checkedPrio = [];
+let allPrios = [];
+let checkedPrios = [];
 let allSubtasks = [];
 let checkedSubtasks = [];
 
@@ -239,8 +240,8 @@ function submitTask() {
     let dueDate = document.getElementById('dueDate').value;
 
     const prioCheckboxes = document.querySelectorAll('#prioButtons input[type="checkbox"]');
-    const checkedPrio = [...prioCheckboxes].filter(cb => cb.checked);
-    const checkedPrios = checkedPrio.map(cb => cb.name);
+    const allPrios = [...prioCheckboxes].filter(cb => cb.checked);
+    const checkedPrios = allPrios.map(cb => cb.name);
     if (checkedPrios.length > 1) {
         checkedPrios.length = 1;
       }
@@ -256,7 +257,7 @@ function submitTask() {
             'category': cat,
             'assignedTo': checkedNames,
             'dueDate': dueDate,
-            'prio': checkedPrio,
+            'prio': checkedPrios,
             'subtask': checkedSubtask,
         };
         addThisTask(task);
