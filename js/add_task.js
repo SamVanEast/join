@@ -143,7 +143,7 @@ function checkContactCheckbox() {
 
     divContainers.forEach(divContainer => {
       divContainer.addEventListener('click', () => {
-        const checkboxInput = divContainer.querySelector('input[type="checkbox"]');
+        const checkboxInput = divContainer.querySelector('#assigned input[type="checkbox"]');
         checkboxInput.checked = !checkboxInput.checked;
       });
     });    
@@ -228,7 +228,7 @@ function submitTask() {
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
 
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
     const checkedCheckboxes = [...checkboxes].filter(cb => cb.checked);
     const checkedNames = checkedCheckboxes.map(cb => cb.name);
     
