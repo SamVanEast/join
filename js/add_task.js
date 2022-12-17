@@ -102,7 +102,7 @@ function renderCategoryColors() {
         const color = newCategoryColors[g];
 
         document.getElementById('categoryColors').innerHTML += /*html*/ `
-                <div class="colorDot" style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%; margin-left: 20px;"></div>
+                <div class="colorDot" id="colorDot" style="background-color: ${color};"></div>
         `;
     }
 }
@@ -110,6 +110,7 @@ function renderCategoryColors() {
 
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
+    let newCategoryColor = document.getElementById('colorDot');
 
     categorys.push(newCategory);
 }
