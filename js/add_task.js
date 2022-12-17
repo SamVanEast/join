@@ -152,23 +152,6 @@ function renderSelectedAssignedTo(contact) {
 // }
 
 
-function renderUrgent(){
-    document.getElementById('urgentImg').innerHTML = /*html*/ `
-        <img src="../img/add_task_img/urgentSelected.png" alt="">
-        `;
-}
-
-
-function renderMedium(){
-
-}
-
-
-function renderLow(){
-
-}
-
-
 function renderSubtaskContent() {
     document.getElementById('subs').innerHTML = /*html*/ `
          <p>Subtasks</p>
