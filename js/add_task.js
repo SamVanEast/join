@@ -93,7 +93,7 @@ function pushNewCategory(){
 
 function renderSelectedCategory(category) {
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" id="${category}" onclick="renderCategorys()">${category}</div>
+         <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}</div>
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
@@ -223,7 +223,7 @@ function clearFields() {
 function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
-    // let cat = document.getElementById(`${category}`).innerText;
+    let cat = document.getElementById('selectedCategory').innerText;
     let assigned = document.getElementById('selectedContact').innerText;
     let dueDate = document.getElementById('dueDate').value;
     // let prio = checkboxes[y].value;
@@ -233,7 +233,7 @@ function submitTask() {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
-        // 'category': cat,
+        'category': cat,
         'assignedTo': assigned,
         'dueDate': dueDate,
         // 'prio': prio,
