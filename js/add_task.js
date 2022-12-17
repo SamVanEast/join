@@ -93,7 +93,7 @@ function pushNewCategory(){
 
 function renderSelectedCategory(category) {
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" id="${category}" onclick="event.stopPropagation(), renderCategorys()">${category}</div>
+         <div class="categorysDropdownSelect" id="${category}" onclick="renderCategorys()">${category}</div>
          `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
@@ -207,14 +207,14 @@ function clearFields() {
 }
 
 
-function submitTask() {
+async function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
-    let cat = document.getElementById(`${category}`);
+    let cat = document.getElementById(`${category}`).innerText;
     let assigned = document.getElementById('assigned').value;
     let dueDate = document.getElementById('dueDate').value;
     // let prio = document.getElementById('prio').value;
-    // let subtask = document.getElementById('selectedSubtask').value;
+    let subtask = document.getElementById('selectedSubtask').value;
 
     let task = {
         'headline': headline,
@@ -224,7 +224,7 @@ function submitTask() {
         'assignedTo': assigned,
         'dueDate': dueDate,
         // 'prio': prio,
-        // 'subtask': subtask,
+        'subtask': subtask,
     };
 
     addThisTask(task);
