@@ -7,7 +7,7 @@
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let prios = ['Urgent', 'Medium', 'Low'];
-let subtask = [];
+let allSubtasks = [];
 
 
 /**
@@ -167,11 +167,11 @@ function renderSubtaskContent() {
          <div class="checkboxSubtask" id="newSubtask" required></div>
      `;
 
-    for (let i = 0; i < subtask.length; i++) {
+    for (let i = 0; i < allSubtasks.length; i++) {
         document.getElementById('newSubtask').innerHTML += /*html*/`
          <div class="newSubtasks" id="newSubtasks">
-             <input type="checkbox" id="checkboxSubtask" value="${subtask[i]}" name="${subtask[i]}">
-             <span id="selectedSubtask">${subtask[i]}</span>
+             <input type="checkbox" id="checkboxSubtask" value="${allSubtasks[i]}" name="${allSubtasks[i]}">
+             <span id="selectedSubtask">${allSubtasks[i]}</span>
          </div>
      `;
     }
@@ -200,7 +200,7 @@ function renderSubtask() {
 function addSubtask() {
     let newSubtask = document.getElementById('inputFieldSubtask').value;
 
-    subtask.push(newSubtask);
+    allSubtasks.push(newSubtask);
 
     renderSubtaskContent();
 }
