@@ -6,6 +6,7 @@
 
 let contact;
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
+let categoryColors = ['#83A5FF', '#FF0000', '#00D700', '#FF8200'];
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let checkedPrios = [];
@@ -63,9 +64,10 @@ function renderCategorysOptions() {
 
     for (let a = 0; a < categorys.length; a++) {
         const category = categorys[a];
+        const color = categoryColors[a % categoryColors.length];
 
         options.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}</span>
+         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}<div style="display: inline-block; width: 15px; height: 15px; background-color: ${color}; border-radius: 50%;"></div></span>
          `;
     }
 }
