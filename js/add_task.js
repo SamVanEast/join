@@ -220,10 +220,10 @@ function clearFields() {
 }
 
 
-async function submitTask() {
+async function submitTask(category) {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
-    let cat = document.getElementById(`${category}`).innerText;
+    // let cat = document.getElementById(`${category}`).innerText;
     let assigned = document.getElementById('assigned').value;
     let dueDate = document.getElementById('dueDate').value;
     // let prio = checkboxes[y].value;
@@ -233,13 +233,12 @@ async function submitTask() {
         'headline': headline,
         'desc': desc,
         'status': 'todo',
-        'category': cat,
+        // 'category': cat,
         'assignedTo': assigned,
         'dueDate': dueDate,
         // 'prio': prio,
         // 'subtask': subtask,
     };
-
     addThisTask(task);
     clearForm();
 }
