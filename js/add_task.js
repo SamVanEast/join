@@ -227,9 +227,11 @@ function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
+
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const checkedCheckboxes = [...checkboxes].filter(cb => cb.checked);
     const checkedNames = checkedCheckboxes.map(cb => cb.name);
+    
     let dueDate = document.getElementById('dueDate').value;
     let prio = document.getElementById('urgent').value;
     let subtask = document.getElementById('checkboxSubtask');
