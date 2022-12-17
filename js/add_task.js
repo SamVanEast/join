@@ -138,7 +138,7 @@ function renderAssignedToOptions() {
 
 function renderSelectedAssignedTo(contact) {
     document.getElementById('dropdownAssignedTo').innerHTML = /*html*/`
-         <div class="categorysDropdownSelect" onclick="renderAssignedTo()">${contact}</div>
+         <div class="categorysDropdownSelect" id="selectedContact" onclick="renderAssignedTo()">${contact}</div>
          `;
 
     document.getElementById('dropdownAssignedTo').classList.remove('showAllCategorys');
@@ -224,7 +224,7 @@ function submitTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     // let cat = document.getElementById(`${category}`).innerText;
-    let assigned = document.getElementById('assigned').value;
+    let assigned = document.getElementById('selectedContact').innerText;
     let dueDate = document.getElementById('dueDate').value;
     // let prio = checkboxes[y].value;
     // let subtask = document.getElementById('selectedSubtask').value;
