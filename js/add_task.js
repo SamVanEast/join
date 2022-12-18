@@ -79,7 +79,6 @@ function renderCategorysOptions() {
     for (let a = 0; a < categorys.length; a++) {
         const category = categorys[a];
         const hexString = categoryColors[a % categoryColors.length];
-        const colorObject = convertHexToRgb(hexString);
 
         options.innerHTML += /*html*/`
         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}')">
@@ -170,6 +169,7 @@ function renderSelectedCategory(category, hexString) {
     `;
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
+    // sendCategoryColor(hexCode);
 }
 
 
@@ -366,8 +366,7 @@ function clearFields() {
 /**
  * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
  */
-function submitTask() {
-
+function submitTask(hexString) {
     // Headline, Beschreibung, Kategorie und Kontakte aus den entsprechenden Formularfeldern auslesen
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
