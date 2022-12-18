@@ -290,10 +290,10 @@ function toggleButtonFocus(event) {
     const button = event.target;
     const buttonId = button.id;
 
-    // Remove focused class from all buttons
+    // Entfernt die Fokusklasse von allen Buttons
     document.querySelectorAll('.urgentButton').forEach(b => b.classList.remove('urgentButtonFocused', 'mediumButtonFocused', 'lowButtonFocused'));
 
-    // Add focused class to the clicked button
+    // Fügt die Fokusklasse dem angeklickten Button hinzu
     button.classList.add(`${buttonId}Focused`);
 
     // Speichert den Namen der ausgewählten Priorität
