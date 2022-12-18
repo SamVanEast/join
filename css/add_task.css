@@ -212,6 +212,7 @@ body {
 .colorDot:hover {
     cursor: pointer;
     transform: scale(1.3);
+    transition: all 125ms ease-in-out;
 }
 
 .contactOptions {
