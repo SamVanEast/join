@@ -407,7 +407,7 @@ function submitTask() {
         'desc': desc,
         'status': 'todo',
         'category': cat,
-        'color': selectedColor,
+        'color': colorString,
         'assignedTo': checkedNames,
         'dueDate': dueDate,
         'prio': checkedPrios,
