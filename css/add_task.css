@@ -201,6 +201,14 @@ body {
     margin-top: 10px;
 }
 
+.colorDotCategorys{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
 .colorDot {
     display: inline-block;
     width: 15px;

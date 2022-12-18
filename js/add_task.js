@@ -83,7 +83,7 @@ function renderCategorysOptions() {
         options.innerHTML += /*html*/`
         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}'), declareColorFromCategory('${hexString}')">
           ${category}
-          <div class="colorDot" style="background-color: ${hexString};"></div>
+          <div class="colorDotCategorys" style="background-color: ${hexString};"></div>
         </span>
       `;
     }
