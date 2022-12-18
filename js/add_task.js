@@ -384,6 +384,7 @@ function clearFields() {
     document.getElementById('form').reset();
     renderCategoryContent();
     renderAssignedToContent();
+    renderPrioButtons();
 }
 
 
