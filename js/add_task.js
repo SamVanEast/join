@@ -25,8 +25,6 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    console.log(allTasks);
-    console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
