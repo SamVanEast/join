@@ -377,7 +377,7 @@ function clearFields() {
 /**
  * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
  */
-function submitTask(hexString) {
+function submitTask() {
     // Headline, Beschreibung, Kategorie und Kontakte aus den entsprechenden Formularfeldern auslesen
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
@@ -417,7 +417,7 @@ function submitTask(hexString) {
         'desc': desc,
         'status': 'todo',
         'category': cat,
-        'color': hexString,
+        'color': colorFromCategory,
         'assignedTo': checkedNames,
         'dueDate': dueDate,
         'prio': checkedPrios,
