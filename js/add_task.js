@@ -181,7 +181,7 @@ function renderSelectedCategory(category, hexString) {
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
       <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">
         ${category}
-        <div class="colorDot" style="background-color: ${colorString};"></div>
+        <div class="colorDotCategorys" style="background-color: ${colorString};"></div>
       </div>
     `;
 
