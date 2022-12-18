@@ -4,9 +4,10 @@
  *
  */
 let contact;
-let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
-let newCategoryColors = ['#00D700', '#FF8200', '#F700C4', '#0039FF'];
+let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF']; 
+let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
+let selectedColor = '#000000'; // Default color for new categories
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let checkedPrios = [];
@@ -90,6 +91,11 @@ function renderCategorysOptions() {
 }
 
 
+function selectColor(color) {
+    selectedColor = color;
+  }
+
+
 /**
  * Funktion, die eine neue Kategorie hinzufügt
  * 
@@ -97,7 +103,7 @@ function renderCategorysOptions() {
 function addNewCategory() {
     document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
-
+  
     document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
          <div class="categoryContent">
              <input class="inputFieldSubtask" id="inputFieldCategory" type="text" placeholder="New category name" onclick="event.stopPropagation()">
@@ -109,7 +115,7 @@ function addNewCategory() {
          </div>
      `;
     renderCategoryColors();
-}
+  } 
 
 
 /**
@@ -119,15 +125,15 @@ function addNewCategory() {
 function renderCategoryColors() {
     document.getElementById('categoryColors').classList.remove('d-none');
     document.getElementById('categoryColors').classList.add('categoryColors');
-
+  
     for (let g = 0; g < newCategoryColors.length; g++) {
-        const newColor = newCategoryColors[g];
-
-        document.getElementById('categoryColors').innerHTML += /*html*/ `
-                <div class="colorDot" id="colorDot" style="background-color: ${newColor};"></div>
-        `;
+      const newColor = newCategoryColors[g];
+  
+      document.getElementById('categoryColors').innerHTML += /*html*/ `
+            <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')"></div>
+      `;
     }
-}
+  }
 
 
 /**
@@ -136,9 +142,11 @@ function renderCategoryColors() {
  */
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
-
+  
+    // Push the new category and its color to the categorys and categoryColors arrays
     categorys.push(newCategory);
-}
+    categoryColors.push(selectedColor);
+  }
 
 
 /**
