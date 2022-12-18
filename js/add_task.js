@@ -117,28 +117,31 @@ function addNewCategory() {
  * 
  */
 function renderCategoryColors() {
+    // Entferne d-none Klasse von categoryColors und füge categoryColors Klasse hinzu
     document.getElementById('categoryColors').classList.remove('d-none');
     document.getElementById('categoryColors').classList.add('categoryColors');
 
+    // Durchlaufe alle neuen Kategoriefarben
     for (let g = 0; g < newCategoryColors.length; g++) {
         const newColor = newCategoryColors[g];
 
+        // Füge jede Kategoriefarbe dem categoryColors Element hinzu
         document.getElementById('categoryColors').innerHTML += /*html*/ `
           <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')"></div>
         `;
     }
 
-    // Add click event listener to categoryColors element
+    // Füge Klick-Event-Listener dem categoryColors Element hinzu
     document.getElementById('categoryColors').addEventListener('click', function (event) {
-        // Get all color dots
+        // Hole alle Farbpunkte
         var colorDots = document.querySelectorAll('.colorDot');
 
-        // Loop through all color dots and set the transform scale to 1
+        // Durchlaufe alle Farbpunkte und setze den Transformationsmaßstab auf 1
         for (var i = 0; i < colorDots.length; i++) {
             colorDots[i].style.transform = 'scale(1)';
         }
 
-        // Set the transform scale of the clicked element to 1.1
+        // Setze den Transformationsmaßstab des angeklickten Elements auf 1,1
         event.target.style.transform = 'scale(1.3)';
     });
 }
