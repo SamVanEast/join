@@ -44,8 +44,8 @@ function renderCategoryContent() {
              <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent" onclick="renderCategorys()">Select task category</div>
          </div>
      `;
-     document.getElementById('categoryColors').classList.add('d-none');
-     document.getElementById('categoryColors').classList.remove('categoryColors');
+    document.getElementById('categoryColors').classList.add('d-none');
+    document.getElementById('categoryColors').classList.remove('categoryColors');
 }
 
 
@@ -74,20 +74,20 @@ function renderCategorys() {
  */
 function renderCategorysOptions() {
     let options = document.getElementById('categorysOptions');
-  
+
     for (let a = 0; a < categorys.length; a++) {
-      const category = categorys[a];
-      const hexString = categoryColors[a % categoryColors.length];
-      const colorObject = convertHexToRgb(hexString);
-  
-      options.innerHTML += /*html*/`
+        const category = categorys[a];
+        const hexString = categoryColors[a % categoryColors.length];
+        const colorObject = convertHexToRgb(hexString);
+
+        options.innerHTML += /*html*/`
         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}')">
           ${category}
           <div class="colorDot" style="background-color: ${hexString};"></div>
         </span>
       `;
     }
-  }
+}
 
 
 /**
@@ -108,7 +108,7 @@ function addNewCategory() {
              </div>
          </div>
      `;
-     renderCategoryColors();
+    renderCategoryColors();
 }
 
 
@@ -150,17 +150,17 @@ function pushNewCategory() {
 function renderSelectedCategory(category, hexString) {
     const colorObject = convertHexToRgb(hexString);
     const colorString = `rgb(${colorObject[0]}, ${colorObject[1]}, ${colorObject[2]})`;
-  
+
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
       <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">
         ${category}
         <div class="colorDot" style="background-color: ${colorString};"></div>
       </div>
     `;
-  
+
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
-  }
-  
+}
+
 
 /**
  * Konvertiert eine Hexadezimalzeichenfolge in ein Array von Rot-, Grün- und Blauwerten.
@@ -175,7 +175,7 @@ function convertHexToRgb(hexString) {
     let g = parseInt(hexString.slice(3, 5), 16);
     // Extrahiere den Blauwert aus der Hexadezimalzeichenfolge
     let b = parseInt(hexString.slice(5, 7), 16);
-  
+
     // Gib das Array mit den Rot-, Grün- und Blauwerten zurück
     return [r, g, b];
 }
