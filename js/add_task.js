@@ -7,7 +7,7 @@ let contact;
 let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
 let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF']; 
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
-let selectedColor = '#000000'; // Default color for new categories
+let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let checkedPrios = [];
@@ -91,11 +91,6 @@ function renderCategorysOptions() {
 }
 
 
-function selectColor(color) {
-    selectedColor = color;
-  }
-
-
 /**
  * Funktion, die eine neue Kategorie hinzufügt
  * 
@@ -137,7 +132,7 @@ function renderCategoryColors() {
 
 
 /**
- * Funktion, die eine neue Kategorie zum Array hinzufügt
+ * Fügt die neue Kategorie zu dem Array hinzu und setzt die Farbe für die Kategorie.
  * 
  */
 function pushNewCategory() {
@@ -146,7 +141,15 @@ function pushNewCategory() {
     // Push the new category and its color to the categorys and categoryColors arrays
     categorys.push(newCategory);
     categoryColors.push(selectedColor);
-  }
+  // Setzt das Eingabefeld und die Auswahlmöglichkeiten für die Farben zurück
+  document.getElementById('categorysDropdownSelect').classList.remove('categorysDropdownSelect');
+  document.getElementById('categoryColors').classList.add('d-none');
+  document.getElementById('categoryColors').innerHTML = '';
+  selectedColor = '#000000'; // Setzt die Standardfarbe zurück
+
+  // Rendert die neuen Kategorien
+  renderCategorysOptions();
+}
 
 
 /**
@@ -168,6 +171,15 @@ function renderSelectedCategory(category, hexString) {
 
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
 }
+
+
+/**
+ * Setzt die ausgewählte Farbe für eine neue Kategorie.
+ * @param {string} color - Der Hexcode der ausgewählten Farbe.
+ */
+function selectColor(color) {
+    selectedColor = color;
+  }
 
 
 /**
