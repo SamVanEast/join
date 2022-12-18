@@ -391,17 +391,6 @@ function submitTask() {
     // Fälligkeitsdatum aus dem Formularfeld auslesen
     let dueDate = document.getElementById('dueDate').value;
 
-    // // Alle Checkboxen für die Prioritäten auswählen
-    // const prioCheckboxes = document.querySelectorAll('#prioButtons input[type="checkbox"]');
-    // // Alle ausgewählten Prioritäten aus den Checkboxen filtern
-    // const allPrios = [...prioCheckboxes].filter(cb => cb.checked);
-    // // Namen der ausgewählten Prioritäten aus den Checkboxen auslesen
-    // const checkedPrios = allPrios.map(cb => cb.name);
-    // // Falls mehr als eine Priorität ausgewählt wurde, die Liste auf ein Element verkürzen
-    // if (checkedPrios.length > 1) {
-    //     checkedPrios.length = 1;
-    // }
-
     // Alle Checkboxen für die Subtasks auswählen
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
     // Alle ausgewählten Subtasks aus den Checkboxen filtern
@@ -430,6 +419,7 @@ function submitTask() {
     renderCategoryContent();
     // Kontakte auf den Standardwert zurücksetzen
     renderAssignedToContent();
+    renderPrioButtons();
 }
 
 
