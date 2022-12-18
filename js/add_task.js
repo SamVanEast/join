@@ -156,7 +156,7 @@ function pushNewCategory() {
  * Funktion, die die ausgewählte Kategorie anzeigt
  * 
  * @param {string} category
- * @param {string} color
+ * @param {string} hexString
  */
 function renderSelectedCategory(category, hexString) {
     const colorObject = convertHexToRgb(hexString);
@@ -407,7 +407,7 @@ function submitTask() {
         'desc': desc,
         'status': 'todo',
         'category': cat,
-        'color': colorString,
+        'color': hexString,
         'assignedTo': checkedNames,
         'dueDate': dueDate,
         'prio': checkedPrios,
