@@ -268,7 +268,7 @@ function renderSubtaskContent() {
 
 
 /**
- * Funktion, die den Unteraufgaben-Grundaufbau anzeigt
+ * Funktion, die den Grundaufbau für das Inputfeld neuer Unteraufgaben anzeigt
  * 
  */
 function renderSubtask() {
