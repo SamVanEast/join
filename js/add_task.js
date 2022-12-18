@@ -7,7 +7,7 @@ let contact;
 let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
 let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF'];
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
-let test = '#000000';
+let colorFromCategory = '#000000';
 let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
@@ -82,7 +82,7 @@ function renderCategorysOptions() {
         const hexString = categoryColors[a % categoryColors.length];
 
         options.innerHTML += /*html*/`
-        <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}'), colorFromCategory('${hexString}')">
+        <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}'), declareColorFromCategory('${hexString}')">
           ${category}
           <div class="colorDot" style="background-color: ${hexString};"></div>
         </span>
@@ -169,9 +169,9 @@ function renderSelectedCategory(category, hexString) {
       </div>
     `;
 
-    categoryColors.push(test);
+    categoryColors.push(colorFromCategory);
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
-    test = '#000000';
+    colorFromCategory = '#000000';
 }
 
 
@@ -184,8 +184,12 @@ function selectColor(color) {
 }
 
 
-function colorFromCategory(colortest){
-    test = colortest;
+/**
+ * Setzt die ausgewählte Farbe für die ausgewählte Kategorie.
+ * @param {string} colorCategory - Der Hexcode der ausgewählten Farbe.
+ */
+function declareColorFromCategory(colorCategory){
+    colorFromCategory = colorCategory;
 }
 
 
