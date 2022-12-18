@@ -278,27 +278,42 @@ function checkContactCheckbox() {
 }
 
 
+/**
+ * Fügt oder entfernt CSS-Klassen von HTML-Buttons, abhängig davon, ob sie geklickt werden oder nicht.
+ * Wenn ein Button geklickt wird, wird zunächst die CSS-Klasse "urgentButtonFocused", "mediumButtonFocused" oder "lowButtonFocused" von allen Buttons entfernt.
+ * Dann wird der geklickte Button mit der Klasse "urgentButtonFocused", "mediumButtonFocused" oder "lowButtonFocused" versehen, je nachdem, welcher Button geklickt wurde.
+ * Der Name des ausgewählten Prioritätsniveaus wird anschließend in der Variablen "selectedPriority" gespeichert.
+ *
+ * @param {Event} event - Das Event-Objekt, das beim Klicken des Buttons ausgelöst wird.
+ */
 function toggleButtonFocus(event) {
     const button = event.target;
     const buttonId = button.id;
-  
+
     // Remove focused class from all buttons
     document.querySelectorAll('.urgentButton').forEach(b => b.classList.remove('urgentButtonFocused', 'mediumButtonFocused', 'lowButtonFocused'));
-  
+
     // Add focused class to the clicked button
     button.classList.add(`${buttonId}Focused`);
-  
-    // Save the name of the selected priority
+
+    // Speichert den Namen der ausgewählten Priorität
     selectedPriority = button.name;
-  }
-  
-  function renderPrioButtons() {
+}
+
+
+/**
+ * Generiert HTML-Code für drei Buttons und fügt ihn in das Element mit der ID "prioButtons" ein.
+ * Jeder Button hat einen Namen ("Urgent", "Medium" oder "Low"), eine CSS-Klasse ("urgentButton", "mediumButton" oder "lowButton") und eine ID ("urgentButton", "mediumButton" oder "lowButton").
+ * Wenn ein Button geklickt wird, wird die Funktion "toggleButtonFocus" aufgerufen und das "event"-Objekt übergeben.
+ * Jeder Button enthält auch ein Bild, das beim Klicken des Buttons ebenfalls die Funktion "toggleButtonFocus" aufruft.
+ */
+function renderPrioButtons() {
     document.getElementById('prioButtons').innerHTML = /*html*/`
       <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
       <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
       <button type="button" name="Low" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">Low<img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)"></button>
     `;
-  }
+}
 
 
 /**
