@@ -11,6 +11,7 @@ let colorFromCategory = '#000000';
 let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
+let selectedPriority = "";
 let checkedPrios = [];
 let allSubtasks = [];
 let checkedSubtasks = [];
@@ -277,28 +278,27 @@ function checkContactCheckbox() {
 }
 
 
-/**
- * Funktion, die die Prioritäts-Buttons anzeigt
- */
 function toggleButtonFocus(event) {
     const button = event.target;
     const buttonId = button.id;
-
+  
     // Remove focused class from all buttons
     document.querySelectorAll('.urgentButton').forEach(b => b.classList.remove('urgentButtonFocused', 'mediumButtonFocused', 'lowButtonFocused'));
-
+  
     // Add focused class to the clicked button
     button.classList.add(`${buttonId}Focused`);
-}
-
-
-function renderPrioButtons() {
+  
+    // Save the name of the selected priority
+    selectedPriority = button.name;
+  }
+  
+  function renderPrioButtons() {
     document.getElementById('prioButtons').innerHTML = /*html*/`
-      <button type="button" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
-      <button type="button" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
-      <button type="button" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">Low<img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)"></button>
+      <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
+      <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
+      <button type="button" name="Low" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">Low<img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)"></button>
     `;
-}
+  }
 
 
 /**
@@ -391,16 +391,16 @@ function submitTask() {
     // Fälligkeitsdatum aus dem Formularfeld auslesen
     let dueDate = document.getElementById('dueDate').value;
 
-    // Alle Checkboxen für die Prioritäten auswählen
-    const prioCheckboxes = document.querySelectorAll('#prioButtons input[type="checkbox"]');
-    // Alle ausgewählten Prioritäten aus den Checkboxen filtern
-    const allPrios = [...prioCheckboxes].filter(cb => cb.checked);
-    // Namen der ausgewählten Prioritäten aus den Checkboxen auslesen
-    const checkedPrios = allPrios.map(cb => cb.name);
-    // Falls mehr als eine Priorität ausgewählt wurde, die Liste auf ein Element verkürzen
-    if (checkedPrios.length > 1) {
-        checkedPrios.length = 1;
-    }
+    // // Alle Checkboxen für die Prioritäten auswählen
+    // const prioCheckboxes = document.querySelectorAll('#prioButtons input[type="checkbox"]');
+    // // Alle ausgewählten Prioritäten aus den Checkboxen filtern
+    // const allPrios = [...prioCheckboxes].filter(cb => cb.checked);
+    // // Namen der ausgewählten Prioritäten aus den Checkboxen auslesen
+    // const checkedPrios = allPrios.map(cb => cb.name);
+    // // Falls mehr als eine Priorität ausgewählt wurde, die Liste auf ein Element verkürzen
+    // if (checkedPrios.length > 1) {
+    //     checkedPrios.length = 1;
+    // }
 
     // Alle Checkboxen für die Subtasks auswählen
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
@@ -418,7 +418,7 @@ function submitTask() {
         'color': colorFromCategory,
         'assignedTo': checkedNames,
         'dueDate': dueDate,
-        'prio': checkedPrios,
+        'prio': selectedPriority,
         'subtask': checkedSubtask,
     };
 
