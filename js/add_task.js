@@ -124,9 +124,23 @@ function renderCategoryColors() {
         const newColor = newCategoryColors[g];
 
         document.getElementById('categoryColors').innerHTML += /*html*/ `
-            <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')"></div>
-      `;
+          <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')"></div>
+        `;
     }
+
+    // Add click event listener to categoryColors element
+    document.getElementById('categoryColors').addEventListener('click', function (event) {
+        // Get all color dots
+        var colorDots = document.querySelectorAll('.colorDot');
+
+        // Loop through all color dots and set the transform scale to 1
+        for (var i = 0; i < colorDots.length; i++) {
+            colorDots[i].style.transform = 'scale(1)';
+        }
+
+        // Set the transform scale of the clicked element to 1.1
+        event.target.style.transform = 'scale(1.3)';
+    });
 }
 
 
