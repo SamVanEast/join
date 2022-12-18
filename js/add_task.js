@@ -74,16 +74,20 @@ function renderCategorys() {
  */
 function renderCategorysOptions() {
     let options = document.getElementById('categorysOptions');
-
+  
     for (let a = 0; a < categorys.length; a++) {
-        const category = categorys[a];
-        const color = categoryColors[a % categoryColors.length];
-
-        options.innerHTML += /*html*/`
-         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}')">${category}<div class="colorDot" style="background-color: ${color};"></div></span>
-         `;
+      const category = categorys[a];
+      const hexString = categoryColors[a % categoryColors.length];
+      const colorObject = convertHexToRgb(hexString);
+  
+      options.innerHTML += /*html*/`
+        <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}')">
+          ${category}
+          <div class="colorDot" style="background-color: ${hexString};"></div>
+        </span>
+      `;
     }
-}
+  }
 
 
 /**
@@ -143,13 +147,37 @@ function pushNewCategory() {
  * @param {string} category
  * @param {string} color
  */
-function renderSelectedCategory(category, color) {
-
+function renderSelectedCategory(category, hexString) {
+    const colorObject = convertHexToRgb(hexString);
+    const colorString = `rgb(${colorObject[0]}, ${colorObject[1]}, ${colorObject[2]})`;
+  
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-     <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div class="colorDot" style="background-color: ${color};"></div></div>
-     `;
-
+      <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">
+        ${category}
+        <div class="colorDot" style="background-color: ${colorString};"></div>
+      </div>
+    `;
+  
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
+  }
+  
+
+/**
+ * Konvertiert eine Hexadezimalzeichenfolge in ein Array von Rot-, Grün- und Blauwerten.
+ *
+ * @param {string} hexString - Die Hexadezimalzeichenfolge, die konvertiert werden soll.
+ * @returns {number[]} Das Array mit den Rot-, Grün- und Blauwerten.
+ */
+function convertHexToRgb(hexString) {
+    // Extrahiere den Rotwert aus der Hexadezimalzeichenfolge
+    let r = parseInt(hexString.slice(1, 3), 16);
+    // Extrahiere den Grünwert aus der Hexadezimalzeichenfolge
+    let g = parseInt(hexString.slice(3, 5), 16);
+    // Extrahiere den Blauwert aus der Hexadezimalzeichenfolge
+    let b = parseInt(hexString.slice(5, 7), 16);
+  
+    // Gib das Array mit den Rot-, Grün- und Blauwerten zurück
+    return [r, g, b];
 }
 
 
