@@ -201,7 +201,7 @@ body {
     margin-top: 10px;
 }
 
-.colorDotCategorys{
+.colorDotCategorys {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -306,7 +306,7 @@ body {
     -moz-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.31);
 }
 
-.urgentButton{
+.urgentButton {
     font-family: 'Inter';
     font-size: 21px;
     display: flex;
@@ -332,7 +332,7 @@ body {
     background: #FF1300;
 }
 
-.urgentButtonFocused img{
+.urgentButtonFocused img {
     content: url(../assets/img/add_task_img/urgentSelected.png);
 }
 
@@ -537,24 +537,12 @@ body {
 }
 
 
-@media only screen and (max-width: 1330px) {
- 
-  
-  }
-  
-  @media only screen and (max-width: 1200px) {
-  
-  
-  }
-  
-  
-  @media only screen and (max-width: 1060px) {
-  
-    
-  }
-  
-  
-  @media only screen and (max-width: 400px) {
-  
-  
-  }
+@media only screen and (max-width: 1330px) {}
+
+@media only screen and (max-width: 1200px) {}
+
+
+@media only screen and (max-width: 1060px) {}
+
+
+@media only screen and (max-width: 400px) {}
