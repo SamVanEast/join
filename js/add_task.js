@@ -186,7 +186,7 @@ function selectColor(color) {
  * Setzt die ausgewählte Farbe für die ausgewählte Kategorie.
  * @param {string} colorCategory - Der Hexcode der ausgewählten Farbe.
  */
-function declareColorFromCategory(colorCategory){
+function declareColorFromCategory(colorCategory) {
     colorFromCategory = colorCategory;
 }
 
@@ -280,39 +280,24 @@ function checkContactCheckbox() {
 /**
  * Funktion, die die Prioritäts-Buttons anzeigt
  */
+function toggleButtonFocus(event) {
+    const button = event.target;
+    const buttonId = button.id;
+
+    // Remove focused class from all buttons
+    document.querySelectorAll('.urgentButton').forEach(b => b.classList.remove('urgentButtonFocused', 'mediumButtonFocused', 'lowButtonFocused'));
+
+    // Add focused class to the clicked button
+    button.classList.add(`${buttonId}Focused`);
+}
+
+
 function renderPrioButtons() {
     document.getElementById('prioButtons').innerHTML = /*html*/`
-      <button type="button" class="urgentButton" id="urgentButton" onfocus="renderSelectedUrgentButton()">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onfocus="renderSelectedUrgentButton()"></button>
-      <button type="button" class="urgentButton" id="mediumButton" onfocus="renderSelectedMediumButton()">Medium<img src="../../assets/img/add_task_img/medium.png" class="urgent" id="medium" onfocus="renderSelectedMediumButton()"></button>
-      <button type="button" class="urgentButton" id="lowButton" onfocus="renderSelectedLowButton()">Low<img src="../../assets/img/add_task_img/low.png" class="urgent" id="low" onfocus="renderSelectedLowButton()"></button>
+      <button type="button" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
+      <button type="button" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
+      <button type="button" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">Low<img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)"></button>
     `;
-
-    // // Alle Button-Elemente auswählen
-    // const buttons = document.querySelectorAll('#prioButtons button');
-
-    // // Für jedes Button-Element einen Event-Listener hinzufügen
-    // buttons.forEach(button => {
-    //     button.addEventListener('click', event => {
-    //         // Checkbox-Element auswählen und deren "checked"-Eigenschaft auf "true" setzen
-    //         const checkbox = button.querySelector('input[type="checkbox"]');
-    //         checkbox.checked = true;
-    //     });
-    // });
-}
-
-
-function renderSelectedUrgentButton(){
-    document.getElementById('urgentButton').classList.toggle('urgentButtonFocused');
-}
-
-
-function renderSelectedMediumButton(){
-    document.getElementById('mediumButton').classList.toggle('mediumButtonFocused');
-}
-
-
-function renderSelectedLowButton(){
-    document.getElementById('lowButton').classList.toggle('lowButtonFocused');
 }
 
 
