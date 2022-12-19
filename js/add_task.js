@@ -121,6 +121,8 @@ function renderCategoryColors() {
     document.getElementById('categoryColors').classList.remove('d-none');
     document.getElementById('categoryColors').classList.add('categoryColors');
 
+    document.getElementById('categoryColors').innerHTML = ``;
+
     // Durchlaufe alle neuen Kategoriefarben
     for (let g = 0; g < newCategoryColors.length; g++) {
         const newColor = newCategoryColors[g];
