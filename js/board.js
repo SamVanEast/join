@@ -390,7 +390,7 @@ function filterBoardDone() {
 function filterBoardHTML(result) {
     return `<div class="taskBoxes" draggable="true" ondragstart="startDragging(${result['id']})" onclick="openTask(${result['id']})">
 <div class="singleTask ${result.id}">
-<div id="category${result['id']}" class="category">${result['category']}</div>
+<div id="cats${result['id']}" class="category">${result['category']}</div>
 <div class="taskHeadline">${result['headline']}</div>
 <div class="taskDescription">${result['desc']}</div>
 <div class="progressbar">    
