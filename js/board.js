@@ -11,7 +11,7 @@ async function initBoard() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    contacts = JSON.parse(backend.getItem('contact')) || [];
+    contact = JSON.parse(backend.getItem('contact')) || [];
     addId();
     filterStatus();
 }
@@ -97,7 +97,7 @@ function newTaskHTML(element) {
         </div>
                 <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
-            <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div>
+            <div class="people" style="background: rgb(${contact['bgcolor']})">${contact[0].name}</div>
             </div>
             <div class="priority"></div>
             </div>
@@ -152,7 +152,7 @@ function openTaskHTML(element) {
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
         <div>
-        <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']}); margin-left: 2px">${contacts[0].name}</div>
+        <div class="people" style="background: rgb(${contact['bgcolor']})"; margin-left: 2px">${contact[0].name}</div>
         <p>Leo</p>
         </div>
         </div>
@@ -401,7 +401,7 @@ function filterBoardHTML(result) {
         </div>
 <div class="peopleInvolvedPriority">
     <div class="peopleInvolved">
-    <div class="people" style="background: rgb(${contacts[0]['r']},${contacts[0]['b']},${contacts[0]['g']})">${contacts[0].name}</div>
+    <div class="people" style="background: rgb(${contact['bgcolor']})">${contact[0].name}</div>
     </div>
     <div class="priority"></div>
     </div>
