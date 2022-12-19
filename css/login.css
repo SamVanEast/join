@@ -1,6 +1,7 @@
 body{
     font-family: 'Inter';
     margin: 0;
+    background: #f5f5f5;
 }
 
 .container{
@@ -90,7 +91,7 @@ border: 2px solid #29ABE2;
 .container-remember{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 130%;
     height: 21px;
     gap: 20px;
 }
@@ -172,6 +173,11 @@ border: 2px solid #29ABE2;
     background: #29ABE2;
     transform: scale(1.01);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+
+.container-logo{
+    width: 100%;
     
 }
 
@@ -565,6 +571,15 @@ width: 830px;
 
 @media only screen and (max-width: 960px) {
 
+    .container-logo{
+        width: 77%;
+    }
+
+    .container-logo-forgot{
+        width: 90%;
+        padding-bottom: 97px;
+    }
+
     .container-signup-middle-reset{
         width: 90%;
     }
@@ -601,10 +616,10 @@ width: 830px;
 
     .container-remember{
         flex-direction: column;
+        width: 100%;
     }
 
     .container-login{
-        margin-top: 110px;
         width: 77%;
     }
 
@@ -613,9 +628,11 @@ width: 830px;
     }
 
     .signup-logo{
-        left: 30px;
-        top: 50px;
+        display: flex;
+        justify-content: flex-start;
         height: 90px;
+        position: unset;
+
     }
 
     .login-logo{
@@ -660,6 +677,21 @@ width: 830px;
 
 @media only screen and (max-width: 400px){
 
+    #forgot{
+        justify-content: flex-start;
+        padding-top: 37px;
+    }
+
+    .container-logo{
+        padding-top: 37px;
+        padding-right: 35px;
+        padding-bottom: 54px;
+    }
+
+    #loginEmail, #loginPassword{
+        height: 41px;
+    }
+
     .forgot-button{
         padding: 13px 20px 13px 10px;
     }
@@ -673,8 +705,21 @@ width: 830px;
         width: 120%;
     }
 
+
     #confirmPassword{
         width: 120%;
+    }
+
+    .container{
+        height: auto;
+    }
+
+    .container-login{
+        margin-top: 0;
+    }
+
+    .button-signup{
+        padding-bottom: 35px;
     }
 
 
@@ -699,13 +744,7 @@ width: 830px;
         font-size: 38px;
     }
 
-    .login-button{
-        padding: 13px 28px 13px 28px;
-    }
-
-    .guest-button{
-        padding: 13px 2px 13px 2px;
-    }
+ 
 
     .container-remember p{
         font-size: 14px;
