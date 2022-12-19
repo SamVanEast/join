@@ -29,10 +29,9 @@ function tasksInBoard() {
  */
 function renderSomeHtmlContent(){
     for (let i = 0; i < allCategories.length; i++) {
-        
         let currentNumber = 0;
         for (let j = 0; j < allTasks.length; j++) {
-            if (allTasks[j].status == allCategories[j]) {
+            if (allTasks[j].status == allCategories[i]) {
                 currentNumber++;
             }
         }

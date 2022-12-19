@@ -294,3 +294,21 @@ body {
         height: unset;
     }
 }
+
+@media (min-height: 1440px) {
+    .side_bar{
+        height: 100vh;
+    }
+
+    .menu{
+        height: 100vh;
+    }
+
+    .menu_under_logo{
+        height: unset;
+    }
+
+    #content{
+        height: calc(100vh - 89px);
+    }
+}

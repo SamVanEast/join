@@ -121,6 +121,8 @@ function renderCategoryColors() {
     document.getElementById('categoryColors').classList.remove('d-none');
     document.getElementById('categoryColors').classList.add('categoryColors');
 
+    document.getElementById('categoryColors').innerHTML = ``;
+
     // Durchlaufe alle neuen Kategoriefarben
     for (let g = 0; g < newCategoryColors.length; g++) {
         const newColor = newCategoryColors[g];
@@ -180,7 +182,7 @@ function renderSelectedCategory(category, hexString) {
 
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
       <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">
-        ${category}</div>
+        ${category}
         <div class="colorDotCategorys" style="background-color: ${colorString};"></div>
       </div>
     `;
