@@ -66,7 +66,7 @@ border: 2px solid #29ABE2;
     height: 50px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    background: url(/assets/img/login-img/letter.png) no-repeat;
+    background: url(../../assets/img/login-img/letter.png) no-repeat;
     background-position: 97%;
 }
 
@@ -79,7 +79,7 @@ border: 2px solid #29ABE2;
     height: 50px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    background: url(/assets/img/login-img/safe.png) no-repeat;
+    background: url(../../assets/img/login-img/safe.png) no-repeat;
     background-position: 97%;  
 }
 
@@ -234,7 +234,7 @@ border: 2px solid #29ABE2;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     width: 75%;
-    background: url(/assets/img/login-img/letter.png) no-repeat;
+    background: url(../../assets/img/login-img/letter.png) no-repeat;
     background-position: 97%;
 }
 
@@ -245,7 +245,7 @@ border: 2px solid #29ABE2;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     width: 75%;
-    background: url(/assets/img/login-img/safe.png) no-repeat;
+    background: url(../../assets/img/login-img/safe.png) no-repeat;
     background-position: 97%;
 }
 
@@ -256,7 +256,7 @@ border: 2px solid #29ABE2;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     width: 75%;
-    background: url(/assets/img/login-img/name.png) no-repeat;
+    background: url(../../assets/img/login-img/name.png) no-repeat;
     background-position: 97%;
 }
 
@@ -349,7 +349,7 @@ border-radius: 30px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     width: 65%;
-    background: url(/assets/img/login-img/letter.png) no-repeat;
+    background: url(../../assets/img/login-img/letter.png) no-repeat;
     background-position: 97%;
 }
 

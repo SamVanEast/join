@@ -115,7 +115,7 @@ async function checkLogin() {
     if (email === inputEmail && password === inputPassword) {
       currentUser = [allUser[i]];
       await saveCurrentUser();
-      location.replace("/assets/templates/side_bar.html");
+      location.replace("../../assets/templates/side_bar.html");
     } else if(i==allUser.length) {
       alert("wrong password or wrong email");
     }
@@ -136,7 +136,7 @@ async function saveCurrentUser() {
 async function saveCurrentUserAsGuest(){
   currentUser = [];
   await backend.setItem('currentUser', JSON.stringify(currentUser));
-  location.href='/assets/templates/side_bar.html';
+  location.href='../../assets/templates/side_bar.html';
 }
 
 function openSignUp() {

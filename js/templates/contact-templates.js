@@ -41,7 +41,7 @@ function showSingleContactTemplate(i) {
       </div>
       <div class="add-task-btn">
         <div class="add-task-btn-plus">
-          <div><img src="/assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
+          <div><img src="../../assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
         </div>
         <div class="add-task-btn-text">Add Task</div>
       </div>
@@ -51,7 +51,7 @@ function showSingleContactTemplate(i) {
     <div class="contact-information-text"> Contact Information</div>
     <div class="edit-container">
       <div class="edit-container-left"> 
-        <img src="/assets/img/contact-img/edit.png" alt="" srcset="">
+        <img src="../../assets/img/contact-img/edit.png" alt="" srcset="">
       </div>
       <div class="edit-contact" onclick="openEditContact(${i})">Edit Contact</div>
     </div>
@@ -71,7 +71,7 @@ function showSingleContactTemplate(i) {
     <div class="add-contact-btn" onclick="showNewContactContainer()">
     <div class="add-contact-text">New contact</div>
     <div>
-      <div><img src="/assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
+      <div><img src="../../assets/img/contact-img/add.icon.png" alt="" srcset=""></div>
     `;
 }
 
@@ -85,7 +85,7 @@ function showSingleContactMobileTemplate(i) {
         <div></div>
       </div>
       <div class="mobile-back">
-        <img src="/assets/img/contact-img/arrow-left-line.png" alt="" onclick="hideMobileContacts()">
+        <img src="../../assets/img/contact-img/arrow-left-line.png" alt="" onclick="hideMobileContacts()">
       </div>
     </div>
 <div class="contact-information">
@@ -101,7 +101,7 @@ function showSingleContactMobileTemplate(i) {
     </div>
     <div class="add-task-btn">
       <div class="add-task-btn-plus">
-        <div><img src="/assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
+        <div><img src="../../assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
       </div>
       <div class="add-task-btn-text">Add Task</div>
     </div>
@@ -111,7 +111,7 @@ function showSingleContactMobileTemplate(i) {
   <div class="contact-information-text"> Contact Information</div>
   <div class="edit-container">
     <div class="edit-container-left"> 
-      <img src="/assets/img/contact-img/edit.png" alt="" srcset="">
+      <img src="../../assets/img/contact-img/edit.png" alt="" srcset="">
     </div>
     <div class="edit-contact" onclick="openEditContact(${i})">Edit Contact</div>
   </div>
@@ -130,7 +130,7 @@ function showSingleContactMobileTemplate(i) {
 
   </div>
   <div class="edit-contact-mobile" onclick="openEditContact(${i})">
-    <div><img src="/assets/img/contact-img/edit-mobile.png" alt="" srcset=""></div>
+    <div><img src="../../assets/img/contact-img/edit-mobile.png" alt="" srcset=""></div>
   </div>   
     `;
 }
@@ -142,7 +142,7 @@ function showEditContact(i) {
             <div class="contact-close-mobile d-none">
               <div class="lightbox-input-pos-close-mobile" onclick="closeEditContact()">X</div>
             </div>
-            <div><img src="/assets/img/menu-img/menu-logo.svg" alt=""></div>
+            <div><img src="../../assets/img/menu-img/menu-logo.svg" alt=""></div>
             <h1>Edit Contact</h1>
             <p>Tasks are better with a team</p>
             <div class="underline"></div>
