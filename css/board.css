@@ -43,8 +43,7 @@ body {
 .addNewTask {
     position: fixed;
     background-color: #FFFFFF;
-    height: 70%;
-    width: 80%;
+    padding-right: 24px;
     z-index: 5;
     left: 300px;
     top: 148px;
@@ -151,13 +150,12 @@ body {
 
 .category {
     border-radius: 8px;
-    text-align: center;
-    color: white;
-    padding: 4px 24px;
-    margin-left: 24px;
+    position: relative;
     margin-top: 24px;
     width: 60%;
     box-sizing: border-box; 
+    padding: 4px 4px;
+    color: white;
 }
 
 .taskHeadline {
@@ -284,20 +282,9 @@ body {
 }
 
 .addTaskContainer h1 {
-    font-family: 'Inter';
     font-size: 61px;
-    font-weight: 700;
-    line-height: 73px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-bottom: 41px;
-    padding-left: 123px;
 }
 
-.addTask {
-    display: flex;
-    padding-left: 123px;
-}
 
 .addTaskLeftSide {
     display: flex;
@@ -404,11 +391,12 @@ body {
 }
 
 .borderLine {
-    height: 551px;
+    height: 540px;
     border: 1px solid #D1D1D1;
     align-self: flex-start;
     margin-left: 59px;
     margin-right: 59px;
+    margin-bottom: 20px;
 }
 
 /* Date to Buttons */
@@ -839,3 +827,547 @@ body {
 
 
 /* End Progress Bar */
+
+/* CSS from add_task */
+
+/* ADD TASK */
+body {
+    background: #F6F7F8;
+    font-family: 'Inter';
+}
+
+.d-none {
+    display: none;
+}
+
+.addTaskContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.addTaskContainer h1 {
+    font-family: 'Inter';
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 73px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 41px;
+    padding-left: 50px;
+    
+}
+
+.addTask {
+    display: flex;
+    padding-left: 50px;
+}
+
+.addTaskLeftSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleToAssigned {
+    font-family: 'Inter';
+    font-size: 21px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 120%;
+}
+
+.titleToAssigned p {
+    margin-bottom: 8px;
+    margin-top: 34px;
+}
+
+.title p {
+    margin-top: 0px;
+}
+
+.title input {
+    cursor: pointer;
+    width: 378px;
+    padding: 11.9px 21px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.title input::placeholder {
+    color: #D1D1D1;
+}
+
+.description textarea {
+    cursor: pointer;
+    width: 378px;
+    height: 81px;
+    border-radius: 10px;
+    padding: 18px 21px 18px 21px;
+    border: 1px solid #D1D1D1;
+    background: #FFFFFF;
+    font-family: 'Inter';
+    resize: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    background: #FFFFFF url(../assets/img/add_task_img/textareaSign.png) no-repeat;
+    background-position: 99% 95%;
+}
+
+.description textarea::placeholder {
+    color: #D1D1D1;
+}
+
+
+.categoryAssigned {
+    position: relative;
+}
+
+.dropdown {
+    background: #FFFFFF;
+    cursor: pointer;
+    height: 49px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 51px;
+    color: #000000;
+    background-image:
+        linear-gradient(45deg, transparent 50%, black 50%),
+        linear-gradient(135deg, black 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        0px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.showAllCategorys {
+    width: 420px;
+    height: 100%;
+    max-height: 204px;
+    overflow: scroll;
+}
+
+.categorysDropdown {
+    padding-left: 18px;
+    width: 100%;
+}
+
+.categorysDropdown:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+.categorysDropdownSelectHTML {
+    padding-left: 18px;
+}
+
+.categorysDropdownSelect {
+    height: 51px;
+    padding-left: 18px;
+}
+
+.categorysOptions {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.categoryContent {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 21px;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    width: 378px;
+    height: 13px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
+}
+
+.newCategory {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    padding-left: 18px;
+}
+
+.categorysNewCategory:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+.categoryColors {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.colorDotCategorys {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.colorDot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.colorDot:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+    transition: all 125ms ease-in-out;
+}
+
+.contactOptions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.contactOptions input {
+    margin-right: 15px;
+}
+
+.contactOptions input:hover {
+    cursor: pointer;
+}
+
+
+
+/* Date to Buttons */
+.dateToButtons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.dateToButtons p {
+    margin-bottom: 8px;
+    margin-top: 34px;
+}
+
+.dueDate p {
+    margin-top: 0px;
+}
+
+.dueDate input {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 21px;
+    gap: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-family: 'Inter';
+    width: 378px;
+    height: 13px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.dueDate input::placeholder {
+    color: #D1D1D1;
+}
+
+.prioButtons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.prio button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.31);
+}
+
+.urgentButton {
+    font-family: 'Inter';
+    font-size: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    width: 136px;
+    height: 51px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.1);
+    gap: 7px;
+}
+
+.urgent:hover {
+    cursor: pointer;
+}
+
+.urgentButtonFocused {
+    color: white;
+    background: #FF1300;
+}
+
+.urgentButtonFocused img {
+    content: url(../assets/img/add_task_img/urgentSelected.png);
+}
+
+.medium:hover {
+    cursor: pointer;
+}
+
+.mediumButtonFocused {
+    color: white;
+    background-color: #FFA300;
+}
+
+.mediumButtonFocused img {
+    content: url(../assets/img/add_task_img/mediumSelected.png);
+}
+
+.low:hover {
+    cursor: pointer;
+}
+
+.lowButtonFocused {
+    color: white;
+    background-color: #49E500;
+}
+
+.lowButtonFocused img {
+    content: url(../assets/img/add_task_img/lowSelected.png);
+}
+
+.subtasksContent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.inputSubtask {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 21px;
+    gap: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    width: 378px;
+    height: 13px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
+}
+
+.subtaskRender {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtaskImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-left: auto;
+    gap: 10px;
+}
+
+.inputBorder {
+    width: 0px;
+    height: 20px;
+    border: 1px solid #D1D1D1;
+}
+
+.inputFieldSubtask {
+    border: unset;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    padding: 0px;
+}
+
+.inputFieldSubtask::placeholder {
+    color: #D1D1D1;
+}
+
+.inputFieldSubtask:hover {
+    cursor: pointer;
+}
+
+.inputFieldSubtask:focus {
+    outline: none;
+}
+
+.subtasks span {
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.checkboxSubtask {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+.newSubtasks {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    max-height: 200px;
+    overflow: scroll;
+}
+
+.newSubtasks input:hover {
+    cursor: pointer;
+}
+
+.clearAndCreate {
+    display: flex;
+    margin-top: 243px;
+    margin-left: auto;
+    gap: 25px;
+}
+
+.clearAndCreate button:hover {
+    cursor: pointer;
+}
+
+.clear {
+    width: 136px;
+    height: 61px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 18px 10px 18px 10px;
+    background-color: #F6F7F8;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #2A3647;
+}
+
+.clear:hover {
+    border: 1px solid rgb(0, 174, 231);
+    color: rgb(0, 174, 231);
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.cross {
+    appearance: none;
+    content: url(../assets/img/add_task_img/cross.png);
+    margin: 0px;
+    margin-left: 16.76px;
+}
+
+.clear:hover .cross {
+    cursor: pointer;
+    content: url(../assets/img/add_task_img/crossHover.png);
+}
+
+.create {
+    width: 177px;
+    height: 61px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 18px 10px 18px 10px;
+    background: #2A3647;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+    text-align: start;
+}
+
+.create:hover {
+    border-color: rgb(0, 174, 231);
+    background-color: rgb(0, 174, 231);
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.create img {
+    margin-left: 7px;
+}
+
+
+@media only screen and (max-width: 1330px) {}
+
+@media only screen and (max-width: 1200px) {}
+
+
+@media only screen and (max-width: 1060px) {}
+
+
+@media only screen and (max-width: 400px) {}
+
+/* end CSS from add_task */
