@@ -11,7 +11,7 @@ async function initBoard() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    contacts = JSON.parse(backend.getItem('contact'))  || [];
+    contacts = JSON.parse(backend.getItem('contact')) || [];
     addId();
     filterStatus();
 }
@@ -85,7 +85,7 @@ function newTaskHTML(element) {
     return /*html*/`
         <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
         <div class="singleTask ${element.id}">
-        <div id="category${element['id']}" class="category">${element['category']}</div>
+        <div id="cats${element['id']}" class="category">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
         <div class="taskDescription">${element['desc']}</div>
         
@@ -114,14 +114,11 @@ function startDragging(id) {
 function checkBgColor(element) {
     categoryBg = element['category'];
 
-    document.getElementById(`category${element['id']}`).classList.add(`${categoryBg}`);
+    document.getElementById(`cats${element['id']}`).classList.add(`${categoryBg}`);
 
 
 }
 
-/**
- * 
- */
 
 function closeOpenTask() {
     document.body.classList.remove('noScroll');
@@ -195,30 +192,73 @@ function removeHighlight(id) {
 
 function addTask() {
     document.getElementById('addNewTask').classList.remove('d-none');
+
     let content = document.getElementById('addNewTask');
     content.innerHTML = '';
 
     content.innerHTML += /*html*/ `
     <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
-    <div style="display: flex; flex-direction: column; width: 25%;">
-    <form onsubmit="getAndPushTask(); addId(); return false;">
-        <input id="headline" placeholder="headline">
-        <input id="desc" placeholder="desc">
-        <input id="status" placeholder="status">
-        <select id="cat" placeholder="category">
-            <option>Media</option>
-            <option>Backoffice</option>
-            <option>Marketing</option>
-            <option>Design</option>
-        </select>
+    <div>
+    <div class="addTaskContainer">
+        <h1>Add Task</h1>
+        <form id="form" onsubmit="submitTask(); return false">
+            <div class="addTask">
+                <div class="addTaskLeftSide">
+                    <div class="titleToAssigned">
+                        <div class="title">
+                            <p>Title</p>
+                            <input minlength="1" type="text" placeholder="Enter a title" id="headline" required>
+                            <!-- added ID "headline"-->
+                        </div>
+                        <div class="description">
+                            <p>Description</p>
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description"
+                                id="desc"></textarea> <!-- added ID description-->
+                        </div>
 
-        <button>Abschicken</button>
-    </form>
+                        <div class="category" id="cat"></div>
+                        <div class="categoryColors d-none" id="categoryColors"></div>
+
+                        <div class="categoryAssigned" id="assigned"></div>
+
+                    </div>
+                </div>
+
+                <div class="borderLine"></div>
+
+                <div class="dateToButtons" id="dateButtons">
+
+                    <div class="dueDate">
+                        <p>Due date</p>
+                        <input id="dueDate" type="date" required>
+                    </div>
+
+                    <div class="prio">
+                        <p>Prio</p>
+                        <div class="prioButtons" id="prioButtons"></div>
+                    </div>
+
+                    <div class="subtasksContent" id="subs"></div>
+
+                    <div class="clearAndCreate">
+                        <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross"
+                                type="checkbox"></button>
+                        <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                                alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     `;
+    renderCategoryContent();
+    renderAssignedToContent();
+    renderPrioButtons();
+    renderSubtaskContent();
 
 }
 
-function getAndPushTask() {
+/*function getAndPushTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let status = document.getElementById('status').value;
@@ -242,7 +282,7 @@ async function addNewTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     window.location.href = 'board.html';
-}
+}*/
 
 async function deleteTasks() {
     await backend.deleteItem('allTasks');
@@ -290,9 +330,9 @@ function filterBoardProgress() {
 
     for (let i = 0; i < progress.length; i++) {
         let headlines = progress[i]['headline'];
-        let descriptions = progress[i]['desc'];
+        let desc = progress[i]['desc'];
 
-        if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
+        if (headlines.toLowerCase().includes(search) || desc.toLowerCase().includes(search)) {
             let result = progress[i];
 
             filter.innerHTML += filterBoardHTML(result);
@@ -369,5 +409,3 @@ function filterBoardHTML(result) {
 </div>`;
 }
 
-
-/* Contact:  */
