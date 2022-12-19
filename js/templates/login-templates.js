@@ -5,7 +5,7 @@ function renderResetContainer(i) {
       <div id="containerReset" class="container-signup-middle-reset">
 
           <div class="go-back-reset-container">
-            <img onclick="backToLogin()" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
+            <img onclick="backToLogin()" id="goBackReset" class="go-back-reset" src="/assets/img/login-img/Vector.png" alt="">
           </div>  
           <div class="container-up-reset">
               <h1>Reset your password</h1>

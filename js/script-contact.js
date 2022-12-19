@@ -142,6 +142,7 @@ function editContacts(i) {
   addContact(contact);   
   sortArray();
   generateContactlist();
+  showSingleContact(i);
 }
 
 

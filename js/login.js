@@ -90,7 +90,7 @@ function SendEmailtoChangePassword() {
       lightboxEmail.classList.remove('d-none');
       setTimeout(() => {
         lightboxEmail.classList.add('d-none');
-        backToLogin();
+        hideForgotScreen();
         document.getElementById("reset").innerHTML += renderResetContainer(i);
       }, 3000); break;
     } else if(i==allUser.length) {
@@ -128,6 +128,8 @@ async function checkLogin() {
 async function saveCurrentUser() {
   await backend.setItem('currentUser', JSON.stringify(currentUser));
 }
+
+
 /**
  * falls man sich als Guest anmeldet, soll die alten Information überschrieben werden 
  */

@@ -536,6 +536,14 @@ border: 1px solid #2A3647;
 border-radius: 10px;
 }
 
+.add-contact-btn:hover{
+  transition: 0.2s;
+  background: #29ABE2;
+  transform: scale(1.01);
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
+}
+
 .add-contact-text{
   width: 130px;
 height: 25px;
@@ -748,15 +756,18 @@ bottom: 50px;
 }
 
 .lightbox-btn-left:hover {
-  border: 0.5px solid #29ABE2;
+  transition: 0.2s;
   color: #29ABE2;
+  border: 0.5px solid #29ABE2;
+  transform: scale(1.01);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .lightbox-btn-right{
   cursor: pointer;
   font-weight: 700;
   height: 50px;
-  width: 180px;
+  width: 185px;
   border-radius: 10px;
   color: #FFFFFF;
   background-color: #2A3647;
@@ -767,6 +778,14 @@ bottom: 50px;
   align-items: center;
   gap: 10px;
   margin-top: 30px;
+}
+
+.lightbox-btn-right:hover{
+  transition: 0.2s;
+  background: #29ABE2;
+  transform: scale(1.01);
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
 }
 
 .lightbox-btn-right-edit{
@@ -791,15 +810,21 @@ margin-top: 30px;
   justify-content: center;
 }
 
+.lightbox-btn-right-edit:hover{
+  transition: 0.2s;
+  background: #29ABE2;
+  transform: scale(1.01);
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
+}
+
 
 
 .lightbox-btn-left img{
   padding-bottom: 2px;
 }
 
-.lightbox-btn-right:hover{
-  background-color: #29ABE2;
-}
+
 
 /*DESIGN SCROLLBAR*/
 .container-left::-webkit-scrollbar {
@@ -853,6 +878,10 @@ border-radius: 10px;
   align-items: center;
   flex-direction: column;
 
+}
+
+.header_headline{
+  display: block;
 }
 
 .d-none{

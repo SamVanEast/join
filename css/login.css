@@ -132,12 +132,18 @@ border: 2px solid #29ABE2;
 }
 
 .login-button:hover{
+    transition: 0.2s;
     background: #29ABE2;
+    transform: scale(1.01);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
 }
 
 .guest-button:hover {
+    transition: 0.2s;
     color: #29ABE2;
     border: 0.5px solid #29ABE2;
+    transform: scale(1.01);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .button-signup{
@@ -162,6 +168,14 @@ border: 2px solid #29ABE2;
     font-weight: 700;
     background: #2A3647;
     border-radius: 8px;
+}
+
+.button-signup button:hover{
+    transition: 0.2s;
+    background: #29ABE2;
+    transform: scale(1.01);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
 }
 
 /* CSS FOR SIGN UP SCREEN */
@@ -202,6 +216,19 @@ border: 2px solid #29ABE2;
     left: 70px;
     top: 85px;
 }
+
+@-webkit-keyframes zoom {
+    0%   {transform: scale(10);}
+    100% {transform: scale(1); }
+}
+
+.login-logo {
+    position: absolute;
+    left: 70px;
+    top: 85px;
+    -webkit-animation: zoom 2s 1;
+}
+
 
 #signupEmail, #signupPassword, #signupName  {
     font-family: 'Inter';
@@ -340,6 +367,13 @@ border-radius: 30px;
     border-radius: 8px;
 }
 
+.forgot-button:hover{
+    transition: 0.2s;
+    background: #29ABE2;
+    transform: scale(1.01);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
+}
+
 /* CSS FOR RESET PASSWORD SCREEN */
 
 
@@ -428,6 +462,7 @@ width: 830px;
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.9);
+    z-index: 5;
 
 }
 
@@ -445,6 +480,8 @@ width: 830px;
     height: 100vh;
 }
 
+
+
 .lightbox-email p{
     color: #FFFFFF;
     background: #2A3647;
@@ -457,9 +494,33 @@ width: 830px;
     display: flex;
     align-items: center;
     gap: 13px;
+    animation: hide 2s linear;
+   animation-fill-mode: forwards;
 }
 
+@keyframes hide {
+    100% {
+      display: block;
+      opacity: 1;
 
+      bottom: 95%;
+    }
+    99% {
+      display: block;
+      
+    }
+    
+    0% {
+      display: none;
+      opacity: 0;
+      position: absolute;
+      bottom: 0%;
+    }
+  }
+
+.index{
+    z-index: -1;
+}
 
 
 .lightbox-reset p{
@@ -471,6 +532,8 @@ width: 830px;
     padding: 23px 30px 23px 30px;
     font-weight: 400;
     font-size: 23px;
+    animation: hide 2s linear;
+    animation-fill-mode: forwards;
 }
 
 
@@ -479,7 +542,6 @@ width: 830px;
     .forgot-headline{
         font-size: 50px;
         width: 80%;
-        height: 105px;
     }
 
     .go-back-forgot-container{
@@ -559,8 +621,10 @@ width: 830px;
         height: 90px;
     }
 
-    .forgot-headline{
-        height: 105px;
+    .login-logo{
+        left: 30px;
+        top: 50px;
+        height: 90px;
     }
 
     #forgotEmail{
@@ -613,6 +677,7 @@ width: 830px;
     #confirmPassword{
         width: 120%;
     }
+
 
 }
 
