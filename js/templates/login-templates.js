@@ -1,7 +1,7 @@
 function renderResetContainer(i) {
     return /*html*/ `
     <div class="container-signup-reset" >
-        
+    <img class="signup-logo" src="/assets/img/contact-img/logo.png" alt="" srcset="" />
       <div id="containerReset" class="container-signup-middle-reset">
 
           <div class="go-back-reset-container">
