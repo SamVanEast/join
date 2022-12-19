@@ -542,7 +542,64 @@ body {
 @media only screen and (max-width: 1200px) {}
 
 
-@media only screen and (max-width: 1060px) {}
+@media only screen and (max-width: 1060px) {
+    .addTask{
+        flex-direction: column;
+        padding-left: 0px;
+        margin-left: 31px;
+        margin-right: 34px;
+    }
+
+    .title input{
+        width: 100%;
+    }
+
+    .description textarea{
+        width: 100%;
+    }
+
+    .dropdown{
+        width: 100%;
+    }
+
+    .borderLine {
+        display: none;
+    }
+
+    .dueDate input {
+        width: 100%;
+    }
+
+    .prioButtons{
+        width: 111px;
+    }
+
+    .urgentButton{
+        width: 111px;
+    }
+
+    .inputSubtask{
+        width: 100%;
+        margin-bottom: 100px;
+    }
+
+    .addTaskContainer h1{
+        font-size: 47px;
+        padding-left: 0px;
+        margin-left: 33px;
+    }
+
+    .clearAndCreate{
+        position: absolute;
+        top: -313px;
+        right: 10px;
+        z-index: 999;
+    }
+
+    .clear{
+        display: none;
+    }
+}
 
 
 @media only screen and (max-width: 400px) {}
