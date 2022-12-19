@@ -82,7 +82,7 @@ body {
     padding: 14px 21px;
     gap: 10px;
     margin-right: 34px;
-    background: url(../assets/img/board_img/magnifying-glass.png) no-repeat scroll 210px 14px;
+    background: url(../assets/img/board_img/magnifying-glass.png) no-repeat scroll 188px 12px;
 
 }
 
@@ -156,6 +156,7 @@ body {
     box-sizing: border-box; 
     padding: 4px 4px;
     color: white;
+    margin-left: 20px;
 }
 
 .taskHeadline {
@@ -686,9 +687,16 @@ body {
 
 /* End Code from add_task.html */
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .status {
         font-size: 15px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .status {
+        font-size: 12.5px;
     }
 
 }
