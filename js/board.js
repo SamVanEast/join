@@ -12,6 +12,7 @@ async function initBoard() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
+    console.log(allTasks, contact)
     addId();
     filterStatus();
 }
@@ -41,6 +42,7 @@ function filterTodo() {
         const element = todo[i];
         document.getElementById('todo').innerHTML += newTaskHTML(element);
         checkBgColor(element);
+        declarePriority(element);
     }
 }
 
@@ -53,6 +55,8 @@ function filterProgress() {
         const element = progress[i];
         document.getElementById('inProgress').innerHTML += newTaskHTML(element);
         checkBgColor(element);
+        declarePriority(element);
+
     }
 }
 
@@ -65,6 +69,8 @@ function filterFeedback() {
         const element = feedback[i];
         document.getElementById('awaitingFeedback').innerHTML += newTaskHTML(element);
         checkBgColor(element);
+        declarePriority(element);
+
     }
 }
 
@@ -77,33 +83,9 @@ function filterDone() {
         const element = done[i];
         document.getElementById('done').innerHTML += newTaskHTML(element);
         checkBgColor(element);
+        declarePriority(element);
+
     }
-}
-
-
-function newTaskHTML(element) {
-    return /*html*/`
-        <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
-        <div class="singleTask ${element.id}">
-        <div id="cats${element['id']}" class="category">${element['category']}</div>
-        <div class="taskHeadline">${element['headline']}</div>
-        <div class="taskDescription">${element['desc']}</div>
-        
-        <div class="progressbar">    
-            <div class="progressbar-grey">
-                <div id="progressbar-blue" class="progressbar-blue" style="width: 50%"></div>
-            </div>
-            <div id="done-counter">1/2 Done</div>
-        </div>
-                <div class="peopleInvolvedPriority">
-            <div class="peopleInvolved">
-            <div class="people" style="background: rgb(${contact['bgcolor']})">${contact[0].name}</div>
-            </div>
-            <div class="priority"></div>
-            </div>
-        </div>
-        </div>`;
-
 }
 
 
@@ -115,7 +97,6 @@ function checkBgColor(element) {
     categoryBg = element['category'];
 
     document.getElementById(`cats${element['id']}`).classList.add(`${categoryBg}`);
-
 
 }
 
@@ -133,31 +114,6 @@ function openTask(element) {
     document.body.classList.add('noScroll');
     openedTask.innerHTML = openTaskHTML(element);
 
-}
-
-
-function openTaskHTML(element) {
-    return `<div class="openTaskKicker">
-    <div class="category ${allTasks[element].category}">${allTasks[element].category}</div>
-    <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
-    </div>
-    <div id="openTaskHMobile">
-            <h2>${allTasks[element].headline}</h2>
-        </div>
-        <div id="pMobile">
-            <p id="openTaskDesc">${allTasks[element].desc}</p>
-            <p><b>Due Date: </b>Monday</p>
-            <p><b>Priority: </b>High</p>
-        </div>
-        <div id="assignedMobile">
-        <p><b>Assigned to:</b></p>
-        <div>
-        <div class="people" style="background: rgb(${contact['bgcolor']})"; margin-left: 2px">${contact[0].name}</div>
-        <p>Leo</p>
-        </div>
-        </div>
-        <div id="edit-btn"><img src="../img/board_img/edit-btn.png"></div>
-        </div> `;
 }
 
 function closeAddTask() {
@@ -258,32 +214,6 @@ function addTask() {
 
 }
 
-/*function getAndPushTask() {
-    let headline = document.getElementById('headline').value;
-    let desc = document.getElementById('desc').value;
-    let status = document.getElementById('status').value;
-    let cat = document.getElementById('cat').value;
-
-    let task = {
-        'headline': headline,
-        'desc': desc,
-        'status': status,
-        'category': cat,
-    };
-
-
-
-    addNewTask(task)
-
-}
-
-
-async function addNewTask(task) {
-    allTasks.push(task);
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
-    window.location.href = 'board.html';
-}*/
-
 async function deleteTasks() {
     await backend.deleteItem('allTasks');
 
@@ -315,6 +245,7 @@ function filterBoardTodo() {
 
             filter.innerHTML += filterBoardHTML(result);
             checkBgColor(result);
+            declarePriority(result);
         }
     }
 
@@ -337,6 +268,8 @@ function filterBoardProgress() {
 
             filter.innerHTML += filterBoardHTML(result);
             checkBgColor(result);
+            declarePriority(result);
+
         }
     }
 
@@ -360,6 +293,8 @@ function filterBoardFeedback() {
 
             filter.innerHTML += filterBoardHTML(result);
             checkBgColor(result);
+            declarePriority(result);
+
         }
     }
 
@@ -382,30 +317,47 @@ function filterBoardDone() {
 
             filter.innerHTML += filterBoardHTML(result);
             checkBgColor(result);
+            declarePriority(result);
+
         }
     }
 
 }
 
-function filterBoardHTML(result) {
-    return `<div class="taskBoxes" draggable="true" ondragstart="startDragging(${result['id']})" onclick="openTask(${result['id']})">
-<div class="singleTask ${result.id}">
-<div id="cats${result['id']}" class="category">${result['category']}</div>
-<div class="taskHeadline">${result['headline']}</div>
-<div class="taskDescription">${result['desc']}</div>
-<div class="progressbar">    
-            <div class="progressbar-grey">
-                <div id="progressbar-blue" class="progressbar-blue" style="width: 50%"></div>
-            </div>
-            <div id="done-counter">1/2 Done</div>
-        </div>
-<div class="peopleInvolvedPriority">
-    <div class="peopleInvolved">
-    <div class="people" style="background: rgb(${contact['bgcolor']})">${contact[0].name}</div>
-    </div>
-    <div class="priority"></div>
-    </div>
-</div>
-</div>`;
+
+function declarePriority(element) {
+    let shownPriority = document.getElementById(`prio${element.id}`);
+    shownPriority.innerHTML = '';
+
+    if(element['prio'] == 'Medium') {
+        shownPriority.innerHTML = `<img src="../img/board_img/prio-mid.png">`;
+    }
+
+    /*if(element.prio == '') */
 }
 
+/*function getAndPushTask() {
+    let headline = document.getElementById('headline').value;
+    let desc = document.getElementById('desc').value;
+    let status = document.getElementById('status').value;
+    let cat = document.getElementById('cat').value;
+
+    let task = {
+        'headline': headline,
+        'desc': desc,
+        'status': status,
+        'category': cat,
+    };
+
+
+
+    addNewTask(task)
+
+}
+
+
+async function addNewTask(task) {
+    allTasks.push(task);
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    window.location.href = 'board.html';
+}*/

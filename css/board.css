@@ -154,7 +154,7 @@ body {
     margin-top: 24px;
     width: 60%;
     box-sizing: border-box; 
-    padding: 4px 4px;
+    padding: 4px 12px;
     color: white;
     margin-left: 20px;
 }
@@ -182,19 +182,23 @@ body {
 
 
 .peopleInvolvedPriority {
-    margin-left: 24px;
+
     margin-top: 24px;
+
 }
 
 .peopleInvolved {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 24px;
+    padding-left: 27px;
 
 }
 
 .people {
     width: 35px;
     height: 35px;
-    border: 1px solid #FFFFFF;
     border-radius: 58px;
     display: flex;
     justify-content: center;
