@@ -333,7 +333,13 @@ function declarePriority(element) {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-mid.png">`;
     }
 
-    /*if(element.prio == '') */
+    if(element['prio'] == 'Low') {
+        shownPriority.innerHTML = `<img src="../img/board_img/prio-low.png">`;
+    }
+
+    if(element['prio'] == 'Urgent') {
+        shownPriority.innerHTML = `<img src="../img/board_img/prio-high.png">`;
+    }
 }
 
 /*function getAndPushTask() {
