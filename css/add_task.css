@@ -591,6 +591,10 @@ body {
         width: 100%;
     }
 
+    .category{
+        width: 100%;
+    }
+
     .dropdown{
         width: 363px;
     }
@@ -601,6 +605,10 @@ body {
 
     .dateToButtons p{
         margin-top: 9px;
+    }
+
+    .dueDate{
+        width: 100%;
     }
 
     .dueDate input {
@@ -616,6 +624,7 @@ body {
     }
 
     .subtasksContent{
+        width: 100%;
         margin-bottom: 100px;
     }
 
