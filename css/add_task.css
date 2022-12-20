@@ -582,15 +582,19 @@ body {
         width: 111px;
     }
 
+    .subtasksContent{
+        margin-bottom: 100px;
+    }
+
     .inputSubtask{
         width: 100%;
-        margin-bottom: 100px;
     }
 
     .addTaskContainer h1{
         font-size: 47px;
         padding-left: 0px;
         margin-left: 33px;
+        margin-top: 145px;
     }
 
     .clearAndCreate{
@@ -602,6 +606,13 @@ body {
 
     .clear{
         display: none;
+    }
+
+    .create{
+        position: fixed;
+        right: 15px;
+        top: 8px;
+        z-index: 3;
     }
 }
 
