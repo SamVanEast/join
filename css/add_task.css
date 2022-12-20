@@ -554,7 +554,11 @@ body {
     .mobile_header_headline{
         display: block;
         margin-top: 110px;
-        margin-left: -55px;
+        margin-left: -100px;
+    }
+
+    .formValidation{
+        width: 363px;
     }
 
     .addTask{
@@ -564,8 +568,6 @@ body {
     }
 
     .addTaskContainer{
-        display: flex;
-        justify-content: center;
         align-items: center;
     }
 
@@ -573,7 +575,7 @@ body {
         font-size: 47px;
         padding-left: 0px;
         margin-top: 15px;
-        margin-left: -100px;
+        margin-left: -145px;
         margin-bottom: 14px;
     }
 
@@ -590,7 +592,7 @@ body {
     }
 
     .dropdown{
-        width: 100%;
+        width: 363px;
     }
 
     .borderLine {
