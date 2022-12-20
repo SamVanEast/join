@@ -538,37 +538,37 @@ body {
 
 
 @media only screen and (max-width: 1060px) {
-    .header{
+    .header {
         position: fixed;
         z-index: 2;
     }
 
-    .header_headline{
+    .header_headline {
         display: none;
     }
 
-    .mobile_header_headline{
+    .mobile_header_headline {
         display: block;
         margin-top: 110px;
         margin-left: -100px;
     }
 
-    .formValidation{
+    .formValidation {
         width: 363px;
     }
 
-    .addTask{
+    .addTask {
         flex-direction: column;
         padding-left: 0px;
         margin-right: 34px;
     }
 
-    .addTaskContainer{
+    .addTaskContainer {
         align-items: center;
         margin-right: 0px;
     }
 
-    .addTaskContainer h1{
+    .addTaskContainer h1 {
         font-size: 47px;
         padding-left: 0px;
         margin-top: 15px;
@@ -576,26 +576,26 @@ body {
         margin-bottom: 14px;
     }
 
-    .titleToAssigned p{
+    .titleToAssigned p {
         margin-top: 9px;
         font-size: 16px;
     }
 
-    .title input{
+    .title input {
         width: 100%;
         font-size: 16px;
     }
 
-    .description textarea{
+    .description textarea {
         width: 100%;
         font-size: 16px;
     }
 
-    .dropdown{
+    .dropdown {
         width: 113%;
     }
 
-    .categorysDropdownSelectHTML{
+    .categorysDropdownSelectHTML {
         font-size: 16px;
     }
 
@@ -603,12 +603,12 @@ body {
         display: none;
     }
 
-    .dateToButtons p{
+    .dateToButtons p {
         margin-top: 9px;
         font-size: 16px;
     }
 
-    .dueDate{
+    .dueDate {
         width: 100%;
     }
 
@@ -617,41 +617,41 @@ body {
         font-size: 16px;
     }
 
-    .prio{
+    .prio {
         width: 113%;
     }
 
-    .prioButtons{
+    .prioButtons {
         justify-content: space-between;
     }
 
-    .urgentButton{
+    .urgentButton {
         width: 111px;
         font-size: 16px;
     }
 
-    .subtasksContent{
+    .subtasksContent {
         width: 100%;
         margin-bottom: 100px;
     }
 
-    .inputSubtask{
+    .inputSubtask {
         width: 100%;
         font-size: 16px;
     }
 
-    .clearAndCreate{
+    .clearAndCreate {
         position: absolute;
         top: -313px;
         right: 10px;
         z-index: 999;
     }
 
-    .clear{
+    .clear {
         display: none;
     }
 
-    .create{
+    .create {
         position: fixed;
         right: 15px;
         top: 8px;
