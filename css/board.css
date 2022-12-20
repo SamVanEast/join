@@ -463,8 +463,65 @@ body {
 .addTaskContainer h1 {
     font-size: 45px !important;
     margin-top: 5px !important;
+    margin-bottom: 0px !important;
+    padding-left: 40px !important;
 }
 
 .clearAndCreate {
     margin-top: 117px !important;
+}
+
+.titleToAssigned {
+    font-size: 18px !important;
+}
+
+.titleToAssigned p {
+    margin-top: 20px !important;
+
+}
+
+.dateToButtons {
+    font-size: 18px !important;
+
+}
+
+.dateToButtons p {
+margin-top: 40px !important;
+
+}
+
+.title input {
+    font-size: 14px !important;
+}
+
+.description textarea {
+    height: 50px !important;
+    font-size: 14px !important;
+
+}
+
+.dropdown {
+    font-size: 14px !important;
+}
+
+.borderLine {
+    height: 500px !important;
+}
+
+.dueDate p {
+    margin-top: 20px !important;
+}
+
+.dueDate input {
+    height: 4px !important;
+    font-size: 14px !important;
+
+}
+
+.inputSubtask {
+    font-size: 14px !important;
+}
+
+.addTask {
+    padding-left: 40px !important;
 }

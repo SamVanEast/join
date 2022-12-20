@@ -118,6 +118,7 @@ function openTask(element) {
 
 function closeAddTask() {
     document.getElementById('addNewTask').classList.add('d-none');
+    document.body.classList.remove('noScroll');
 }
 
 function allowDrop(ev) {
@@ -148,7 +149,7 @@ function removeHighlight(id) {
 
 function addTask() {
     document.getElementById('addNewTask').classList.remove('d-none');
-
+    document.body.classList.add('noScroll');
     let content = document.getElementById('addNewTask');
     content.innerHTML = '';
 
