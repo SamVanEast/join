@@ -348,7 +348,7 @@ function renderSubtaskContent() {
     for (let i = 0; i < allSubtasks.length; i++) {
         document.getElementById('newSubtask').innerHTML += /*html*/`
          <div class="newSubtasks" id="newSubtasks">
-             <input type="checkbox" id="checkboxSubtask" value="${allSubtasks[i]}" name="${allSubtasks[i]}">
+             <input type="checkbox" id="checkboxSubtask" value="${allSubtasks[i]}" name="${allSubtasks[i]}" checked>
              <span id="selectedSubtask">${allSubtasks[i]}</span>
          </div>
      `;
