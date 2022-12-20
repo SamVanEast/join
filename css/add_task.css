@@ -657,8 +657,4 @@ body {
         top: 8px;
         z-index: 3;
     }
-
-    .create::after{
-        content: "Create";
-    }
 }
