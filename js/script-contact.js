@@ -143,6 +143,7 @@ function editContacts(i) {
   sortArray();
   generateContactlist();
   showSingleContact(i);
+  closeEditContact();
 }
 
 
@@ -156,9 +157,8 @@ function hideMobileContacts(){
   document.getElementById('lightboxMobileContact').classList.add('d-none');
 }
 
-
 function showNewContactContainer() {
-    document.getElementById('lightboxAddContact').classList.remove('d-none');
+  document.getElementById('lightboxAddContact').classList.remove('d-none');
 }
 
 function HideNewContactContainer() {
