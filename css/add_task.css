@@ -537,11 +537,6 @@ body {
 }
 
 
-@media only screen and (max-width: 1330px) {}
-
-@media only screen and (max-width: 1200px) {}
-
-
 @media only screen and (max-width: 1060px) {
     .header{
         position: fixed;
@@ -570,6 +565,7 @@ body {
 
     .addTaskContainer{
         align-items: center;
+        margin-right: 0px;
     }
 
     .addTaskContainer h1{
@@ -662,6 +658,3 @@ body {
         z-index: 3;
     }
 }
-
-
-@media only screen and (max-width: 400px) {}
