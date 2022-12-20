@@ -181,10 +181,7 @@ function renderSelectedCategory(category, hexString) {
     const colorString = `rgb(${colorObject[0]}, ${colorObject[1]}, ${colorObject[2]})`;
 
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-      <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">
-        ${category}</div>
-        <div class="colorDotCategorys" style="background-color: ${colorString};"></div>
-      </div>
+      <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div class="colorDotCategorys" style="background-color: ${colorString};"></div></div>
     `;
 
     categoryColors.push(colorFromCategory);
