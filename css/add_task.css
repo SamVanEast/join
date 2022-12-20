@@ -581,14 +581,17 @@ body {
 
     .titleToAssigned p{
         margin-top: 9px;
+        font-size: 16px;
     }
 
     .title input{
         width: 100%;
+        font-size: 16px;
     }
 
     .description textarea{
         width: 100%;
+        font-size: 16px;
     }
 
     .category{
@@ -599,12 +602,17 @@ body {
         width: 363px;
     }
 
+    .categorysDropdownSelectHTML{
+        font-size: 16px;
+    }
+
     .borderLine {
         display: none;
     }
 
     .dateToButtons p{
         margin-top: 9px;
+        font-size: 16px;
     }
 
     .dueDate{
@@ -613,14 +621,12 @@ body {
 
     .dueDate input {
         width: 100%;
-    }
-
-    .prioButtons{
-        width: 111px;
+        font-size: 16px;
     }
 
     .urgentButton{
         width: 111px;
+        font-size: 16px;
     }
 
     .subtasksContent{
@@ -630,6 +636,7 @@ body {
 
     .inputSubtask{
         width: 100%;
+        font-size: 16px;
     }
 
     .clearAndCreate{
