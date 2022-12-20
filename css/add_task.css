@@ -547,6 +547,16 @@ body {
         z-index: 2;
     }
 
+    .header_headline{
+        display: none;
+    }
+
+    .mobile_header_headline{
+        display: block;
+        margin-top: 110px;
+        margin-left: 31px;
+    }
+
     .addTask{
         flex-direction: column;
         padding-left: 0px;
@@ -555,6 +565,10 @@ body {
     }
 
     .addTaskContainer h1{
+        font-size: 47px;
+        padding-left: 0px;
+        margin-top: 0px;
+        margin-left: 33px;
         margin-bottom: 14px;
     }
 
@@ -600,13 +614,6 @@ body {
 
     .inputSubtask{
         width: 100%;
-    }
-
-    .addTaskContainer h1{
-        font-size: 47px;
-        padding-left: 0px;
-        margin-left: 33px;
-        margin-top: 145px;
     }
 
     .clearAndCreate{
