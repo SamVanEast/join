@@ -463,10 +463,9 @@ body {
 }
 
 .clearAndCreate {
-    display: flex;
-    margin-top: 243px;
-    margin-left: auto;
-    gap: 25px;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
 }
 
 .clearAndCreate button:hover {
@@ -474,6 +473,7 @@ body {
 }
 
 .clear {
+    margin-right: 25px;
     width: 136px;
     height: 61px;
     border: 1px solid #2A3647;
