@@ -542,6 +542,11 @@ body {
 
 
 @media only screen and (max-width: 1060px) {
+    .header{
+        position: fixed;
+        z-index: 2;
+    }
+
     .addTask{
         flex-direction: column;
         padding-left: 0px;
