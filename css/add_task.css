@@ -524,6 +524,11 @@ body {
     text-align: start;
 }
 
+.create::before{
+    display: inline-block;
+    content: "Create Task";
+}
+
 .create:hover {
     border-color: rgb(0, 174, 231);
     background-color: rgb(0, 174, 231);
@@ -656,5 +661,10 @@ body {
         right: 15px;
         top: 8px;
         z-index: 3;
+        width: 124px;
+    }
+
+    .create::before {
+        content: "Create";
     }
 }
