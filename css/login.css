@@ -580,6 +580,15 @@ width: 830px;
         padding-bottom: 97px;
     }
 
+    .container-logo-reset{
+        width: 90%;
+    }
+
+    .container-logo-signup{
+        width: 90%;
+        padding-bottom: 79px;
+    }
+
     .container-signup-middle-reset{
         width: 90%;
     }
@@ -624,8 +633,10 @@ width: 830px;
     }
 
     .container-signup-middle-reset{
-        margin-top: 110px;
+        margin-top: 85px;
     }
+
+
 
     .signup-logo{
         display: flex;
@@ -652,7 +663,7 @@ width: 830px;
 @media only screen and (max-width: 650px){
 
     .forgot-headline{
-        font-size: 48px;
+        font-size: 40px;
     }
 
     .container-signup-middle-forgot{
@@ -661,7 +672,7 @@ width: 830px;
 
     .container-up-reset h1{
         margin-top: 30px;
-        font-size: 48px;
+        font-size: 40px;
     }
 
     #newPassword{
@@ -672,6 +683,14 @@ width: 830px;
         width: 100%;
     }
 
+    .container-login h1{
+        font-size: 47px;
+    }
+
+    .signup-headline{
+        font-size: 47px;
+    }
+
 }
 
 
@@ -680,6 +699,7 @@ width: 830px;
     #forgot{
         justify-content: flex-start;
         padding-top: 37px;
+        height: auto;
     }
 
     .container-logo{
@@ -688,12 +708,22 @@ width: 830px;
         padding-bottom: 54px;
     }
 
-    #loginEmail, #loginPassword{
+    #newPassword, #confirmPassword, #forgotEmail,#signupEmail, #signupPassword, #signupName, #loginEmail, #loginPassword{
         height: 41px;
+        width: 120%;
+    }
+
+    .container-remember{
+        width: 120%;
     }
 
     .forgot-button{
         padding: 13px 20px 13px 10px;
+    }
+
+    .container-login{
+        padding: 20px 0px 20px 0px ;
+        width: 90%;
     }
 
     #forgotEmail{
@@ -720,6 +750,24 @@ width: 830px;
 
     .button-signup{
         padding-bottom: 35px;
+    }
+
+    .container-signup-reset{
+        justify-content: flex-start;
+        padding-top: 37px;
+    }
+
+    .container-signup{
+        justify-content: flex-start;
+        padding-top: 37px;
+    }
+
+    .container-signup-reset{
+        height: auto;
+    }
+
+    .go-back-forgot-container{
+        top: 20px;
     }
 
 

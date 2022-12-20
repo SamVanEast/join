@@ -91,7 +91,7 @@ function SendEmailtoChangePassword() {
       setTimeout(() => {
         lightboxEmail.classList.add('d-none');
         hideForgotScreen();
-        document.getElementById("reset").innerHTML += renderResetContainer(i);
+        document.getElementById("reset").innerHTML = renderResetContainer(i);
       }, 3000); break;
     } else if(i==allUser.length) {
       alert("This Email does not exist");
