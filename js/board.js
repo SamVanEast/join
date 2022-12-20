@@ -70,7 +70,6 @@ function filterFeedback() {
         document.getElementById('awaitingFeedback').innerHTML += newTaskHTML(element);
         checkBgColor(element);
         declarePriority(element);
-
     }
 }
 
@@ -107,6 +106,7 @@ function closeOpenTask() {
     document.getElementById('openTask').classList.add('d-none');
 
 }
+
 
 function openTask(element) {
     let openedTask = document.getElementById('openTask');
