@@ -53,5 +53,6 @@
 @media (max-width: 1060px) {
     .welcome_responsive {
         height: calc(100vh - 160px);
+        margin-top: 79.02px;
     }
 }
