@@ -40,9 +40,9 @@ function submitContact() {
  * generate a random string for a gb color
  */
 function randomBgColor(){
-  let x = Math.floor(Math.random() * 256);
-  var y = Math.floor(Math.random() * 256);
-  var z = Math.floor(Math.random() * 256);
+  let x = Math.floor(Math.random() * 156);
+  var y = Math.floor(Math.random() * 156);
+  var z = Math.floor(Math.random() * 156);
   result = `${x},`+`${y},`+`${z}`;
   console.log(result)
 }
