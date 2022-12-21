@@ -24,11 +24,12 @@
     </div>
     <div id="openTask" class="openTask d-none">
     </div>
-    <div class="container">
+    <div class="container" id="container">
         <div class="headlineAddTasks">
             <h1>Board</h1>
             <div class="inputAndButton">
-                <input placeholder="Find Task" id="search" onkeyup="filterBoard()" src="../img/board_img/magnifying-glass.png   ">
+                <input placeholder="Find Task" id="search" onkeyup="filterBoard()"
+                    src="../img/board_img/magnifying-glass.png   ">
                 <div>
                     <button class="buttonAndText" onclick="addTask()">
                         <p id="toBeReplaced">Add Task</p>
@@ -38,14 +39,14 @@
             </div>
         </div>
         <div class="taskSection">
-            <div class="tasks"  id="theTasks">
+            <div class="tasks" id="theTasks">
                 <div class="status">
                     <p>To Do</p>
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="addTask()">
-                    
+
                 </div>
-                <div class="dragArea" id="todo" ondrop="moveTo('todo'); removeHighlight('todo')" ondragleave="removeHighlight('todo')"
-                    ondragover="allowDrop(event); highlight('todo')">
+                <div class="dragArea" id="todo" ondrop="moveTo('todo'); removeHighlight('todo')"
+                    ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
 
                 </div>
             </div>
@@ -67,7 +68,8 @@
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="addTask()">
                 </div>
 
-                <div class="dragArea" id="awaitingFeedback" ondrop="moveTo('feedback'); removeHighlight('awaitingFeedback')"
+                <div class="dragArea" id="awaitingFeedback"
+                    ondrop="moveTo('feedback'); removeHighlight('awaitingFeedback')"
                     ondragleave="removeHighlight('awaitingFeedback')"
                     ondragover="allowDrop(event); highlight('awaitingFeedback')">
 
@@ -79,12 +81,13 @@
                     <img src="../img/board_img/plus-btn.png" id="plus" onclick="addTask()">
                 </div>
 
-                <div class="dragArea" id="done" ondrop="moveTo('done'); removeHighlight('done')" ondragleave="removeHighlight('done')"
-                    ondragover="allowDrop(event); highlight('done')">
+                <div class="dragArea" id="done" ondrop="moveTo('done'); removeHighlight('done')"
+                    ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
 
                 </div>
             </div>
         </div>
+
 </body>
 
 </html>

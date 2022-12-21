@@ -8,15 +8,26 @@ body {
     display: none !important;
 }
 
+/*
+.darker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 4;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.38);
+}
+*/
 
 .openTask {
     position: fixed;
     background-color: #FFFFFF;
-    height: 61vh;
-    width: 27vw;
     z-index: 5;
-    left: 664px;
-    top: 148px;
+    left: 50%;
+    top: 50%;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     display: flex;
@@ -24,6 +35,11 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 50px;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+     transform: translate(-50%,-50%);
+    
 }
 
 .openTaskCategory {
@@ -43,13 +59,21 @@ body {
 .addNewTask {
     position: fixed;
     background-color: #FFFFFF;
-    padding-right: 24px;
     z-index: 5;
-    left: 25%;
-    top: 12%;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+     transform: translate(-50%,-50%);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    bottom: 64px;
+}
+
+.popup-content-box{
+    position:fixed;
+    
+    
 }
 
 .container {
@@ -101,7 +125,7 @@ body {
     background-color: #2A3647;
     border: 1px solid #2A3647;
     border-radius: 10px;
-    padding: 2px 10px;
+    padding: 1px 10px;
     gap: 10px;
     cursor: pointer;
 }
@@ -166,6 +190,16 @@ body {
     margin-left: 20px;
 }
 
+.category2 {
+    border-radius: 8px;
+    position: relative;
+    margin-top: 50px;
+    width: 60%;
+    box-sizing: border-box;
+    padding: 4px 12px;
+    color: white;
+}
+
 .taskHeadline {
     font-size: 16px;
     line-height: 120%;
@@ -191,7 +225,16 @@ body {
     padding-right: 12px;
 }
 
+.circleAndName {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 100px;
+}
 
+.personsName {
+    padding-left: 24px;
+}
 
 .peopleInvolvedPriority {
 
@@ -391,6 +434,7 @@ body {
         align-items: flex-start;
         justify-content: center;
         padding: 0;
+        
 
     }
 
