@@ -18,21 +18,25 @@
 </head>
 
 <body onload="initBoard()">
-    <div id="test"><div id="openTask" class="openTask d-none">
-    </div></div>
-    <div class="addNewTask d-none" id="addNewTask">
-
+    <div id="addOpenTask">
+        <div id="openTask" class="openTask d-none">
+        </div>
     </div>
-    
+
+    <div>
+        <div class="addNewTask d-none" id="addNewTask">
+        </div>
+    </div>
+
     <div class="container" id="container">
-        
+
         <div class="headlineAddTasks">
             <h1>Board</h1>
             <div class="inputAndButton">
                 <input placeholder="Find Task" id="search" onkeyup="filterBoard()"
                     src="../img/board_img/magnifying-glass.png   ">
                 <div>
-                    <button class="buttonAndText" onclick="addTask()">
+                    <button class="buttonAndText" onclick="addNewTask()">
                         <p id="toBeReplaced">Add Task</p>
                         <img id="addButton" src="../img/board_img/plus-button-white.png">
                     </button>

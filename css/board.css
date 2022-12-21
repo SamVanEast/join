@@ -53,23 +53,15 @@ body {
 }
 
 .addNewTask {
-    position: fixed;
     background-color: #FFFFFF;
     z-index: 5;
-    left: 50%;
-    top: 50%;
-    -ms-transform: translate(-50%,-50%);
-    -moz-transform:translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-     transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-}
-
-.popup-content-box{
-    position:fixed;
-    
-    
+    position: relative;
 }
 
 .container {
@@ -77,7 +69,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: relative;
 }
 
 
