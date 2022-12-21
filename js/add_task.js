@@ -4,6 +4,7 @@
  *
  */
 let contact;
+// let bgcolor = contact.bgcolor;
 let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
 let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF'];
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
@@ -26,6 +27,9 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
+    console.log(allTasks);
+    console.log(contact);
+
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -438,6 +442,7 @@ function submitTask() {
         'category': cat,
         'color': colorFromCategory,
         'assignedTo': checkedNames,
+        // 'bgcolor': bgcolor,
         'dueDate': dueDate,
         'prio': selectedPriority,
         'subtask': checkedSubtask,
@@ -463,6 +468,7 @@ function submitTask() {
 async function addThisTask(task) {
     // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
+    // allTasks.push({bgcolor: bgcolor});
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log(allTasks);
