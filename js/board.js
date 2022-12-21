@@ -111,6 +111,7 @@ function openTask(element) {
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
     document.body.classList.add('noScroll');
+    document.getElementById('test').classList.add('darker');
     openedTask.innerHTML = openTaskHTML(element);
 
 }
