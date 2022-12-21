@@ -102,7 +102,6 @@ function checkBgColor(element) {
 
 function closeOpenTask() {
     document.body.classList.remove('noScroll');
-
     document.getElementById('openTask').classList.add('d-none');
 
 }
@@ -119,6 +118,7 @@ function openTask(element) {
 function closeAddTask() {
     document.getElementById('addNewTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
+
 }
 
 function allowDrop(ev) {
@@ -200,7 +200,7 @@ function addTask() {
                     <div class="clearAndCreate">
                         <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross"
                                 type="checkbox"></button>
-                        <button class="create">Create Task <img src="../../assets/img/add_task_img/hook.png"
+                        <button class="create"><img src="../../assets/img/add_task_img/hook.png"
                                 alt=""></button>
                     </div>
                 </div>
@@ -341,6 +341,35 @@ function declarePriority(element) {
     if(element['prio'] == 'Urgent') {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-high.png">`;
     }
+}
+
+
+function editTask(element) {
+    let getStuff = document.getElementById('openTask');
+    getStuff.innerHTML = '';
+    getStuff.innerHTML += `<div class="openTaskKicker">
+    <div class="category2 ${allTasks[element].category}">${allTasks[element].category}</div>
+    <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
+    </div>
+    <div id="openTaskHMobile">
+            <h2>${allTasks[element].headline}</h2>
+        </div>
+        <div id="pMobile">
+            <p id="openTaskDesc">${allTasks[element].desc}</p>
+            <p><b>Due Date: </b>${allTasks[element].dueDate}</p>
+            <p><b>Priority: </b>${allTasks[element].prio}</p>
+        </div>
+        <div id="assignedMobile">
+        <p><b>Assigned to:</b></p>
+        <div class="circleAndName">
+        <div class="people" style="background: rgb(${contact[0]['bgcolor']})"; margin-left: 2px">${allTasks[element].assignedTo[0].split(' ').map(word => word[0]).join('').toUpperCase()}</div>
+        <div class="personsName">${allTasks[element].assignedTo[0]}</div>
+        </div>
+        </div>
+        <div id="edit-btn" onclick="editTask()"><img src="../img/board_img/edit-btn.png"></div>
+        </div> `;
+    
+
 }
 
 /*function getAndPushTask() {

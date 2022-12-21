@@ -1,7 +1,7 @@
 function newTaskHTML(element) {
     return /*html*/`
         <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
-        <div class="singleTask ${element.id}">
+        <div class="singleTask ${element.id}" id="singleTask ${element.id}">
         <div id="cats${element['id']}" class="category1">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
         <div class="taskDescription" style="min-height: 38.4px">${element['desc']}</div>
@@ -25,7 +25,7 @@ function newTaskHTML(element) {
 
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
-    <div class="category1 ${allTasks[element].category}">${allTasks[element].category}</div>
+    <div class="category2 ${allTasks[element].category}">${allTasks[element].category}</div>
     <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
     </div>
     <div id="openTaskHMobile">
@@ -38,11 +38,12 @@ function openTaskHTML(element) {
         </div>
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
-        <div>
-        <div class="people" style="background: rgb(${contact[0]['bgcolor']})"; margin-left: 2px">${contact[0].name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
+        <div class="circleAndName">
+        <div class="people" style="background: rgb(${contact[0]['bgcolor']})"; margin-left: 2px">${allTasks[element].assignedTo[0].split(' ').map(word => word[0]).join('').toUpperCase()}</div>
+        <div class="personsName">${allTasks[element].assignedTo[0]}</div>
         </div>
         </div>
-        <div id="edit-btn"><img src="../img/board_img/edit-btn.png"></div>
+        <div id="edit-btn" onclick="editTask()"><img src="../img/board_img/edit-btn.png"></div>
         </div> `;
 }
 
