@@ -4,7 +4,7 @@ function newTaskHTML(element) {
         <div class="singleTask ${element.id}">
         <div id="cats${element['id']}" class="category1">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
-        <div class="taskDescription">${element['desc']}</div>
+        <div class="taskDescription" style="min-height: 38.4px">${element['desc']}</div>
         
         <div class="progressbar">    
             <div class="progressbar-grey">
@@ -14,7 +14,7 @@ function newTaskHTML(element) {
         </div>
                 <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
-            <div class="people" style="background-color: rgb(${contact[0]['bgcolor']})">${contact[0].name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
+            <div class="people" id="people${element.id}" style="background-color: rgb(${contact[0]['bgcolor']})">${contact[0].name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
             <div class="priority" id="prio${element.id}"><img src="../img/board_img/prio-high.png"></div>    
         </div>
         </div>
@@ -52,7 +52,7 @@ function filterBoardHTML(result) {
 <div class="singleTask ${result.id}">
 <div id="cats${result['id']}" class="category1">${result['category']}</div>
 <div class="taskHeadline">${result['headline']}</div>
-<div class="taskDescription">${result['desc']}</div>
+<div class="taskDescription" style="min-height: 38.4px">${result['desc']}</div>
 <div class="progressbar">    
             <div class="progressbar-grey">
                 <div id="progressbar-blue" class="progressbar-blue" style="width: 50%"></div>
