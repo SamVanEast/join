@@ -341,6 +341,10 @@ border-radius: 30px;
     top: 10%;
 }
 
+.go-back-forgot{
+    cursor: pointer;
+}
+
 .forgot-headline{
     margin: 0;
     font-family: 'Inter';

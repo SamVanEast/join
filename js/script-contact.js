@@ -15,7 +15,13 @@ function submitContact() {
   let name = document.getElementById('AddName').value;
   let email = document.getElementById('AddEmail').value;
   let number = document.getElementById('AddNumber').value;
+
+  if(name.split(" ").length != 2 ){
+    alert("You have to write firstname and lastname!"); 
+  }
+
   randomBgColor();
+  maxTwoWords(name);
 
   let contact = {
       'name': name.charAt(0).toUpperCase() + name.slice(1),
