@@ -1,3 +1,26 @@
+/******SIDEBAR******/
+
+.menu{
+  height: 100vh;
+}
+
+.side_bar{
+  height: unset;
+}
+
+#content{
+  height: unset;
+}
+
+.header-content{
+  height: unset;
+}
+
+.menu_under_logo{
+  height: 630px;
+}
+
+/******CONTACT*******/
 .body-contact {
   margin: 0;
   background: #f6f7f8;
@@ -11,7 +34,7 @@
 
 .container-left {
   min-width: 350px;
-  max-height: 100vh;
+  max-height: calc(100vh - 89px);
   left: 232px;
   top: 89px;
   background: #FFFFFF;
@@ -529,7 +552,7 @@ gap: 10px;
 width: 193px;
 height: 53px;
 right: 50px;
-top: 824px;
+bottom: 64px;
 background: #2A3647;
 border: 1px solid #2A3647;
 border-radius: 10px;
