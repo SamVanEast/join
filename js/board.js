@@ -22,6 +22,7 @@ function filterStatus() {
     filterProgress();
     filterFeedback();
     filterDone();
+    checkProgressbar();
 }
 
 async function addId() {
@@ -32,6 +33,17 @@ async function addId() {
     });
 }
 
+function checkProgressbar() {
+    for(let i = 0; i < allTasks.length; i++){
+        const progbar = allTasks[i];
+        if(progbar.subtask.length == 0) {
+            document.getElementById(`progbar${progbar.id}`).innerHTML = '';
+        }
+    }
+}
+
+
+
 function filterTodo() {
 
     todo = allTasks.filter(t => t['status'] == 'todo');
@@ -41,10 +53,12 @@ function filterTodo() {
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
         document.getElementById('todo').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+        /*checkBgColor(element);*/
         declarePriority(element);
     }
 }
+
+
 
 function filterProgress() {
     progress = allTasks.filter(t => t['status'] == 'progress');
@@ -54,7 +68,7 @@ function filterProgress() {
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
         document.getElementById('inProgress').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+        /*checkBgColor(element);*/
         declarePriority(element);
 
     }
@@ -68,7 +82,7 @@ function filterFeedback() {
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
         document.getElementById('awaitingFeedback').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+        /*checkBgColor(element);*/
         declarePriority(element);
     }
 }
@@ -81,7 +95,7 @@ function filterDone() {
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
         document.getElementById('done').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+        /*checkBgColor(element);*/
         declarePriority(element);
 
     }
@@ -92,12 +106,12 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function checkBgColor(element) {
+/*function checkBgColor(element) {
     categoryBg = element['category'];
 
     document.getElementById(`cats${element['id']}`).classList.add(`${categoryBg}`);
 
-}
+}*/
 
 
 function closeOpenTask() {
@@ -116,6 +130,7 @@ function openTask(element) {
     openedTask.innerHTML = openTaskHTML(element);
 
 }
+
 
 function closeAddTask() {
     document.getElementById('addNewTask').classList.add('d-none');
@@ -157,51 +172,7 @@ function addNewTask() {
     let content = document.getElementById('addNewTask');
     content.innerHTML = '';
 
-    content.innerHTML += /*html*/ `
-    <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
-    <div class="addTaskContainer">
-        <h1>Add Task</h1>
-        <form id="form" onsubmit="submitTask(); return false">
-            <div class="addTask">
-                <div class="addTaskLeftSide">
-                    <div class="titleToAssigned">
-                        <div class="title">
-                            <p>Title</p>
-                            <input minlength="1" type="text" placeholder="Enter a title" id="headline" required>
-                            <!-- added ID "headline"-->
-                        </div>
-                        <div class="description">
-                            <p>Description</p>
-                            <textarea required minlength="1" type="text" placeholder="Enter a Description"
-                                id="desc"></textarea> <!-- added ID description-->
-                        </div>
-                        <div class="category" id="cat"></div>
-                        <div class="categoryColors d-none" id="categoryColors"></div>
-                        <div class="categoryAssigned" id="assigned"></div>
-                    </div>
-                </div>
-                <div class="borderLine"></div>
-                <div class="dateToButtons" id="dateButtons">
-                    <div class="dueDate">
-                        <p>Due date</p>
-                        <input id="dueDate" type="date" required>
-                    </div>
-                    <div class="prio">
-                        <p>Prio</p>
-                        <div class="prioButtons" id="prioButtons"></div>
-                    </div>
-                    <div class="subtasksContent" id="subs"></div>
-                    <div class="clearAndCreate">
-                        <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross"
-                                type="checkbox"></button>
-                        <button class="create"><img src="../../assets/img/add_task_img/hook.png"
-                                alt=""></button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    `;
+    content.innerHTML += addNewTaskHTML();
     renderCategoryContent();
     renderAssignedToContent();
     renderPrioButtons();
@@ -219,6 +190,7 @@ function filterBoard() {
     filterBoardProgress();
     filterBoardFeedback();
     filterBoardDone();
+    checkProgressbar();
 }
 
 
@@ -238,7 +210,7 @@ function filterBoardTodo() {
             let result = todo[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
         }
     }
@@ -261,7 +233,7 @@ function filterBoardProgress() {
             let result = progress[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
 
         }
@@ -286,7 +258,7 @@ function filterBoardFeedback() {
             let result = feedback[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
 
         }
@@ -310,7 +282,7 @@ function filterBoardDone() {
             let result = done[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
 
         }
@@ -350,13 +322,49 @@ function editTask(element) {
         <form id="form" onsubmit="submitTask(); return false">
         <div class="title">
             <p>Title</p>
-            <input id="editHeadline" minlength="1" type="text" placeholder="${allTasks[element].headline}" required>
+            <input id="editHeadline" minlength="1" type="text" placeholder="" required>
         </div>    
+        <div class="description">
+            <p>Description</p>
+            <textarea required minlength="1" type="text" placeholder="" id="editDesc"></textarea>
+        </div>
+        <div class="dueDate">
+            <p>Due date</p>
+            <input id="editDueDate" type="date" required>
+        </div>
+        <div class="prio">
+            <p>Prio</p>
+            <div class="prioButtons" id="prioButtons"></div>
+        </div>
+        <div class="categoryAssigned" id="assigned"></div>
+    </div>
+    <div class="ok-btn">
+    <img src="../img/board_img/ok-button.png">
     </div>
     </div>
     `
+    editInput(element);
+    renderPrioButtons();
+    renderAssignedToContent();
+    checkButtonUrgency(element);
+
+}
+
+function editInput(element) {
+    document.getElementById('editHeadline').value = `${allTasks[element].headline}`;
+    document.getElementById('editDesc').value = `${allTasks[element].desc}`;
+    document.getElementById('editDueDate').value = `${allTasks[element].dueDate}`;
+}
 
 
+function checkButtonUrgency(element) {
+    if (allTasks[element].prio == 'Medium') {
+        document.getElementById('mediumButton').classList.add('mediumButtonFocused');
+    }
+
+    if (allTasks.element.prio == 'Urgent') {
+        document.getElementById('urgentButton').classList.add('urgtenButtonFocused');
+    }
 }
 
 function closeEditFunction() {

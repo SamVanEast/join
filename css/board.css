@@ -35,7 +35,6 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 50px;
-    width: 40%;
 }
 
 .openTaskCategory {
@@ -181,7 +180,7 @@ body {
     border-radius: 8px;
     position: relative;
     margin-top: 50px;
-    width: 60%;
+    width: 40%;
     box-sizing: border-box;
     padding: 4px 12px;
     color: white;
@@ -334,6 +333,13 @@ body {
     margin-top: 30px;
 }
 
+.ok-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
 #addButton {
     margin-left: 10px;
 
@@ -450,6 +456,7 @@ body {
         padding: 0;
         padding-left: 24px;
         padding-right: 24px;
+        justify-content: flex-start;
     }
 
     .circleAndName {
