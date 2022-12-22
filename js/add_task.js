@@ -3,13 +3,13 @@
  * 
  *
  */
-let contact;
-// let bgcolor = contact.bgcolor;
 let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
 let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF'];
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let colorFromCategory = '#000000';
 let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
+let contact;
+let bgcolor;
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let selectedPriority = "";
@@ -270,10 +270,14 @@ function renderAssignedToOptions() {
 
     for (let b = 0; b < contact.length; b++) {
         const contacts = contact[b]['name'];
+        const bgcolor = contact[b]['bgcolor'];
 
         names.innerHTML += /*html*/`
-         <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox()"><span class="categorysDropdown" onclick="checkContactCheckbox()">${contacts}</span><input id="checkbox-input" type="checkbox" name="${contacts}"></div>
-         `;
+            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${bgcolor}')">
+                <span class="categorysDropdown" onclick="checkContactCheckbox('${bgcolor}')">${contacts}</span>
+                <input id="checkbox-input" type="checkbox" name="${contacts}">
+            </div>
+        `;
     }
 }
 
@@ -281,7 +285,7 @@ function renderAssignedToOptions() {
 /**
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
-function checkContactCheckbox() {
+function checkContactCheckbox(bgcolor) {
 
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
@@ -294,6 +298,7 @@ function checkContactCheckbox() {
             checkboxInput.checked = !checkboxInput.checked;
         });
     });
+    window.bgcolor = bgcolor;
 }
 
 
@@ -443,7 +448,7 @@ function submitTask() {
         'category': cat,
         'color': colorFromCategory,
         'assignedTo': checkedNames,
-        // 'bgcolor': bgcolor,
+        'bgcolor': bgcolor,
         'dueDate': dueDate,
         'prio': selectedPriority,
         'subtask': checkedSubtask,
