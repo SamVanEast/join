@@ -362,8 +362,12 @@ function checkButtonUrgency(element) {
         document.getElementById('mediumButton').classList.add('mediumButtonFocused');
     }
 
-    if (allTasks.element.prio == 'Urgent') {
+    if (allTasks[element].prio == 'Urgent') {
         document.getElementById('urgentButton').classList.add('urgentButtonFocused');
+    }
+
+    if (allTasks[element].prio == 'Low') {
+        document.getElementById('lowButton').classList.add('lowButtonFocused');
     }
 }
 
@@ -372,6 +376,7 @@ function closeEditFunction() {
     document.body.classList.remove('noScroll');
     document.getElementById('openTask').classList.remove('darker');
     closeAddTask();
+    loadContent('board');
 }
 
 /*function getAndPushTask() {
