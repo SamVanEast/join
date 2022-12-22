@@ -120,7 +120,7 @@ function openTask(element) {
 function closeAddTask() {
     document.getElementById('addNewTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
-    document.getElementById('addNewTask').classList.remove('darker');
+    document.getElementById('addOpenTask').classList.remove('darker');
 
 }
 
@@ -153,16 +153,59 @@ function removeHighlight(id) {
 function addNewTask() {
     document.getElementById('addNewTask').classList.remove('d-none');
     document.body.classList.add('noScroll');
-    document.getElementById('addNewTask').classList.add('darker');
+    document.getElementById('addOpenTask').classList.add('darker');
     let content = document.getElementById('addNewTask');
     content.innerHTML = '';
 
-    content.innerHTML += /*html*/ `test`;
+    content.innerHTML += /*html*/ `
+    <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+    <div class="addTaskContainer">
+        <h1>Add Task</h1>
+        <form id="form" onsubmit="submitTask(); return false">
+            <div class="addTask">
+                <div class="addTaskLeftSide">
+                    <div class="titleToAssigned">
+                        <div class="title">
+                            <p>Title</p>
+                            <input minlength="1" type="text" placeholder="Enter a title" id="headline" required>
+                            <!-- added ID "headline"-->
+                        </div>
+                        <div class="description">
+                            <p>Description</p>
+                            <textarea required minlength="1" type="text" placeholder="Enter a Description"
+                                id="desc"></textarea> <!-- added ID description-->
+                        </div>
+                        <div class="category" id="cat"></div>
+                        <div class="categoryColors d-none" id="categoryColors"></div>
+                        <div class="categoryAssigned" id="assigned"></div>
+                    </div>
+                </div>
+                <div class="borderLine"></div>
+                <div class="dateToButtons" id="dateButtons">
+                    <div class="dueDate">
+                        <p>Due date</p>
+                        <input id="dueDate" type="date" required>
+                    </div>
+                    <div class="prio">
+                        <p>Prio</p>
+                        <div class="prioButtons" id="prioButtons"></div>
+                    </div>
+                    <div class="subtasksContent" id="subs"></div>
+                    <div class="clearAndCreate">
+                        <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross"
+                                type="checkbox"></button>
+                        <button class="create"><img src="../../assets/img/add_task_img/hook.png"
+                                alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    `;
     renderCategoryContent();
     renderAssignedToContent();
     renderPrioButtons();
     renderSubtaskContent();
-
 }
 
 async function deleteTasks() {
@@ -347,3 +390,4 @@ async function addNewTask(task) {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     window.location.href = 'board.html';
 }*/
+

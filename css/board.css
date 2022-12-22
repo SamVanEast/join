@@ -35,7 +35,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 50px;
-    
+    width: 40%;
 }
 
 .openTaskCategory {
@@ -57,11 +57,10 @@ body {
     z-index: 5;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    position: relative;
 }
 
 .container {
@@ -519,6 +518,8 @@ body {
 
 .clearAndCreate {
     margin-top: 117px !important;
+    position: relative !important;
+
 }
 
 .titleToAssigned {
