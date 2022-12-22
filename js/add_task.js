@@ -392,7 +392,6 @@ function addSubtask() {
     allSubtasks.push(newSubtask);
 
     renderSubtaskContent();
-    console.log(allSubtasks);
 }
 
 
