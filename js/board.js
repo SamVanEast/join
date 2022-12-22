@@ -363,7 +363,7 @@ function checkButtonUrgency(element) {
     }
 
     if (allTasks.element.prio == 'Urgent') {
-        document.getElementById('urgentButton').classList.add('urgtenButtonFocused');
+        document.getElementById('urgentButton').classList.add('urgentButtonFocused');
     }
 }
 
