@@ -30,7 +30,6 @@ async function initAddTask() {
     console.log(allTasks);
     console.log(contact);
 
-
     renderCategoryContent();
     renderAssignedToContent();
     renderPrioButtons();
@@ -393,6 +392,7 @@ function addSubtask() {
     allSubtasks.push(newSubtask);
 
     renderSubtaskContent();
+    console.log(allSubtasks);
 }
 
 
@@ -402,6 +402,8 @@ function addSubtask() {
  */
 function clearFields() {
     document.getElementById('form').reset();
+    allSubtasks.length = 0;
+    renderSubtaskContent();
     renderCategoryContent();
     renderAssignedToContent();
     renderPrioButtons();
@@ -480,4 +482,6 @@ async function addThisTask(task) {
  */
 function clearForm() {
     document.getElementById("form").reset();
+    allSubtasks.length = 0;
+    renderSubtaskContent();
 }
