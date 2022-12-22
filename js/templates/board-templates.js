@@ -43,7 +43,7 @@ function openTaskHTML(element) {
         <div class="personsName">${allTasks[element].assignedTo[0]}</div>
         </div>
         </div>
-        <div id="edit-btn" onclick="editTask()"><img src="../img/board_img/edit-btn.png"></div>
+        <div id="edit-btn" onclick="editTask(${element})"><img src="../img/board_img/edit-btn.png"></div>
         </div> `;
 }
 

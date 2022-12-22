@@ -323,15 +323,15 @@ function declarePriority(element) {
     let shownPriority = document.getElementById(`prio${element.id}`);
     shownPriority.innerHTML = '';
 
-    if(element['prio'] == 'Medium') {
+    if (element['prio'] == 'Medium') {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-mid.png">`;
     }
 
-    if(element['prio'] == 'Low') {
+    if (element['prio'] == 'Low') {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-low.png">`;
     }
 
-    if(element['prio'] == 'Urgent') {
+    if (element['prio'] == 'Urgent') {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-high.png">`;
     }
 }
@@ -340,29 +340,30 @@ function declarePriority(element) {
 function editTask(element) {
     let getStuff = document.getElementById('openTask');
     getStuff.innerHTML = '';
-    getStuff.innerHTML += `<div class="openTaskKicker">
-    <div class="category2 ${allTasks[element].category}">${allTasks[element].category}</div>
-    <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
+    getStuff.innerHTML += `
+    <div class="editScreen">
+        <div class="editHeadlineClose">
+            <h1>Edit Task</h1>
+            <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+        </div>
+    <div>
+        <form id="form" onsubmit="submitTask(); return false">
+        <div class="title">
+            <p>Title</p>
+            <input id="editHeadline" minlength="1" type="text" placeholder="${allTasks[element].headline}" required>
+        </div>    
     </div>
-    <div id="openTaskHMobile">
-            <h2>${allTasks[element].headline}</h2>
-        </div>
-        <div id="pMobile">
-            <p id="openTaskDesc">${allTasks[element].desc}</p>
-            <p><b>Due Date: </b>${allTasks[element].dueDate}</p>
-            <p><b>Priority: </b>${allTasks[element].prio}</p>
-        </div>
-        <div id="assignedMobile">
-        <p><b>Assigned to:</b></p>
-        <div class="circleAndName">
-        <div class="people" style="background: rgb(${contact[0]['bgcolor']})"; margin-left: 2px">${allTasks[element].assignedTo[0].split(' ').map(word => word[0]).join('').toUpperCase()}</div>
-        <div class="personsName">${allTasks[element].assignedTo[0]}</div>
-        </div>
-        </div>
-        <div id="edit-btn" onclick="editTask()"><img src="../img/board_img/edit-btn.png"></div>
-        </div> `;
-    
+    </div>
+    `
 
+
+}
+
+function closeEditFunction() {
+    document.getElementById('openTask').classList.add('d-none');
+    document.body.classList.remove('noScroll');
+    document.getElementById('openTask').classList.remove('darker');
+    closeAddTask();
 }
 
 /*function getAndPushTask() {
