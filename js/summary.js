@@ -78,6 +78,6 @@ function checkUpcomingDeadline(upcomingDeadline){
         let year = upcomingDeadline.substr(0, 4);
         let month = allMonths[upcomingDeadline.substr(5, 2) -1]
         let day = upcomingDeadline.substr(-2, 2)
-        dateOfUrgent.innerHTML = month + ' ' + day + ', ' + year;
+        dateOfUrgent.innerHTML = `${month + ' ' + day + ', ' + year}`;
     }
 }

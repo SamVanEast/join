@@ -11,6 +11,8 @@ body {
 }
 
 .addTaskContainer {
+    position: relative;
+    padding-bottom: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
