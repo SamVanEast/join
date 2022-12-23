@@ -10,21 +10,10 @@ body {
     display: none;
 }
 
-.contentContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-left: 30px;
-}
-
 .addTaskContainer {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-right: 30px;
+    align-items: center;
+    justify-content: center;
 }
 
 .addTaskContainer h1 {
@@ -36,6 +25,13 @@ body {
     text-align: left;
     margin-bottom: 41px;
     margin-right: auto;
+}
+
+.contentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .addTask {
@@ -251,8 +247,8 @@ body {
     height: 551px;
     border: 1px solid #D1D1D1;
     align-self: flex-start;
-    margin-left: 59px;
-    margin-right: 59px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 /* Date to Buttons */

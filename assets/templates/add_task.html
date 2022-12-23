@@ -19,53 +19,55 @@
 
     <div class="addTaskContainer">
         <div class="contentContainer">
-        <div class="mobile_header_headline d-none">Kanban Project Management Tool</div>
-        <h1>Add Task</h1>
-        <form id="form" class="formValidation" onsubmit="submitTask(); return false">
-            <div class="addTask">
-                <div class="addTaskLeftSide">
-                    <div class="titleToAssigned">
-                        <div class="title">
-                            <p>Title</p>
-                            <input minlength="1" type="text" placeholder="Enter a title" id="headline" required>
+            <div class="mobile_header_headline d-none">Kanban Project Management Tool</div>
+            <h1>Add Task</h1>
+            <form id="form" class="formValidation" onsubmit="submitTask(); return false">
+                <div class="addTask">
+                    <div class="addTaskLeftSide">
+                        <div class="titleToAssigned">
+                            <div class="title">
+                                <p>Title</p>
+                                <input minlength="1" type="text" placeholder="Enter a title" id="headline" required>
+                            </div>
+                            <div class="description">
+                                <p>Description</p>
+                                <textarea required minlength="1" type="text" placeholder="Enter a Description"
+                                    id="desc"></textarea>
+                            </div>
+
+                            <div class="category" id="cat"></div>
+                            <div class="categoryColors d-none" id="categoryColors"></div>
+
+                            <div class="categoryAssigned" id="assigned"></div>
+
                         </div>
-                        <div class="description">
-                            <p>Description</p>
-                            <textarea required minlength="1" type="text" placeholder="Enter a Description" id="desc"></textarea>
+                    </div>
+
+                    <div class="borderLine"></div>
+
+                    <div class="dateToButtons" id="dateButtons">
+
+                        <div class="dueDate">
+                            <p>Due date</p>
+                            <input id="dueDate" type="date" required>
                         </div>
 
-                        <div class="category" id="cat"></div>
-                        <div class="categoryColors d-none" id="categoryColors"></div>
+                        <div class="prio">
+                            <p>Prio</p>
+                            <div class="prioButtons" id="prioButtons"></div>
+                        </div>
 
-                        <div class="categoryAssigned" id="assigned"></div>
+                        <div class="subtasksContent" id="subs"></div>
 
+                        <div class="clearAndCreate">
+                            <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross"
+                                    type="checkbox"></button>
+                            <button class="create"><img src="../../assets/img/add_task_img/hook.png" alt=""></button>
+                        </div>
                     </div>
                 </div>
-
-                <div class="borderLine"></div>
-
-                <div class="dateToButtons" id="dateButtons">
-
-                    <div class="dueDate">
-                        <p>Due date</p>
-                        <input id="dueDate" type="date" required>
-                    </div>
-
-                    <div class="prio">
-                        <p>Prio</p>
-                        <div class="prioButtons" id="prioButtons"></div>
-                    </div>
-
-                    <div class="subtasksContent" id="subs"></div>
-
-                    <div class="clearAndCreate">
-                        <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross" type="checkbox"></button>
-                        <button class="create"><img src="../../assets/img/add_task_img/hook.png" alt=""></button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
     </div>
 
 </body>
