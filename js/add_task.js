@@ -27,8 +27,8 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    console.log(allTasks);
-    console.log(contact);
+    // console.log(allTasks);
+    // console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -265,13 +265,11 @@ function renderAssignedTo() {
  * 
  */
 function renderAssignedToOptions() {
-    console.log('renderAssignedToOptions called');
     let names = document.getElementById('assignedToOptions');
   
     for (let b = 0; b < contact.length; b++) {
       const contacts = contact[b]['name'];
       const contactColor = contact[b]['bgcolor'];
-      console.log(`contactColor: ${contactColor}`);
   
       names.innerHTML += /*html*/`
         <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${contactColor}')">
@@ -288,8 +286,6 @@ function renderAssignedToOptions() {
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
 function checkContactCheckbox(contactColor) {
-    console.log(`checkContactCheckbox called with contactColor: ${contactColor}`);
-    
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
   
@@ -488,7 +484,7 @@ async function addThisTask(task) {
     allTasks.push(task);
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    console.log(allTasks);
+    // console.log(allTasks);
 }
 
 
