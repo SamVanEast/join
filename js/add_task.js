@@ -166,7 +166,6 @@ function pushNewCategory() {
     document.getElementById('categorysDropdownSelect').classList.remove('categorysDropdownSelect');
     document.getElementById('categoryColors').classList.add('d-none');
     document.getElementById('categoryColors').innerHTML = '';
-    selectedColor = '#000000'; // Setzt die Standardfarbe zurück
 
     // Rendert die neuen Kategorien
     renderCategorysOptions();
