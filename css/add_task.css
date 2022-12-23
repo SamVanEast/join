@@ -10,6 +10,14 @@ body {
     display: none;
 }
 
+.contentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
 .addTaskContainer {
     display: flex;
     justify-content: flex-start;
@@ -27,13 +35,11 @@ body {
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 41px;
-    padding-left: 123px;
-    margin-top: 82px;
+    margin-right: auto;
 }
 
 .addTask {
     display: flex;
-    padding-left: 123px;
 }
 
 .addTaskLeftSide {
@@ -556,6 +562,14 @@ body {
         margin-right: auto;
     }
 
+    .contentContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 0px;
+    }
+
     .formValidation {
         width: 350px;
     }
@@ -599,7 +613,7 @@ body {
         font-size: 16px;
     }
 
-    .categoryContent{
+    .categoryContent {
         width: 100%;
     }
 
@@ -648,7 +662,7 @@ body {
         font-size: 16px;
     }
 
-    #inputSubtask{
+    #inputSubtask {
         width: 88%;
     }
 
@@ -681,12 +695,5 @@ body {
 
     .create::before {
         content: "Create";
-    }
-
-    .contentContainer{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
     }
 }
