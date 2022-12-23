@@ -115,7 +115,7 @@ function showHelpIcon() {
         document.getElementById('qoestion-mark-img').classList.add('d-none');
     } else {
         document.getElementById('qoestion-mark-img').classList.remove('d-none');
-        if (!wichContent == 'welcome') {
+        if (wichContent !== 'welcome') {
             tab.classList.add('darkBlue');
         }
     }
