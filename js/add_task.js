@@ -266,20 +266,20 @@ function renderAssignedTo() {
  */
 function renderAssignedToOptions() {
     let names = document.getElementById('assignedToOptions');
-  
+
     for (let b = 0; b < contact.length; b++) {
-      const contacts = contact[b]['name'];
-      const contactColor = contact[b]['bgcolor'];
-  
-      names.innerHTML += /*html*/`
+        const contacts = contact[b]['name'];
+        const contactColor = contact[b]['bgcolor'];
+
+        names.innerHTML += /*html*/`
         <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${contactColor}')">
           <span class="categorysDropdown" onclick="checkContactCheckbox('${contactColor}')">${contacts}</span>
           <input id="checkbox-input" type="checkbox" name="${contacts}">
         </div>
       `;
     }
-  }
-    
+}
+
 
 
 /**
@@ -288,25 +288,25 @@ function renderAssignedToOptions() {
 function checkContactCheckbox(contactColor) {
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
-  
+
     // Für jedes "div-container"-Element einen Event-Listener hinzufügen
     divContainers.forEach(divContainer => {
-      divContainer.addEventListener('click', () => {
-        // Checkbox-Element auswählen
-        const checkboxInput = divContainer.querySelector('#assigned input[type="checkbox"]');
-  
-        // "checked"-Eigenschaft auf den negierten Wert setzen
-        checkboxInput.checked = !checkboxInput.checked;
-  
-        // Wenn die Checkbox ausgewählt ist und der contactColor-Wert noch nicht im Array enthalten ist, den Wert dem Array hinzufügen
-        if (checkboxInput.checked && bgContactColor.indexOf(contactColor) === -1) {
-          bgContactColor.push(contactColor);
-        }
-      });
+        divContainer.addEventListener('click', () => {
+            // Checkbox-Element auswählen
+            const checkboxInput = divContainer.querySelector('#assigned input[type="checkbox"]');
+
+            // "checked"-Eigenschaft auf den negierten Wert setzen
+            checkboxInput.checked = !checkboxInput.checked;
+
+            // Wenn die Checkbox ausgewählt ist und der contactColor-Wert noch nicht im Array enthalten ist, den Wert dem Array hinzufügen
+            if (checkboxInput.checked && bgContactColor.indexOf(contactColor) === -1) {
+                bgContactColor.push(contactColor);
+            }
+        });
     });
-  }
-  
-  
+}
+
+
 
 
 /**

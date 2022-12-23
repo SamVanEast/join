@@ -558,7 +558,7 @@ body {
         margin-right: auto;
     }
 
-    .contentContainer{
+    .contentContainer {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -651,6 +651,10 @@ body {
     .subtasksContent {
         width: 100%;
         margin-bottom: 100px;
+    }
+
+    .newSubtasks {
+        font-size: 16px;
     }
 
     .inputSubtask {
