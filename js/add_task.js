@@ -269,11 +269,11 @@ function renderAssignedToOptions() {
 
     for (let b = 0; b < contact.length; b++) {
         const contacts = contact[b]['name'];
-        const cotactColor = contact[b]['bgcolor'];
+        const contactColor = contact[b]['bgcolor'];
 
         names.innerHTML += /*html*/`
-            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${cotactColor}')">
-                <span class="categorysDropdown" onclick="checkContactCheckbox('${cotactColor}')">${contacts}</span>
+            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${contactColor}')">
+                <span class="categorysDropdown" onclick="checkContactCheckbox('${contactColor}')">${contacts}</span>
                 <input id="checkbox-input" type="checkbox" name="${contacts}">
             </div>
         `;
@@ -284,9 +284,9 @@ function renderAssignedToOptions() {
 /**
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
-function checkContactCheckbox(cotactColor) {
+function checkContactCheckbox(contactColor) {
 
-    bgContactColor.push(cotactColor);
+    bgContactColor.push(contactColor);
 
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
@@ -407,6 +407,7 @@ function addSubtask() {
 function clearFields() {
     document.getElementById('form').reset();
     allSubtasks.length = 0;
+    // bgContactColor.length = 0;
     renderSubtaskContent();
     renderCategoryContent();
     renderAssignedToContent();
@@ -486,5 +487,6 @@ async function addThisTask(task) {
 function clearForm() {
     document.getElementById("form").reset();
     allSubtasks.length = 0;
+    // bgContactColor.length = 0;
     renderSubtaskContent();
 }
