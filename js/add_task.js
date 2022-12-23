@@ -9,6 +9,7 @@ let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let colorFromCategory = '#000000';
 let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
 let contact;
+let globalArray = [];
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let selectedPriority = "";
@@ -268,11 +269,11 @@ function renderAssignedToOptions() {
 
     for (let b = 0; b < contact.length; b++) {
         const contacts = contact[b]['name'];
-        const color = contact[b]['bgcolor'];
+        const colortest = contact[b]['bgcolor'];
 
         names.innerHTML += /*html*/`
-            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox()">
-                <span class="categorysDropdown" onclick="checkContactCheckbox()">${contacts}</span>
+            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${colortest}')">
+                <span class="categorysDropdown" onclick="checkContactCheckbox('${colortest}')">${contacts}</span>
                 <input id="checkbox-input" type="checkbox" name="${contacts}">
             </div>
         `;
@@ -283,7 +284,9 @@ function renderAssignedToOptions() {
 /**
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
-function checkContactCheckbox() {
+function checkContactCheckbox(colortest) {
+
+    globalArray.push(colortest);
 
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
@@ -445,7 +448,7 @@ function submitTask() {
         'category': cat,
         'color': colorFromCategory,
         'assignedTo': checkedNames,
-        'bgcolor': bgcolor,
+        'bgcolor': globalArray,
         'dueDate': dueDate,
         'prio': selectedPriority,
         'subtask': checkedSubtask,
