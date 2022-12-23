@@ -414,7 +414,6 @@ function addSubtask() {
 function clearFields() {
     document.getElementById('form').reset();
     allSubtasks.length = 0;
-    // bgContactColor.length = 0;
     renderSubtaskContent();
     renderCategoryContent();
     renderAssignedToContent();
@@ -494,6 +493,5 @@ async function addThisTask(task) {
 function clearForm() {
     document.getElementById("form").reset();
     allSubtasks.length = 0;
-    // bgContactColor.length = 0;
     renderSubtaskContent();
 }
