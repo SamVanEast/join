@@ -484,7 +484,6 @@ async function addThisTask(task) {
     allTasks.push(task);
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    // console.log(allTasks);
 }
 
 
@@ -494,6 +493,7 @@ async function addThisTask(task) {
 function clearForm() {
     document.getElementById("form").reset();
     allSubtasks.length = 0;
-    // bgContactColor.length = 0;
+    bgContactColor.length = 0;
     renderSubtaskContent();
+    console.log(allTasks);
 }
