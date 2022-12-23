@@ -424,15 +424,13 @@ body {
         margin-top: -15px;
     }
 
-    .addNewTask {
-    margin-top: 350px;
+
 }
 
 
 
 .darker {
     top: -11px;
-}
 }
 
 @media (max-width: 1200px) {

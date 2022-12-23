@@ -294,7 +294,7 @@ body {
     }
 
     #content {
-        height: unset;
+        height: 100%;
     }
 }
 
