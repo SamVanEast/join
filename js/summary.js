@@ -74,7 +74,7 @@ function checkUpcomingDeadline(upcomingDeadline){
         upcomingDeadline = 'No Urgent';
         dateOfUrgent.innerHTML = `${upcomingDeadline}`;
     }
-    if (!upcomingDeadline == '') {
+    if (!upcomingDeadline == '' && !upcomingDeadline == undefined) {
         let year = upcomingDeadline.substr(0, 4);
         let month = allMonths[upcomingDeadline.substr(5, 2) -1]
         let day = upcomingDeadline.substr(-2, 2)
