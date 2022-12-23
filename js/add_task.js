@@ -27,8 +27,8 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    console.log(allTasks);
-    console.log(contact);
+    // console.log(allTasks);
+    // console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -484,6 +484,7 @@ async function addThisTask(task) {
     allTasks.push(task);
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    // console.log(allTasks);
 }
 
 
@@ -495,5 +496,4 @@ function clearForm() {
     allSubtasks.length = 0;
     bgContactColor.length = 0;
     renderSubtaskContent();
-    console.log(allTasks);
 }
