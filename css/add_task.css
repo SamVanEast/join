@@ -2,6 +2,8 @@
 body {
     background: #F6F7F8;
     font-family: 'Inter';
+    margin: 0;
+    width: 100%;
 }
 
 .d-none {
@@ -524,7 +526,7 @@ body {
     text-align: start;
 }
 
-.create::before{
+.create::before {
     display: inline-block;
     content: "Create Task";
 }
@@ -551,28 +553,29 @@ body {
     .mobile_header_headline {
         display: block;
         margin-top: 110px;
-        margin-left: -100px;
+        margin-right: auto;
     }
 
     .formValidation {
-        width: 363px;
+        width: 350px;
     }
 
     .addTask {
         flex-direction: column;
         padding-left: 0px;
-        margin-right: 34px;
+        margin-right: auto;
     }
 
     .addTaskContainer {
         align-items: center;
+        margin-right: 0px;
     }
 
     .addTaskContainer h1 {
         font-size: 47px;
         padding-left: 0px;
         margin-top: 15px;
-        margin-left: -145px;
+        margin-right: auto;
         margin-bottom: 14px;
     }
 
@@ -582,17 +585,22 @@ body {
     }
 
     .title input {
-        width: 100%;
+        width: 88%;
         font-size: 16px;
     }
 
     .description textarea {
-        width: 100%;
+        width: 88%;
         font-size: 16px;
     }
 
     .dropdown {
-        width: 113%;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .categoryContent{
+        width: 100%;
     }
 
     .categorysDropdownSelectHTML {
@@ -613,12 +621,12 @@ body {
     }
 
     .dueDate input {
-        width: 100%;
+        width: 88%;
         font-size: 16px;
     }
 
     .prio {
-        width: 113%;
+        width: 100%;
     }
 
     .prioButtons {
@@ -638,6 +646,18 @@ body {
     .inputSubtask {
         width: 100%;
         font-size: 16px;
+    }
+
+    #inputSubtask{
+        width: 88%;
+    }
+
+    .inputFieldSubtask {
+        font-size: 16px;
+    }
+
+    .subtaskImage {
+        margin-left: auto;
     }
 
     .clearAndCreate {
@@ -661,5 +681,12 @@ body {
 
     .create::before {
         content: "Create";
+    }
+
+    .contentContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
