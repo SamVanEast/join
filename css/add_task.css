@@ -683,7 +683,7 @@ body {
 
     .create {
         position: fixed;
-        right: 15px;
+        right: 8px;
         top: 8px;
         z-index: 3;
         width: 124px;
