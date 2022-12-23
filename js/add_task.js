@@ -9,7 +9,6 @@ let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let colorFromCategory = '#000000';
 let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
 let contact;
-let bgcolor;
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let selectedPriority = "";
@@ -269,11 +268,11 @@ function renderAssignedToOptions() {
 
     for (let b = 0; b < contact.length; b++) {
         const contacts = contact[b]['name'];
-        const bgcolor = contact[b]['bgcolor'];
+        const color = contact[b]['bgcolor'];
 
         names.innerHTML += /*html*/`
-            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${bgcolor}')">
-                <span class="categorysDropdown" onclick="checkContactCheckbox('${bgcolor}')">${contacts}</span>
+            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox()">
+                <span class="categorysDropdown" onclick="checkContactCheckbox()">${contacts}</span>
                 <input id="checkbox-input" type="checkbox" name="${contacts}">
             </div>
         `;
@@ -284,7 +283,7 @@ function renderAssignedToOptions() {
 /**
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
-function checkContactCheckbox(bgcolor) {
+function checkContactCheckbox() {
 
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
@@ -297,7 +296,6 @@ function checkContactCheckbox(bgcolor) {
             checkboxInput.checked = !checkboxInput.checked;
         });
     });
-    window.bgcolor = bgcolor;
 }
 
 
@@ -473,7 +471,6 @@ function submitTask() {
 async function addThisTask(task) {
     // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
-    // allTasks.push({bgcolor: bgcolor});
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log(allTasks);
