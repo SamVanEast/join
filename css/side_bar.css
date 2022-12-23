@@ -255,7 +255,7 @@ body {
     .header {
         justify-content: flex-end;
         position: fixed;
-        height: 79.02px;
+        height: 79px;
     }
 
     .mobile_logo {
