@@ -27,8 +27,8 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    // console.log(allTasks);
-    // console.log(contact);
+    console.log(allTasks);
+    console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -414,6 +414,7 @@ function addSubtask() {
 function clearFields() {
     document.getElementById('form').reset();
     allSubtasks.length = 0;
+    bgContactColor.length = 0;
     renderSubtaskContent();
     renderCategoryContent();
     renderAssignedToContent();
@@ -424,7 +425,7 @@ function clearFields() {
 /**
  * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
  */
-function submitTask() {
+async function submitTask() {
     // Headline, Beschreibung, Kategorie und Kontakte aus den entsprechenden Formularfeldern auslesen
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
@@ -454,15 +455,15 @@ function submitTask() {
         'status': 'todo',
         'category': cat,
         'color': colorFromCategory,
-        'assignedTo': checkedNames,
         'bgcolor': bgContactColor,
+        'assignedTo': checkedNames,
         'dueDate': dueDate,
         'prio': selectedPriority,
         'subtask': checkedSubtask,
     };
 
     // Task zu der Liste aller Tasks hinzufügen und auf dem Server speichern
-    addThisTask(task);
+    await addThisTask(task);
     // Formular zurücksetzen
     clearForm();
     // Kategorie-Auswahl auf den Standardwert zurücksetzen
@@ -493,5 +494,6 @@ async function addThisTask(task) {
 function clearForm() {
     document.getElementById("form").reset();
     allSubtasks.length = 0;
+    // bgContactColor.length = 0;
     renderSubtaskContent();
 }
