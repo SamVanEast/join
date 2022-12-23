@@ -1,4 +1,4 @@
-function newTaskHTML(element) {
+function newTaskHTML(element, i) {
     return /*html*/`
         <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
         <div class="singleTask ${element.id}" id="singleTask ${element.id}">
@@ -12,9 +12,9 @@ function newTaskHTML(element) {
             </div>
             <div id="done-counter">0/${element.subtask.length} Done</div>
         </div>
-                <div class="peopleInvolvedPriority">
+        <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
-            <div class="people" id="people${element.id}" style="background-color: rgb(${contact[0]['bgcolor']})">${contact[0].name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
+            <div class="alignPeople" id="people${element.id}"></div>
             <div class="priority" id="prio${element.id}"><img src="../img/board_img/prio-high.png"></div>    
         </div>
         </div>
@@ -23,9 +23,14 @@ function newTaskHTML(element) {
 }
 
 
+function getPeopleHTML(assigned, i) {
+    return `<div class="people" style="background-color: rgb(${contact[i]['bgcolor']})">${assigned.split(' ').map(word => word[0]).join('').toUpperCase()}</div>`;
+}
+
+
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
-    <div class="category2 ${allTasks[element].category}">${allTasks[element].category}</div>
+    <div class="category2 ${allTasks[element].category}" style="background-color: ${allTasks[element].color}">${allTasks[element].category}</div>
     <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
     </div>
     <div id="openTaskHMobile">
@@ -34,7 +39,7 @@ function openTaskHTML(element) {
         <div id="pMobile">
             <p id="openTaskDesc">${allTasks[element].desc}</p>
             <p><b>Due Date: </b>${allTasks[element].dueDate}</p>
-            <p><b>Priority: </b>${allTasks[element].prio}</p>
+            <div style="display: flex; align-items: center"><span style="padding-right: 10px"><b>Priority: </b></span><span id="prioOpenTask">${allTasks[element].prio}</span></div>
         </div>
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
@@ -54,19 +59,19 @@ function filterBoardHTML(result) {
 <div id="cats${result['id']}" class="category1" style="background-color: ${result.color}">${result['category']}</div>
 <div class="taskHeadline">${result['headline']}</div>
 <div class="taskDescription" style="min-height: 38.4px">${result['desc']}</div>
-<div class="progressbar" id="progbar${result.id}">
+<div class="progressbar" id="progbar${result.id}">    
             <div class="progressbar-grey">
-                <div id="progressbar-blue" class="progressbar-blue" style="width: 50%"></div>
+                <div id="progressbar-blue" class="progressbar-blue" style="width: 2%"></div>
             </div>
             <div id="done-counter">0/${result.subtask.length} Done</div>
         </div>
         <div class="peopleInvolvedPriority">
-        <div class="peopleInvolved">
-        <div class="people" style="background-color: rgb(${contact[0]['bgcolor']})">${contact[0].name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
-        <div class="priority" id="prio${result.id}"><img src="../img/board_img/prio-high.png"></div>    
-    </div>
-    </div>
-    </div>`;
+            <div class="peopleInvolved">
+            <div class="alignPeople" id="people${result.id}"></div>
+            <div class="priority" id="prio${result.id}"><img src="../img/board_img/prio-high.png"></div>    
+        </div>
+        </div>
+        </div>`;
 }
 
 

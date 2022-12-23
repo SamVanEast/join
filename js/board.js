@@ -34,9 +34,9 @@ async function addId() {
 }
 
 function checkProgressbar() {
-    for(let i = 0; i < allTasks.length; i++){
+    for (let i = 0; i < allTasks.length; i++) {
         const progbar = allTasks[i];
-        if(progbar.subtask.length == 0) {
+        if (progbar.subtask.length == 0) {
             document.getElementById(`progbar${progbar.id}`).innerHTML = '';
         }
     }
@@ -52,8 +52,13 @@ function filterTodo() {
 
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
-        document.getElementById('todo').innerHTML += newTaskHTML(element);
-        /*checkBgColor(element);*/
+        document.getElementById('todo').innerHTML += newTaskHTML(element, i);
+        
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
     }
 }
@@ -68,7 +73,12 @@ function filterProgress() {
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
         document.getElementById('inProgress').innerHTML += newTaskHTML(element);
-        /*checkBgColor(element);*/
+
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
 
     }
@@ -82,7 +92,12 @@ function filterFeedback() {
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
         document.getElementById('awaitingFeedback').innerHTML += newTaskHTML(element);
-        /*checkBgColor(element);*/
+        
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
     }
 }
@@ -95,7 +110,12 @@ function filterDone() {
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
         document.getElementById('done').innerHTML += newTaskHTML(element);
-        /*checkBgColor(element);*/
+        
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
 
     }
@@ -128,9 +148,25 @@ function openTask(element) {
     document.body.classList.add('noScroll');
     document.getElementById('addOpenTask').classList.add('darker');
     openedTask.innerHTML = openTaskHTML(element);
+    changePriorityButton(element);
 
 }
 
+function changePriorityButton(element) {
+    let thePrio = document.getElementById('prioOpenTask');
+    if (allTasks[element].prio == 'Urgent') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/urgentSelected.png">`;
+        thePrio.classList.add('bgUrgent');
+    }
+    if (allTasks[element].prio == 'Medium') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/mediumSelected.png">`;
+        thePrio.classList.add('bgMedium');
+    }
+    if (allTasks[element].prio == 'Low') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/lowSelected.png">`;
+        thePrio.classList.add('bgLow');
+    }
+}
 
 function closeAddTask() {
     document.getElementById('addNewTask').classList.add('d-none');
@@ -190,7 +226,7 @@ function filterBoard() {
     filterBoardProgress();
     filterBoardFeedback();
     filterBoardDone();
-    checkProgressbar();
+    /*checkProgressbar();*/
 }
 
 
@@ -319,7 +355,7 @@ function editTask(element) {
             <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
         </div>
     <div>
-        <form id="form" onsubmit="submitTask(); return false">
+        <form id="form"  onsubmit="editTasks()" return false">
         <div class="title">
             <p>Title</p>
             <input id="editHeadline" minlength="1" type="text" placeholder="" required>
@@ -337,9 +373,11 @@ function editTask(element) {
             <div class="prioButtons" id="prioButtons"></div>
         </div>
         <div class="categoryAssigned" id="assigned"></div>
-    </div>
-    <div class="ok-btn">
+        <div class="ok-btn">
     <img src="../img/board_img/ok-button.png">
+    </form>
+    </div>
+    
     </div>
     </div>
     `
@@ -379,29 +417,34 @@ function closeEditFunction() {
     loadContent('board');
 }
 
-/*function getAndPushTask() {
-    let headline = document.getElementById('headline').value;
-    let desc = document.getElementById('desc').value;
-    let status = document.getElementById('status').value;
-    let cat = document.getElementById('cat').value;
+function bgColorRandom() {
+    let x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    result = `${x},` + `${y},` + `${z}`;
+    console.log(result)
+}
 
+function editTasks() {
+    let headline = document.getElementById('editHeadline').value;
+    let desc = document.getElementById('editDesc').value;
+    let dueDate = document.getElementById('editDueDate').value;
+    randomBgColor();
+    allTasks.splice(i, 1);
     let task = {
         'headline': headline,
         'desc': desc,
-        'status': status,
-        'category': cat,
-    };
-
-
-
-    addNewTask(task)
-
+        'dueDate': dueDate
+    }
+    changeTask(task);
 }
 
-
-async function addNewTask(task) {
+async function changeTask(task) {
+    // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
+    // allTasks.push({bgcolor: bgcolor});
+    // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    window.location.href = 'board.html';
-}*/
+    console.log(allTasks);
+}
 
