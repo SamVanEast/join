@@ -265,41 +265,52 @@ function renderAssignedTo() {
  * 
  */
 function renderAssignedToOptions() {
+    console.log('renderAssignedToOptions called');
     let names = document.getElementById('assignedToOptions');
-
+  
     for (let b = 0; b < contact.length; b++) {
-        const contacts = contact[b]['name'];
-        const contactColor = contact[b]['bgcolor'];
-
-        names.innerHTML += /*html*/`
-            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${contactColor}')">
-                <span class="categorysDropdown" onclick="checkContactCheckbox('${contactColor}')">${contacts}</span>
-                <input id="checkbox-input" type="checkbox" name="${contacts}">
-            </div>
-        `;
+      const contacts = contact[b]['name'];
+      const contactColor = contact[b]['bgcolor'];
+      console.log(`contactColor: ${contactColor}`);
+  
+      names.innerHTML += /*html*/`
+        <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${contactColor}')">
+          <span class="categorysDropdown" onclick="checkContactCheckbox('${contactColor}')">${contacts}</span>
+          <input id="checkbox-input" type="checkbox" name="${contacts}">
+        </div>
+      `;
     }
-}
+  }
+    
 
 
 /**
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
 function checkContactCheckbox(contactColor) {
-
-    bgContactColor.push(contactColor);
-
+    console.log(`checkContactCheckbox called with contactColor: ${contactColor}`);
+    
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
-
+  
     // Für jedes "div-container"-Element einen Event-Listener hinzufügen
     divContainers.forEach(divContainer => {
-        divContainer.addEventListener('click', () => {
-            // Checkbox-Element auswählen und deren "checked"-Eigenschaft auf "true" setzen
-            const checkboxInput = divContainer.querySelector('#assigned input[type="checkbox"]');
-            checkboxInput.checked = !checkboxInput.checked;
-        });
+      divContainer.addEventListener('click', () => {
+        // Checkbox-Element auswählen
+        const checkboxInput = divContainer.querySelector('#assigned input[type="checkbox"]');
+  
+        // "checked"-Eigenschaft auf den negierten Wert setzen
+        checkboxInput.checked = !checkboxInput.checked;
+  
+        // Wenn die Checkbox ausgewählt ist und der contactColor-Wert noch nicht im Array enthalten ist, den Wert dem Array hinzufügen
+        if (checkboxInput.checked && bgContactColor.indexOf(contactColor) === -1) {
+          bgContactColor.push(contactColor);
+        }
+      });
     });
-}
+  }
+  
+  
 
 
 /**
