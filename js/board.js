@@ -43,8 +43,229 @@ function checkProgressbar() {
 }
 
 
+function startDragging(id) {
+    currentDraggedElement = id;
+}
 
-function filterTodo() {
+
+function closeOpenTask() {
+    document.body.classList.remove('noScroll');
+    document.getElementById('openTask').classList.add('d-none');
+    document.getElementById('addOpenTask').classList.remove('darker');
+
+}
+
+
+function openTask(element) {
+    let openedTask = document.getElementById('openTask');
+    openedTask.classList.remove('d-none');
+    document.body.classList.add('noScroll');
+    document.getElementById('addOpenTask').classList.add('darker');
+    openedTask.innerHTML = openTaskHTML(element);
+    changePriorityButton(element);
+
+}
+
+function changePriorityButton(element) {
+    let thePrio = document.getElementById('prioOpenTask');
+    if (allTasks[element].prio == 'Urgent') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/urgentSelected.png">`;
+        thePrio.classList.add('bgUrgent');
+    }
+    if (allTasks[element].prio == 'Medium') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/mediumSelected.png">`;
+        thePrio.classList.add('bgMedium');
+    }
+    if (allTasks[element].prio == 'Low') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/lowSelected.png">`;
+        thePrio.classList.add('bgLow');
+    }
+}
+
+function closeAddTask() {
+    document.getElementById('addNewTask').classList.add('d-none');
+    document.body.classList.remove('noScroll');
+    document.getElementById('addOpenTask').classList.remove('darker');
+
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+async function moveTo(status) {
+    allTasks[currentDraggedElement]['status'] = status;
+    filterTodo();
+    filterProgress();
+    filterFeedback();
+    filterDone();
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+
+}
+
+
+function highlight(id) {
+    document.getElementById(id).classList.add('dragAreaHighlight');
+}
+
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('dragAreaHighlight');
+}
+
+
+function addNewTask() {
+    document.getElementById('addNewTask').classList.remove('d-none');
+    document.body.classList.add('noScroll');
+    document.getElementById('addOpenTask').classList.add('darker');
+    let content = document.getElementById('addNewTask');
+    content.innerHTML = '';
+
+    content.innerHTML += addNewTaskHTML();
+    renderCategoryContent();
+    renderAssignedToContent();
+    renderPrioButtons();
+    renderSubtaskContent();
+}
+
+async function deleteTasks() {
+    await backend.deleteItem('allTasks');
+
+}
+
+
+function filterBoard() {
+    filterBoardTodo();
+    filterBoardProgress();
+    filterBoardFeedback();
+    filterBoardDone();
+    /*checkProgressbar();*/
+}
+
+
+function declarePriority(element) {
+    let shownPriority = document.getElementById(`prio${element.id}`);
+    shownPriority.innerHTML = '';
+
+    if (element['prio'] == 'Medium') {
+        shownPriority.innerHTML = `<img src="../img/board_img/prio-mid.png">`;
+    }
+
+    if (element['prio'] == 'Low') {
+        shownPriority.innerHTML = `<img src="../img/board_img/prio-low.png">`;
+    }
+
+    if (element['prio'] == 'Urgent') {
+        shownPriority.innerHTML = `<img src="../img/board_img/prio-high.png">`;
+    }
+}
+
+function editInput(element) {
+    document.getElementById('editHeadline').value = `${allTasks[element].headline}`;
+    document.getElementById('editDesc').value = `${allTasks[element].desc}`;
+    document.getElementById('editDueDate').value = `${allTasks[element].dueDate}`;
+}
+
+
+function editTask(element) {
+    let getStuff = document.getElementById('openTask');
+    getStuff.innerHTML = '';
+    getStuff.innerHTML += `
+    <div class="editScreen">
+        <div class="editHeadlineClose">
+            <h1>Edit Task</h1>
+            <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+        </div>
+    <div>
+        <form onsubmit="editTasks(); return false;">
+        <div class="title">
+            <p>Title</p>
+            <input id="editHeadline" minlength="1" type="text" placeholder="" required>
+        </div>    
+        <div class="description">
+            <p>Description</p>
+            <textarea required minlength="1" type="text" placeholder="" id="editDesc"></textarea>
+        </div>
+        <div class="dueDate">
+            <p>Due date</p>
+            <input id="editDueDate" type="date" required>
+        </div>
+        <div class="prio">
+            <p>Prio</p>
+            <div class="prioButtons" id="prioButtons"></div>
+        </div>
+        <div class="categoryAssigned" id="assigned"></div>
+        <class="ok-btn">
+    <img src="../img/board_img/ok-button.png">
+    </form>
+    </div>
+    
+    </div>
+    </div>
+    `
+    editInput(element);
+    renderPrioButtons();
+    renderAssignedToContent();
+    checkButtonUrgency(element);
+
+}
+
+
+function editTasks(i) {
+    let headline = document.getElementById('editHeadline').value;
+    let desc = document.getElementById('editDesc').value;
+    let dueDate = document.getElementById('editDueDate').value;
+    allTasks.splice(i, 1);
+    let task = {
+        'headline': headline,
+        'desc': desc,
+        'dueDate': dueDate
+    }
+    changeTask(task);
+}
+
+async function changeTask(task) {
+    // Task zu der Liste aller Tasks hinzufügen
+    allTasks.push(task);
+    // allTasks.push({bgcolor: bgcolor});
+    // Liste aller Tasks auf dem Server speichern
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    console.log(allTasks);
+}
+
+
+function checkButtonUrgency(element) {
+    if (allTasks[element].prio == 'Medium') {
+        document.getElementById('mediumButton').classList.add('mediumButtonFocused');
+    }
+
+    if (allTasks[element].prio == 'Urgent') {
+        document.getElementById('urgentButton').classList.add('urgentButtonFocused');
+    }
+
+    if (allTasks[element].prio == 'Low') {
+        document.getElementById('lowButton').classList.add('lowButtonFocused');
+    }
+}
+
+function closeEditFunction() {
+    document.getElementById('openTask').classList.add('d-none');
+    document.body.classList.remove('noScroll');
+    document.getElementById('openTask').classList.remove('darker');
+    closeAddTask();
+    loadContent('board');
+}
+
+
+/**
+ * 
+ * Filters the Board on load
+ * 
+ */
+
+ function filterTodo() {
 
     todo = allTasks.filter(t => t['status'] == 'todo');
 
@@ -115,122 +336,19 @@ function filterDone() {
             const assigned = element.assignedTo[j];
             document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
         }
-        
+
         declarePriority(element);
 
     }
 }
 
+/**
+ * 
+ * Filters the board after search
+ * 
+ */
 
-function startDragging(id) {
-    currentDraggedElement = id;
-}
-
-/*function checkBgColor(element) {
-    categoryBg = element['category'];
-
-    document.getElementById(`cats${element['id']}`).classList.add(`${categoryBg}`);
-
-}*/
-
-
-function closeOpenTask() {
-    document.body.classList.remove('noScroll');
-    document.getElementById('openTask').classList.add('d-none');
-    document.getElementById('addOpenTask').classList.remove('darker');
-
-}
-
-
-function openTask(element) {
-    let openedTask = document.getElementById('openTask');
-    openedTask.classList.remove('d-none');
-    document.body.classList.add('noScroll');
-    document.getElementById('addOpenTask').classList.add('darker');
-    openedTask.innerHTML = openTaskHTML(element);
-    changePriorityButton(element);
-
-}
-
-function changePriorityButton(element) {
-    let thePrio = document.getElementById('prioOpenTask');
-    if (allTasks[element].prio == 'Urgent') {
-        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/urgentSelected.png">`;
-        thePrio.classList.add('bgUrgent');
-    }
-    if (allTasks[element].prio == 'Medium') {
-        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/mediumSelected.png">`;
-        thePrio.classList.add('bgMedium');
-    }
-    if (allTasks[element].prio == 'Low') {
-        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/lowSelected.png">`;
-        thePrio.classList.add('bgLow');
-    }
-}
-
-function closeAddTask() {
-    document.getElementById('addNewTask').classList.add('d-none');
-    document.body.classList.remove('noScroll');
-    document.getElementById('addOpenTask').classList.remove('darker');
-
-}
-
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-
-async function moveTo(status) {
-    allTasks[currentDraggedElement]['status'] = status;
-    filterTodo();
-    filterProgress();
-    filterFeedback();
-    filterDone();
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
-
-}
-
-
-
-function highlight(id) {
-    document.getElementById(id).classList.add('dragAreaHighlight');
-}
-
-
-function removeHighlight(id) {
-    document.getElementById(id).classList.remove('dragAreaHighlight');
-}
-
-function addNewTask() {
-    document.getElementById('addNewTask').classList.remove('d-none');
-    document.body.classList.add('noScroll');
-    document.getElementById('addOpenTask').classList.add('darker');
-    let content = document.getElementById('addNewTask');
-    content.innerHTML = '';
-
-    content.innerHTML += addNewTaskHTML();
-    renderCategoryContent();
-    renderAssignedToContent();
-    renderPrioButtons();
-    renderSubtaskContent();
-}
-
-async function deleteTasks() {
-    await backend.deleteItem('allTasks');
-
-}
-
-
-function filterBoard() {
-    filterBoardTodo();
-    filterBoardProgress();
-    filterBoardFeedback();
-    filterBoardDone();
-    /*checkProgressbar();*/
-}
-
-
-function filterBoardTodo() {
+ function filterBoardTodo() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
 
@@ -325,126 +443,3 @@ function filterBoardDone() {
     }
 
 }
-
-
-function declarePriority(element) {
-    let shownPriority = document.getElementById(`prio${element.id}`);
-    shownPriority.innerHTML = '';
-
-    if (element['prio'] == 'Medium') {
-        shownPriority.innerHTML = `<img src="../img/board_img/prio-mid.png">`;
-    }
-
-    if (element['prio'] == 'Low') {
-        shownPriority.innerHTML = `<img src="../img/board_img/prio-low.png">`;
-    }
-
-    if (element['prio'] == 'Urgent') {
-        shownPriority.innerHTML = `<img src="../img/board_img/prio-high.png">`;
-    }
-}
-
-
-function editTask(element) {
-    let getStuff = document.getElementById('openTask');
-    getStuff.innerHTML = '';
-    getStuff.innerHTML += `
-    <div class="editScreen">
-        <div class="editHeadlineClose">
-            <h1>Edit Task</h1>
-            <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
-        </div>
-    <div>
-        <form id="form"  onsubmit="editTasks()" return false">
-        <div class="title">
-            <p>Title</p>
-            <input id="editHeadline" minlength="1" type="text" placeholder="" required>
-        </div>    
-        <div class="description">
-            <p>Description</p>
-            <textarea required minlength="1" type="text" placeholder="" id="editDesc"></textarea>
-        </div>
-        <div class="dueDate">
-            <p>Due date</p>
-            <input id="editDueDate" type="date" required>
-        </div>
-        <div class="prio">
-            <p>Prio</p>
-            <div class="prioButtons" id="prioButtons"></div>
-        </div>
-        <div class="categoryAssigned" id="assigned"></div>
-        <div class="ok-btn">
-    <img src="../img/board_img/ok-button.png">
-    </form>
-    </div>
-    
-    </div>
-    </div>
-    `
-    editInput(element);
-    renderPrioButtons();
-    renderAssignedToContent();
-    checkButtonUrgency(element);
-
-}
-
-function editInput(element) {
-    document.getElementById('editHeadline').value = `${allTasks[element].headline}`;
-    document.getElementById('editDesc').value = `${allTasks[element].desc}`;
-    document.getElementById('editDueDate').value = `${allTasks[element].dueDate}`;
-}
-
-
-function checkButtonUrgency(element) {
-    if (allTasks[element].prio == 'Medium') {
-        document.getElementById('mediumButton').classList.add('mediumButtonFocused');
-    }
-
-    if (allTasks[element].prio == 'Urgent') {
-        document.getElementById('urgentButton').classList.add('urgentButtonFocused');
-    }
-
-    if (allTasks[element].prio == 'Low') {
-        document.getElementById('lowButton').classList.add('lowButtonFocused');
-    }
-}
-
-function closeEditFunction() {
-    document.getElementById('openTask').classList.add('d-none');
-    document.body.classList.remove('noScroll');
-    document.getElementById('openTask').classList.remove('darker');
-    closeAddTask();
-    loadContent('board');
-}
-
-function bgColorRandom() {
-    let x = Math.floor(Math.random() * 256);
-    var y = Math.floor(Math.random() * 256);
-    var z = Math.floor(Math.random() * 256);
-    result = `${x},` + `${y},` + `${z}`;
-    console.log(result)
-}
-
-function editTasks() {
-    let headline = document.getElementById('editHeadline').value;
-    let desc = document.getElementById('editDesc').value;
-    let dueDate = document.getElementById('editDueDate').value;
-    randomBgColor();
-    allTasks.splice(i, 1);
-    let task = {
-        'headline': headline,
-        'desc': desc,
-        'dueDate': dueDate
-    }
-    changeTask(task);
-}
-
-async function changeTask(task) {
-    // Task zu der Liste aller Tasks hinzufügen
-    allTasks.push(task);
-    // allTasks.push({bgcolor: bgcolor});
-    // Liste aller Tasks auf dem Server speichern
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
-    console.log(allTasks);
-}
-

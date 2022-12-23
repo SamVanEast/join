@@ -61,6 +61,7 @@ body {
     flex-direction: column;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
+
 }
 
 .container {
@@ -422,12 +423,23 @@ body {
         padding-top: 0px;
         margin-top: -15px;
     }
+
+    .addNewTask {
+    margin-top: 350px;
+}
+
+
+
+.darker {
+    top: -11px;
+}
 }
 
 @media (max-width: 1200px) {
     .status {
         font-size: 12.5px;
     }
+
 
 }
 
