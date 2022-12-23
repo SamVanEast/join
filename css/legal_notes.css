@@ -7,13 +7,7 @@ body {
 .container {
     padding-left: 123px;
     padding-top: 82px;
-    height: 935px;
     box-sizing: border-box;
-    overflow: scroll;
-}
-
-.container::-webkit-scrollbar {
-    display: none;
 }
 
 .headline {

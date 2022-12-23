@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 935px;
     box-sizing: border-box;
 }
 
@@ -56,8 +55,9 @@
 .summary_content {
     display: flex;
     height: 540px;
+    padding-top: 87px;
     padding-left: 123px;
-    padding-bottom: 153px;
+    padding-bottom: 40px;
 }
 
 .overview {

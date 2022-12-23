@@ -6,12 +6,15 @@ body {
 
 .side_bar {
     display: flex;
-    height: 1024px;
+    height: 100vh;
     background-color: #F6F7F8;
 }
 
 .menu {
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 232px;
     height: 100%;
     background-color: #2A3647;
@@ -36,7 +39,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 733.03px;
+    height: 100%;
 }
 
 .menu_tabs {
@@ -102,7 +105,7 @@ body {
 
 .header-content {
     width: 100%;
-    height: 1024px;
+    height: 100%;
 }
 
 .header {
@@ -157,9 +160,13 @@ body {
 #content {
     position: relative;
     width: 100%;
-    height: 935px;
+    height: calc(100% - 89px);
     box-sizing: border-box;
     background-color: #F6F7F8
+}
+
+#content::-webkit-scrollbar {
+    display: none;
 }
 
 .log_out {
@@ -263,7 +270,7 @@ body {
         display: none;
     }
 
-    .log_out{
+    .log_out {
         width: 130px;
         height: auto;
         top: 79.02px;
@@ -274,11 +281,11 @@ body {
         justify-content: center;
     }
 
-    .log_out div{
+    .log_out div {
         padding-top: 18px;
         padding-left: 18px;
         padding-right: 18px;
-        
+
     }
 
     #qoestion-mark-img {
@@ -291,7 +298,7 @@ body {
 }
 
 @media (max-width: 360px) {
-    .tab{
+    .tab {
         max-width: 80px;
         width: unset;
         padding: unset;
@@ -299,19 +306,19 @@ body {
 }
 
 @media (min-height: 1440px) {
-    .side_bar{
+    .side_bar {
         height: 100vh;
     }
 
-    .menu{
+    .menu {
         height: 100vh;
     }
 
-    .menu_under_logo{
+    .menu_under_logo {
         height: unset;
     }
 
-    #content{
+    #content {
         height: calc(100vh - 89px);
     }
 }
