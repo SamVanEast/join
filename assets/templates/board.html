@@ -18,20 +18,23 @@
 </head>
 
 <body onload="initBoard()">
-
-    <div class="addNewTask d-none" id="addNewTask">
-
+    <div id="addOpenTask">
+        <div id="openTask" class="openTask d-none">
+        </div>
+        <div class="addNewTask d-none" id="addNewTask">
+        </div>
     </div>
-    <div id="openTask" class="openTask d-none">
-    </div>
+
+
     <div class="container" id="container">
+        <div class="header_headline_responsive"><span>Kanban Project Management Tool</span></div>
         <div class="headlineAddTasks">
             <h1>Board</h1>
             <div class="inputAndButton">
                 <input placeholder="Find Task" id="search" onkeyup="filterBoard()"
                     src="../img/board_img/magnifying-glass.png   ">
                 <div>
-                    <button class="buttonAndText" onclick="addTask()">
+                    <button class="buttonAndText" onclick="addNewTask()">
                         <p id="toBeReplaced">Add Task</p>
                         <img id="addButton" src="../img/board_img/plus-button-white.png">
                     </button>
@@ -42,7 +45,7 @@
             <div class="tasks" id="theTasks">
                 <div class="status">
                     <p>To Do</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
 
                 </div>
                 <div class="dragArea" id="todo" ondrop="moveTo('todo'); removeHighlight('todo')"
@@ -54,7 +57,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>In Progress</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
                 </div>
 
                 <div class="dragArea" id="inProgress" ondrop="moveTo('progress'); removeHighlight('inProgress')"
@@ -65,7 +68,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>Awaiting Feedback</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
                 </div>
 
                 <div class="dragArea" id="awaitingFeedback"
@@ -78,7 +81,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>Done</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
                 </div>
 
                 <div class="dragArea" id="done" ondrop="moveTo('done'); removeHighlight('done')"

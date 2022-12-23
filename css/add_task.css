@@ -548,10 +548,6 @@ body {
         z-index: 2;
     }
 
-    .header_headline {
-        display: none;
-    }
-
     .mobile_header_headline {
         display: block;
         margin-top: 110px;
@@ -570,7 +566,6 @@ body {
 
     .addTaskContainer {
         align-items: center;
-        margin-right: 0px;
     }
 
     .addTaskContainer h1 {

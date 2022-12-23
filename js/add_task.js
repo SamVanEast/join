@@ -3,12 +3,13 @@
  * 
  *
  */
-let contact;
 let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
 let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF'];
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let colorFromCategory = '#000000';
 let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
+let contact;
+let bgcolor;
 let prios = ['Urgent', 'Medium', 'Low'];
 let allPrios = [];
 let selectedPriority = "";
@@ -26,6 +27,8 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
+    console.log(allTasks);
+    console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -267,10 +270,14 @@ function renderAssignedToOptions() {
 
     for (let b = 0; b < contact.length; b++) {
         const contacts = contact[b]['name'];
+        const bgcolor = contact[b]['bgcolor'];
 
         names.innerHTML += /*html*/`
-         <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox()"><span class="categorysDropdown" onclick="checkContactCheckbox()">${contacts}</span><input id="checkbox-input" type="checkbox" name="${contacts}"></div>
-         `;
+            <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox('${bgcolor}')">
+                <span class="categorysDropdown" onclick="checkContactCheckbox('${bgcolor}')">${contacts}</span>
+                <input id="checkbox-input" type="checkbox" name="${contacts}">
+            </div>
+        `;
     }
 }
 
@@ -278,7 +285,7 @@ function renderAssignedToOptions() {
 /**
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
-function checkContactCheckbox() {
+function checkContactCheckbox(bgcolor) {
 
     // Alle "div-container"-Elemente auswählen
     const divContainers = document.querySelectorAll('.div-container');
@@ -291,6 +298,7 @@ function checkContactCheckbox() {
             checkboxInput.checked = !checkboxInput.checked;
         });
     });
+    window.bgcolor = bgcolor;
 }
 
 
@@ -398,6 +406,8 @@ function addSubtask() {
  */
 function clearFields() {
     document.getElementById('form').reset();
+    allSubtasks.length = 0;
+    renderSubtaskContent();
     renderCategoryContent();
     renderAssignedToContent();
     renderPrioButtons();
@@ -438,6 +448,7 @@ function submitTask() {
         'category': cat,
         'color': colorFromCategory,
         'assignedTo': checkedNames,
+        'bgcolor': bgcolor,
         'dueDate': dueDate,
         'prio': selectedPriority,
         'subtask': checkedSubtask,
@@ -463,6 +474,7 @@ function submitTask() {
 async function addThisTask(task) {
     // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
+    // allTasks.push({bgcolor: bgcolor});
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log(allTasks);
@@ -474,4 +486,6 @@ async function addThisTask(task) {
  */
 function clearForm() {
     document.getElementById("form").reset();
+    allSubtasks.length = 0;
+    renderSubtaskContent();
 }

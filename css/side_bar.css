@@ -246,7 +246,7 @@ body {
 
     .header {
         justify-content: flex-end;
-        position: relative;
+        position: fixed;
         height: 79.02px;
     }
 
@@ -260,12 +260,7 @@ body {
     }
 
     .header_headline {
-        position: absolute;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 120%;
-        top: 114px;
-        left: 7.71%;
+        display: none;
     }
 
     .log_out{

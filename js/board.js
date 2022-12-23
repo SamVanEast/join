@@ -22,6 +22,7 @@ function filterStatus() {
     filterProgress();
     filterFeedback();
     filterDone();
+    checkProgressbar();
 }
 
 async function addId() {
@@ -32,6 +33,17 @@ async function addId() {
     });
 }
 
+function checkProgressbar() {
+    for (let i = 0; i < allTasks.length; i++) {
+        const progbar = allTasks[i];
+        if (progbar.subtask.length == 0) {
+            document.getElementById(`progbar${progbar.id}`).innerHTML = '';
+        }
+    }
+}
+
+
+
 function filterTodo() {
 
     todo = allTasks.filter(t => t['status'] == 'todo');
@@ -40,11 +52,18 @@ function filterTodo() {
 
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
-        document.getElementById('todo').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+        document.getElementById('todo').innerHTML += newTaskHTML(element, i);
+        
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
     }
 }
+
+
 
 function filterProgress() {
     progress = allTasks.filter(t => t['status'] == 'progress');
@@ -54,7 +73,12 @@ function filterProgress() {
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
         document.getElementById('inProgress').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
 
     }
@@ -68,7 +92,12 @@ function filterFeedback() {
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
         document.getElementById('awaitingFeedback').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+        
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
     }
 }
@@ -81,7 +110,12 @@ function filterDone() {
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
         document.getElementById('done').innerHTML += newTaskHTML(element);
-        checkBgColor(element);
+        
+        for (let j = 0; j < element.assignedTo.length; j++) {
+            const assigned = element.assignedTo[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+        }
+        
         declarePriority(element);
 
     }
@@ -92,17 +126,18 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function checkBgColor(element) {
+/*function checkBgColor(element) {
     categoryBg = element['category'];
 
     document.getElementById(`cats${element['id']}`).classList.add(`${categoryBg}`);
 
-}
+}*/
 
 
 function closeOpenTask() {
     document.body.classList.remove('noScroll');
     document.getElementById('openTask').classList.add('d-none');
+    document.getElementById('addOpenTask').classList.remove('darker');
 
 }
 
@@ -111,13 +146,32 @@ function openTask(element) {
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
     document.body.classList.add('noScroll');
+    document.getElementById('addOpenTask').classList.add('darker');
     openedTask.innerHTML = openTaskHTML(element);
+    changePriorityButton(element);
 
+}
+
+function changePriorityButton(element) {
+    let thePrio = document.getElementById('prioOpenTask');
+    if (allTasks[element].prio == 'Urgent') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/urgentSelected.png">`;
+        thePrio.classList.add('bgUrgent');
+    }
+    if (allTasks[element].prio == 'Medium') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/mediumSelected.png">`;
+        thePrio.classList.add('bgMedium');
+    }
+    if (allTasks[element].prio == 'Low') {
+        thePrio.innerHTML += `<img style="padding-left: 10px" src="../img/add_task_img/lowSelected.png">`;
+        thePrio.classList.add('bgLow');
+    }
 }
 
 function closeAddTask() {
     document.getElementById('addNewTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
+    document.getElementById('addOpenTask').classList.remove('darker');
 
 }
 
@@ -147,72 +201,18 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
 }
 
-function addTask() {
+function addNewTask() {
     document.getElementById('addNewTask').classList.remove('d-none');
     document.body.classList.add('noScroll');
+    document.getElementById('addOpenTask').classList.add('darker');
     let content = document.getElementById('addNewTask');
     content.innerHTML = '';
 
-    content.innerHTML += /*html*/ `
-    <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
-    <div>
-    <div class="addTaskContainer">
-        <h1>Add Task</h1>
-        <form id="form" onsubmit="submitTask(); return false">
-            <div class="addTask">
-                <div class="addTaskLeftSide">
-                    <div class="titleToAssigned">
-                        <div class="title">
-                            <p>Title</p>
-                            <input minlength="1" type="text" placeholder="Enter a title" id="headline" required>
-                            <!-- added ID "headline"-->
-                        </div>
-                        <div class="description">
-                            <p>Description</p>
-                            <textarea required minlength="1" type="text" placeholder="Enter a Description"
-                                id="desc"></textarea> <!-- added ID description-->
-                        </div>
-
-                        <div class="category" id="cat"></div>
-                        <div class="categoryColors d-none" id="categoryColors"></div>
-
-                        <div class="categoryAssigned" id="assigned"></div>
-
-                    </div>
-                </div>
-
-                <div class="borderLine"></div>
-
-                <div class="dateToButtons" id="dateButtons">
-
-                    <div class="dueDate">
-                        <p>Due date</p>
-                        <input id="dueDate" type="date" required>
-                    </div>
-
-                    <div class="prio">
-                        <p>Prio</p>
-                        <div class="prioButtons" id="prioButtons"></div>
-                    </div>
-
-                    <div class="subtasksContent" id="subs"></div>
-
-                    <div class="clearAndCreate">
-                        <button type="button" class="clear" onclick="clearFields()">Clear<input class="cross"
-                                type="checkbox"></button>
-                        <button class="create"><img src="../../assets/img/add_task_img/hook.png"
-                                alt=""></button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    `;
+    content.innerHTML += addNewTaskHTML();
     renderCategoryContent();
     renderAssignedToContent();
     renderPrioButtons();
     renderSubtaskContent();
-
 }
 
 async function deleteTasks() {
@@ -226,6 +226,7 @@ function filterBoard() {
     filterBoardProgress();
     filterBoardFeedback();
     filterBoardDone();
+    /*checkProgressbar();*/
 }
 
 
@@ -245,7 +246,7 @@ function filterBoardTodo() {
             let result = todo[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
         }
     }
@@ -268,7 +269,7 @@ function filterBoardProgress() {
             let result = progress[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
 
         }
@@ -293,7 +294,7 @@ function filterBoardFeedback() {
             let result = feedback[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
 
         }
@@ -317,7 +318,7 @@ function filterBoardDone() {
             let result = done[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            checkBgColor(result);
+            /*checkBgColor(element);*/
             declarePriority(result);
 
         }
@@ -330,15 +331,15 @@ function declarePriority(element) {
     let shownPriority = document.getElementById(`prio${element.id}`);
     shownPriority.innerHTML = '';
 
-    if(element['prio'] == 'Medium') {
+    if (element['prio'] == 'Medium') {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-mid.png">`;
     }
 
-    if(element['prio'] == 'Low') {
+    if (element['prio'] == 'Low') {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-low.png">`;
     }
 
-    if(element['prio'] == 'Urgent') {
+    if (element['prio'] == 'Urgent') {
         shownPriority.innerHTML = `<img src="../img/board_img/prio-high.png">`;
     }
 }
@@ -347,53 +348,103 @@ function declarePriority(element) {
 function editTask(element) {
     let getStuff = document.getElementById('openTask');
     getStuff.innerHTML = '';
-    getStuff.innerHTML += `<div class="openTaskKicker">
-    <div class="category2 ${allTasks[element].category}">${allTasks[element].category}</div>
-    <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
+    getStuff.innerHTML += `
+    <div class="editScreen">
+        <div class="editHeadlineClose">
+            <h1>Edit Task</h1>
+            <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+        </div>
+    <div>
+        <form id="form"  onsubmit="editTasks()" return false">
+        <div class="title">
+            <p>Title</p>
+            <input id="editHeadline" minlength="1" type="text" placeholder="" required>
+        </div>    
+        <div class="description">
+            <p>Description</p>
+            <textarea required minlength="1" type="text" placeholder="" id="editDesc"></textarea>
+        </div>
+        <div class="dueDate">
+            <p>Due date</p>
+            <input id="editDueDate" type="date" required>
+        </div>
+        <div class="prio">
+            <p>Prio</p>
+            <div class="prioButtons" id="prioButtons"></div>
+        </div>
+        <div class="categoryAssigned" id="assigned"></div>
+        <div class="ok-btn">
+    <img src="../img/board_img/ok-button.png">
+    </form>
     </div>
-    <div id="openTaskHMobile">
-            <h2>${allTasks[element].headline}</h2>
-        </div>
-        <div id="pMobile">
-            <p id="openTaskDesc">${allTasks[element].desc}</p>
-            <p><b>Due Date: </b>${allTasks[element].dueDate}</p>
-            <p><b>Priority: </b>${allTasks[element].prio}</p>
-        </div>
-        <div id="assignedMobile">
-        <p><b>Assigned to:</b></p>
-        <div class="circleAndName">
-        <div class="people" style="background: rgb(${contact[0]['bgcolor']})"; margin-left: 2px">${allTasks[element].assignedTo[0].split(' ').map(word => word[0]).join('').toUpperCase()}</div>
-        <div class="personsName">${allTasks[element].assignedTo[0]}</div>
-        </div>
-        </div>
-        <div id="edit-btn" onclick="editTask()"><img src="../img/board_img/edit-btn.png"></div>
-        </div> `;
     
+    </div>
+    </div>
+    `
+    editInput(element);
+    renderPrioButtons();
+    renderAssignedToContent();
+    checkButtonUrgency(element);
 
 }
 
-/*function getAndPushTask() {
-    let headline = document.getElementById('headline').value;
-    let desc = document.getElementById('desc').value;
-    let status = document.getElementById('status').value;
-    let cat = document.getElementById('cat').value;
+function editInput(element) {
+    document.getElementById('editHeadline').value = `${allTasks[element].headline}`;
+    document.getElementById('editDesc').value = `${allTasks[element].desc}`;
+    document.getElementById('editDueDate').value = `${allTasks[element].dueDate}`;
+}
 
+
+function checkButtonUrgency(element) {
+    if (allTasks[element].prio == 'Medium') {
+        document.getElementById('mediumButton').classList.add('mediumButtonFocused');
+    }
+
+    if (allTasks[element].prio == 'Urgent') {
+        document.getElementById('urgentButton').classList.add('urgentButtonFocused');
+    }
+
+    if (allTasks[element].prio == 'Low') {
+        document.getElementById('lowButton').classList.add('lowButtonFocused');
+    }
+}
+
+function closeEditFunction() {
+    document.getElementById('openTask').classList.add('d-none');
+    document.body.classList.remove('noScroll');
+    document.getElementById('openTask').classList.remove('darker');
+    closeAddTask();
+    loadContent('board');
+}
+
+function bgColorRandom() {
+    let x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    result = `${x},` + `${y},` + `${z}`;
+    console.log(result)
+}
+
+function editTasks() {
+    let headline = document.getElementById('editHeadline').value;
+    let desc = document.getElementById('editDesc').value;
+    let dueDate = document.getElementById('editDueDate').value;
+    randomBgColor();
+    allTasks.splice(i, 1);
     let task = {
         'headline': headline,
         'desc': desc,
-        'status': status,
-        'category': cat,
-    };
-
-
-
-    addNewTask(task)
-
+        'dueDate': dueDate
+    }
+    changeTask(task);
 }
 
-
-async function addNewTask(task) {
+async function changeTask(task) {
+    // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
+    // allTasks.push({bgcolor: bgcolor});
+    // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    window.location.href = 'board.html';
-}*/
+    console.log(allTasks);
+}
+
