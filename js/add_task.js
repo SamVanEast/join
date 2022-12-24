@@ -414,6 +414,13 @@ function clearFields() {
 
 
 /**
+ * HTML-5 Form Validation für den Create Task Button
+ */
+const createButton = document.querySelector('.create');
+  createButton.addEventListener('click', createTask);
+
+
+/**
  * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
  */
 async function submitTask() {
