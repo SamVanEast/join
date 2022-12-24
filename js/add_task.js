@@ -467,6 +467,7 @@ async function submitTask() {
     // Kontakte auf den Standardwert zurücksetzen
     renderAssignedToContent();
     renderPrioButtons();
+    loadContent('board');
 }
 
 
