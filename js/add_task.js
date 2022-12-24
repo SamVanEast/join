@@ -132,26 +132,29 @@ function renderCategoryColors() {
 
         // Füge jede Kategoriefarbe dem categoryColors Element hinzu
         document.getElementById('categoryColors').innerHTML += /*html*/ `
-          <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')"></div>
+            <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')">
+    <div class="colorDotTransform"></div>
+  </div>
+
         `;
     }
 
-    // Füge Klick-Event-Listener dem categoryColors Element hinzu
-    document.getElementById('categoryColors').addEventListener('click', function (event) {
-        // Hole alle Farbpunkte
-        var colorDots = document.querySelectorAll('.colorDot');
-
+    // Füge Klick-Event-Listener den colorDot Elementen hinzu
+    var colorDots = document.querySelectorAll('.colorDot');
+    for (var i = 0; i < colorDots.length; i++) {
+      colorDots[i].addEventListener('click', function (event) {
         // Durchlaufe alle Farbpunkte und setze den Transformationsmaßstab auf 1
         for (var i = 0; i < colorDots.length; i++) {
-            colorDots[i].style.transform = 'scale(1)';
-            colorDots[i].style.opacity = '0.6';
+          colorDots[i].style.transform = 'scale(1)';
+          colorDots[i].style.opacity = '0.6';
         }
-
+  
         // Setze den Transformationsmaßstab des angeklickten Elements auf 1,1
         event.target.style.transform = 'scale(1.3)';
         event.target.style.opacity = '1.0';
-    });
-}
+      });
+    }
+}  
 
 
 /**
