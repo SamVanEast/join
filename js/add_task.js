@@ -27,8 +27,8 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    console.log(allTasks);
-    console.log(contact);
+    // console.log(allTasks);
+    // console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -414,13 +414,6 @@ function clearFields() {
 
 
 /**
- * HTML-5 Form Validation für den Create Task Button
- */
-const createButton = document.querySelector('.create');
-  createButton.addEventListener('click', createTask);
-
-
-/**
  * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
  */
 async function submitTask() {
@@ -482,7 +475,7 @@ async function addThisTask(task) {
     allTasks.push(task);
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    console.log(allTasks);
+    // console.log(allTasks);
 }
 
 
