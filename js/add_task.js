@@ -144,10 +144,12 @@ function renderCategoryColors() {
         // Durchlaufe alle Farbpunkte und setze den Transformationsmaßstab auf 1
         for (var i = 0; i < colorDots.length; i++) {
             colorDots[i].style.transform = 'scale(1)';
+            colorDots[i].style.opacity = '0.6';
         }
 
         // Setze den Transformationsmaßstab des angeklickten Elements auf 1,1
         event.target.style.transform = 'scale(1.3)';
+        event.target.style.opacity = '1.0';
     });
 }
 
