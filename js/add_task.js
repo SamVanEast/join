@@ -27,8 +27,8 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    // console.log(allTasks);
-    // console.log(contact);
+    console.log(allTasks);
+    console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -281,7 +281,6 @@ function renderAssignedToOptions() {
 }
 
 
-
 /**
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
@@ -305,8 +304,6 @@ function checkContactCheckbox(contactColor) {
         });
     });
 }
-
-
 
 
 /**
@@ -484,7 +481,7 @@ async function addThisTask(task) {
     allTasks.push(task);
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    // console.log(allTasks);
+    console.log(allTasks);
 }
 
 
