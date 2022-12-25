@@ -571,7 +571,7 @@ body {
     }
 
     .formValidation {
-        width: 350px;
+        width: 320px;
     }
 
     .addTask {
@@ -599,12 +599,12 @@ body {
     }
 
     .title input {
-        width: 88%;
+        width: 86%;
         font-size: 16px;
     }
 
     .description textarea {
-        width: 88%;
+        width: 86%;
         font-size: 16px;
     }
 
@@ -614,7 +614,7 @@ body {
     }
 
     .categoryContent {
-        width: 88%;
+        width: 86%;
     }
 
     .categorysDropdownSelectHTML {
@@ -635,7 +635,7 @@ body {
     }
 
     .dueDate input {
-        width: 88%;
+        width: 86%;
         font-size: 16px;
     }
 
@@ -667,7 +667,7 @@ body {
     }
 
     #inputSubtask {
-        width: 88%;
+        width: 86%;
     }
 
     .inputFieldSubtask {
