@@ -1,4 +1,4 @@
-function newTaskHTML(element, i) {
+function newTaskHTML(element) {
     return /*html*/`
         <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
         <div class="singleTask ${element.id}" id="singleTask ${element.id}">
@@ -23,8 +23,8 @@ function newTaskHTML(element, i) {
 }
 
 
-function getPeopleHTML(assigned, i) {
-    return `<div class="people" style="background-color: rgb(${contact[i]['bgcolor']})">${assigned.split(' ').map(word => word[0]).join('').toUpperCase()}</div>`;
+function getPeopleHTML(assigned, bgcolor) {
+    return `<div class="people" style="background-color: rgb(${bgcolor})">${assigned.split(' ').map(word => word[0]).join('').toUpperCase()}</div>`;
 }
 
 
@@ -43,9 +43,7 @@ function openTaskHTML(element) {
         </div>
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
-        <div class="circleAndName">
-        <div class="people" style="background: rgb(${contact[0]['bgcolor']})"; margin-left: 2px">${allTasks[element].assignedTo[0].split(' ').map(word => word[0]).join('').toUpperCase()}</div>
-        <div class="personsName">${allTasks[element].assignedTo[0]}</div>
+        <div class="circleAndName" id="circleAndNames">
         </div>
         </div>
         <div id="edit-btn" onclick="editTask(${element})"><img src="../img/board_img/edit-btn.png"></div>

@@ -48,21 +48,33 @@ function startDragging(id) {
 }
 
 
-function closeOpenTask() {
-    document.body.classList.remove('noScroll');
-    document.getElementById('openTask').classList.add('d-none');
-    document.getElementById('addOpenTask').classList.remove('darker');
-
-}
-
-
 function openTask(element) {
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
     document.body.classList.add('noScroll');
     document.getElementById('addOpenTask').classList.add('darker');
     openedTask.innerHTML = openTaskHTML(element);
+    document.getElementById(`circleAndNames`).innerHTML = '';
+
+    for (let i = 0; i < allTasks[element]['assignedTo'].length; i++) {
+        const people = allTasks[element]['assignedTo'][i];
+        const colors = allTasks[element]['bgcolor'][i];
+            
+            document.getElementById(`circleAndNames`).innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 5px">
+            <div class="people" style="background: rgb(${colors}); margin-left: 2px">${people.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
+        <div class="personsName">${people}</div></div>`;
+        
+    }
+
     changePriorityButton(element);
+
+}
+
+
+function closeOpenTask() {
+    document.body.classList.remove('noScroll');
+    document.getElementById('openTask').classList.add('d-none');
+    document.getElementById('addOpenTask').classList.remove('darker');
 
 }
 
@@ -197,7 +209,7 @@ function editTask(element) {
             <div class="prioButtons" id="prioButtons"></div>
         </div>
         <div class="categoryAssigned" id="assigned"></div>
-        <class="ok-btn">
+        <sclass="ok-btn">
     <img src="../img/board_img/ok-button.png">
     </form>
     </div>
@@ -265,7 +277,7 @@ function closeEditFunction() {
  * 
  */
 
- function filterTodo() {
+function filterTodo() {
 
     todo = allTasks.filter(t => t['status'] == 'todo');
 
@@ -274,12 +286,13 @@ function closeEditFunction() {
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
         document.getElementById('todo').innerHTML += newTaskHTML(element, i);
-        
+
         for (let j = 0; j < element.assignedTo.length; j++) {
             const assigned = element.assignedTo[j];
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+            const bgcolor = element.bgcolor[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
         }
-        
+
         declarePriority(element);
     }
 }
@@ -297,9 +310,11 @@ function filterProgress() {
 
         for (let j = 0; j < element.assignedTo.length; j++) {
             const assigned = element.assignedTo[j];
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+            const bgcolor = element.bgcolor[j];
+
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
         }
-        
+
         declarePriority(element);
 
     }
@@ -313,12 +328,14 @@ function filterFeedback() {
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
         document.getElementById('awaitingFeedback').innerHTML += newTaskHTML(element);
-        
+
         for (let j = 0; j < element.assignedTo.length; j++) {
             const assigned = element.assignedTo[j];
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+            const bgcolor = element.bgcolor[j];
+
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
         }
-        
+
         declarePriority(element);
     }
 }
@@ -330,11 +347,13 @@ function filterDone() {
 
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
-        document.getElementById('done').innerHTML += newTaskHTML(element);
         
+        document.getElementById('done').innerHTML += newTaskHTML(element);
+
         for (let j = 0; j < element.assignedTo.length; j++) {
             const assigned = element.assignedTo[j];
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, i);
+            const bgcolor = element.bgcolor[j];
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
         }
 
         declarePriority(element);
@@ -348,7 +367,7 @@ function filterDone() {
  * 
  */
 
- function filterBoardTodo() {
+function filterBoardTodo() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
 

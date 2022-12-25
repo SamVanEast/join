@@ -16,7 +16,7 @@ body {
     left: 0;
     bottom: 0;
     z-index: 4;
-    width: 100%;
+
     background: rgba(0, 0, 0, 0.38);
     display: flex;
     justify-content: center;
@@ -221,8 +221,8 @@ body {
 .circleAndName {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 100px;
+    flex-direction: column;
+    
 }
 
 .personsName {
@@ -564,17 +564,15 @@ body {
 *
 */
 
+.addTaskContainer {
+    flex-direction: column;
+}
+
 .addTaskContainer h1 {
     font-size: 45px !important;
     margin-top: 5px !important;
     margin-bottom: 0px !important;
     padding-left: 40px !important;
-}
-
-.clearAndCreate {
-    margin-top: 117px !important;
-    position: relative !important;
-
 }
 
 .titleToAssigned {
@@ -630,9 +628,13 @@ body {
 
 .addTask {
     padding-left: 40px !important;
+    padding-right: 40px !important;
 }
 
 .inputFieldSubtask {
     font-size: 14px !important;
 
 }
+
+
+
