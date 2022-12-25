@@ -142,19 +142,19 @@ function renderCategoryColors() {
     // Füge Klick-Event-Listener den colorDot Elementen hinzu
     var colorDots = document.querySelectorAll('.colorDot');
     for (var i = 0; i < colorDots.length; i++) {
-      colorDots[i].addEventListener('click', function (event) {
-        // Durchlaufe alle Farbpunkte und setze den Transformationsmaßstab auf 1
-        for (var i = 0; i < colorDots.length; i++) {
-          colorDots[i].style.transform = 'scale(1)';
-          colorDots[i].style.opacity = '0.6';
-        }
-  
-        // Setze den Transformationsmaßstab des angeklickten Elements auf 1,1
-        event.target.style.transform = 'scale(1.3)';
-        event.target.style.opacity = '1.0';
-      });
+        colorDots[i].addEventListener('click', function (event) {
+            // Durchlaufe alle Farbpunkte und setze den Transformationsmaßstab auf 1
+            for (var i = 0; i < colorDots.length; i++) {
+                colorDots[i].style.transform = 'scale(1)';
+                colorDots[i].style.opacity = '0.6';
+            }
+
+            // Setze den Transformationsmaßstab des angeklickten Elements auf 1,1
+            event.target.style.transform = 'scale(1.3)';
+            event.target.style.opacity = '1.0';
+        });
     }
-}  
+}
 
 
 /**
@@ -306,6 +306,21 @@ function checkContactCheckbox(event, contactColor) {
 
 
 /**
+ * Generiert HTML-Code für drei Buttons und fügt ihn in das Element mit der ID "prioButtons" ein.
+ * Jeder Button hat einen Namen ("Urgent", "Medium" oder "Low"), eine CSS-Klasse ("urgentButton", "mediumButton" oder "lowButton") und eine ID ("urgentButton", "mediumButton" oder "lowButton").
+ * Wenn ein Button geklickt wird, wird die Funktion "toggleButtonFocus" aufgerufen und das "event"-Objekt übergeben.
+ * Jeder Button enthält auch ein Bild, das beim Klicken des Buttons ebenfalls die Funktion "toggleButtonFocus" aufruft.
+ */
+function renderPrioButtons() {
+    document.getElementById('prioButtons').innerHTML = /*html*/`
+      <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
+      <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
+      <button type="button" name="Low" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">Low<img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)"></button>
+    `;
+}
+
+
+/**
  * Fügt oder entfernt CSS-Klassen von HTML-Buttons, abhängig davon, ob sie geklickt werden oder nicht.
  * Wenn ein Button geklickt wird, wird zunächst die CSS-Klasse "urgentButtonFocused", "mediumButtonFocused" oder "lowButtonFocused" von allen Buttons entfernt.
  * Dann wird der geklickte Button mit der Klasse "urgentButtonFocused", "mediumButtonFocused" oder "lowButtonFocused" versehen, je nachdem, welcher Button geklickt wurde.
@@ -325,21 +340,6 @@ function toggleButtonFocus(event) {
 
     // Speichert den Namen der ausgewählten Priorität
     selectedPriority = button.name;
-}
-
-
-/**
- * Generiert HTML-Code für drei Buttons und fügt ihn in das Element mit der ID "prioButtons" ein.
- * Jeder Button hat einen Namen ("Urgent", "Medium" oder "Low"), eine CSS-Klasse ("urgentButton", "mediumButton" oder "lowButton") und eine ID ("urgentButton", "mediumButton" oder "lowButton").
- * Wenn ein Button geklickt wird, wird die Funktion "toggleButtonFocus" aufgerufen und das "event"-Objekt übergeben.
- * Jeder Button enthält auch ein Bild, das beim Klicken des Buttons ebenfalls die Funktion "toggleButtonFocus" aufruft.
- */
-function renderPrioButtons() {
-    document.getElementById('prioButtons').innerHTML = /*html*/`
-      <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
-      <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
-      <button type="button" name="Low" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">Low<img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)"></button>
-    `;
 }
 
 
@@ -416,6 +416,22 @@ function clearFields() {
     renderAssignedToContent();
     renderPrioButtons();
 }
+
+
+// function test() {
+//     if (colorFromCategory != '#000000') {
+//         alert('nope');
+//         return false;
+//     } else if (bgContactColor.length >= 1) {
+//         alert('nope');
+//         return false;
+//     } else if (selectedPriority != "") {
+//         alert('nope');
+//         return false;
+//     } else {
+//         console.log('ready');
+//     }
+// }
 
 
 /**
