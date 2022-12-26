@@ -418,19 +418,21 @@ function clearFields() {
 }
 
 
-// function test() {
-//     if (colorFromCategory != '#000000') {
-//         alert('nope');
+// function checkForm() {
+//     if (colorFromCategory == '#000000') {
+//         console.log('nope1');
 //         return false;
-//     } else if (bgContactColor.length >= 1) {
-//         alert('nope');
-//         return false;
-//     } else if (selectedPriority != "") {
-//         alert('nope');
-//         return false;
-//     } else {
-//         console.log('ready');
 //     }
+//     if (bgContactColor.length < 1) {
+//         console.log('nope2');
+//         return false;
+//     }
+//     if (selectedPriority == "") {
+//         console.log('nope3');
+//         return false;
+//     }
+//     console.log('ready');
+//     return true;
 // }
 
 
