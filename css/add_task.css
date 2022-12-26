@@ -10,10 +10,6 @@ body {
     display: none;
 }
 
-/* .checkForm{
-    border: 1px solid red;
-} */
-
 .addTaskContainer {
     position: relative;
     padding-bottom: 50px;

@@ -60,6 +60,7 @@ function renderCategoryContent() {
 function renderCategorys() {
     document.getElementById('dropdownCategory').classList.toggle('showAllCategorys');
     document.getElementById('dropdownCategory').classList.remove('categorysDropdownSelectHTML');
+    document.getElementById('dropdownCategory').style.border = "1px solid #D1D1D1";
 
     let content = document.getElementById('dropdownCategory');
 
@@ -254,6 +255,7 @@ function renderAssignedToContent() {
 function renderAssignedTo() {
     document.getElementById('dropdownAssignedTo').classList.toggle('showAllCategorys');
     document.getElementById('dropdownAssignedTo').classList.remove('categorysDropdownSelectHTML');
+    document.getElementById('dropdownAssignedTo').style.border = "1px solid #D1D1D1";
 
     let content = document.getElementById('dropdownAssignedTo');
 
@@ -329,6 +331,7 @@ function renderPrioButtons() {
  * @param {Event} event - Das Event-Objekt, das beim Klicken des Buttons ausgelöst wird.
  */
 function toggleButtonFocus(event) {
+    document.getElementById('prioButtons').style.border = "unset";
     const button = event.target;
     const buttonId = button.id;
 
@@ -418,22 +421,34 @@ function clearFields() {
 }
 
 
-// function checkForm() {
-//     if (colorFromCategory == '#000000') {
-//         console.log('nope1');
-//         return false;
-//     }
-//     if (bgContactColor.length < 1) {
-//         console.log('nope2');
-//         return false;
-//     }
-//     if (selectedPriority == "") {
-//         console.log('nope3');
-//         return false;
-//     }
-//     console.log('ready');
-//     return true;
-// }
+/**
+ * Funktion zum Überprüfen des Formulars, bevor es abgesendet wird.
+ * 
+ * Die Funktion prüft zunächst den Wert der Variablen "colorFromCategory". Wenn der Wert der Variablen "#000000" ist, wird eine Fehlermeldung in der Konsole angezeigt und der Border des Elements mit der ID "dropdownCategory" wird rot gesetzt.
+ * Anschließend wird die Länge des Arrays "bgContactColor" überprüft. Wenn die Länge kleiner als 1 ist, wird eine Fehlermeldung in der Konsole angezeigt und der Border des Elements mit der ID "dropdownAssignedTo" wird rot gesetzt.
+ * Zuletzt wird der Wert der Variablen "selectedPriority" überprüft. Wenn der Wert leer ist, wird eine Fehlermeldung in der Konsole angezeigt und der Border des Elements mit der ID "prioButtons" wird rot gesetzt.
+ * Wenn alle Bedingungen nicht erfüllt sind, wird die Funktion "submitTask" aufgerufen und "true" zurückgegeben. Andernfalls wird "false" zurückgegeben.
+ */
+function checkForm() {
+    if (colorFromCategory == '#000000') {
+        console.log('nope1');
+        document.getElementById('dropdownCategory').style.border = "1px solid red";
+        return false;
+    }
+    if (bgContactColor.length < 1) {
+        console.log('nope2');
+        document.getElementById('dropdownAssignedTo').style.border = "1px solid red";
+        return false;
+    }
+    if (selectedPriority == "") {
+        console.log('nope3');
+        document.getElementById('prioButtons').style.border = "1px solid red";
+        return false;
+    }
+    console.log('ready');
+    submitTask();
+    return true;
+}
 
 
 /**
