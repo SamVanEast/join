@@ -50,6 +50,7 @@ function renderCategoryContent() {
      `;
     document.getElementById('categoryColors').classList.add('d-none');
     document.getElementById('categoryColors').classList.remove('categoryColors');
+    colorFromCategory = '#000000';
 }
 
 
@@ -314,6 +315,8 @@ function checkContactCheckbox(event, contactColor) {
  * Jeder Button enthält auch ein Bild, das beim Klicken des Buttons ebenfalls die Funktion "toggleButtonFocus" aufruft.
  */
 function renderPrioButtons() {
+    selectedPriority = "";
+
     document.getElementById('prioButtons').innerHTML = /*html*/`
       <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
       <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
