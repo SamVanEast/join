@@ -27,8 +27,6 @@ async function initAddTask() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    // console.log(allTasks);
-    // console.log(contact);
 
     renderCategoryContent();
     renderAssignedToContent();
@@ -434,21 +432,17 @@ function clearFields() {
  */
 function checkForm() {
     if (colorFromCategory == '#000000') {
-        console.log('nope1');
         document.getElementById('dropdownCategory').style.border = "1px solid red";
         return false;
     }
     if (bgContactColor.length < 1) {
-        console.log('nope2');
         document.getElementById('dropdownAssignedTo').style.border = "1px solid red";
         return false;
     }
     if (selectedPriority == "") {
-        console.log('nope3');
         document.getElementById('prioButtons').style.border = "1px solid red";
         return false;
     }
-    console.log('ready');
     submitTask();
     return true;
 }
@@ -517,7 +511,6 @@ async function addThisTask(task) {
     allTasks.push(task);
     // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    // console.log(allTasks);
 }
 
 
