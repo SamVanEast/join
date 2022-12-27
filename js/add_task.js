@@ -40,12 +40,7 @@ async function initAddTask() {
  * 
  */
 function renderCategoryContent() {
-    document.getElementById('cat').innerHTML = /*html*/ `
-         <p>Category</p>
-         <div class="dropdown" id="dropdownCategory">
-             <div class="categorysDropdownSelectHTML" id="selectTaskCategoryContent" onclick="renderCategorys()">Select task category</div>
-         </div>
-     `;
+    document.getElementById('cat').innerHTML = showCategoryContentHTML();
     document.getElementById('categoryColors').classList.add('d-none');
     document.getElementById('categoryColors').classList.remove('categoryColors');
     colorFromCategory = '#000000';
@@ -63,13 +58,7 @@ function renderCategorys() {
 
     let content = document.getElementById('dropdownCategory');
 
-    content.innerHTML = /*html*/ `
-        <div class="categorysDropdownSelect" id="categorysDropdownSelect" onclick="renderCategoryContent()">Select task category</div>
-        <div class="categorysNewCategory" onclick="addNewCategory()">
-            <span class="newCategory">New category</span>
-        </div>
-        <div id="categorysOptions" class="categorysOptions"></div>
-     `;
+    content.innerHTML = showCategorysHTML();
     renderCategorysOptions();
 }
 
@@ -85,12 +74,7 @@ function renderCategorysOptions() {
         const category = categorys[a];
         const hexString = categoryColors[a % categoryColors.length];
 
-        options.innerHTML += /*html*/`
-        <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}'), declareColorFromCategory('${hexString}')">
-        ${category}
-          <div class="colorDotCategorys" style="background-color: ${hexString};"></div>
-        </span>
-      `;
+        options.innerHTML += showCategorysOptionsHTML(category, hexString);
     }
 }
 
@@ -103,16 +87,7 @@ function addNewCategory() {
     document.getElementById('categorysDropdownSelect').classList.toggle('categorysDropdownSelect');
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
 
-    document.getElementById('categorysDropdownSelect').innerHTML = /*html*/`
-         <div class="categoryContent">
-             <input class="inputFieldSubtask" id="inputFieldCategory" type="text" placeholder="New category name" onclick="event.stopPropagation()">
-             <div class="subtaskImage">
-                 <img src="../../assets/img/add_task_img/cross.png" onclick="renderCategoryContent()">
-                 <div class="inputBorder"></div>
-                 <img src="../../assets/img/add_task_img/hookBlack.png" onclick="pushNewCategory()">
-             </div>
-         </div>
-     `;
+    document.getElementById('categorysDropdownSelect').innerHTML = showAddNewCategoryHTML();
     renderCategoryColors();
 }
 
@@ -130,11 +105,7 @@ function renderCategoryColors() {
     for (let g = 0; g < newCategoryColors.length; g++) {
         const newColor = newCategoryColors[g];
 
-        document.getElementById('categoryColors').innerHTML += /*html*/ `
-            <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')">
-                <div class="colorDotTransform"></div>
-            </div>
-        `;
+        document.getElementById('categoryColors').innerHTML += showCategoryColorsHTML(newColor);
     }
     addClickEventForColorDot();
 }
@@ -190,12 +161,7 @@ function renderSelectedCategory(category, hexString) {
     const colorObject = convertHexToRgb(hexString);
     const colorString = `rgb(${colorObject[0]}, ${colorObject[1]}, ${colorObject[2]})`;
 
-    document.getElementById('dropdownCategory').innerHTML = /*html*/`
-        <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">
-        ${category}
-            <div class="colorDotCategorys" style="background-color: ${colorString};"></div>
-        </div>
-    `;
+    document.getElementById('dropdownCategory').innerHTML = showSelectedCategoryHTML(category, colorString);
 
     categoryColors.push(colorFromCategory);
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
@@ -241,11 +207,7 @@ function convertHexToRgb(hexString) {
  * 
  */
 function renderAssignedToContent() {
-    document.getElementById('assigned').innerHTML = /*html*/ `
-        <p>Assigned to</p>
-        <div class="dropdown" id="dropdownAssignedTo">
-            <div class="categorysDropdownSelectHTML" id="dropdownAssignedTo" onclick="renderAssignedTo()">Select contacts to assign</div>
-        </div>`;
+    document.getElementById('assigned').innerHTML = showAssignedToContentHTML();
 }
 
 
@@ -260,10 +222,7 @@ function renderAssignedTo() {
 
     let content = document.getElementById('dropdownAssignedTo');
 
-    content.innerHTML = /*html*/ `
-     <div class="categorysDropdownSelect" id="assignedTo" onclick="renderAssignedToContent()">Select contacts to assign</div>
-     <div id="assignedToOptions" class="categorysOptions"></div>
-     `;
+    content.innerHTML = showAssignedToHTML();
     renderAssignedToOptions();
 }
 
@@ -279,12 +238,7 @@ function renderAssignedToOptions() {
         const contacts = contact[b]['name'];
         const contactColor = contact[b]['bgcolor'];
 
-        names.innerHTML += /*html*/`
-        <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox(event, '${contactColor}')">
-          <span class="categorysDropdown">${contacts}</span>
-          <input id="checkbox-input" type="checkbox" name="${contacts}">
-        </div>
-      `;
+        names.innerHTML += showAssignedToOptionsHTML(contacts, contactColor);
     }
 }
 
@@ -314,22 +268,7 @@ function checkContactCheckbox(event, contactColor) {
 function renderPrioButtons() {
     selectedPriority = "";
 
-    document.getElementById('prioButtons').innerHTML = /*html*/`
-        <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">
-        Urgent
-            <img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)">
-        </button>
-
-        <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">
-        Medium
-            <img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)">
-        </button>
-
-        <button type="button" name="Low" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">
-        Low
-            <img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)">
-        </button>
-    `;
+    document.getElementById('prioButtons').innerHTML = showPrioButtonsHTML();
 }
 
 
@@ -359,16 +298,7 @@ function toggleButtonFocus(event) {
  * 
  */
 function renderSubtaskContent() {
-    document.getElementById('subs').innerHTML = /*html*/ `
-         <p>Subtasks</p>
-         <div class="inputSubtask" id="inputSubtask">
-            <div class="subtaskRender" onclick="renderSubtask()">
-            Add new subtask
-                <img src="../img/add_task_img/plus.png" alt="">
-            </div>
-         </div>
-         <div class="checkboxSubtask" id="newSubtask" required></div>
-     `;
+    document.getElementById('subs').innerHTML = showSubtaskContentHTML();
 
     for (let i = 0; i < allSubtasks.length; i++) {
         document.getElementById('newSubtask').innerHTML += /*html*/`
@@ -389,16 +319,7 @@ function renderSubtask() {
     document.getElementById('inputSubtask').classList.remove('inputSubtask');
 
     let subtaskContent = document.getElementById('inputSubtask');
-    subtaskContent.innerHTML = /*html*/ `
-     <div class="inputSubtask">
-         <input class="inputFieldSubtask" id="inputFieldSubtask" type="text" placeholder="Add new subtask">
-         <div class="subtaskImage">
-             <img src="../../assets/img/add_task_img/cross.png" alt="" onclick="renderSubtaskContent()">
-             <div class="inputBorder"></div>
-             <img src="../../assets/img/add_task_img/hookBlack.png" alt="" onclick="addSubtask()">
-         </div>
-     </div>
-     `;
+    subtaskContent.innerHTML = showSubtaskHTML();
 
     document.getElementById('inputFieldSubtask').value = '';
 }
