@@ -222,7 +222,7 @@ border: 2px solid #29ABE2;
 
 #login{
     animation-name: login;
-    animation-duration: 3s;
+    animation-duration: 1.5s;
 }
 
 @keyframes login {
@@ -242,7 +242,7 @@ border: 2px solid #29ABE2;
     left: 70px;
     top: 85px;
     animation-name: zoom;
-    animation-duration: 3s;
+    animation-duration: 1.5s;
 }
 
 
