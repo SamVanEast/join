@@ -140,11 +140,11 @@ function renderCategoryColors() {
     }
 
     // Füge Klick-Event-Listener den colorDot Elementen hinzu
-    var colorDots = document.querySelectorAll('.colorDot');
-    for (var i = 0; i < colorDots.length; i++) {
+    let colorDots = document.querySelectorAll('.colorDot');
+    for (let i = 0; i < colorDots.length; i++) {
         colorDots[i].addEventListener('click', function (event) {
             // Durchlaufe alle Farbpunkte und setze den Transformationsmaßstab auf 1
-            for (var i = 0; i < colorDots.length; i++) {
+            for (let i = 0; i < colorDots.length; i++) {
                 colorDots[i].style.transform = 'scale(1)';
                 colorDots[i].style.opacity = '0.6';
             }
