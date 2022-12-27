@@ -7,7 +7,7 @@ let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
 let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF'];
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let colorFromCategory = '#000000';
-let selectedColor = '#000000'; // Standardfarbe für neue Kategorien
+let selectedColor = '#000000';
 let contact;
 let bgContactColor = [];
 let prios = ['Urgent', 'Medium', 'Low'];
@@ -120,17 +120,14 @@ function addNewCategory() {
  * 
  */
 function renderCategoryColors() {
-    // Entferne d-none Klasse von categoryColors und füge categoryColors Klasse hinzu
     document.getElementById('categoryColors').classList.remove('d-none');
     document.getElementById('categoryColors').classList.add('categoryColors');
 
     document.getElementById('categoryColors').innerHTML = ``;
 
-    // Durchlaufe alle neuen Kategoriefarben
     for (let g = 0; g < newCategoryColors.length; g++) {
         const newColor = newCategoryColors[g];
 
-        // Füge jede Kategoriefarbe dem categoryColors Element hinzu
         document.getElementById('categoryColors').innerHTML += /*html*/ `
             <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')">
     <div class="colorDotTransform"></div>
@@ -143,13 +140,10 @@ function renderCategoryColors() {
     let colorDots = document.querySelectorAll('.colorDot');
     for (let i = 0; i < colorDots.length; i++) {
         colorDots[i].addEventListener('click', function (event) {
-            // Durchlaufe alle Farbpunkte und setze den Transformationsmaßstab auf 1
             for (let i = 0; i < colorDots.length; i++) {
                 colorDots[i].style.transform = 'scale(1)';
                 colorDots[i].style.opacity = '0.6';
             }
-
-            // Setze den Transformationsmaßstab des angeklickten Elements auf 1,1
             event.target.style.transform = 'scale(1.3)';
             event.target.style.opacity = '1.0';
         });
@@ -164,15 +158,13 @@ function renderCategoryColors() {
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
 
-    // Push the new category and its color to the categorys and categoryColors arrays
     categorys.push(newCategory);
     categoryColors.push(selectedColor);
-    // Setzt das Eingabefeld und die Auswahlmöglichkeiten für die Farben zurück
+
     document.getElementById('categorysDropdownSelect').classList.remove('categorysDropdownSelect');
     document.getElementById('categoryColors').classList.add('d-none');
     document.getElementById('categoryColors').innerHTML = '';
 
-    // Rendert die neuen Kategorien
     renderCategorysOptions();
 }
 
@@ -222,14 +214,10 @@ function declareColorFromCategory(colorCategory) {
  * @returns {number[]} Das Array mit den Rot-, Grün- und Blauwerten.
  */
 function convertHexToRgb(hexString) {
-    // Extrahiere den Rotwert aus der Hexadezimalzeichenfolge
     let r = parseInt(hexString.slice(1, 3), 16);
-    // Extrahiere den Grünwert aus der Hexadezimalzeichenfolge
     let g = parseInt(hexString.slice(3, 5), 16);
-    // Extrahiere den Blauwert aus der Hexadezimalzeichenfolge
     let b = parseInt(hexString.slice(5, 7), 16);
 
-    // Gib das Array mit den Rot-, Grün- und Blauwerten zurück
     return [r, g, b];
 }
 
@@ -291,13 +279,10 @@ function renderAssignedToOptions() {
  * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
  */
 function checkContactCheckbox(event, contactColor) {
-    // Checkbox-Element auswählen
     const checkboxInput = event.currentTarget.querySelector('#checkbox-input');
 
-    // "checked"-Eigenschaft auf den negierten Wert setzen
     checkboxInput.checked = !checkboxInput.checked;
 
-    // Wenn die Checkbox ausgewählt ist und der contactColor-Wert noch nicht im Array enthalten ist, den Wert dem Array hinzufügen
     if (checkboxInput.checked && bgContactColor.indexOf(contactColor) === -1) {
         bgContactColor.push(contactColor);
     } else if (!checkboxInput.checked && bgContactColor.indexOf(contactColor) !== -1) {
@@ -336,13 +321,10 @@ function toggleButtonFocus(event) {
     const button = event.target;
     const buttonId = button.id;
 
-    // Entfernt die Fokusklasse von allen Buttons
     document.querySelectorAll('.urgentButton').forEach(b => b.classList.remove('urgentButtonFocused', 'mediumButtonFocused', 'lowButtonFocused'));
 
-    // Fügt die Fokusklasse dem angeklickten Button hinzu
     button.classList.add(`${buttonId}Focused`);
 
-    // Speichert den Namen der ausgewählten Priorität
     selectedPriority = button.name;
 }
 
@@ -452,29 +434,20 @@ function checkForm() {
  * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
  */
 async function submitTask() {
-    // Headline, Beschreibung, Kategorie und Kontakte aus den entsprechenden Formularfeldern auslesen
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
 
-    // Alle Checkboxen für die Kontakte auswählen
     const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
-    // Alle ausgewählten Kontakte aus den Checkboxen filtern
     const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
-    // Namen der ausgewählten Kontakte aus den Checkboxen auslesen
     const checkedNames = checkedContacts.map(cb => cb.name);
 
-    // Fälligkeitsdatum aus dem Formularfeld auslesen
     let dueDate = document.getElementById('dueDate').value;
 
-    // Alle Checkboxen für die Subtasks auswählen
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
-    // Alle ausgewählten Subtasks aus den Checkboxen filtern
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
-    // Namen der ausgewählten Subtasks aus den Checkboxen auslesen
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
 
-    // Neue Task mit den ausgelesenen Werten erstellen
     let task = {
         'headline': headline,
         'desc': desc,
@@ -488,13 +461,9 @@ async function submitTask() {
         'subtask': checkedSubtask,
     };
 
-    // Task zu der Liste aller Tasks hinzufügen und auf dem Server speichern
     await addThisTask(task);
-    // Formular zurücksetzen
     clearForm();
-    // Kategorie-Auswahl auf den Standardwert zurücksetzen
     renderCategoryContent();
-    // Kontakte auf den Standardwert zurücksetzen
     renderAssignedToContent();
     renderPrioButtons();
     loadContent('board');
@@ -507,9 +476,7 @@ async function submitTask() {
  * @param {Object} task - Task, die hinzugefügt werden soll
  */
 async function addThisTask(task) {
-    // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
-    // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
