@@ -64,9 +64,11 @@ function renderCategorys() {
     let content = document.getElementById('dropdownCategory');
 
     content.innerHTML = /*html*/ `
-         <div class="categorysDropdownSelect" id="categorysDropdownSelect" onclick="renderCategoryContent()">Select task category</div>
-         <div class="categorysNewCategory" onclick="addNewCategory()"><span class="newCategory">New category</span></div>
-         <div id="categorysOptions" class="categorysOptions"></div>
+        <div class="categorysDropdownSelect" id="categorysDropdownSelect" onclick="renderCategoryContent()">Select task category</div>
+        <div class="categorysNewCategory" onclick="addNewCategory()">
+            <span class="newCategory">New category</span>
+        </div>
+        <div id="categorysOptions" class="categorysOptions"></div>
      `;
     renderCategorysOptions();
 }
@@ -85,7 +87,7 @@ function renderCategorysOptions() {
 
         options.innerHTML += /*html*/`
         <span class="categorysDropdown" onclick="renderSelectedCategory('${category}', '${hexString}'), declareColorFromCategory('${hexString}')">
-          ${category}
+        ${category}
           <div class="colorDotCategorys" style="background-color: ${hexString};"></div>
         </span>
       `;
@@ -130,9 +132,8 @@ function renderCategoryColors() {
 
         document.getElementById('categoryColors').innerHTML += /*html*/ `
             <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')">
-    <div class="colorDotTransform"></div>
-  </div>
-
+                <div class="colorDotTransform"></div>
+            </div>
         `;
     }
     addClickEventForColorDot();
@@ -190,7 +191,10 @@ function renderSelectedCategory(category, hexString) {
     const colorString = `rgb(${colorObject[0]}, ${colorObject[1]}, ${colorObject[2]})`;
 
     document.getElementById('dropdownCategory').innerHTML = /*html*/`
-      <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">${category}<div class="colorDotCategorys" style="background-color: ${colorString};"></div></div>
+        <div class="categorysDropdownSelect" id="selectedCategory" onclick="renderCategorys()">
+        ${category}
+            <div class="colorDotCategorys" style="background-color: ${colorString};"></div>
+        </div>
     `;
 
     categoryColors.push(colorFromCategory);
@@ -311,9 +315,20 @@ function renderPrioButtons() {
     selectedPriority = "";
 
     document.getElementById('prioButtons').innerHTML = /*html*/`
-      <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">Urgent<img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)"></button>
-      <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">Medium<img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)"></button>
-      <button type="button" name="Low" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">Low<img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)"></button>
+        <button type="button" name="Urgent" class="urgentButton" id="urgentButton" onclick="toggleButtonFocus(event)">
+        Urgent
+            <img src="../../assets/img/add_task_img/urgent.png" class="urgent" id="urgent" onclick="toggleButtonFocus(event)">
+        </button>
+
+        <button type="button" name="Medium" class="urgentButton" id="mediumButton" onclick="toggleButtonFocus(event)">
+        Medium
+            <img src="../../assets/img/add_task_img/medium.png" class="medium" id="medium" onclick="toggleButtonFocus(event)">
+        </button>
+
+        <button type="button" name="Low" class="urgentButton" id="lowButton" onclick="toggleButtonFocus(event)">
+        Low
+            <img src="../../assets/img/add_task_img/low.png" class="low" id="low" onclick="toggleButtonFocus(event)">
+        </button>
     `;
 }
 
@@ -347,7 +362,10 @@ function renderSubtaskContent() {
     document.getElementById('subs').innerHTML = /*html*/ `
          <p>Subtasks</p>
          <div class="inputSubtask" id="inputSubtask">
-             <div class="subtaskRender" onclick="renderSubtask()">Add new subtask<img src="../img/add_task_img/plus.png" alt=""></div>
+            <div class="subtaskRender" onclick="renderSubtask()">
+            Add new subtask
+                <img src="../img/add_task_img/plus.png" alt="">
+            </div>
          </div>
          <div class="checkboxSubtask" id="newSubtask" required></div>
      `;
