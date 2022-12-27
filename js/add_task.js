@@ -1,5 +1,5 @@
 /**
- * Alle benötigten globalen Variablen mit Ihren Arrays
+ * All required global variables with their arrays
  * 
  *
  */
@@ -19,7 +19,7 @@ let checkedSubtasks = [];
 
 
 /**
- * Funktion, die alle Aufgaben lädt
+ * Function that loads all tasks
  * 
  */
 async function initAddTask() {
@@ -36,7 +36,7 @@ async function initAddTask() {
 
 
 /**
- * Funktion, die den Kategorie-Inhalt anzeigt
+ * Function that displays the category content
  * 
  */
 function renderCategoryContent() {
@@ -53,7 +53,7 @@ function renderCategoryContent() {
 
 
 /**
- * Funktion, die den Kategorie-Grundaufbau anzeigt
+ * Function that displays the basic category structure
  * 
  */
 function renderCategorys() {
@@ -73,7 +73,7 @@ function renderCategorys() {
 
 
 /**
- * Funktion, die die verschiedenen Kategorie-Optionen anzeigt
+ * Function that displays the different category options
  * 
  */
 function renderCategorysOptions() {
@@ -94,7 +94,7 @@ function renderCategorysOptions() {
 
 
 /**
- * Funktion, die eine neue Kategorie hinzufügt
+ * Function that adds a new category
  * 
  */
 function addNewCategory() {
@@ -116,7 +116,7 @@ function addNewCategory() {
 
 
 /**
- * Funktion, die die neuen möglichen Farben für eine neue Kategorie anzeigt
+ * Function that displays the new possible colors for a new category
  * 
  */
 function renderCategoryColors() {
@@ -136,7 +136,6 @@ function renderCategoryColors() {
         `;
     }
 
-    // Füge Klick-Event-Listener den colorDot Elementen hinzu
     let colorDots = document.querySelectorAll('.colorDot');
     for (let i = 0; i < colorDots.length; i++) {
         colorDots[i].addEventListener('click', function (event) {
@@ -152,7 +151,7 @@ function renderCategoryColors() {
 
 
 /**
- * Fügt die neue Kategorie zu dem Array hinzu und setzt die Farbe für die Kategorie.
+ * Adds the new category to the array and sets the color for the category
  * 
  */
 function pushNewCategory() {
@@ -170,7 +169,7 @@ function pushNewCategory() {
 
 
 /**
- * Funktion, die die ausgewählte Kategorie anzeigt
+ * Function that displays the selected category
  * 
  * @param {string} category
  * @param {string} hexString
@@ -190,8 +189,8 @@ function renderSelectedCategory(category, hexString) {
 
 
 /**
- * Setzt die ausgewählte Farbe für eine neue Kategorie.
- * @param {string} color - Der Hexcode der ausgewählten Farbe.
+ * Sets the selected color for a new category
+ * @param {string} color
  */
 function selectColor(color) {
     selectedColor = color;
@@ -199,8 +198,8 @@ function selectColor(color) {
 
 
 /**
- * Setzt die ausgewählte Farbe für die ausgewählte Kategorie.
- * @param {string} colorCategory - Der Hexcode der ausgewählten Farbe.
+ * Sets the selected color for the selected category
+ * @param {string} colorCategory
  */
 function declareColorFromCategory(colorCategory) {
     colorFromCategory = colorCategory;
@@ -208,10 +207,10 @@ function declareColorFromCategory(colorCategory) {
 
 
 /**
- * Konvertiert eine Hexadezimalzeichenfolge in ein Array von Rot-, Grün- und Blauwerten.
+ * Converts a hexadecimal string into an array of red, green and blue values
  *
- * @param {string} hexString - Die Hexadezimalzeichenfolge, die konvertiert werden soll.
- * @returns {number[]} Das Array mit den Rot-, Grün- und Blauwerten.
+ * @param {string} hexString
+ * @returns {number[]}
  */
 function convertHexToRgb(hexString) {
     let r = parseInt(hexString.slice(1, 3), 16);
@@ -223,7 +222,7 @@ function convertHexToRgb(hexString) {
 
 
 /**
- * Funktion, die den Kontakte-Inhalt anzeigt
+ * Function that displays the contacts content
  * 
  */
 function renderAssignedToContent() {
@@ -236,7 +235,7 @@ function renderAssignedToContent() {
 
 
 /**
- * Funktion, die den Kontakte-Grundaufbau anzeigt
+ * Function that displays the contacts basic structure
  * 
  */
 function renderAssignedTo() {
@@ -255,7 +254,7 @@ function renderAssignedTo() {
 
 
 /**
- * Funktion, die die verschiedenen Kontakte-Optionen anzeigt
+ * Function that displays the different contacts options
  * 
  */
 function renderAssignedToOptions() {
@@ -276,7 +275,7 @@ function renderAssignedToOptions() {
 
 
 /**
- * Funktion, die auf alle "div-container"-Elemente hört und bei Klick die zugehörige Checkbox auswählt
+ * Function that listens for all "div-container" elements and selects the associated checkbox when clicked
  */
 function checkContactCheckbox(event, contactColor) {
     const checkboxInput = event.currentTarget.querySelector('#checkbox-input');
@@ -292,10 +291,10 @@ function checkContactCheckbox(event, contactColor) {
 
 
 /**
- * Generiert HTML-Code für drei Buttons und fügt ihn in das Element mit der ID "prioButtons" ein.
- * Jeder Button hat einen Namen ("Urgent", "Medium" oder "Low"), eine CSS-Klasse ("urgentButton", "mediumButton" oder "lowButton") und eine ID ("urgentButton", "mediumButton" oder "lowButton").
- * Wenn ein Button geklickt wird, wird die Funktion "toggleButtonFocus" aufgerufen und das "event"-Objekt übergeben.
- * Jeder Button enthält auch ein Bild, das beim Klicken des Buttons ebenfalls die Funktion "toggleButtonFocus" aufruft.
+ * Generates HTML code for three buttons and inserts it into the element with ID "prioButtons"
+ * Each button has a name ("Urgent", "Medium" or "Low"), a CSS class ("urgentButton", "mediumButton" or "lowButton") and an ID ("urgentButton", "mediumButton" or "lowButton")
+ * When a button is clicked, the "toggleButtonFocus" function is called and the "event" object is passed
+ * Each button also contains an image that also calls the "toggleButtonFocus" function when the button is clicked
  */
 function renderPrioButtons() {
     selectedPriority = "";
@@ -309,12 +308,12 @@ function renderPrioButtons() {
 
 
 /**
- * Fügt oder entfernt CSS-Klassen von HTML-Buttons, abhängig davon, ob sie geklickt werden oder nicht.
- * Wenn ein Button geklickt wird, wird zunächst die CSS-Klasse "urgentButtonFocused", "mediumButtonFocused" oder "lowButtonFocused" von allen Buttons entfernt.
- * Dann wird der geklickte Button mit der Klasse "urgentButtonFocused", "mediumButtonFocused" oder "lowButtonFocused" versehen, je nachdem, welcher Button geklickt wurde.
- * Der Name des ausgewählten Prioritätsniveaus wird anschließend in der Variablen "selectedPriority" gespeichert.
+ * Adds or removes CSS classes from HTML buttons depending on whether they are clicked or not
+ * When a button is clicked, first the CSS class "urgentButtonFocused", "mediumButtonFocused" or "lowButtonFocused" is removed from all buttons
+ * Then the clicked button is given the class "urgentButtonFocused", "mediumButtonFocused" or "lowButtonFocused" depending on which button was clicked
+ * The name of the selected priority level is then stored in the variable "selectedPriority"
  *
- * @param {Event} event - Das Event-Objekt, das beim Klicken des Buttons ausgelöst wird.
+ * @param {Event} event
  */
 function toggleButtonFocus(event) {
     document.getElementById('prioButtons').style.border = "unset";
@@ -330,7 +329,7 @@ function toggleButtonFocus(event) {
 
 
 /**
- * Funktion, die den Unteraufgaben-Inhalt anzeigt
+ * Function that displays the subtask content
  * 
  */
 function renderSubtaskContent() {
@@ -354,7 +353,7 @@ function renderSubtaskContent() {
 
 
 /**
- * Funktion, die den Grundaufbau für das Inputfeld neuer Unteraufgaben anzeigt
+ * Function that displays the basic structure for the input field of new subtasks
  * 
  */
 function renderSubtask() {
@@ -377,7 +376,7 @@ function renderSubtask() {
 
 
 /**
- * Funktion, die eine neue Unteraufgabe zum Array hinzufügt
+ * Function that adds a new subtask to the array
  * 
  */
 function addSubtask() {
@@ -390,7 +389,7 @@ function addSubtask() {
 
 
 /**
- * Funktion, die alle Felder leert
+ * Function that clears all fields
  * 
  */
 function clearFields() {
@@ -405,12 +404,12 @@ function clearFields() {
 
 
 /**
- * Funktion zum Überprüfen des Formulars, bevor es abgesendet wird.
+ * Function to check the form before it is submitted
  * 
- * Die Funktion prüft zunächst den Wert der Variablen "colorFromCategory". Wenn der Wert der Variablen "#000000" ist, wird eine Fehlermeldung in der Konsole angezeigt und der Border des Elements mit der ID "dropdownCategory" wird rot gesetzt.
- * Anschließend wird die Länge des Arrays "bgContactColor" überprüft. Wenn die Länge kleiner als 1 ist, wird eine Fehlermeldung in der Konsole angezeigt und der Border des Elements mit der ID "dropdownAssignedTo" wird rot gesetzt.
- * Zuletzt wird der Wert der Variablen "selectedPriority" überprüft. Wenn der Wert leer ist, wird eine Fehlermeldung in der Konsole angezeigt und der Border des Elements mit der ID "prioButtons" wird rot gesetzt.
- * Wenn alle Bedingungen nicht erfüllt sind, wird die Funktion "submitTask" aufgerufen und "true" zurückgegeben. Andernfalls wird "false" zurückgegeben.
+ * The function first checks the value of the variable "colorFromCategory". If the value of the variable is "#000000", an error message is displayed in the console and the border of the element with the ID "dropdownCategory" is set to red
+ * Then the length of the array "bgContactColor" is checked. If the length is less than 1, an error message is displayed in the console and the border of the element with the ID "dropdownAssignedTo" is set red
+ * Lastly, the value of the "selectedPriority" variable is checked. If the value is empty, an error message is displayed in the console and the border of the element with the ID "prioButtons" is set to red
+ * If all conditions are not met, the "submitTask" function is called and "true" is returned. Otherwise "false" is returned
  */
 function checkForm() {
     if (colorFromCategory == '#000000') {
@@ -431,7 +430,7 @@ function checkForm() {
 
 
 /**
- * Funktion, die beim Absenden des Formulars die Task-Daten sammelt und speichert
+ * Function that collects and saves the task data when submitting the form
  */
 async function submitTask() {
     let headline = document.getElementById('headline').value;
@@ -471,9 +470,9 @@ async function submitTask() {
 
 
 /**
- * Funktion, die eine Task zu der Liste aller Tasks hinzufügt und auf dem Server speichert
+ * Function that adds a task to the list of all tasks and saves it on the server
  * 
- * @param {Object} task - Task, die hinzugefügt werden soll
+ * @param {Object} task
  */
 async function addThisTask(task) {
     allTasks.push(task);
@@ -482,7 +481,7 @@ async function addThisTask(task) {
 
 
 /**
- * Funktion, die das Formular zurücksetzt
+ * Function that resets the form
  */
 function clearForm() {
     document.getElementById("form").reset();
