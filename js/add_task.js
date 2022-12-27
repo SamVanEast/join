@@ -135,7 +135,18 @@ function renderCategoryColors() {
 
         `;
     }
+    addClickEventForColorDot();
+}
 
+
+/**
+ * Adds a click event listener to each element in the colorDots NodeList.
+ * When an element is clicked, the function scales up the element and increases its opacity,
+ * while resetting the transform and opacity of all other elements in the NodeList.
+ *
+ * @param {Event} event - The click event object.
+ */
+function addClickEventForColorDot(){
     let colorDots = document.querySelectorAll('.colorDot');
     for (let i = 0; i < colorDots.length; i++) {
         colorDots[i].addEventListener('click', function (event) {
