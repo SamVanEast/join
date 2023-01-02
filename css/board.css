@@ -593,6 +593,7 @@ body {
 
 .addTaskContainer {
     flex-direction: column;
+    padding-bottom: 0px !important;
 }
 
 .addTaskContainer h1 {
