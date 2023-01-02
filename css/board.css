@@ -611,6 +611,7 @@ body {
 
 .dropdown {
     font-size: 14px !important;
+    background-position: calc(100% - 20px) calc(1em + 6px), calc(100% - 15px) calc(1em + 6px), calc(100% - 2.5em) 0.5em !important;
 }
 
 .borderLine {
