@@ -1,8 +1,8 @@
 let wichContent = '';
-let isWelcomeAlready = false; //damit soll verhindert werden das die Welcome Seite mehrmals geladen wird
+let isWelcomeAlready = false; //this is to prevent the Welcome page from being loaded multiple times
 let welcomeIsShowing = false;
 /**
- * Sucht nach dem Attribute w3-include-html um darin ein HtMl-template rein zu laden
+ * Searches for the attribute w3-include-html to load a HtMl-template into it.
  */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -18,11 +18,11 @@ async function includeHTML() {
     }
 }
 /**
- * Je nachdem auf welchem Reiter man klickt wird das entsprechende template geladen
- * ebenso wird dem angeklickten Reiter eine andere Background-color gegeben
- * @param {string} wichHtmlPage gibt an welches HTML-template geladen werden muss, indem es ein Teil des Pfads ist
+ * Depending on which tab you click, the corresponding template is loaded
+ * also the clicked tab will be given a different background color
+ * @param {string} wichHtmlPage specifies which HTML-template has to be loaded by being part of the path
  */
-async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
+async function loadContent(wichHtmlPage) {
     if (welcomeIsShowing == false) {
         wichContent = wichHtmlPage;
         await loadBackend();
@@ -36,7 +36,7 @@ async function loadContent(wichHtmlPage) {//Den angeklickten Inhalt laden
     }
 }
 /**
- * soll die Information herrunter laden über den User der sich angemeldet hat, wenn man sich als Guest angemeldet hat soll ein leeres Array geladen werden
+ * should download the information about the user who has logged in, if you have logged in as guest an empty array should be loaded
  */
 async function loadBackend() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
@@ -44,7 +44,7 @@ async function loadBackend() {
     currentUser = JSON.parse(backend.getItem('currentUser')) || [];
 }
 /**
- * lädt den content rein und wenn die Seite zu schmal ist wird noch ein Begrüßungscontent davor geladen 
+ * loads the content and if the page is too narrow a welcome content is loaded in front of it 
  */
 function showContent() {
     let content = document.getElementById('content');
@@ -60,8 +60,8 @@ function showContent() {
     }
 }
 /**
- * ladet die Begrüßungsseite beim laden der side_bar.html
- * @param {id} content //to get the div with the ID content
+ * loads the welcome page when loading side_bar.html
+ * @param {id} content to get the div with the ID content
  */
 async function loadWelcomeContent(content) {
     welcomeIsShowing = true;
@@ -73,13 +73,10 @@ async function loadWelcomeContent(content) {
         document.getElementById('side-bar').style = '';
         welcomeIsShowing = false;
         isWelcomeAlready = true;
-        setTimeout(() => {//falls jmd die widht von der website ändert nicht immer wieder die animation von class= "hide_welcome" ausgeführt wird
-            // document.getElementById('welcome-responsive').classList.add('d-none'); //Habe ich auskommentiert da es bei mir Probleme mit der add_Task und dem hochpushen ins baackend gemacht hat
-        }, 500);
     }, 1500);
 }
 /**
- * wenn der content von contacts geladen wird soll die header_headline nicht mehr angezeigt werden
+ * when the content is loaded from contacts the header_headline should not be displayed anymore
  */
 function checkIFWichContentContacts() {
     if (wichContent == 'contacts') {
@@ -89,7 +86,7 @@ function checkIFWichContentContacts() {
     }
 }
 /**
- * wenn der content von add_task geladen wird, soll der div header-image nicht mehr angezeigt werden
+ * when the content of add_task is loaded, the div header-image should no longer be displayed
  */
 function checkIFWichContentAddTasks() {
     if (wichContent == 'add_task' && window.innerWidth < 1060) {
@@ -99,15 +96,15 @@ function checkIFWichContentAddTasks() {
     }
 }
 /**
- * wenn sich width vom der Seite ändert, soll eine Function ausgeführt werden
+ * when width of the page changes, a function should be executed
  */
 window.addEventListener('resize', () => {
-    showHelpIcon(); // meine funktion die ich ausführen möchte
+    showHelpIcon();
     checkIFWichContentContacts();
     checkIFWichContentAddTasks();
 })
 /**
- * überpüft ob der Help-icon angezeigt werden soll und ob darkBlue einer der menü-Reiter hinzugefügt werden muss
+ * checks if the help icon should be displayed and if darkBlue should be added to one of the menu- tabs must be added
  */
 function showHelpIcon() {
     let tab = document.getElementById(`tab-${wichContent}`);
@@ -121,7 +118,7 @@ function showHelpIcon() {
     }
 }
 /**
- * frägt nach welcher content geladen ist und dann nur die dazu gehöhrige function ausgeführt wird
+ * asks which content is loaded and then only the corresponding function is executed
  */
 async function wichOnloadFunction() {
     if (wichContent == 'board') {
@@ -134,13 +131,13 @@ async function wichOnloadFunction() {
         initAddTask();
     }
     if (wichContent == 'summary') {
-        summaryInit();
+        initSummary();
     }
 }
 /**
- * Es löscht von allen Reitern die diese Background-color haben könnten, diese.
+ * It deletes from all tabs that could have this background-color.
  */
-function removeDarkBlue() {//Überrall den dunkleren Farbton löschen.
+function removeDarkBlue() {
     document.getElementById('tab-summary').classList.remove('darkBlue');
     document.getElementById('tab-board').classList.remove('darkBlue');
     document.getElementById('tab-add_task').classList.remove('darkBlue');
@@ -148,7 +145,7 @@ function removeDarkBlue() {//Überrall den dunkleren Farbton löschen.
     document.getElementById('tab-legal_notice').classList.remove('darkBlue');
 }
 /**
- * entfernt den divs im Menu unter dem Logo, jenachdem wie breit die Website ist display:none
+ * removes the divs in the menu below the logo, depending on how wide the site is display:none
  */
 function showLogOutButton() {
     document.getElementById('log-out-area').style = '';
@@ -162,7 +159,7 @@ function showLogOutButton() {
 
 }
 /**
- * fügt den divs im Menu unter dem Logo display:none hinzu
+ * adds display:none to the divs in the menu below the logo
  */
 function closeLogOutButton() {
     document.getElementById('log-out-area').style = 'display: none';
@@ -171,14 +168,14 @@ function closeLogOutButton() {
     document.getElementById('log-out-area-log-out').style = 'display: none';
 }
 /**
- * sorgt dafür das diese div aufwelche geklickt wird nicht von einer anderen function beeinflusst wird
+ * makes sure that this div, which is clicked on, is not influenced by another function
  * @param {*} event 
  */
 function save(event) {
     event.stopPropagation();
 }
 /**
- * ist eine Abfrage um zu wissen ob man sich als guest oder user einloggt
+ * is a query to know if you log in as guest or user
  */
 function whoToWelcome() {
     if (wichContent == 'summary') {
@@ -193,20 +190,21 @@ function whoToWelcome() {
 
 }
 /**
- * ladet die user Begrüßung
- * @param {*id} welcome Die Id vom welcome div
- * @param {*id} welcomeResponsive Die Id vom welcome-responsive div
+ * Invites the user greeting
+ * @param {id} welcome the Id from the welcome div
+ * @param {id} welcomeResponsive the Id from welcome-responsive div
  */
 function loadUser(welcome, welcomeResponsive) {
+    document.getElementById('profile-img').src = '../img/header-img/profile-img.png';
     welcome.innerHTML = `${htmlUser()}`;
     if (welcomeIsShowing == true) {
         welcomeResponsive.innerHTML = `${htmlUser()}`;
     }
 }
 /**
- * ladet die guest Begrüßung
- * @param {id} welcome Die Id vom welcome div
- * @param {id} welcomeResponsive Die Id vom welcome-responsive div
+ * Invites the guest greeting
+ * @param {id} welcome the Id from the welcome div
+ * @param {id} welcomeResponsive the Id from welcome-responsive div
  */
 function loadGuest(welcome, welcomeResponsive) {
     welcome.innerHTML = `${htmlGuest()}`;
@@ -216,7 +214,7 @@ function loadGuest(welcome, welcomeResponsive) {
 }
 /**
  * 
- * @returns Gibt den HTML content für den user 
+ * @returns Gives the HTML content for the user 
  */
 function htmlUser() {
     return `<span class="good_morning_responsive">Good morning,</span><br>
@@ -225,9 +223,10 @@ function htmlUser() {
 }
 /**
  * 
- * @returns Gibt den HTML content für den guest
+ * @returns Gives the HTML content for the guest
  */
 function htmlGuest() {
-    return `<span class="good_morning_responsive">Good morning</span><br>
+    return `<span class="good_morning_responsive">Good morning,</span><br>
+            <span class="account_name_responsive">Guest</span>
             `;
 }

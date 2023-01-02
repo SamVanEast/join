@@ -2,9 +2,9 @@ let allCategories = ['progress', 'feedback', 'todo', 'done'];
 let allIds = ['tasks-in-progress', 'tasks-in-feedback', 'to-do-number', 'done-number'];
 const allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 /**
- * Es wird aller HTML Content eingfügt
+ * All HTML content is inserted
  */
-async function summaryInit() {
+async function initSummary() {
     await loadAllTasks();
     tasksInBoard();
     renderSomeHtmlContent();
@@ -12,7 +12,7 @@ async function summaryInit() {
     renderUpcomingDeadline();
 }
 /**
- * Alle Tasks in im board sind werden ins Array allTasks geladen welches in der board.js definiert ist 
+ * All tasks in the board are loaded into the array allTasks which is defined in board.js 
  */
 async function loadAllTasks() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
@@ -20,13 +20,13 @@ async function loadAllTasks() {
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
 /**
- * alle vorhandenen Tasks werden reingladen
+ * all existing tasks are reloaded
  */
 function tasksInBoard() {
     document.getElementById('tasks-in-board').innerHTML = `${allTasks.length}`;
 }
 /**
- * der Content von allen im Array allCategories werden geladen
+ * the content of all categories in the array allCategories will be loaded
  */
 function renderSomeHtmlContent() {
     for (let i = 0; i < allCategories.length; i++) {
@@ -40,7 +40,7 @@ function renderSomeHtmlContent() {
     }
 }
 /**
- * gibt an wie viele tasks als urgent deklariert sind 
+ * indicates how many tasks are declared as urgent 
  */
 function renderUregentNumber() {
     let currentNumber = 0;
@@ -52,29 +52,38 @@ function renderUregentNumber() {
     document.getElementById('urgent-info-number').innerHTML = `${currentNumber}`;
 }
 /**
- * Vergleicht welches task Datum mit urgent zu erst kommt
+ *  Compares which task date with urgent comes first
  */
 function renderUpcomingDeadline() {
     let upcomingDeadline = '';
     for (let i = 0; i < allTasks.length; i++) {
         let prioUrgent = allTasks[i].prio == 'Urgent';
-        if (upcomingDeadline.split('-').join("") > allTasks[i].dueDate.split('-').join("") && prioUrgent || upcomingDeadline == '' && prioUrgent) {
+        if (conditionEarliestDate(upcomingDeadline, prioUrgent, i)) {
             upcomingDeadline = allTasks[i].dueDate;
         }
     }
     checkUpcomingDeadline(upcomingDeadline);
 }
 /**
- * kontroliert ob ein urgent existiert und ladet entweder No Urgent oder das neu vormartierte Datum ins HTML
- * @param {string} upcomingDeadline aktuelles Datum von der frühesten Deadline
+ * 
+ * @param {String} upcomingDeadline current date
+ * @param {Boolean} prioUrgent is it a task with prio 'urgent'.
+ * @returns if the date without minus sign is greater than the current date or none exists yet 
+ */
+function conditionEarliestDate(upcomingDeadline, prioUrgent, i){
+    return upcomingDeadline.split('-').join("") > allTasks[i].dueDate.split('-').join("") && prioUrgent || upcomingDeadline == '' && prioUrgent
+}
+/**
+ * checks if an urgent exists and loads either No Urgent or the reformatted date into the HTML
+ * @param {string} upcomingDeadline current date from the earliest deadline
  */
 function checkUpcomingDeadline(upcomingDeadline){
     let dateOfUrgent = document.getElementById('date-of-urgent');
     if (upcomingDeadline == '') {
-        upcomingDeadline = 'No Urgent';
+        upcomingDeadline = 'Nothing Urgent';
         dateOfUrgent.innerHTML = `${upcomingDeadline}`;
     }
-    if (upcomingDeadline !== '' && upcomingDeadline !== 'No Urgent') {
+    if (upcomingDeadline !== '' && upcomingDeadline !== 'Nothing Urgent') {
         let year = upcomingDeadline.substr(0, 4);
         let month = allMonths[upcomingDeadline.substr(5, 2) -1]
         let day = upcomingDeadline.substr(-2, 2)
