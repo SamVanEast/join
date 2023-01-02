@@ -226,13 +226,13 @@
 }
 
 .to_do_and_done_section:hover #to-do-img {
-    background-image: url("../../assets/img/summary-img/to-do-hover.svg");
+    background-image: url("../assets/img/summary-img/to-do-hover.svg");
     background-color: white;
     background-color: #2A3647;
 }
 
 .to_do_and_done_section:hover #done-img {
-    background-image: url("../../assets/img/summary-img/done-hover.svg");
+    background-image: url("../assets/img/summary-img/done-hover.svg");
     background-color: white;
     background-color: #2A3647;
 }
