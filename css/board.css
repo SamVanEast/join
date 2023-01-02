@@ -367,9 +367,12 @@ body {
 
 .ok-btn {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 24px;
+    margin-top: 12px;
     cursor: pointer;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    background: #2A3647;
+    color: #FFFFFF;
 }
 
 #addButton {

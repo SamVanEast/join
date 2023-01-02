@@ -36,7 +36,7 @@ async function addId() {
 function checkProgressbar() {
     for (let i = 0; i < allTasks.length; i++) {
         const progbar = allTasks[i];
-        if (progbar.subtask.length == 0) {
+        if (progbar['subtask'].length == 0) {
             document.getElementById(`progbar${progbar.id}`).innerHTML = '';
         }
     }
@@ -59,11 +59,11 @@ function openTask(element) {
     for (let i = 0; i < allTasks[element]['assignedTo'].length; i++) {
         const people = allTasks[element]['assignedTo'][i];
         const colors = allTasks[element]['bgcolor'][i];
-            
-            document.getElementById(`circleAndNames`).innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 5px">
+
+        document.getElementById(`circleAndNames`).innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 5px">
             <div class="people" style="background: rgb(${colors}); margin-left: 2px">${people.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
         <div class="personsName">${people}</div></div>`;
-        
+
     }
 
     changePriorityButton(element);
@@ -191,7 +191,7 @@ function editTask(element) {
             <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
         </div>
     <div>
-        <form onsubmit="editTasks(); return false;">
+        <form onsubmit="editTasks(${element}); return false;">
         <div class="title">
             <p>Title</p>
             <input id="editHeadline" minlength="1" type="text" placeholder="" required>
@@ -209,8 +209,8 @@ function editTask(element) {
             <div class="prioButtons" id="prioButtons"></div>
         </div>
         <div class="categoryAssigned" id="assigned"></div>
-        <sclass="ok-btn">
-    <img src="../img/board_img/ok-button.png">
+        <button class="ok-btn"><img src="../img/board_img/ok-button.png" alt=""></button>
+        
     </form>
     </div>
     
@@ -225,26 +225,44 @@ function editTask(element) {
 }
 
 
-function editTasks(i) {
+async function editTasks(element) {
     let headline = document.getElementById('editHeadline').value;
     let desc = document.getElementById('editDesc').value;
     let dueDate = document.getElementById('editDueDate').value;
-    allTasks.splice(i, 1);
+    let cat = allTasks[element].category;
+    let status = allTasks[element].status
+    let subs = allTasks[element].subtask;
+    let color = allTasks[element].color;
+    let bgcolor = allTasks[element].bgcolor;
+
+    const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
+    const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
+    const checkedNames = checkedContacts.map(cb => cb.name);
+
+    allTasks.splice(element, 1);
     let task = {
         'headline': headline,
         'desc': desc,
-        'dueDate': dueDate
-    }
-    changeTask(task);
+        'status': status,
+        'category': cat,
+        'dueDate': dueDate,
+        'subtask': subs,
+        'color': color,
+        'bgcolor': bgcolor,
+        'assignedTo': checkedNames,
+        'prio': selectedPriority
+
+        
+    };
+
+    await changeTask(task);
 }
 
+
 async function changeTask(task) {
-    // Task zu der Liste aller Tasks hinzufügen
     allTasks.push(task);
-    // allTasks.push({bgcolor: bgcolor});
-    // Liste aller Tasks auf dem Server speichern
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    console.log(allTasks);
+    console.log();
 }
 
 
@@ -347,7 +365,7 @@ function filterDone() {
 
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
-        
+
         document.getElementById('done').innerHTML += newTaskHTML(element);
 
         for (let j = 0; j < element.assignedTo.length; j++) {
