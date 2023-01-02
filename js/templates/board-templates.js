@@ -75,9 +75,11 @@ function filterBoardHTML(result) {
 
 function addNewTaskHTML() {
     return /*html*/ `
-    <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
     <div class="addTaskContainer">
-        <h1>Add Task</h1>
+        <div class="addTaskMobile">
+            <h1>Add Task</h1>
+            <div class="exitBtn" onclick="closeAddTask()"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+        </div>
         <form id="form" onsubmit="submitTask(); return false">
             <div class="addTask">
                 <div class="addTaskLeftSide">
