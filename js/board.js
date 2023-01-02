@@ -49,6 +49,7 @@ function startDragging(id) {
 
 
 function openTask(element) {
+    document.getElementById('addOpenTask').classList.remove('d-none');
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
     document.body.classList.add('noScroll');
@@ -72,6 +73,7 @@ function openTask(element) {
 
 
 function closeOpenTask() {
+    document.getElementById('addOpenTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
     document.getElementById('openTask').classList.add('d-none');
     document.getElementById('addOpenTask').classList.remove('darker');
