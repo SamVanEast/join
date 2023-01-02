@@ -23,7 +23,7 @@ body {
     align-items: center;
 }
 
-.addOpenTask{
+.addOpenTask {
     position: fixed;
     top: 0;
     left: 0;
@@ -68,7 +68,6 @@ body {
     flex-direction: column;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-
 }
 
 .container {
@@ -229,7 +228,7 @@ body {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    
+
 }
 
 .personsName {
@@ -341,6 +340,7 @@ body {
     border-radius: 10px;
     padding: 5px;
 }
+
 /* category colors */
 
 /*.Design {
@@ -434,7 +434,13 @@ body {
         margin-top: -15px;
     }
 
+    .addNewTask {
+        height: 100vh;
+    }
 
+    .subtasksContent {
+        margin-bottom: 0px !important;
+    }
 }
 
 
@@ -594,11 +600,6 @@ body {
 
 }
 
-.dateToButtons p {
-    margin-top: 40px !important;
-
-}
-
 .title input {
     font-size: 14px !important;
 }
@@ -641,6 +642,3 @@ body {
     font-size: 14px !important;
 
 }
-
-
-
