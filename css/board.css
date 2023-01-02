@@ -444,11 +444,6 @@ body {
         margin-top: -15px;
     }
 
-    .addNewTask {
-        height: 100vh;
-        overflow: scroll;
-    }
-
     .addTaskMobile{
         display: flex;
         justify-content: flex-start;
@@ -537,6 +532,8 @@ body {
     .circleAndName {
         margin-bottom: 0px;
     }
+
+
 
 }
 
