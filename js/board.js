@@ -95,6 +95,7 @@ function changePriorityButton(element) {
 }
 
 function closeAddTask() {
+    document.getElementById('addOpenTask').classList.add('d-none');
     document.getElementById('addNewTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
     document.getElementById('addOpenTask').classList.remove('darker');
@@ -129,6 +130,7 @@ function removeHighlight(id) {
 
 
 function addNewTask() {
+    document.getElementById('addOpenTask').classList.remove('d-none');
     document.getElementById('addNewTask').classList.remove('d-none');
     document.body.classList.add('noScroll');
     document.getElementById('addOpenTask').classList.add('darker');
