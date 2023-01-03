@@ -40,7 +40,8 @@ function openTaskHTML(element) {
             <p id="openTaskDesc">${allTasks[element].desc}</p>
             <p><b>Due Date: </b>${allTasks[element].dueDate}</p>
             <div style="display: flex; align-items: center"><span style="padding-right: 10px"><b>Priority: </b></span><span id="prioOpenTask">${allTasks[element].prio}</span></div>
-        </div>
+            <p>${allTasks[element].subtask}</p>
+            </div>
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
         <div class="circleAndName" id="circleAndNames">
@@ -148,6 +149,7 @@ function editTaskHTML(element) {
             <div class="prioButtons" id="prioButtons"></div>
         </div>
         <div class="categoryAssigned" id="assigned"></div>
+        <div class="subtasksContent" id="subContent"></div>
         <button class="ok-btn"><img src="../img/board_img/ok-button.png" alt=""></button>
         
     </form>
