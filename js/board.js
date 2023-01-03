@@ -260,6 +260,7 @@ async function editTasks(element) {
     };
 
     await changeTask(task);
+    loadContent('board');
 }
 
 
