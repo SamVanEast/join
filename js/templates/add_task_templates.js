@@ -31,8 +31,8 @@ function showCategorysOptionsHTML(category, hexString){
 
 function showAddNewCategoryHTML(){
     return /*html*/`
-        <div class="categoryContent">
-            <input class="inputFieldSubtask" id="inputFieldCategory" type="text" placeholder="New category name" onclick="event.stopPropagation()">
+        <div class="categoryContent" onclick="save(event)">
+            <input class="inputFieldSubtask" id="inputFieldCategory" type="text" placeholder="New category name">
             <div class="subtaskImage">
                 <img src="../../assets/img/add_task_img/cross.png" onclick="renderCategoryContent()">
                 <div class="inputBorder"></div>
@@ -80,11 +80,13 @@ function showAssignedToHTML(){
 }
 
 
-function showAssignedToOptionsHTML(contacts, contactColor){
+function showAssignedToOptionsHTML(b, contacts, contactColor){
     return /*html*/`
-        <div class="contactOptions div-container" id="div-container" onclick="checkContactCheckbox(event, '${contactColor}')">
-            <span class="categorysDropdown">${contacts}</span>
-            <input id="checkbox-input" type="checkbox" name="${contacts}">
+        <div class="contactOptions div-container" id="div-container">
+            <label for="checkbox-input${b}" onclick="checkContactCheckbox('${b}', event, '${contactColor}')">
+                <span class="categorysDropdown">${contacts}</span>
+                <input id="checkbox-input${b}" type="checkbox" name="${contacts}">
+            </label>
         </div>
     `;
 }

@@ -139,15 +139,19 @@ function addClickEventForColorDot() {
  */
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
+    console.log(newCategory.length);
+    console.log(selectedColor);
+    if (newCategory.length > 0 && selectedColor !== '#000000') {
+        categorys.push(newCategory);
+        categoryColors.push(selectedColor);
 
-    categorys.push(newCategory);
-    categoryColors.push(selectedColor);
+        document.getElementById('categorysDropdownSelect').classList.remove('categorysDropdownSelect');
+        document.getElementById('categoryColors').classList.add('d-none');
+        document.getElementById('categoryColors').innerHTML = '';
 
-    document.getElementById('categorysDropdownSelect').classList.remove('categorysDropdownSelect');
-    document.getElementById('categoryColors').classList.add('d-none');
-    document.getElementById('categoryColors').innerHTML = '';
-
-    renderCategorysOptions();
+        renderCategorysOptions();
+        renderCategoryContent();
+    }
 }
 
 
@@ -238,7 +242,7 @@ function renderAssignedToOptions() {
         const contacts = contact[b]['name'];
         const contactColor = contact[b]['bgcolor'];
 
-        names.innerHTML += showAssignedToOptionsHTML(contacts, contactColor);
+        names.innerHTML += showAssignedToOptionsHTML(b, contacts, contactColor);
     }
 }
 
@@ -246,10 +250,9 @@ function renderAssignedToOptions() {
 /**
  * Function that listens for all "div-container" elements and selects the associated checkbox when clicked
  */
-function checkContactCheckbox(event, contactColor) {
-    const checkboxInput = event.currentTarget.querySelector('#checkbox-input');
-
-    checkboxInput.checked = !checkboxInput.checked;
+function checkContactCheckbox(b, event, contactColor) {
+    let checkboxInput = event.currentTarget.querySelector(`#checkbox-input${b}`);
+    // checkboxInput.checked = !checkboxInput.checked;
 
     if (checkboxInput.checked && bgContactColor.indexOf(contactColor) === -1) {
         bgContactColor.push(contactColor);
@@ -397,7 +400,6 @@ async function submitTask() {
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
-
     let task = {
         'headline': headline,
         'desc': desc,
@@ -439,4 +441,11 @@ function clearForm() {
     allSubtasks.length = 0;
     bgContactColor.length = 0;
     renderSubtaskContent();
+}
+/**
+ * to stop the onclick
+ * @param {Event} event The click event object.
+ */
+function save(event) {
+    event.stopPropagation();
 }

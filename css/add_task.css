@@ -239,6 +239,11 @@ body {
     flex-direction: row;
 }
 
+.contactOptions label{
+    width: 100%;
+    display: flex;
+}
+
 .contactOptions input {
     margin-right: 15px;
 }
@@ -412,6 +417,7 @@ body {
     flex-direction: row;
     margin-left: auto;
     gap: 10px;
+    height: 49px;
 }
 
 .inputBorder {
