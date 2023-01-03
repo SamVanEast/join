@@ -118,7 +118,7 @@ function renderCategoryColors() {
  *
  * @param {Event} event - The click event object.
  */
-function addClickEventForColorDot(){
+function addClickEventForColorDot() {
     let colorDots = document.querySelectorAll('.colorDot');
     for (let i = 0; i < colorDots.length; i++) {
         colorDots[i].addEventListener('click', function (event) {
@@ -331,10 +331,11 @@ function renderSubtask() {
  */
 function addSubtask() {
     let newSubtask = document.getElementById('inputFieldSubtask').value;
+    if (newSubtask.length > 0) {
+        allSubtasks.push(newSubtask);
+        renderSubtaskContent();
+    }
 
-    allSubtasks.push(newSubtask);
-
-    renderSubtaskContent();
 }
 
 
