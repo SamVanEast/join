@@ -16,6 +16,7 @@ let selectedPriority = "";
 let checkedPrios = [];
 let allSubtasks = [];
 let checkedSubtasks = [];
+let checkedContacts = [];
 
 
 /**
@@ -149,8 +150,9 @@ function pushNewCategory() {
         document.getElementById('categoryColors').classList.add('d-none');
         document.getElementById('categoryColors').innerHTML = '';
 
-        renderCategorysOptions();
         renderCategoryContent();
+        // renderCategorys();
+        renderCategorysOptions();
     }
 }
 
@@ -228,6 +230,7 @@ function renderAssignedTo() {
 
     content.innerHTML = showAssignedToHTML();
     renderAssignedToOptions();
+    addChecked();
 }
 
 
@@ -246,13 +249,23 @@ function renderAssignedToOptions() {
     }
 }
 
+function addChecked() {
+    for (let i = 0; i < checkedContacts.length; i++) {
+        document.getElementById(checkedContacts[i].id).checked = true;
+    }
+
+}
+
+function saveChecked() {
+    let contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
+    checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
+}
 
 /**
  * Function that listens for all "div-container" elements and selects the associated checkbox when clicked
  */
 function checkContactCheckbox(b, event, contactColor) {
     let checkboxInput = event.currentTarget.querySelector(`#checkbox-input${b}`);
-    // checkboxInput.checked = !checkboxInput.checked;
 
     if (checkboxInput.checked && bgContactColor.indexOf(contactColor) === -1) {
         bgContactColor.push(contactColor);
@@ -391,10 +404,8 @@ async function submitTask() {
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
 
-    const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
-    const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
     const checkedNames = checkedContacts.map(cb => cb.name);
-
+    console.log(checkedNames);
     let dueDate = document.getElementById('dueDate').value;
 
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
