@@ -39,10 +39,6 @@ body {
     width: 100%;
 }
 
-.title p {
-    margin-top: 20px !important;
-}
-
 .openTask {
     background-color: #FFFFFF;
     z-index: 5;
@@ -50,10 +46,9 @@ body {
     border-radius: 30px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
     padding: 50px;
-    min-width: 250px;
+    min-width: 33%;
 }
 
 .openTaskCategory {
@@ -308,6 +303,7 @@ body {
 #edit-btn {
     text-align: right;
     width: 100%;
+    cursor: pointer;
 }
 
 .dragArea {
@@ -599,6 +595,7 @@ body {
 .addTaskContainer h1 {
     font-size: 45px !important;
     padding-left: 40px !important;
+    margin-bottom: 0px !important;
 }
 
 .titleToAssigned {

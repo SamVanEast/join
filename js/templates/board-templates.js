@@ -1,6 +1,6 @@
 function newTaskHTML(element) {
     return /*html*/`
-        <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
+        <div class="taskBoxes" draggable="true" ontouchstart="startDragging(${element['id']})" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
         <div class="singleTask ${element.id}" id="singleTask ${element.id}">
         <div id="cats${element['id']}" class="category1" style="background-color: ${element.color}">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
@@ -118,6 +118,42 @@ function addNewTaskHTML() {
                 </div>
             </div>
         </form>
+    </div>
+    `;
+}
+
+function editTaskHTML(element) {
+    return `
+    <div class="editScreen">
+        <div class="editHeadlineClose">
+            <h1>Edit Task</h1>
+            <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+        </div>
+    <div>
+        <form onsubmit="editTasks(${element}); return false;">
+        <div class="title">
+            <p>Title</p>
+            <input id="editHeadline" minlength="1" type="text" placeholder="" required>
+        </div>    
+        <div class="description">
+            <p>Description</p>
+            <textarea required minlength="1" type="text" placeholder="" id="editDesc"></textarea>
+        </div>
+        <div class="dueDate">
+            <p>Due date</p>
+            <input id="editDueDate" type="date" required>
+        </div>
+        <div class="prio">
+            <p>Prio</p>
+            <div class="prioButtons" id="prioButtons"></div>
+        </div>
+        <div class="categoryAssigned" id="assigned"></div>
+        <button class="ok-btn"><img src="../img/board_img/ok-button.png" alt=""></button>
+        
+    </form>
+    </div>
+    
+    </div>
     </div>
     `;
 }
