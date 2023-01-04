@@ -77,8 +77,8 @@ function checkSubtasks(element) {
 
     for (let i = 0; i < allTasks[element]['subtask'].length; i++) {
         const sub = allTasks[element]['subtask'][i];
+
         subs.innerHTML += `<div><input type="checkbox" id="subtasks${i}" value="" name=""><span style="padding-left: 12px;">${sub}</span></input></div>`;
-        
     }
 }
 
