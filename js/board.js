@@ -68,17 +68,23 @@ function openTask(element) {
     }
 
     changePriorityButton(element);
-
+    checkSubtasks(element);
 }
 
 
-function closeOpenTask() {
-    document.getElementById('addOpenTask').classList.add('d-none');
-    document.body.classList.remove('noScroll');
-    document.getElementById('openTask').classList.add('d-none');
-    document.getElementById('addOpenTask').classList.remove('darker');
+function checkSubtasks(element) {
+    let subs = document.getElementById('changeSubs');
 
+    for (let i = 0; i < allTasks[element]['subtask'].length; i++) {
+        const sub = allTasks[element]['subtask'][i];
+        
+        subs.innerHTML += `<div><input type="checkbox" id="subtasks${i}" value="" name=""><span style="padding-left: 12px;">${sub}</span></input></div>`;
+        if (allTasks[element].subtask.length === 0){
+            document.getElementById('theSubs').innerHTML = '';
+        }
+    }
 }
+
 
 function changePriorityButton(element) {
     let thePrio = document.getElementById('prioOpenTask');
@@ -95,6 +101,16 @@ function changePriorityButton(element) {
         thePrio.classList.add('bgLow');
     }
 }
+
+function closeOpenTask() {
+    document.getElementById('addOpenTask').classList.add('d-none');
+    document.body.classList.remove('noScroll');
+    document.getElementById('openTask').classList.add('d-none');
+    document.getElementById('addOpenTask').classList.remove('darker');
+
+}
+
+
 
 function closeAddTask() {
     document.getElementById('addOpenTask').classList.add('d-none');
@@ -224,7 +240,7 @@ async function editTasks(element) {
         'assignedTo': checkedNames,
         'prio': selectedPriority
 
-        
+
     };
 
     await changeTask(task);

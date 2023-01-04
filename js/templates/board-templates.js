@@ -40,7 +40,10 @@ function openTaskHTML(element) {
             <p id="openTaskDesc">${allTasks[element].desc}</p>
             <p><b>Due Date: </b>${allTasks[element].dueDate}</p>
             <div style="display: flex; align-items: center"><span style="padding-right: 10px"><b>Priority: </b></span><span id="prioOpenTask">${allTasks[element].prio}</span></div>
-            <p>${allTasks[element].subtask}</p>
+            <div id="theSubs" class="selectedSubs">
+            <p><span><b>Subtasks: </b></span></p>
+            <p id="changeSubs"></p>
+            </div>
             </div>
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
