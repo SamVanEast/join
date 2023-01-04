@@ -140,8 +140,6 @@ function addClickEventForColorDot() {
  */
 function pushNewCategory() {
     let newCategory = document.getElementById('inputFieldCategory').value;
-    console.log(newCategory.length);
-    console.log(selectedColor);
     if (newCategory.length > 0 && selectedColor !== '#000000') {
         categorys.push(newCategory);
         categoryColors.push(selectedColor);
@@ -151,8 +149,6 @@ function pushNewCategory() {
         document.getElementById('categoryColors').innerHTML = '';
 
         renderCategoryContent();
-        // renderCategorys();
-        renderCategorysOptions();
     }
 }
 
@@ -169,7 +165,6 @@ function renderSelectedCategory(category, hexString) {
 
     document.getElementById('dropdownCategory').innerHTML = showSelectedCategoryHTML(category, colorString);
 
-    categoryColors.push(colorFromCategory);
     document.getElementById('dropdownCategory').classList.remove('showAllCategorys');
     colorFromCategory = '#000000';
 }
@@ -405,7 +400,6 @@ async function submitTask() {
     let cat = document.getElementById('selectedCategory').innerText;
 
     const checkedNames = checkedContacts.map(cb => cb.name);
-    console.log(checkedNames);
     let dueDate = document.getElementById('dueDate').value;
 
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
@@ -448,6 +442,7 @@ async function addThisTask(task) {
  * Function that resets the form
  */
 function clearForm() {
+    checkedContacts = [];
     document.getElementById("form").reset();
     allSubtasks.length = 0;
     bgContactColor.length = 0;
