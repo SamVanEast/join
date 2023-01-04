@@ -79,7 +79,7 @@ function checkSubtasks(element) {
 
     for (let i = 0; i < allTasks[element]['subtask'].length; i++) {
         const sub = allTasks[element]['subtask'][i];
-        subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${allTasks[element]['subtask'][i]}" onclick="pushCheckedSubtask()"><span style="padding-left: 12px;">${sub}</span></input></div>`;
+        subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${allTasks[element]['subtask'][i]}"><span style="padding-left: 12px;">${sub}</span></input></div>`;
         
     }
 }
@@ -90,7 +90,6 @@ function pushCheckedSubtask(){
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
     checkedSubtasksTest.push(checkedSubtask);
-    console.log(checkedSubtasksTest);
 }
 
 
@@ -115,7 +114,7 @@ function closeOpenTask() {
     document.body.classList.remove('noScroll');
     document.getElementById('openTask').classList.add('d-none');
     document.getElementById('addOpenTask').classList.remove('darker');
-
+    pushCheckedSubtask();
 }
 
 
@@ -227,7 +226,7 @@ async function editTasks(element) {
     let desc = document.getElementById('editDesc').value;
     let dueDate = document.getElementById('editDueDate').value;
     let cat = allTasks[element].category;
-    let status = allTasks[element].status
+    let status = allTasks[element].status;
     let subs = allTasks[element].subtask;
 
     let color = allTasks[element].color;
