@@ -23,13 +23,6 @@ body {
     align-items: center;
 }
 
-.addOpenTask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 .addTaskMobile{
     display: flex;
@@ -74,6 +67,7 @@ body {
     flex-direction: column;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
+    padding: 24px;
 }
 
 .container {
@@ -169,7 +163,8 @@ body {
     box-sizing: border-box;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
-    margin-top: 25px;
+    margin-top: 24px;
+    margin-bottom: 24px;
     cursor: pointer;
 }
 
@@ -440,14 +435,6 @@ body {
         margin-top: -15px;
     }
 
-    .addTaskMobile{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-direction: row;
-        width: 100%;
-    }
-
     .subtasksContent {
         margin-bottom: 0px !important;
     }
@@ -587,8 +574,21 @@ body {
 *
 */
 
+.clearAndCreate {
+    position: unset !important;
+    top: unset !important;
+    right: unset !important;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
 .addTaskContainer {
     flex-direction: column;
+    padding-bottom: unset !important;
+}
+
+/*
+
     padding-bottom: 0px !important;
 }
 
@@ -611,13 +611,7 @@ body {
     font-size: 14px !important;
 }
 
-.clearAndCreate {
-    position: unset !important;
-    top: unset !important;
-    right: unset !important;
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
+
 
 .description textarea {
     height: 50px !important;
@@ -630,9 +624,6 @@ body {
     background-position: calc(100% - 20px) calc(1em + 6px), calc(100% - 15px) calc(1em + 6px), calc(100% - 2.5em) 0.5em !important;
 }
 
-.borderLine {
-    height: 500px !important;
-}
 
 .dueDate p {
     margin-top: 20px !important;
@@ -657,3 +648,5 @@ body {
     font-size: 14px !important;
 
 }
+
+*/
