@@ -1182,7 +1182,7 @@ input[type=text], input[type=email], input[type=number] {
 
   .contact-close-mobile {
     width: 100%;
-    display: flex;
+    display: flex !important;
     justify-content: flex-end;
   }
 
