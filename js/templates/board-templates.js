@@ -31,7 +31,7 @@ function getPeopleHTML(assigned, bgcolor) {
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
     <div class="category2 ${allTasks[element].category}" style="background-color: ${allTasks[element].color}">${allTasks[element].category}</div>
-    <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
+    <div><img id="close" onclick="closeOpenTask(); addCheckedSubtask()" src="../img/board_img/close.svg"></div>
     </div>
     <div id="openTaskHMobile">
             <h2>${allTasks[element].headline}</h2>
@@ -131,7 +131,7 @@ function editTaskHTML(element) {
     <div class="editScreen">
         <div class="editHeadlineClose">
             <h1>Edit Task</h1>
-            <div onclick="closeEditFunction(); addCheckedSubtask()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+            <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
         </div>
     <div>
         <form onsubmit="editTasks(${element}); return false;">

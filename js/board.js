@@ -5,7 +5,7 @@ let feedback;
 let progress;
 let done;
 let allTasks;
-let checkedSubtasksTest = [];
+let checkedSubtasksTest;
 
 
 async function initBoard() {
@@ -92,13 +92,6 @@ function pushCheckedSubtask(){
     checkedSubtasksTest.push(checkedSubtask);
     console.log(checkedSubtasksTest);
 }
-
-
-async function addCheckedSubtask() {
-    await backend.setItem('testJSONCheckedSubtasks', JSON.stringify(checkedSubtasksTest));
-    console.log(checkedSubtasksTest);
-}
-
 
 
 function changePriorityButton(element) {
@@ -292,6 +285,12 @@ function closeEditFunction() {
     document.getElementById('openTask').classList.remove('darker');
     closeAddTask();
     loadContent('board');
+}
+
+
+async function addCheckedSubtask() {
+    await backend.setItem('testJSONCheckedSubtasks', JSON.stringify(checkedSubtasksTest));
+    console.log(checkedSubtasksTest);
 }
 
 
