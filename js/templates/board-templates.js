@@ -131,7 +131,7 @@ function editTaskHTML(element) {
     <div class="editScreen">
         <div class="editHeadlineClose">
             <h1>Edit Task</h1>
-            <div onclick="closeEditFunction()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
+            <div onclick="closeEditFunction(); addCheckedSubtask()" class="lightbox-input-pos-close"><img style="height:20px; cursor: pointer" src="../img/board_img/close.svg"></div>
         </div>
     <div>
         <form onsubmit="editTasks(${element}); return false;">

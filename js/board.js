@@ -79,7 +79,7 @@ function checkSubtasks(element) {
 
     for (let i = 0; i < allTasks[element]['subtask'].length; i++) {
         const sub = allTasks[element]['subtask'][i];
-        subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${i}" onclick="pushCheckedSubtask()"><span style="padding-left: 12px;">${sub}</span></input></div>`;
+        subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${allTasks[element]['subtask'][i]}" onclick="pushCheckedSubtask()"><span style="padding-left: 12px;">${sub}</span></input></div>`;
         
     }
 }
@@ -89,13 +89,12 @@ function pushCheckedSubtask(){
     const allSubtasks = document.querySelectorAll('#testSubtask input[type="checkbox"]');
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
-    console.log(checkedSubtask);
-    addCheckedSubtask(checkedSubtask);
+    checkedSubtasksTest.push(checkedSubtask);
+    console.log(checkedSubtasksTest);
 }
 
 
-async function addCheckedSubtask(checkedSubtask) {
-    checkedSubtasksTest.push(checkedSubtask);
+async function addCheckedSubtask() {
     await backend.setItem('testJSONCheckedSubtasks', JSON.stringify(checkedSubtasksTest));
     console.log(checkedSubtasksTest);
 }
@@ -181,7 +180,7 @@ function addNewTask() {
 
 async function deleteTasks() {
     await backend.deleteItem('allTasks');
-
+    await backend.deleteItem('testJSONCheckedSubtasks');
 }
 
 
