@@ -106,7 +106,7 @@ function renderCategoryColors() {
     for (let g = 0; g < newCategoryColors.length; g++) {
         const newColor = newCategoryColors[g];
 
-        document.getElementById('categoryColors').innerHTML += showCategoryColorsHTML(newColor);
+        document.getElementById('categoryColors').innerHTML += showCategoryColorsHTML(g, newColor);
     }
     addClickEventForColorDot();
 }
@@ -244,6 +244,10 @@ function renderAssignedToOptions() {
     }
 }
 
+/**
+ * Function that set the checkedContacts on true 
+ * 
+ */
 function addChecked() {
     for (let i = 0; i < checkedContacts.length; i++) {
         document.getElementById(checkedContacts[i].id).checked = true;
@@ -251,10 +255,16 @@ function addChecked() {
 
 }
 
+
+/**
+ * Function that save the checkedContacts
+ * 
+ */
 function saveChecked() {
     let contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
     checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
 }
+
 
 /**
  * Function that listens for all "div-container" elements and selects the associated checkbox when clicked
@@ -448,6 +458,8 @@ function clearForm() {
     bgContactColor.length = 0;
     renderSubtaskContent();
 }
+
+
 /**
  * to stop the onclick
  * @param {Event} event The click event object.

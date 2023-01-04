@@ -43,9 +43,9 @@ function showAddNewCategoryHTML(){
 }
 
 
-function showCategoryColorsHTML(newColor){
+function showCategoryColorsHTML(g, newColor){
     return /*html*/ `
-        <div class="colorDot" id="colorDot" style="background-color: ${newColor};" onclick="selectColor('${newColor}')">
+        <div class="colorDot" id="colorDot${g}" style="background-color: ${newColor};" onclick="selectColor('${newColor}')">
             <div class="colorDotTransform"></div>
         </div>
     `;
