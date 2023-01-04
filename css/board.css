@@ -611,6 +611,14 @@ body {
     font-size: 14px !important;
 }
 
+.clearAndCreate {
+    position: unset !important;
+    top: unset !important;
+    right: unset !important;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
 .description textarea {
     height: 50px !important;
     font-size: 14px !important;
