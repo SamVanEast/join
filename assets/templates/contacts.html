@@ -6,15 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/style-contact.css">
     <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/board.css">
+    <link rel="stylesheet" href="../../css/add_task.css">
     <script src="../../mini_backend.js"></script>
     <script src="../../js/script-contact.js"></script>
-    <script src="../../js/templates/contact-templates.js"></script>
+    <script src="../../js/templates/contact-templates.js"></script>  
+    <script src="../../js/board.js"></script>
+    <script src="../../js/templates/board-templates.js"></script>
+    <script src="../../js/add_task.js"></script>
+
     
     <title>Contacts</title>
   </head>
   <body class="body-contact" onload="initContacts()">
 
-    
+    <div id="addOpenTask" class="addOpenTask d-none">
+      <div id="openTask" class="openTask d-none">
+      </div>
+      <div class="addNewTask d-none" id="addNewTask">
+      </div>
+    </div>
 
     <div id="lightboxAddContact" class="lightbox-add-contact d-none">
       <div class="lightbox-container">

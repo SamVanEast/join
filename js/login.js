@@ -15,7 +15,6 @@ async function render() {
   setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
   await downloadFromServer();
   allUser = JSON.parse(backend.getItem('allUser')) || [];
-  console.log(allUser);
 }
 
 function submitUser() {
@@ -43,7 +42,6 @@ function submitUser() {
 async function addUser(user) {
   allUser.push(user);
   await backend.setItem('allUser', JSON.stringify(allUser));
-  console.log(allUser);
 }
 
 
@@ -116,7 +114,7 @@ async function checkLogin() {
       currentUser = [allUser[i]];
       await saveCurrentUser();
       location.replace("../../assets/templates/side_bar.html");
-    } else if(i==allUser.length) {
+    } else if(i === allUser.length - 1) {
       alert("wrong password or wrong email");
     }
   }

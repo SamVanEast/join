@@ -36,10 +36,10 @@ function showSingleContactTemplate(i) {
       </div>
     </div>
     <div class="add-task">
-      <div class="add-task-name">
+      <div class="add-task-name" >
         <div>${contacts[i]['name']} </div>
       </div>
-      <div class="add-task-btn">
+      <div class="add-task-btn" onclick="addNewTask()">
         <div class="add-task-btn-plus">
           <div><img src="../../assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
         </div>
@@ -49,11 +49,11 @@ function showSingleContactTemplate(i) {
   </div>
   <div class="contact-information-middle">
     <div class="contact-information-text"> Contact Information</div>
-    <div class="edit-container">
+    <div class="edit-container" onclick="openEditContact(${i})">
       <div class="edit-container-left"> 
         <img src="../../assets/img/contact-img/edit.png" alt="" srcset="">
       </div>
-      <div class="edit-contact" onclick="openEditContact(${i})">Edit Contact</div>
+      <div class="edit-contact" >Edit Contact</div>
     </div>
   </div>
   <div class="contact-information-down">
@@ -99,7 +99,7 @@ function showSingleContactMobileTemplate(i) {
     <div class="add-task-name">
       <div>${contacts[i]['name']} </div>
     </div>
-    <div class="add-task-btn">
+    <div class="add-task-btn" onclick="addNewTask()">
       <div class="add-task-btn-plus">
         <div><img src="../../assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
       </div>

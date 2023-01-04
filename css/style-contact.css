@@ -6,8 +6,11 @@
 }
 
 .container {
-  display: flex;
-  height: calc(100vh - 89px);
+  display: flex !important;
+  height: calc(100vh - 89px) !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+  flex-direction: unset !important;
 }
 
 .container-left {
@@ -827,7 +830,15 @@
   padding-bottom: 2px;
 }
 
+input::placeholder{
+  padding-left: 6px;
+}
 
+input[type=text], input[type=email], input[type=number] {
+  width: 100%;
+  padding-left: 6px;
+  box-sizing: border-box;
+}
 
 /*DESIGN SCROLLBAR*/
 .container-left::-webkit-scrollbar {
@@ -1019,7 +1030,6 @@
   .contact-information {
     gap: 0;
     position: relative;
-    right: 5%;
   }
 
   .contact-information-middle {

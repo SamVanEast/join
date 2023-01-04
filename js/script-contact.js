@@ -18,7 +18,7 @@ function submitContact() {
 
   if(name.split(" ").length != 2 ){
     alert("You have to write firstname and lastname!"); 
-  }
+  } else {
 
   randomBgColor();
 
@@ -32,6 +32,7 @@ function submitContact() {
   addContact(contact);
   HideNewContactContainer();
   generateContactlist();
+  }
 }
 
 
