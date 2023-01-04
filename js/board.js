@@ -5,6 +5,7 @@ let feedback;
 let progress;
 let done;
 let allTasks;
+let checkedSubtasksTest = [];
 
 
 async function initBoard() {
@@ -12,6 +13,7 @@ async function initBoard() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
+    checkedSubtasksTest = JSON.parse(backend.getItem('testJSONCheckedSubtasks')) || [];
     console.log(allTasks, contact)
     addId();
     filterStatus();
@@ -77,9 +79,25 @@ function checkSubtasks(element) {
 
     for (let i = 0; i < allTasks[element]['subtask'].length; i++) {
         const sub = allTasks[element]['subtask'][i];
-        subs.innerHTML += `<div><input type="checkbox" id="subtasks${i}" value="" name=""><span style="padding-left: 12px;">${sub}</span></input></div>`;
+        subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${i}" onclick="pushCheckedSubtask()"><span style="padding-left: 12px;">${sub}</span></input></div>`;
         
     }
+}
+
+
+function pushCheckedSubtask(){
+    const allSubtasks = document.querySelectorAll('#testSubtask input[type="checkbox"]');
+    const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
+    const checkedSubtask = checkedSubtasks.map(cb => cb.name);
+    console.log(checkedSubtask);
+    addCheckedSubtask(checkedSubtask);
+}
+
+
+async function addCheckedSubtask(checkedSubtask) {
+    checkedSubtasksTest.push(checkedSubtask);
+    await backend.setItem('testJSONCheckedSubtasks', JSON.stringify(checkedSubtasksTest));
+    console.log(checkedSubtasksTest);
 }
 
 
@@ -219,6 +237,7 @@ async function editTasks(element) {
     let cat = allTasks[element].category;
     let status = allTasks[element].status
     let subs = allTasks[element].subtask;
+
     let color = allTasks[element].color;
     let bgcolor = allTasks[element].bgcolor;
 
