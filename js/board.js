@@ -91,9 +91,9 @@ async function checkSubtasks(element) {
 
 async function addSubtasksChecked(idTask) {
     await downloadServer();
-    if (allTasks[idTask].subtask[0].inputCheckbox.length > 0) {
-        for (let i = 0; i < allTasks[idTask].subtask[0].inputCheckbox.length; i++) {
-            // document.getElementById(allTasks[idTask].subtask[0].inputCheckbox[i].id).checked;
+    if (allTasks[idTask].subtask[0].idInputCheckbox.length > 0) {
+        for (let i = 0; i < allTasks[idTask].subtask[0].idInputCheckbox.length; i++) {
+            document.getElementById(allTasks[idTask].subtask[0].idInputCheckbox[i]).checked = true;
         }
     }
 }
@@ -132,9 +132,14 @@ async function closeOpenTask(idTask) {
 }
 
 async function saveSubtasksChecked(idTask) {
+    let idInputCheckbox = allTasks[idTask].subtask[0].idInputCheckbox;
+    idInputCheckbox.length = 0;
     let subtasks = document.querySelectorAll('#changeSubs input[type="checkbox"]');
     checkedSubtasksBoard = [...subtasks].filter(s => s.checked);
-    allTasks[idTask].subtask[0].inputCheckbox = checkedSubtasksBoard;
+    for (let i = 0; i < checkedSubtasksBoard.length; i++) {
+        idInputCheckbox.push(checkedSubtasksBoard[i].id);
+    }
+    console.log(allTasks)
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 

@@ -435,7 +435,7 @@ async function submitTask() {
         'subtask': [
             {
                 'sub': checkedSubtask,
-                'inputCheckbox': ''
+                'idInputCheckbox': []
             }
         ]
     };
