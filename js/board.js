@@ -6,6 +6,7 @@ let progress;
 let done;
 let allTasks;
 let checkedSubtasksBoard;
+let toAddTask = false;
 
 
 async function initBoard() {
@@ -175,18 +176,23 @@ function removeHighlight(id) {
 
 
 function addNewTask() {
-    document.getElementById('addOpenTask').classList.remove('d-none');
-    document.getElementById('addNewTask').classList.remove('d-none');
-    document.body.classList.add('noScroll');
-    document.getElementById('addOpenTask').classList.add('darker');
-    let content = document.getElementById('addNewTask');
-    content.innerHTML = '';
+    if (window.innerWidth >= 400) {
+        document.getElementById('addOpenTask').classList.remove('d-none');
+        document.getElementById('addNewTask').classList.remove('d-none');
+        document.body.classList.add('noScroll');
+        document.getElementById('addOpenTask').classList.add('darker');
+        let content = document.getElementById('addNewTask');
+        content.innerHTML = '';
 
-    content.innerHTML += addNewTaskHTML();
-    renderCategoryContent();
-    renderAssignedToContent();
-    renderPrioButtons();
-    renderSubtaskContent();
+        content.innerHTML += addNewTaskHTML();
+        renderCategoryContent();
+        renderAssignedToContent();
+        renderPrioButtons();
+        renderSubtaskContent();
+    }else{
+        loadContent('add_task');
+    }
+    toAddTask = true;
 }
 
 async function deleteTasks() {

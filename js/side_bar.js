@@ -103,6 +103,16 @@ window.addEventListener('resize', () => {
     checkIFWichContentContacts();
     checkIFWichContentAddTasks();
 })
+
+/**
+ * when the innerwidth to small is redirect to add_task.html
+ */
+window.addEventListener('resize', () => {
+    if (window.innerWidth <= 400 && toAddTask) {
+        loadContent('add_task');
+    }
+})
+
 /**
  * checks if the help icon should be displayed and if darkBlue should be added to one of the menu- tabs must be added
  */
@@ -129,6 +139,7 @@ async function wichOnloadFunction() {
     }
     if (wichContent == 'add_task') {
         initAddTask();
+        toAddTask = false;
     }
     if (wichContent == 'summary') {
         initSummary();
