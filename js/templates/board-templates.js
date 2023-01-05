@@ -10,7 +10,7 @@ function newTaskHTML(element) {
             <div class="progressbar-grey">
                 <div id="progressbar-blue" class="progressbar-blue" style="width: 2%"></div>
             </div>
-            <div id="done-counter">0/${element.subtask.length} Done</div>
+            <div id="done-counter">${element.subtask[0].idInputCheckbox.length}/${element.subtask[0].sub.length} Done</div>
         </div>
         <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
