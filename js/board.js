@@ -5,18 +5,21 @@ let feedback;
 let progress;
 let done;
 let allTasks;
-let checkedSubtasksTest;
+let checkedSubtasksBoard;
 
 
 async function initBoard() {
+    await downloadServer();
+    console.log(allTasks, contact)
+    addId();
+    filterStatus();
+}
+
+async function downloadServer() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
-    checkedSubtasksTest = JSON.parse(backend.getItem('testJSONCheckedSubtasks')) || [];
-    console.log(allTasks, contact)
-    addId();
-    filterStatus();
 }
 
 function filterStatus() {
@@ -50,7 +53,7 @@ function startDragging(id) {
 }
 
 
-function openTask(element) {
+async function openTask(element) {
     document.getElementById('addOpenTask').classList.remove('d-none');
     let openedTask = document.getElementById('openTask');
     openedTask.classList.remove('d-none');
@@ -70,22 +73,31 @@ function openTask(element) {
     }
 
     changePriorityButton(element);
-    checkSubtasks(element);
+    await checkSubtasks(element);
 }
 
 
-function checkSubtasks(element) {
+async function checkSubtasks(element) {
     let subs = document.getElementById('changeSubs');
+    if (allTasks[element]['subtask'].length > 0) {
+        for (let i = 0; i < allTasks[element]['subtask'][0].sub.length; i++) {
+            const sub = allTasks[element]['subtask'][0].sub;
+            subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${allTasks[element]['subtask'][i]}"><span style="padding-left: 12px;">${sub[i]}</span></input></div>`;
+        }
+    }
+    await addSubtasksChecked(element);
+}
 
-    for (let i = 0; i < allTasks[element]['subtask'].length; i++) {
-        const sub = allTasks[element]['subtask'][i];
-        subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${allTasks[element]['subtask'][i]}"><span style="padding-left: 12px;">${sub}</span></input></div>`;
-        
+async function addSubtasksChecked(idTask) {
+    await downloadServer();
+    if (allTasks[idTask].subtask[0].inputCheckbox.length > 0) {
+        for (let i = 0; i < allTasks[idTask].subtask[0].inputCheckbox.length; i++) {
+            // document.getElementById(allTasks[idTask].subtask[0].inputCheckbox[i].id).checked;
+        }
     }
 }
 
-
-function pushCheckedSubtask(){
+function pushCheckedSubtask() {
     const allSubtasks = document.querySelectorAll('#testSubtask input[type="checkbox"]');
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
@@ -109,14 +121,21 @@ function changePriorityButton(element) {
     }
 }
 
-function closeOpenTask() {
+async function closeOpenTask(idTask) {
     document.getElementById('addOpenTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
     document.getElementById('openTask').classList.add('d-none');
     document.getElementById('addOpenTask').classList.remove('darker');
-    pushCheckedSubtask();
+    // pushCheckedSubtask();
+    await saveSubtasksChecked(idTask);
 }
 
+async function saveSubtasksChecked(idTask) {
+    let subtasks = document.querySelectorAll('#changeSubs input[type="checkbox"]');
+    checkedSubtasksBoard = [...subtasks].filter(s => s.checked);
+    allTasks[idTask].subtask[0].inputCheckbox = checkedSubtasksBoard;
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+}
 
 
 function closeAddTask() {
@@ -288,8 +307,8 @@ function closeEditFunction() {
 
 
 async function addCheckedSubtask() {
-    await backend.setItem('testJSONCheckedSubtasks', JSON.stringify(checkedSubtasksTest));
-    console.log(checkedSubtasksTest);
+    // await backend.setItem('testJSONCheckedSubtasks', JSON.stringify(checkedSubtasksTest));
+    // console.log(checkedSubtasksTest);
 }
 
 

@@ -31,7 +31,7 @@ function getPeopleHTML(assigned, bgcolor) {
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
     <div class="category2 ${allTasks[element].category}" style="background-color: ${allTasks[element].color}">${allTasks[element].category}</div>
-    <div><img id="close" onclick="closeOpenTask(); addCheckedSubtask()" src="../img/board_img/close.svg"></div>
+    <div><img id="close" onclick="closeOpenTask(${element}); addCheckedSubtask()" src="../img/board_img/close.svg"></div>
     </div>
     <div id="openTaskHMobile">
             <h2>${allTasks[element].headline}</h2>
