@@ -129,6 +129,7 @@ async function closeOpenTask(idTask) {
     document.getElementById('addOpenTask').classList.remove('darker');
     // pushCheckedSubtask();
     await saveSubtasksChecked(idTask);
+    loadContent('board');
 }
 
 async function saveSubtasksChecked(idTask) {

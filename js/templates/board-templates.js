@@ -65,7 +65,7 @@ function filterBoardHTML(result) {
             <div class="progressbar-grey">
                 <div id="progressbar-blue" class="progressbar-blue" style="width: 2%"></div>
             </div>
-            <div id="done-counter">0/${result.subtask.length} Done</div>
+            <div id="done-counter">${result.subtask[0].idInputCheckbox.length}/${result.subtask[0].sub.length} Done</div>
         </div>
         <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
