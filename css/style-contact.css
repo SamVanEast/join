@@ -899,7 +899,7 @@ input[type=text], input[type=email], input[type=number] {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .scroll {
@@ -962,8 +962,9 @@ input[type=text], input[type=email], input[type=number] {
   }
 
   .container {
-    flex-direction: column;
-    height: calc(100vh - 72px);;
+    flex-direction: column !important;
+    height: calc(100vh - 72px) !important;
+    margin-top: unset !important;
   }
 
   .container-mobile-btn {
@@ -978,7 +979,7 @@ input[type=text], input[type=email], input[type=number] {
 
   .add-contact-btn-mobile {
     margin: 16px;
-    display: flex;
+    display: flex !important;
   }
 
   .mobile-edit-btn {}
@@ -1181,7 +1182,7 @@ input[type=text], input[type=email], input[type=number] {
 
   .contact-close-mobile {
     width: 100%;
-    display: flex;
+    display: flex !important;
     justify-content: flex-end;
   }
 

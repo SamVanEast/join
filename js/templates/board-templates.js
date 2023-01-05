@@ -1,6 +1,6 @@
 function newTaskHTML(element) {
     return /*html*/`
-        <div class="taskBoxes" draggable="true" ontouchstart="startDragging(${element['id']})" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
+        <div class="taskBoxes" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTask(${element['id']})">
         <div class="singleTask ${element.id}" id="singleTask ${element.id}">
         <div id="cats${element['id']}" class="category1" style="background-color: ${element.color}">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
@@ -31,7 +31,7 @@ function getPeopleHTML(assigned, bgcolor) {
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
     <div class="category2 ${allTasks[element].category}" style="background-color: ${allTasks[element].color}">${allTasks[element].category}</div>
-    <div><img id="close" onclick="closeOpenTask()" src="../img/board_img/close.svg"></div>
+    <div><img id="close" onclick="closeOpenTask(); addCheckedSubtask()" src="../img/board_img/close.svg"></div>
     </div>
     <div id="openTaskHMobile">
             <h2>${allTasks[element].headline}</h2>
@@ -40,7 +40,10 @@ function openTaskHTML(element) {
             <p id="openTaskDesc">${allTasks[element].desc}</p>
             <p><b>Due Date: </b>${allTasks[element].dueDate}</p>
             <div style="display: flex; align-items: center"><span style="padding-right: 10px"><b>Priority: </b></span><span id="prioOpenTask">${allTasks[element].prio}</span></div>
-            <p>${allTasks[element].subtask}</p>
+            <div id="theSubs${element}" class="selectedSubs">
+            <p><span><b>Subtasks: </b></span></p>
+            <p id="changeSubs"></p>
+            </div>
             </div>
         <div id="assignedMobile">
         <p><b>Assigned to:</b></p>
