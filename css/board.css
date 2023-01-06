@@ -629,6 +629,28 @@ body {
 *
 */
 
+.prioButtons {
+    justify-content: space-between !important;
+}
+
+.dueDate input {
+    box-sizing: border-box;
+    height: 51px !important;
+    width: 100% !important;
+}
+
+.description textarea {
+    width: 100% !important;
+    box-sizing: border-box;
+    height: 119px;
+}
+
+.title input {
+    width: 100% !important;
+    box-sizing: border-box;
+    height: 51px !important;
+}
+
 .clearAndCreate {
     position: unset !important;
     top: unset !important;
