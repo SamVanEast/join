@@ -159,7 +159,6 @@ body {
 
 #content {
     overflow-y: scroll;
-    position: relative;
     width: 100%;
     height: calc(100% - 89px);
     box-sizing: border-box;

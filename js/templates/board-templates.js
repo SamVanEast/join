@@ -1,6 +1,6 @@
 function newTaskHTML(element) {
     return /*html*/`
-        <div class="taskBoxes" id="taskBoxes${element['id']}" draggable="true" ondragstart="startDragging(${element['id']})" ontouchstart="touchstart(${element.id})" ontouchend="touchend(${element.id})">
+        <div class="taskBoxes" id="taskBoxes${element['id']}" draggable="true" ondragstart="startDragging(${element['id']})" ontouchstart="touchstart(${element.id})" ontouchend="touchend(${element.id})" onclick="checkMobileTrue(${element.id})">
         <div class="singleTask ${element.id}" id="singleTask ${element.id}">
         <div id="cats${element['id']}" class="category1" style="background-color: ${element.color}">${element['category']}</div>
         <div class="taskHeadline">${element['headline']}</div>
