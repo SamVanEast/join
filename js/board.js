@@ -42,8 +42,8 @@ async function addId() {
 function checkProgressbar() {
     for (let i = 0; i < allTasks.length; i++) {
         const progbar = allTasks[i];
-        if (progbar['subtask'].length == 0) {
-            document.getElementById(`progbar${progbar.id}`).innerHTML = '';
+        if (progbar['subtask'][0].sub.length == 0) {
+            document.getElementById(`progbar${i}`).innerHTML = '';
         }
     }
     checkProgressPercentage();
