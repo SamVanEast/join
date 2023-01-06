@@ -392,12 +392,15 @@ body {
     padding: 5px;
 }
 
-#content {
+/*#content {
     overflow-y: unset !important;
     position: unset !important;
     width: unset !important;
 
-}
+
+    
+}*/
+
 
 /* category colors */
 
