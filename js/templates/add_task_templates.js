@@ -83,7 +83,7 @@ function showAssignedToHTML(){
 function showAssignedToOptionsHTML(b, contacts, contactColor){
     return /*html*/`
         <div class="contactOptions div-container" id="div-container">
-            <label for="checkbox-input${b}" onclick="checkContactCheckbox('${b}', event, '${contactColor}'); saveChecked()">
+            <label for="checkbox-input${b}" onclick="saveChecked()">
                 <span class="categorysDropdown">${contacts}</span>
                 <input id="checkbox-input${b}" type="checkbox" name="${contacts}">
             </label>

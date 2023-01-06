@@ -263,20 +263,22 @@ function addChecked() {
 function saveChecked() {
     let contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
     checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
+    bgContactColor.length = 0;
+    if (checkedContacts.length > 0) {
+        for (let i = 0; i < checkedContacts.length; i++) {
+            checkContactCheckbox(checkedContacts[i].id);
+            
+        }
+    }
 }
 
 
 /**
  * Function that listens for all "div-container" elements and selects the associated checkbox when clicked
  */
-function checkContactCheckbox(b, event, contactColor) {
-    let checkboxInput = event.currentTarget.querySelector(`#checkbox-input${b}`);
-
-    if (checkboxInput.checked && bgContactColor.indexOf(contactColor) === -1) {
-        bgContactColor.push(contactColor);
-    } else if (!checkboxInput.checked && bgContactColor.indexOf(contactColor) !== -1) {
-        bgContactColor.splice(bgContactColor.indexOf(contactColor), 1);
-    }
+function checkContactCheckbox(inputId) {
+        let arrayElementNumber = inputId.substr(-1, 1)
+        bgContactColor.push(contact[arrayElementNumber].bgcolor);
 }
 
 
