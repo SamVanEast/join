@@ -46,7 +46,7 @@ function checkProgressbar() {
             document.getElementById(`progbar${progbar.id}`).innerHTML = '';
         }
     }
-    /*checkProgressPercentage();*/
+    checkProgressPercentage();
 }
 
 
@@ -451,7 +451,9 @@ function filterBoardTodo() {
             let result = todo[i];
 
             filter.innerHTML += filterBoardHTML(result);
-            /*checkBgColor(element);*/
+            
+           
+
             declarePriority(result);
         }
     }
