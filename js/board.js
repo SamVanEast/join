@@ -46,8 +46,23 @@ function checkProgressbar() {
             document.getElementById(`progbar${progbar.id}`).innerHTML = '';
         }
     }
+    /*checkProgressPercentage();*/
 }
 
+
+function checkProgressPercentage() {
+    for (let i = 0; i < allTasks.length; i++) {
+        let progs = allTasks[i];
+        let percent = progs.subtask[0].idInputCheckbox.length / progs.subtask[0].sub.length;
+        percent = percent * 100;
+        document.getElementById(`progbar${i}`).innerHTML = `<div class="progressbar-grey">
+        <div id="progressbar-blue" class="progressbar-blue" style="width: ${percent}%"></div>
+    </div>
+    <div id="done-counter${i}">${progs.subtask[0].idInputCheckbox.length}/${progs.subtask[0].sub.length} Done</div>`;
+        
+
+    }
+}
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -195,7 +210,7 @@ function addNewTask() {
         renderAssignedToContent();
         renderPrioButtons();
         renderSubtaskContent();
-    }else{
+    } else {
         loadContent('add_task');
     }
     toAddTask = true;

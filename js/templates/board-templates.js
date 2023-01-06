@@ -8,9 +8,9 @@ function newTaskHTML(element) {
         
         <div class="progressbar" id="progbar${element.id}">    
             <div class="progressbar-grey">
-                <div id="progressbar-blue" class="progressbar-blue" style="width: 2%"></div>
+                <div id="progressbar-blue${element.id}" class="progressbar-blue" style="width: 2%"></div>
             </div>
-            <div id="done-counter">${element.subtask[0].idInputCheckbox.length}/${element.subtask[0].sub.length} Done</div>
+            <div id="done-counter${element.id}">${element.subtask[0].idInputCheckbox.length}/${element.subtask[0].sub.length} Done</div>
         </div>
         <div class="peopleInvolvedPriority">
             <div class="peopleInvolved">
@@ -57,23 +57,24 @@ function openTaskHTML(element) {
 
 function filterBoardHTML(result) {
     return `<div class="taskBoxes" draggable="true" ondragstart="startDragging(${result['id']})" onclick="openTask(${result['id']})">
-<div class="singleTask ${result.id}">
-<div id="cats${result['id']}" class="category1" style="background-color: ${result.color}">${result['category']}</div>
-<div class="taskHeadline">${result['headline']}</div>
-<div class="taskDescription" style="min-height: 38.4px">${result['desc']}</div>
-<div class="progressbar" id="progbar${result.id}">    
-            <div class="progressbar-grey">
-                <div id="progressbar-blue" class="progressbar-blue" style="width: 2%"></div>
-            </div>
-            <div id="done-counter">${result.subtask[0].idInputCheckbox.length}/${result.subtask[0].sub.length} Done</div>
+    <div class="singleTask ${result.id}" id="singleTask ${result.id}">
+    <div id="cats${result['id']}" class="category1" style="background-color: ${result.color}">${result['category']}</div>
+    <div class="taskHeadline">${result['headline']}</div>
+    <div class="taskDescription" style="min-height: 38.4px">${result['desc']}</div>
+    
+    <div class="progressbar" id="progbar${result.id}">    
+        <div class="progressbar-grey">
+            <div id="progressbar-blue${result.id}" class="progressbar-blue" style="width: 2%"></div>
         </div>
-        <div class="peopleInvolvedPriority">
-            <div class="peopleInvolved">
-            <div class="alignPeople" id="people${result.id}"></div>
-            <div class="priority" id="prio${result.id}"><img src="../img/board_img/prio-high.png"></div>    
-        </div>
-        </div>
-        </div>`;
+        <div id="done-counter${result.id}">${result.subtask[0].idInputCheckbox.length}/${result.subtask[0].sub.length} Done</div>
+    </div>
+    <div class="peopleInvolvedPriority">
+        <div class="peopleInvolved">
+        <div class="alignPeople" id="people${result.id}"></div>
+        <div class="priority" id="prio${result.id}"><img src="../img/board_img/prio-high.png"></div>    
+    </div>
+    </div>
+    </div>`;
 }
 
 
