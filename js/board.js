@@ -42,17 +42,20 @@ async function addId() {
 function checkProgressbar() {
     for (let i = 0; i < allTasks.length; i++) {
         const progbar = allTasks[i];
-        if (progbar['subtask'][0].sub.length == 0) {
+        const progbarId = document.getElementById(`progbar${i}`)
+        if (progbar['subtask'][0].sub.length == 0 && progbarId !== null) {
             document.getElementById(`progbar${i}`).innerHTML = '';
         }
+        if (progbar['subtask'][0].sub.length > 0 && progbarId !== null) {
+            checkProgressPercentage(progbar, i);
+        }
     }
-    checkProgressPercentage();
 }
 
 
-function checkProgressPercentage() {
-    for (let i = 0; i < allTasks.length; i++) {
-        let progs = allTasks[i];
+function checkProgressPercentage(progs, i) {
+    // for (let i = 0; i < allTasks.length; i++) {
+    //     let progs = allTasks[i];
         let percent = progs.subtask[0].idInputCheckbox.length / progs.subtask[0].sub.length;
         percent = percent * 100;
         document.getElementById(`progbar${i}`).innerHTML = `<div class="progressbar-grey">
@@ -61,7 +64,7 @@ function checkProgressPercentage() {
     <div id="done-counter${i}">${progs.subtask[0].idInputCheckbox.length}/${progs.subtask[0].sub.length} Done</div>`;
         
 
-    }
+    // }
 }
 
 function startDragging(id) {
@@ -95,11 +98,13 @@ async function openTask(element) {
 
 async function checkSubtasks(element) {
     let subs = document.getElementById('changeSubs');
-    if (allTasks[element]['subtask'].length > 0) {
+    if (allTasks[element]['subtask'].length > 0 && allTasks[element]['subtask'][0].sub.length > 0) {
         for (let i = 0; i < allTasks[element]['subtask'][0].sub.length; i++) {
             const sub = allTasks[element]['subtask'][0].sub;
             subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${allTasks[element]['subtask'][i]}"><span style="padding-left: 12px;">${sub[i]}</span></input></div>`;
         }
+    }else {
+        subs.innerHTML = 'No Subtasks';
     }
     await addSubtasksChecked(element);
 }
@@ -144,7 +149,8 @@ async function closeOpenTask(idTask) {
     document.getElementById('addOpenTask').classList.remove('darker');
     // pushCheckedSubtask();
     await saveSubtasksChecked(idTask);
-    loadContent('board');
+    // filterStatus();
+    filterBoard();
 }
 
 async function saveSubtasksChecked(idTask) {
@@ -155,7 +161,6 @@ async function saveSubtasksChecked(idTask) {
     for (let i = 0; i < checkedSubtasksBoard.length; i++) {
         idInputCheckbox.push(checkedSubtasksBoard[i].id);
     }
-    console.log(allTasks)
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
@@ -176,11 +181,7 @@ function allowDrop(ev) {
 
 async function moveTo(status) {
     allTasks[currentDraggedElement]['status'] = status;
-    filterTodo();
-    filterProgress();
-    filterFeedback();
-    filterDone();
-    checkProgressbar();
+    filterStatus();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 
 }
@@ -223,11 +224,11 @@ async function deleteTasks() {
 
 
 function filterBoard() {
+    checkProgressbar();
     filterBoardTodo();
     filterBoardProgress();
     filterBoardFeedback();
     filterBoardDone();
-    checkProgressbar();
 }
 
 
@@ -355,12 +356,7 @@ function filterTodo() {
         const element = todo[i];
         document.getElementById('todo').innerHTML += newTaskHTML(element, i);
 
-        for (let j = 0; j < element.assignedTo.length; j++) {
-            const assigned = element.assignedTo[j];
-            const bgcolor = element.bgcolor[j];
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
-        }
-
+        redernTask(element);
         declarePriority(element);
     }
 }
@@ -376,13 +372,7 @@ function filterProgress() {
         const element = progress[i];
         document.getElementById('inProgress').innerHTML += newTaskHTML(element);
 
-        for (let j = 0; j < element.assignedTo.length; j++) {
-            const assigned = element.assignedTo[j];
-            const bgcolor = element.bgcolor[j];
-
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
-        }
-
+        redernTask(element);
         declarePriority(element);
 
     }
@@ -397,13 +387,7 @@ function filterFeedback() {
         const element = feedback[i];
         document.getElementById('awaitingFeedback').innerHTML += newTaskHTML(element);
 
-        for (let j = 0; j < element.assignedTo.length; j++) {
-            const assigned = element.assignedTo[j];
-            const bgcolor = element.bgcolor[j];
-
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
-        }
-
+        redernTask(element);
         declarePriority(element);
     }
 }
@@ -418,12 +402,7 @@ function filterDone() {
 
         document.getElementById('done').innerHTML += newTaskHTML(element);
 
-        for (let j = 0; j < element.assignedTo.length; j++) {
-            const assigned = element.assignedTo[j];
-            const bgcolor = element.bgcolor[j];
-            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
-        }
-
+        redernTask(element);
         declarePriority(element);
 
     }
@@ -450,10 +429,9 @@ function filterBoardTodo() {
         if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
             let result = todo[i];
 
-            filter.innerHTML += filterBoardHTML(result);
+            filter.innerHTML += newTaskHTML(result);
             
-           
-
+            redernTask(result);
             declarePriority(result);
         }
     }
@@ -475,8 +453,9 @@ function filterBoardProgress() {
         if (headlines.toLowerCase().includes(search) || desc.toLowerCase().includes(search)) {
             let result = progress[i];
 
-            filter.innerHTML += filterBoardHTML(result);
+            filter.innerHTML += newTaskHTML(result);
             /*checkBgColor(element);*/
+            redernTask(result);
             declarePriority(result);
 
         }
@@ -500,8 +479,9 @@ function filterBoardFeedback() {
         if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
             let result = feedback[i];
 
-            filter.innerHTML += filterBoardHTML(result);
+            filter.innerHTML += newTaskHTML(result);
             /*checkBgColor(element);*/
+            redernTask(result);
             declarePriority(result);
 
         }
@@ -524,11 +504,22 @@ function filterBoardDone() {
         if (headlines.toLowerCase().includes(search) || descriptions.toLowerCase().includes(search)) {
             let result = done[i];
 
-            filter.innerHTML += filterBoardHTML(result);
+            filter.innerHTML += newTaskHTML(result);
+
             /*checkBgColor(element);*/
+            redernTask(result);
             declarePriority(result);
 
         }
     }
 
+}
+
+function redernTask(element){
+    for (let j = 0; j < element.assignedTo.length; j++) {
+        const assigned = element.assignedTo[j];
+        const bgcolor = element.bgcolor[j];
+        document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
+    }
+    checkProgressbar();
 }
