@@ -7,6 +7,8 @@ let done;
 let allTasks;
 let checkedSubtasksBoard;
 let toAddTask = false;
+let timer;
+let timeIsup = false
 
 
 async function initBoard() {
@@ -511,4 +513,42 @@ function redernTask(element) {
         document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
     }
     checkProgressbar();
+}
+
+function touchstart(id) {
+    timer = setTimeout(() => onlongtouch(id), 300);
+}
+
+function touchend(id) {
+
+    if (timer && !timeIsup) {
+        clearTimeout(timer);
+        openTask(id);
+    }
+    setTimeout(() => timeIsup = false, 350)
+}
+
+function onlongtouch(id) {
+    timeIsup = true;
+    openMoveToPoppupMobile(id);
+}
+
+function openMoveToPoppupMobile(id){
+    let task = document.getElementById('taskBoxes' + id);
+    currentDraggedElement = id;
+    task.innerHTML += `
+        <div id="popup-to-move-task-mobile" class="popup_to_move_task_mobile" ontouchstart="save(event); closeMoveToPoppupMobile()">
+            <div class="popup_to_move_task_mobile_selections" ontouchstart="save(event)">
+                <div>Move to</div>
+                <span ontouchstart="moveTo('todo')">To do</span>
+                <span ontouchstart="moveTo('progress')">In Progress</span>
+                <span ontouchstart="moveTo('feedback')">Feedback</span>
+                <span ontouchstart="moveTo('done')">Done</span>
+            </div>
+        </div>`;
+}
+
+function closeMoveToPoppupMobile(){
+    filterStatus();
+    filterBoard();
 }
