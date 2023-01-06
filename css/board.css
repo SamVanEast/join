@@ -343,6 +343,13 @@ body {
     padding: 5px;
 }
 
+#content {
+    overflow-y: unset !important;
+    position: unset !important;
+    width: unset !important;
+    
+}
+
 /* category colors */
 
 /*.Design {
@@ -434,14 +441,10 @@ body {
         padding-top: 0px;
         margin-top: -15px;
     }
-
-    .subtasksContent {
-        margin-bottom: 0px !important;
-    }
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
     .status {
         font-size: 12.5px;
     }
