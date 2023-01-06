@@ -515,7 +515,7 @@ function redernTask(element) {
         if (userCount < 4) {
             document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
         } else {
-            document.getElementById(`people${element.id}`).innerHTML = `${userCount - 3}+`;
+            document.getElementById(`people${element.id}`).innerHTML += `+${userCount - 3}`;
             break;
         }
     }
