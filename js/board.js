@@ -8,7 +8,9 @@ let allTasks;
 let checkedSubtasksBoard;
 let toAddTask = false;
 let timer;
-let timeIsup = false
+let timeIsup = false;
+let editTaskStatus = false;
+let currentTask;
 
 
 async function initBoard() {
@@ -259,6 +261,8 @@ function editInput(element) {
 
 
 function editTask(element) {
+    editTaskStatus = true;
+    currentTask = element;
     let getStuff = document.getElementById('openTask');
     getStuff.innerHTML = '';
     getStuff.innerHTML += editTaskHTML(element);
@@ -266,11 +270,20 @@ function editTask(element) {
     renderPrioButtons();
     renderAssignedToContent();
     checkButtonUrgency(element);
+    addStyleForEditMode();
+}
 
+function addUserToAssignedTo(){
+    for (let i = 0; i < allTasks[currentTask].assignedTo.length; i++) {
+        let name = allTasks[currentTask].assignedTo[i];
+        let InputField = document.querySelectorAll(`#assignedToOptions input[name="${name}"]`);
+        InputField[0].checked = true;
+    }
 }
 
 
 async function editTasks(element) {
+    editTaskStatus = false;
     let headline = document.getElementById('editHeadline').value;
     let desc = document.getElementById('editDesc').value;
     let dueDate = document.getElementById('editDueDate').value;
@@ -302,7 +315,24 @@ async function editTasks(element) {
     };
 
     await changeTask(task);
-    loadContent('board');
+    deleteStyleForEditMode();
+    closeAddTask();
+    filterStatus();
+    filterBoard();
+}
+
+function addStyleForEditMode(){
+    document.getElementById('prioButtons').style = 'justify-content: space-between;';
+    document.getElementById('editDueDate').style = 'box-sizing: border-box; height: 51px ;width: 100%;';
+    document.getElementById('editDesc').style = 'box-sizing: border-box; height: 119px ;width: 100%;';
+    document.getElementById('editHeadline').style = 'box-sizing: border-box; height: 51px ;width: 100%;';
+}
+
+function deleteStyleForEditMode(){
+    document.getElementById('prioButtons').style = '';
+    document.getElementById('editDueDate').style = '';
+    document.getElementById('editDesc').style = '';
+    document.getElementById('editHeadline').style = '';
 }
 
 
@@ -328,11 +358,14 @@ function checkButtonUrgency(element) {
 }
 
 function closeEditFunction() {
+    editTaskStatus = false;
     document.getElementById('openTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
     document.getElementById('openTask').classList.remove('darker');
+    deleteStyleForEditMode();
     closeAddTask();
-    loadContent('board');
+    filterStatus();
+    filterBoard();
 }
 
 

@@ -629,7 +629,7 @@ body {
 *
 */
 
-.prioButtons {
+/* .prioButtons {
     justify-content: space-between !important;
 }
 
@@ -649,7 +649,7 @@ body {
     width: 100% !important;
     box-sizing: border-box;
     height: 51px !important;
-}
+} */
 
 .clearAndCreate {
     position: unset !important;

@@ -227,6 +227,9 @@ function renderAssignedTo() {
     content.innerHTML = showAssignedToHTML();
     renderAssignedToOptions();
     addChecked();
+    if (editTaskStatus) {
+        addUserToAssignedTo();
+    }
 }
 
 

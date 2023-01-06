@@ -52,6 +52,7 @@ async function loadBackend() {
 function showContent() {
     let content = document.getElementById('content');
     if (window.innerWidth < 1440 && isWelcomeAlready == false) {
+        document.getElementById('content').style = 'position: relative';
         loadWelcomeContent(content);
         document.getElementById('header-headline').style = '';
     } else {
@@ -76,6 +77,9 @@ async function loadWelcomeContent(content) {
         document.getElementById('side-bar').style = '';
         welcomeIsShowing = false;
         isWelcomeAlready = true;
+        setTimeout(() => {
+            document.getElementById('content').style = '';  
+        }, 100);
     }, 1500);
 }
 /**
