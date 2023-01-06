@@ -22,7 +22,10 @@ async function includeHTML() {
  * also the clicked tab will be given a different background color
  * @param {string} wichHtmlPage specifies which HTML-template has to be loaded by being part of the path
  */
-async function loadContent(wichHtmlPage) {
+async function loadContent(wichHtmlPage, statusBoard) {
+    if (statusBoard !== undefined) {
+        taskStatus = statusBoard;
+    }
     if (welcomeIsShowing == false) {
         wichContent = wichHtmlPage;
         await loadBackend();
@@ -109,7 +112,7 @@ window.addEventListener('resize', () => {
  */
 window.addEventListener('resize', () => {
     if (window.innerWidth <= 400 && toAddTask) {
-        loadContent('add_task');
+        loadContent('add_task', 'todo');
     }
 })
 

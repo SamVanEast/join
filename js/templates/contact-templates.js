@@ -39,7 +39,7 @@ function showSingleContactTemplate(i) {
       <div class="add-task-name" >
         <div>${contacts[i]['name']} </div>
       </div>
-      <div class="add-task-btn" onclick="addNewTask()">
+      <div class="add-task-btn" onclick="addNewTask('todo')">
         <div class="add-task-btn-plus">
           <div><img src="../../assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
         </div>
@@ -99,7 +99,7 @@ function showSingleContactMobileTemplate(i) {
     <div class="add-task-name">
       <div>${contacts[i]['name']} </div>
     </div>
-    <div class="add-task-btn" onclick="addNewTask()">
+    <div class="add-task-btn" onclick="addNewTask('todo')">
       <div class="add-task-btn-plus">
         <div><img src="../../assets/img/contact-img/add_blue.png" alt="" srcset=""></div>
       </div>

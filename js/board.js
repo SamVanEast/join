@@ -12,7 +12,7 @@ let toAddTask = false;
 async function initBoard() {
     await downloadServer();
     console.log(allTasks, contact)
-    addId();
+    await addId();
     filterStatus();
 }
 
@@ -37,6 +37,7 @@ async function addId() {
         n['id'] = i;
         i++;
     });
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
 function checkProgressbar() {
@@ -54,17 +55,12 @@ function checkProgressbar() {
 
 
 function checkProgressPercentage(progs, i) {
-    // for (let i = 0; i < allTasks.length; i++) {
-    //     let progs = allTasks[i];
-        let percent = progs.subtask[0].idInputCheckbox.length / progs.subtask[0].sub.length;
-        percent = percent * 100;
-        document.getElementById(`progbar${i}`).innerHTML = `<div class="progressbar-grey">
+    let percent = progs.subtask[0].idInputCheckbox.length / progs.subtask[0].sub.length;
+    percent = percent * 100;
+    document.getElementById(`progbar${i}`).innerHTML = `<div class="progressbar-grey">
         <div id="progressbar-blue" class="progressbar-blue" style="width: ${percent}%"></div>
     </div>
     <div id="done-counter${i}">${progs.subtask[0].idInputCheckbox.length}/${progs.subtask[0].sub.length} Done</div>`;
-        
-
-    // }
 }
 
 function startDragging(id) {
@@ -103,7 +99,7 @@ async function checkSubtasks(element) {
             const sub = allTasks[element]['subtask'][0].sub;
             subs.innerHTML += /*html*/ `<div id="testSubtask"><input type="checkbox" id="subtasks${i}" value="${i}" name="${allTasks[element]['subtask'][i]}"><span style="padding-left: 12px;">${sub[i]}</span></input></div>`;
         }
-    }else {
+    } else {
         subs.innerHTML = 'No Subtasks';
     }
     await addSubtasksChecked(element);
@@ -117,14 +113,6 @@ async function addSubtasksChecked(idTask) {
         }
     }
 }
-
-function pushCheckedSubtask() {
-    const allSubtasks = document.querySelectorAll('#testSubtask input[type="checkbox"]');
-    const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
-    const checkedSubtask = checkedSubtasks.map(cb => cb.name);
-    checkedSubtasksTest.push(checkedSubtask);
-}
-
 
 function changePriorityButton(element) {
     let thePrio = document.getElementById('prioOpenTask');
@@ -147,9 +135,9 @@ async function closeOpenTask(idTask) {
     document.body.classList.remove('noScroll');
     document.getElementById('openTask').classList.add('d-none');
     document.getElementById('addOpenTask').classList.remove('darker');
-    // pushCheckedSubtask();
+
     await saveSubtasksChecked(idTask);
-    // filterStatus();
+    filterStatus();
     filterBoard();
 }
 
@@ -183,7 +171,6 @@ async function moveTo(status) {
     allTasks[currentDraggedElement]['status'] = status;
     filterStatus();
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-
 }
 
 
@@ -197,7 +184,8 @@ function removeHighlight(id) {
 }
 
 
-function addNewTask() {
+function addNewTask(status) {
+    taskStatus = status;
     if (window.innerWidth >= 400) {
         document.getElementById('addOpenTask').classList.remove('d-none');
         document.getElementById('addNewTask').classList.remove('d-none');
@@ -212,7 +200,7 @@ function addNewTask() {
         renderPrioButtons();
         renderSubtaskContent();
     } else {
-        loadContent('add_task');
+        loadContent('add_task', taskStatus);
     }
     toAddTask = true;
 }
@@ -354,7 +342,7 @@ function filterTodo() {
 
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
-        document.getElementById('todo').innerHTML += newTaskHTML(element, i);
+        document.getElementById('todo').innerHTML += newTaskHTML(element);
 
         redernTask(element);
         declarePriority(element);
@@ -430,7 +418,7 @@ function filterBoardTodo() {
             let result = todo[i];
 
             filter.innerHTML += newTaskHTML(result);
-            
+
             redernTask(result);
             declarePriority(result);
         }
@@ -515,7 +503,8 @@ function filterBoardDone() {
 
 }
 
-function redernTask(element){
+function redernTask(element) {
+    startDragging(element.id);
     for (let j = 0; j < element.assignedTo.length; j++) {
         const assigned = element.assignedTo[j];
         const bgcolor = element.bgcolor[j];

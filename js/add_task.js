@@ -17,6 +17,7 @@ let checkedPrios = [];
 let allSubtasks = [];
 let checkedSubtasks = [];
 let checkedContacts = [];
+let taskStatus = 'todo';
 
 
 /**
@@ -427,7 +428,7 @@ async function submitTask() {
     let task = {
         'headline': headline,
         'desc': desc,
-        'status': 'todo',
+        'status': taskStatus,
         'category': cat,
         'color': colorFromCategory,
         'bgcolor': bgContactColor,

@@ -36,7 +36,7 @@
                 <input placeholder="Find Task" id="search" onkeyup="filterBoard()"
                     src="../img/board_img/magnifying-glass.png   ">
                 <div>
-                    <button class="buttonAndText" onclick="addNewTask()">
+                    <button class="buttonAndText" onclick="addNewTask('todo')">
                         <p id="toBeReplaced">Add Task</p>
                         <img id="addButton" src="../img/board_img/plus-button-white.png">
                     </button>
@@ -47,7 +47,7 @@
             <div class="tasks" id="theTasks">
                 <div class="status">
                     <p>To Do</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask('todo')">
 
                 </div>
                 <div class="dragArea" id="todo" ondrop="moveTo('todo'); removeHighlight('todo')"
@@ -59,7 +59,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>In Progress</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask('progress')">
                 </div>
 
                 <div class="dragArea" id="inProgress" ondrop="moveTo('progress'); removeHighlight('inProgress')"
@@ -70,7 +70,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>Awaiting Feedback</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask('feedback')">
                 </div>
 
                 <div class="dragArea" id="awaitingFeedback"
@@ -83,7 +83,7 @@
             <div class="tasks">
                 <div class="status">
                     <p>Done</p>
-                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask()">
+                    <img src="../img/board_img/plus-btn.png" id="plus" onclick="addNewTask('done')">
                 </div>
 
                 <div class="dragArea" id="done" ondrop="moveTo('done'); removeHighlight('done')"
