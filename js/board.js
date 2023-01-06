@@ -505,10 +505,19 @@ function filterBoardDone() {
 
 function redernTask(element) {
     startDragging(element.id);
+
+    let userCount = 0;
+
     for (let j = 0; j < element.assignedTo.length; j++) {
         const assigned = element.assignedTo[j];
         const bgcolor = element.bgcolor[j];
-        document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
+        userCount++;
+        if (userCount < 4) {
+            document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
+        } else {
+            document.getElementById(`people${element.id}`).innerHTML = `${userCount - 3}+`;
+            break;
+        }
     }
     checkProgressbar();
 }
