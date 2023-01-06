@@ -79,7 +79,7 @@ async function loadWelcomeContent(content) {
         isWelcomeAlready = true;
         setTimeout(() => {
             document.getElementById('content').style = '';  
-        }, 100);
+        }, 300);
     }, 1500);
 }
 /**

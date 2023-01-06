@@ -84,8 +84,8 @@ function checkMobileTrue(element) {
 
 
 async function openTask(element) {
-    document.getElementById('addOpenTask').classList.remove('d-none');
     let openedTask = document.getElementById('openTask');
+    document.getElementById('addOpenTask').classList.remove('d-none');
     openedTask.classList.remove('d-none');
     document.body.classList.add('noScroll');
     document.getElementById('addOpenTask').classList.add('darker');
@@ -271,14 +271,19 @@ function editTask(element) {
     renderAssignedToContent();
     checkButtonUrgency(element);
     addStyleForEditMode();
+    renderAssignedTo();
+    if (editTaskStatus) {
+        addUserToAssignedTo();
+    }
 }
 
-function addUserToAssignedTo(){
+function addUserToAssignedTo() {
     for (let i = 0; i < allTasks[currentTask].assignedTo.length; i++) {
         let name = allTasks[currentTask].assignedTo[i];
         let InputField = document.querySelectorAll(`#assignedToOptions input[name="${name}"]`);
         InputField[0].checked = true;
     }
+
 }
 
 
@@ -302,6 +307,7 @@ async function editTasks(element) {
     let task = {
         'headline': headline,
         'desc': desc,
+        'id': element,
         'status': status,
         'category': cat,
         'dueDate': dueDate,
@@ -315,20 +321,17 @@ async function editTasks(element) {
     };
 
     await changeTask(task);
-    deleteStyleForEditMode();
-    closeAddTask();
-    filterStatus();
-    filterBoard();
+    closeEditFunction();
 }
 
-function addStyleForEditMode(){
+function addStyleForEditMode() {
     document.getElementById('prioButtons').style = 'justify-content: space-between;';
     document.getElementById('editDueDate').style = 'box-sizing: border-box; height: 51px ;width: 100%;';
     document.getElementById('editDesc').style = 'box-sizing: border-box; height: 119px ;width: 100%;';
     document.getElementById('editHeadline').style = 'box-sizing: border-box; height: 51px ;width: 100%;';
 }
 
-function deleteStyleForEditMode(){
+function deleteStyleForEditMode() {
     document.getElementById('prioButtons').style = '';
     document.getElementById('editDueDate').style = '';
     document.getElementById('editDesc').style = '';
