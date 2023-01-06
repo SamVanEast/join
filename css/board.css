@@ -651,6 +651,10 @@ body {
     height: 51px !important;
 }
 
+.showAllCategorys {
+    width: 100% !important;
+}
+
 .clearAndCreate {
     position: unset !important;
     top: unset !important;
