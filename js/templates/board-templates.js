@@ -28,6 +28,10 @@ function getPeopleHTML(assigned, bgcolor) {
 }
 
 
+function getMoreHTML(userCount, element) {
+    return `<div class="people" style="background-color: rgb(0,0,0,0.9)">+${element.assignedTo.length - 3}</div>`;
+}
+
 function openTaskHTML(element) {
     return `<div class="openTaskKicker">
     <div class="category2 ${allTasks[element].category}" style="background-color: ${allTasks[element].color}">${allTasks[element].category}</div>

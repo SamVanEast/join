@@ -505,9 +505,7 @@ function filterBoardDone() {
 
 function redernTask(element) {
     startDragging(element.id);
-
     let userCount = 0;
-
     for (let j = 0; j < element.assignedTo.length; j++) {
         const assigned = element.assignedTo[j];
         const bgcolor = element.bgcolor[j];
@@ -515,7 +513,7 @@ function redernTask(element) {
         if (userCount < 4) {
             document.getElementById(`people${element.id}`).innerHTML += getPeopleHTML(assigned, bgcolor);
         } else {
-            document.getElementById(`people${element.id}`).innerHTML += `<div class="people" style="background-color: rgb(0,0,0,0.9)">+${userCount - 3}</div>`;
+            document.getElementById(`people${element.id}`).innerHTML += getMoreHTML(userCount, element);
             break;
         }
     }
