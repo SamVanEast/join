@@ -240,7 +240,12 @@ body {
     flex-direction: row;
 }
 
-.contactOptions label{
+.contactOptions:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+}
+
+.contactOptions label {
     width: 100%;
     display: flex;
 }
