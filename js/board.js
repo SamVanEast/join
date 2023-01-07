@@ -475,7 +475,6 @@ function deleteStyleForEditMode() {
 async function changeTask(task) {
     allTasks.push(task);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    console.log();
 }
 
 /**

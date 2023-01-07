@@ -6,7 +6,6 @@ async function initContacts() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contact')) || [];  
-    console.log(contacts);
     sortArray();
     generateContactlist();
 }
@@ -44,7 +43,6 @@ function randomBgColor(){
   var y = Math.floor(Math.random() * 156);
   var z = Math.floor(Math.random() * 156);
   result = `${x},`+`${y},`+`${z}`;
-  console.log(result)
 }
   
 /**
@@ -54,7 +52,6 @@ function randomBgColor(){
 async function addContact(contact) {
   contacts.push(contact);
   await backend.setItem('contact', JSON.stringify(contacts));
-  console.log(contacts);
 }
 
 /**
