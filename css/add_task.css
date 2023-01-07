@@ -240,7 +240,7 @@ body {
     flex-direction: row;
 }
 
-.contactOptions label{
+.contactOptions label {
     width: 100%;
     display: flex;
 }

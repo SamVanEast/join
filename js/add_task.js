@@ -21,7 +21,7 @@ let taskStatus = 'todo';
 
 
 /**
- * Function that loads all tasks
+ * Function that loads all tasks from server
  * 
  */
 async function initAddTask() {
