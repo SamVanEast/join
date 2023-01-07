@@ -114,9 +114,9 @@ async function checkLogin() {
       currentUser = [allUser[i]];
       await saveCurrentUser();
       location.replace("../../assets/templates/side_bar.html");
-    } else if(i === allUser.length - 1) {
+    } else if(i === allUser.length - 1)  {
       alert("wrong password or wrong email");
-    }
+    } 
   }
 }
 
