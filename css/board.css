@@ -42,6 +42,7 @@ body {
     justify-content: center;
     padding: 50px;
     min-width: 33%;
+    max-width: 90%;
 }
 
 .openTaskCategory {
@@ -56,6 +57,11 @@ body {
 
 #openTaskDesc {
     margin-top: -20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .addNewTask {
@@ -67,12 +73,11 @@ body {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     padding: 24px;
-    height: 90%;
     overflow-y: scroll;
 }
 
 .addNewTask::-webkit-scrollbar {
-    display: d-none;
+    display: none;
 }
 
 .container {
@@ -140,7 +145,8 @@ body {
 }
 
 .tasks {
-    margin-right: 26px;
+    box-sizing: border-box;
+    padding-right: 26px;
     width: 25%;
     height: 100%;
 
@@ -254,13 +260,14 @@ body {
     line-height: 120%;
     font-weight: 700;
     font-style: normal;
-    margin-left: 24px;
+    padding-left: 24px;
     margin-top: 24px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     padding-right: 12px;
+    box-sizing: border-box;
 }
 
 .taskDescription {
@@ -277,6 +284,7 @@ body {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     padding-right: 12px;
+    word-wrap: break-word;
 }
 
 .circleAndName {
@@ -483,7 +491,7 @@ body {
     }
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1170px) {
     .container {
         margin-top: 90px;
     }
@@ -501,6 +509,10 @@ body {
 
     .addNewTask {
         height: 80%;
+    }
+
+    .subtasksContent{
+        margin-bottom: 0 !important;
     }
 
 }
@@ -552,10 +564,9 @@ body {
     }
 
     .tasks {
-        margin-right: 26px;
+        padding-right: 26px;
         width: 100%;
         margin-top: 24px;
-
     }
 
     .dragArea {

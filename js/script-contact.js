@@ -99,7 +99,7 @@ function generateContactlist() {
  * @param {number} i // number of array
  */
 function showSingleContact(i){       
-  if(window.innerWidth > 1060 ){
+  if(window.innerWidth > 1170 ){
     document.getElementById('containerRight').innerHTML = showSingleContactTemplate(i);
   } else {
     MobileSingleContactScreen();

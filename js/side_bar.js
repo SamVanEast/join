@@ -88,15 +88,17 @@ async function loadWelcomeContent(content) {
 function checkIFWichContentContacts() {
     if (wichContent == 'contacts') {
         document.getElementById('header-headline').style = 'display: none';
+        document.getElementById('header-side-bar').style = 'justify-content: flex-end';  
     } else {
         document.getElementById('header-headline').style = '';
+        document.getElementById('header-side-bar').style = '';
     }
 }
 /**
  * when the content of add_task is loaded, the div header-image should no longer be displayed
  */
 function checkIFWichContentAddTasks() {
-    if (wichContent == 'add_task' && window.innerWidth < 1060) {
+    if (wichContent == 'add_task' && window.innerWidth < 1170) {
         document.getElementById('header-image').style = 'display: none';
     } else {
         document.getElementById('header-image').style = '';
@@ -125,7 +127,7 @@ window.addEventListener('resize', () => {
  */
 function showHelpIcon() {
     let tab = document.getElementById(`tab-${wichContent}`);
-    if (wichContent == 'help' || window.innerWidth < 1060) {
+    if (wichContent == 'help' || window.innerWidth < 1170) {
         document.getElementById('qoestion-mark-img').classList.add('d-none');
     } else {
         document.getElementById('qoestion-mark-img').classList.remove('d-none');
@@ -143,8 +145,10 @@ async function wichOnloadFunction() {
     }
     if (wichContent == 'contacts') {
         initContacts();
+        checkIFWichContentContacts();
     }
     if (wichContent == 'add_task') {
+        checkIFWichContentAddTasks();
         initAddTask();
         toAddTask = false;
     }
@@ -167,7 +171,7 @@ function removeDarkBlue() {
  */
 function showLogOutButton() {
     document.getElementById('log-out-area').style = '';
-    if (window.innerWidth <= 1060) {
+    if (window.innerWidth <= 1170) {
         document.getElementById('log-out-area-help').style = '';
         document.getElementById('log-out-area-legale_notice').style = '';
         document.getElementById('log-out-area-log-out').style = '';

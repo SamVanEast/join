@@ -569,7 +569,7 @@ body {
 }
 
 
-@media only screen and (max-width: 1060px) {
+@media only screen and (max-width: 1170px) {
     .header {
         position: fixed;
         z-index: 2;
@@ -719,5 +719,11 @@ body {
 
     .create::before {
         content: "Create";
+    }
+}
+
+@media (max-width: 350px) {
+    .urgentButton{
+        font-size: 0;
     }
 }

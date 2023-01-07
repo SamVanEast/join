@@ -15,7 +15,6 @@ let currentTask;
 
 async function initBoard() {
     await downloadServer();
-    console.log(allTasks, contact)
     await addId();
     filterStatus();
 }
