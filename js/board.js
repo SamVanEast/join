@@ -12,6 +12,10 @@ let timeIsup = false;
 let editTaskStatus = false;
 let currentTask;
 
+/**
+ * 
+ * Initializes the board, adds an ID to resp. tasks and renders the board
+ */
 
 async function initBoard() {
     await downloadServer();
@@ -19,12 +23,23 @@ async function initBoard() {
     filterStatus();
 }
 
+/**
+ * 
+ * Downloads JSON with tasks and contacts from server
+ */
+
 async function downloadServer() {
     setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
 }
+
+/**
+ * 
+ * Distributes the tasks to their resp. states und checks whether the progressbar 
+ * should be displayed
+ */
 
 function filterStatus() {
     filterTodo();
@@ -34,6 +49,11 @@ function filterStatus() {
     checkProgressbar();
 }
 
+
+/**
+ * Adds an ID to the tasks and pushes them into the JSON
+ */
+
 async function addId() {
     let i = 0;
     await allTasks.map(n => {
@@ -42,6 +62,13 @@ async function addId() {
     });
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
+
+
+/**
+ * 
+ * Checks if a progressbar should be displayed (Yes if there are subtasks)
+ * 
+ */
 
 function checkProgressbar() {
     for (let i = 0; i < allTasks.length; i++) {
@@ -57,6 +84,13 @@ function checkProgressbar() {
 }
 
 
+/**
+ * 
+ * Calculates the percentage of how many subtasks have been done already
+ * @param {string} progs gets the subtasks from JSON
+ * @param {*} i iterates through IDs of elements
+ */
+
 function checkProgressPercentage(progs, i) {
     let percent = progs.subtask[0].idInputCheckbox.length / progs.subtask[0].sub.length;
     percent = percent * 100;
@@ -66,9 +100,19 @@ function checkProgressPercentage(progs, i) {
     <div id="done-counter${i}">${progs.subtask[0].idInputCheckbox.length}/${progs.subtask[0].sub.length} Done</div>`;
 }
 
+/**
+ * Initiates dragging
+ * @param {number} id Gets the ID of the current dragged element
+ */
+
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
+/**
+ *  Checks whether board is displayed on desktop or mobile 
+ * @param {number} element ID of the task to be opened
+ */
 
 function checkMobileTrue(element) {
     let check = false;
@@ -81,6 +125,10 @@ function checkMobileTrue(element) {
     }
 }
 
+/**
+ * Opens the full task on clicking the resp. one in the board
+ * @param {number} element ID of the task to be opened
+ */
 
 async function openTask(element) {
     let openedTask = document.getElementById('openTask');
@@ -105,6 +153,10 @@ async function openTask(element) {
     await checkSubtasks(element);
 }
 
+/**
+ * checks if there are subtasks to be displayed in task view
+ * @param {number} element ID of the task to be checked
+ */
 
 async function checkSubtasks(element) {
     let subs = document.getElementById('changeSubs');
@@ -119,6 +171,11 @@ async function checkSubtasks(element) {
     await addSubtasksChecked(element);
 }
 
+/**
+ * Shows subtasks that are aleady checked (i.e. done)
+ * @param {number} idTask adds an ID to the task
+ */
+
 async function addSubtasksChecked(idTask) {
     await downloadServer();
     if (allTasks[idTask].subtask[0].idInputCheckbox.length > 0) {
@@ -128,6 +185,10 @@ async function addSubtasksChecked(idTask) {
     }
 }
 
+/**
+ * Changes the style of the button according to its urgency
+ * @param {number} element all elements of JSON 'allTasks'
+ */
 function changePriorityButton(element) {
     let thePrio = document.getElementById('prioOpenTask');
     if (allTasks[element].prio == 'Urgent') {
@@ -144,6 +205,11 @@ function changePriorityButton(element) {
     }
 }
 
+/**
+ * closes the 'openTask' view.
+ * @param {number} idTask ID of the task
+ */
+
 async function closeOpenTask(idTask) {
     document.getElementById('addOpenTask').classList.add('d-none');
     document.body.classList.remove('noScroll');
@@ -155,6 +221,11 @@ async function closeOpenTask(idTask) {
     filterBoard();
 }
 
+
+/**
+ *  saves checked subtasks and pushes them in JSON
+ * @param {number} idTask ID of the task
+ */
 async function saveSubtasksChecked(idTask) {
     let idInputCheckbox = allTasks[idTask].subtask[0].idInputCheckbox;
     idInputCheckbox.length = 0;
@@ -166,7 +237,10 @@ async function saveSubtasksChecked(idTask) {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
-
+/**
+ * closes the view of 'addTask'
+ * 
+ */
 function closeAddTask() {
     document.getElementById('addOpenTask').classList.add('d-none');
     document.getElementById('addNewTask').classList.add('d-none');
@@ -175,10 +249,20 @@ function closeAddTask() {
 
 }
 
+/**
+ * Allows dropping a task
+ * @param {string} ev Event
+ */
+
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
+/**
+ * changes the status of a task element after drop and pushes it to JSON
+ * @param {string} status the status after a task element has been dropped
+ */
 
 async function moveTo(status) {
     allTasks[currentDraggedElement]['status'] = status;
@@ -186,18 +270,28 @@ async function moveTo(status) {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
-
-
+/**
+ * displays where elements can be dropped
+ * @param {number} id ID of status
+ */
 
 function highlight(id) {
     document.getElementById(id).classList.add('dragAreaHighlight');
 }
 
-
+/**
+ * removes highlight of dropping area
+ * @param {number} id ID of status 
+ */
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
 }
 
+
+/**
+ * opens "add task" view (more than 400px) or loads add_task.html if screen is smaller than 400px
+ * @param {string} status one of the four possible states
+ */
 
 function addNewTask(status) {
     taskStatus = status;
@@ -221,12 +315,16 @@ function addNewTask(status) {
     toAddTask = true;
 }
 
+/**
+ * deletes all tasks from JSON
+ */
 async function deleteTasks() {
     await backend.deleteItem('allTasks');
-    await backend.deleteItem('testJSONCheckedSubtasks');
 }
 
-
+/**
+ * filters the board when using the searchbar
+ */
 function filterBoard() {
     checkProgressbar();
     filterBoardTodo();
@@ -235,6 +333,10 @@ function filterBoard() {
     filterBoardDone();
 }
 
+/**
+ *Changes the style of the button according to its urgency
+ * @param {number} element all elements of JSON 'allTasks'
+ */
 
 function declarePriority(element) {
     let shownPriority = document.getElementById(`prio${element.id}`);
@@ -253,12 +355,20 @@ function declarePriority(element) {
     }
 }
 
+/**
+ * fills boxes with resp. values
+ * @param {number} element all elements of JSON 'allTasks'
+ */
 function editInput(element) {
     document.getElementById('editHeadline').value = `${allTasks[element].headline}`;
     document.getElementById('editDesc').value = `${allTasks[element].desc}`;
     document.getElementById('editDueDate').value = `${allTasks[element].dueDate}`;
 }
 
+/**
+ * opens the view edit task
+ * @param {*} idTask ID of the task
+ */
 
 async function editTask(idTask) {
     await saveSubtasksChecked(idTask);
@@ -278,6 +388,10 @@ async function editTask(idTask) {
     }
 }
 
+/**
+ * displays all users that have already been assigned to the resp. task
+ */
+
 function addUserToAssignedTo() {
     for (let i = 0; i < allTasks[currentTask].assignedTo.length; i++) {
         let name = allTasks[currentTask].assignedTo[i];
@@ -287,6 +401,10 @@ function addUserToAssignedTo() {
 
 }
 
+/**
+ * Gets changed input from input fields; saves them in an array.
+ * @param {number} element ID of the elements in JSON
+ */
 
 async function editTasks(element) {
     editTaskStatus = false;
@@ -326,12 +444,21 @@ async function editTasks(element) {
     closeEditFunction();
 }
 
+/**
+ * adds CSS for edit view
+ */
+
 function addStyleForEditMode() {
     document.getElementById('prioButtons').style = 'justify-content: space-between;';
     document.getElementById('editDueDate').style = 'box-sizing: border-box; height: 51px ;width: 100%;';
     document.getElementById('editDesc').style = 'box-sizing: border-box; height: 119px ;width: 100%;';
     document.getElementById('editHeadline').style = 'box-sizing: border-box; height: 51px ;width: 100%;';
 }
+
+
+/**
+ * deletes CSS for edit view
+ */
 
 function deleteStyleForEditMode() {
     document.getElementById('prioButtons').style = '';
@@ -340,6 +467,10 @@ function deleteStyleForEditMode() {
     document.getElementById('editHeadline').style = '';
 }
 
+/**
+ * Pushes edited information to backend
+ * @param {Array} task Array with stored information of edit task
+ */
 
 async function changeTask(task) {
     allTasks.push(task);
@@ -347,6 +478,10 @@ async function changeTask(task) {
     console.log();
 }
 
+/**
+ * Changes the style of the button according to its urgency
+ * @param {number} element all elements of JSON 'allTasks'
+ */
 
 function checkButtonUrgency(element) {
     if (allTasks[element].prio == 'Medium') {
@@ -362,6 +497,10 @@ function checkButtonUrgency(element) {
     }
 }
 
+/**
+ * closes edit view
+ */
+
 function closeEditFunction() {
     editTaskStatus = false;
     document.getElementById('openTask').classList.add('d-none');
@@ -373,17 +512,9 @@ function closeEditFunction() {
     filterBoard();
 }
 
-
-async function addCheckedSubtask() {
-    // await backend.setItem('testJSONCheckedSubtasks', JSON.stringify(checkedSubtasksTest));
-    // console.log(checkedSubtasksTest);
-}
-
-
 /**
  * 
- * Filters the Board on load
- * 
+ * Filters board on load
  */
 
 function filterTodo() {
@@ -402,7 +533,6 @@ function filterTodo() {
 }
 
 
-
 function filterProgress() {
     progress = allTasks.filter(t => t['status'] == 'progress');
 
@@ -418,6 +548,7 @@ function filterProgress() {
     }
 }
 
+
 function filterFeedback() {
     feedback = allTasks.filter(t => t['status'] == 'feedback');
 
@@ -431,6 +562,7 @@ function filterFeedback() {
         declarePriority(element);
     }
 }
+
 
 function filterDone() {
     done = allTasks.filter(t => t['status'] == 'done');
@@ -448,10 +580,10 @@ function filterDone() {
     }
 }
 
+
 /**
  * 
  * Filters the board after search
- * 
  */
 
 function filterBoardTodo() {
@@ -477,6 +609,7 @@ function filterBoardTodo() {
     }
 
 }
+
 
 function filterBoardProgress() {
     let search = document.getElementById('search').value;
@@ -529,10 +662,10 @@ function filterBoardFeedback() {
 
 }
 
+
 function filterBoardDone() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
-
 
     let filter = document.getElementById('done');
     filter.innerHTML = '';
@@ -549,11 +682,15 @@ function filterBoardDone() {
             /*checkBgColor(element);*/
             redernTask(result);
             declarePriority(result);
-
         }
     }
-
 }
+
+/**
+ * checks how many users are assigned for a task; at more than 3, a black circle
+ * is displayed
+ * @param {number} element all elements of JSON 'allTasks'
+ */
 
 function redernTask(element) {
     startDragging(element.id);
@@ -572,10 +709,18 @@ function redernTask(element) {
     checkProgressbar();
 }
 
+/**
+ * checks how long task is touched on mobile
+ * @param {number} id ID of the task
+ */
 function touchstart(id) {
     timer = setTimeout(() => onlongtouch(id), 200);
 }
 
+/**
+ * checks if touch on mobile has ended
+ * @param {number} id ID of the task
+ */
 function touchend(id) {
 
     if (timer && !timeIsup) {
@@ -585,11 +730,19 @@ function touchend(id) {
     setTimeout(() => timeIsup = false, 250)
 }
 
+/**
+ * action that is performed if mobile display is touched long enough
+ * @param {number} id ID of the task
+ */
 function onlongtouch(id) {
     timeIsup = true;
     openMoveToPoppupMobile(id);
 }
 
+/**
+ * opens container that allows shifting tasks between states on mobile devices
+ * @param {number} id ID of the task
+ */
 function openMoveToPoppupMobile(id) {
     let task = document.getElementById('taskBoxes' + id);
     currentDraggedElement = id;
@@ -605,6 +758,9 @@ function openMoveToPoppupMobile(id) {
         </div>`;
 }
 
+/**
+ * filters board after performing a change in status on mobile devices
+ */
 function closeMoveToPoppupMobile() {
     filterStatus();
     filterBoard();
