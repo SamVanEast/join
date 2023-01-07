@@ -203,6 +203,7 @@ function removeHighlight(id) {
 function addNewTask(status) {
     taskStatus = status;
     if (window.innerWidth >= 400) {
+        document.getElementById('openTask').innerHTML = '';
         document.getElementById('addOpenTask').classList.remove('d-none');
         document.getElementById('addNewTask').classList.remove('d-none');
         document.body.classList.add('noScroll');
@@ -260,16 +261,17 @@ function editInput(element) {
 }
 
 
-function editTask(element) {
+async function editTask(idTask) {
+    await saveSubtasksChecked(idTask);
     editTaskStatus = true;
-    currentTask = element;
+    currentTask = idTask;
     let getStuff = document.getElementById('openTask');
     getStuff.innerHTML = '';
-    getStuff.innerHTML += editTaskHTML(element);
-    editInput(element);
+    getStuff.innerHTML += editTaskHTML(idTask);
+    editInput(idTask);
     renderPrioButtons();
     renderAssignedToContent();
-    checkButtonUrgency(element);
+    checkButtonUrgency(idTask);
     addStyleForEditMode();
     renderAssignedTo();
     if (editTaskStatus) {
@@ -295,6 +297,7 @@ async function editTasks(element) {
     let cat = allTasks[element].category;
     let status = allTasks[element].status;
     let subs = allTasks[element].subtask;
+    let prio = allTasks[element].prio;
 
     let color = allTasks[element].color;
     let bgcolor = allTasks[element].bgcolor;
@@ -315,7 +318,7 @@ async function editTasks(element) {
         'color': color,
         'bgcolor': bgcolor,
         'assignedTo': checkedNames,
-        'prio': selectedPriority
+        'prio': prio
 
 
     };
