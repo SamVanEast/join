@@ -493,6 +493,16 @@ body {
         padding-top: 0px;
         margin-top: -15px;
     }
+
+    .addNewTask {
+        justify-content: unset;
+        height: 80%;
+        overflow-y: scroll;
+    }
+
+    .addNewTask::-webkit-scrollbar {
+        display: d-none;
+    }
 }
 
 
