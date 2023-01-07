@@ -418,13 +418,6 @@ async function submitTask() {
     const allSubtasks = document.querySelectorAll('#newSubtask input[type="checkbox"]');
     const checkedSubtasks = [...allSubtasks].filter(cb => cb.checked);
     const checkedSubtask = checkedSubtasks.map(cb => cb.name);
-    console.log(checkedSubtask);
-    // let subStatus = [];
-
-    // for (let i = 0; i < checkedSubtask.length; i++) {
-    //     let statusFalse = 'false';
-    //     subStatus.push(statusFalse);
-    // }
     let task = {
         'headline': headline,
         'desc': desc,
@@ -442,7 +435,6 @@ async function submitTask() {
             }
         ]
     };
-    console.log(task);
     await addThisTask(task);
     clearForm();
     renderCategoryContent();
