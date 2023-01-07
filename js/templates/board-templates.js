@@ -133,7 +133,6 @@ function editTaskHTML(element) {
             <div class="prioButtons" id="prioButtons"></div>
         </div>
         <div class="categoryAssigned" id="assigned"></div>
-        <div class="subtasksContent" id="subContent"></div>
         <button class="ok-btn"><img src="../img/board_img/ok-button.png" alt=""></button>
         
     </form>
