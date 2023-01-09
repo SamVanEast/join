@@ -422,7 +422,6 @@ body {
     flex-direction: row;
     margin-left: auto;
     height: 49px;
-    box-sizing: border-box;
 }
 
 .subtaskImage img{
