@@ -433,6 +433,8 @@ body {
     width: 0px;
     height: 20px;
     border: 1px solid #D1D1D1;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .inputFieldSubtask {
