@@ -3,7 +3,7 @@ let letters = [];
 let contacts;
 
 async function initContacts() {
-    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+    setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contact')) || [];  
     sortArray();
@@ -16,9 +16,9 @@ function submitContact() {
   let number = document.getElementById('AddNumber').value;
 
   if(name.split(" ").length != 2 ){
-    alert("You have to write firstname and lastname!"); 
+    document.getElementById('info').innerHTML = 'please write firstname and lastname!';
   } else {
-
+ 
   randomBgColor();
 
   let contact = {
@@ -30,7 +30,7 @@ function submitContact() {
   sortArray();
   addContact(contact);
   HideNewContactContainer();
-  generateContactlist();
+  generateContactlist(); 
   }
 }
 
@@ -52,6 +52,17 @@ function randomBgColor(){
 async function addContact(contact) {
   contacts.push(contact);
   await backend.setItem('contact', JSON.stringify(contacts));
+  clearInput();
+}
+
+/**
+ * Clear input fields
+ */
+function clearInput () {
+  document.getElementById('AddName').value= '';
+  document.getElementById('AddEmail').value= '';
+  document.getElementById('AddNumber').value= '';
+  document.getElementById('info').innerHTML = '&nbsp;'; 
 }
 
 /**
@@ -166,6 +177,7 @@ function showNewContactContainer() {
 
 function HideNewContactContainer() {
     document.getElementById('lightboxAddContact').classList.add('d-none');
+    clearInput();
 }
 
 function MobileSingleContactScreen(){
