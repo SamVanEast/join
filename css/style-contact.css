@@ -992,6 +992,7 @@ input[type=text], input[type=email], input[type=number] {
     display: flex !important;
   }
 
+  .mobile-edit-btn {}
 
   .container-right {
     display: none;
@@ -1315,8 +1316,7 @@ input[type=text], input[type=email], input[type=number] {
   }
 
   .lightbox-mobile-contact {
-    align-items: flex-start;
-    padding-left: 12px;
+
   }
 
   .contact-information {
