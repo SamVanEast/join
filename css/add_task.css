@@ -406,7 +406,6 @@ body {
     font-size: 21px;
     line-height: 120%;
     color: #D1D1D1;
-    box-sizing: border-box;
 }
 
 .subtaskRender {
