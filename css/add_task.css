@@ -417,12 +417,16 @@ body {
 
 .subtaskImage {
     display: flex;
-    gap: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     margin-left: auto;
     height: 49px;
+}
+
+.subtaskImage img{
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .inputBorder {
