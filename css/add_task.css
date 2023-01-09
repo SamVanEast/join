@@ -395,7 +395,6 @@ body {
     flex-direction: row;
     align-items: center;
     padding: 18px 21px;
-    gap: 10px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     background-color: #FFFFFF;
@@ -422,14 +421,20 @@ body {
     align-items: center;
     flex-direction: row;
     margin-left: auto;
-    gap: 10px;
     height: 49px;
+}
+
+.subtaskImage img{
+    margin-right: 8px;
+    margin-left: 8px;
 }
 
 .inputBorder {
     width: 0px;
     height: 20px;
     border: 1px solid #D1D1D1;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .inputFieldSubtask {
