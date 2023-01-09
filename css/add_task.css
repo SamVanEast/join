@@ -417,11 +417,11 @@ body {
 
 .subtaskImage {
     display: flex;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     margin-left: auto;
-    gap: 10px;
     height: 49px;
 }
 
