@@ -141,3 +141,16 @@ function editTaskHTML(element) {
     </div>
     `;
 }
+
+function openMoveToPoppupMobileHTML() {
+    return `
+    <div id="popup-to-move-task-mobile" class="popup_to_move_task_mobile" ontouchstart="save(event); closeMoveToPoppupMobile()">
+        <div class="popup_to_move_task_mobile_selections">
+            <div>Move to</div>
+            <span ontouchstart="save(event); moveTo('todo')">To do</span>
+            <span ontouchstart="save(event); moveTo('progress')">In Progress</span>
+            <span ontouchstart="save(event); moveTo('feedback')">Feedback</span>
+            <span ontouchstart="save(event); moveTo('done')">Done</span>
+        </div>
+    </div>`;
+}

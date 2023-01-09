@@ -6,16 +6,18 @@ let currentUser;
  * Falls auf dem Backend noch nicht currentUser besteht, einen hinzufügen
  */
 async function loginInit() {
-  setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+  setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
   await downloadFromServer();
   await backend.setItem('currentUser', JSON.stringify(currentUser));
 }
 
+
 async function render() {
-  setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+  setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
   await downloadFromServer();
   allUser = JSON.parse(backend.getItem('allUser')) || [];
 }
+
 
 function submitUser() {
   let name = document.getElementById('signupName').value;
@@ -76,10 +78,11 @@ function passwordChanged() {
   }, 3000);
 }
 
+
 /**
  * show send email screen and shows the reset password screen
  */
-function SendEmailtoChangePassword() {
+function sendEmailtoChangePassword() {
   let inputEmail = document.getElementById("forgotEmail").value;
   for (let i = 0; i < allUser.length; i++) {
     const email = allUser[i]["email"];
@@ -91,7 +94,7 @@ function SendEmailtoChangePassword() {
         hideForgotScreen();
         document.getElementById("reset").innerHTML = renderResetContainer(i);
       }, 3000); break;
-    } else if(i==allUser.length) {
+    } else if(i==allUser.length - 1) {
       alert("This Email does not exist");
     }
   }
@@ -115,10 +118,22 @@ async function checkLogin() {
       await saveCurrentUser();
       location.replace("../../assets/templates/side_bar.html");
     } else if(i === allUser.length - 1)  {
-      alert("wrong password or wrong email");
+      document.getElementById('loginWrong').innerHTML = 'Wrong email or password';
+      clearWarn();
     } 
   }
 }
+
+
+/**
+ * clears the text from the warning
+ */
+function clearWarn() {
+  setTimeout(() => {
+    document.getElementById('loginWrong').innerHTML = '&nbsp';
+  }, 5000);
+}
+
 
 /**
  * lädt die Information über den User hoch, der sich gerade angemeldet hat 
@@ -137,12 +152,14 @@ async function saveCurrentUserAsGuest(){
   location.href='../../assets/templates/side_bar.html';
 }
 
+
 function openSignUp() {
   document.getElementById("signUp").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
   document.getElementById("reset").classList.add("d-none");
   document.getElementById("forgot").classList.add("d-none");
 }
+
 
 function backToLogin() {
   document.getElementById("signUp").classList.add("d-none");
@@ -151,11 +168,13 @@ function backToLogin() {
   document.getElementById("login").classList.remove("d-none");
 }
 
+
 function showForgotScreen() {
   document.getElementById("forgot").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
   document.getElementById("signUp").classList.add("d-none");
 }
+
 
 function hideForgotScreen(){
   document.getElementById('lightboxEmail').classList.add('d-none');

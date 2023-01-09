@@ -25,7 +25,7 @@ let taskStatus = 'todo';
  * 
  */
 async function initAddTask() {
-    setURL('https://gruppe-390.developerakademie.net/smallest_backend_ever/');
+    setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
@@ -408,6 +408,17 @@ function checkForm() {
  * Function that collects and saves the task data when submitting the form
  */
 async function submitTask() {
+    let task = createNewTask();
+    await addThisTask(task);
+    clearForm();
+    renderCategoryContent();
+    renderAssignedToContent();
+    renderPrioButtons();
+    loadContent('board');
+}
+
+
+function createNewTask() {
     let headline = document.getElementById('headline').value;
     let desc = document.getElementById('desc').value;
     let cat = document.getElementById('selectedCategory').innerText;
@@ -435,12 +446,7 @@ async function submitTask() {
             }
         ]
     };
-    await addThisTask(task);
-    clearForm();
-    renderCategoryContent();
-    renderAssignedToContent();
-    renderPrioButtons();
-    loadContent('board');
+    return task;
 }
 
 

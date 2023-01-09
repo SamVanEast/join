@@ -43,7 +43,10 @@
       </div>
 
       <form class="container-input" onsubmit="checkLogin(); return false;">
-        <input required id="loginEmail" type="email" name="" id="" placeholder="Email" />
+        <div>
+          <label id="loginWrong">&nbsp; </label>
+          <input required id="loginEmail" type="email" name="" id="" placeholder="Email" />
+        </div>  
         <input required id="loginPassword" type="password" placeholder="Password" />
         <div class="container-remember">
           <div>
@@ -53,8 +56,8 @@
           <p onclick="showForgotScreen()">Forgot my Password</p>
         </div>
         <div class="container-button">
-          <button  class="login-button">Log in</button>
-          <button class="guest-button" onclick="saveCurrentUserAsGuest()">
+          <button class="login-button">Log in</button>
+          <button type="button" class="guest-button" onclick="saveCurrentUserAsGuest()">
             Guest Log in
           </button>
         </div>
@@ -114,7 +117,7 @@
         <p class="forgot-text">Don't worry! We will send you an email with the instructions to reset your password.</p>
       </div>
 
-      <form class="container-input-forgot" action="" onsubmit="SendEmailtoChangePassword(); return false;">
+      <form class="container-input-forgot" action="" onsubmit="sendEmailtoChangePassword(); return false;">
         <input class="forgot-input" required type="email" name="" id="forgotEmail" placeholder="Email" />
         <div class="container-button-signup">
           <button class="forgot-button">Send me the email</button>
