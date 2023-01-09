@@ -626,7 +626,7 @@
 
 .lightbox-container {
   display: flex;
-  max-width: 90%;
+  width: 90%;
   height: 60%;
   border-radius: 30px;
   background-color: #FFFFFF;
@@ -699,7 +699,7 @@
   align-items: center;
   height: 100px;
   width: 100px;
-  border-radius: 50px;
+  border-radius: 56px;
   border: 3px solid #FFFFFF;
 }
 
@@ -709,7 +709,7 @@
   align-items: center;
   height: 100px;
   width: 100px;
-  border-radius: 50px;
+  border-radius: 56px;
   background-color: gray;
   border: 3px solid #FFFFFF;
 }
@@ -718,7 +718,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  width: fit-content;
 }
 
 .lightbox-input-pos input {
@@ -830,14 +830,20 @@
   padding-bottom: 2px;
 }
 
-input::placeholder{
-  padding-left: 6px;
-}
 
 input[type=text], input[type=email], input[type=number] {
   width: 100%;
   padding-left: 6px;
   box-sizing: border-box;
+}
+
+#info {
+  color: rgb(255, 92, 92);
+  height: 20px;
+}
+
+#AddName{
+  margin-top: 0px;
 }
 
 /*DESIGN SCROLLBAR*/
@@ -997,6 +1003,7 @@ input[type=text], input[type=email], input[type=number] {
     flex-direction: column;
     gap: 20px;
     padding-top: 35px;
+    padding-bottom: 35px;
     height: auto;
   }
 
@@ -1283,8 +1290,7 @@ input[type=text], input[type=email], input[type=number] {
   }
 
   .lightbox-mobile-contact {
-    align-items: flex-start;
-    padding-left: 34px;
+
   }
 
   .contact-information {
