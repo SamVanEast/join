@@ -8,7 +8,7 @@ async function init() {
 }
 
 async function getTasks() {
-    let url = `https://gruppe-390.developerakademie.net/smallest_backend_ever/database.json`;
+    let url = 'https://samuel-haas.developerakademie.net/smallest_backend_ever';
     let response = await fetch(url);
     task = await response.json();
     console.log(task);

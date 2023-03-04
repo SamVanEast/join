@@ -424,7 +424,7 @@ body {
     height: 49px;
 }
 
-.subtaskImage img{
+.subtaskImage img {
     margin-right: 8px;
     margin-left: 8px;
 }
@@ -445,7 +445,6 @@ body {
     font-size: 21px;
     line-height: 120%;
     padding: 0px;
-    width: 100%;
 }
 
 .inputFieldSubtask::placeholder {
@@ -640,7 +639,10 @@ body {
     }
 
     .categoryContent {
-        width: 86%;
+        width: 100%;
+        box-sizing: border-box;
+        padding-top: 26px;
+        gap: unset;
     }
 
     .categorysDropdownSelectHTML {
@@ -729,7 +731,7 @@ body {
 }
 
 @media (max-width: 350px) {
-    .urgentButton{
+    .urgentButton {
         font-size: 0;
     }
 }

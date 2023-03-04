@@ -353,8 +353,8 @@ body {
 }
 
 #close {
-    height: 10px;
-    width: 10px;
+    height: 20px;
+    width: 20px;
     cursor: pointer;
 }
 
@@ -527,7 +527,7 @@ body {
 
 }
 
-@media (max-width: 770px) {
+@media (max-width: 900px) {
     .container {
         margin-top: 95px;
     }
@@ -584,6 +584,7 @@ body {
         padding-right: 24px;
         justify-content: flex-start;
         overflow-y: scroll;
+        max-width: unset;
     }
 
     .circleAndName {
@@ -650,30 +651,6 @@ body {
 *
 */
 
-/* .prioButtons {
-    justify-content: space-between !important;
-}
-
-.dueDate input {
-    box-sizing: border-box;
-    height: 51px !important;
-    width: 100% !important;
-}
-
-.description textarea {
-    width: 100% !important;
-    box-sizing: border-box;
-    height: 119px;
-}
-
-.title input {
-    width: 100% !important;
-    box-sizing: border-box;
-    height: 51px !important;
-} */
-
-
-
 .showAllCategorys {
     width: 100% !important;
 }
@@ -690,67 +667,3 @@ body {
     flex-direction: column;
     padding-bottom: unset !important;
 }
-
-/*
-
-    padding-bottom: 0px !important;
-}
-
-.addTaskContainer h1 {
-    font-size: 45px !important;
-    padding-left: 40px !important;
-    margin-bottom: 0px !important;
-}
-
-.titleToAssigned {
-    font-size: 18px !important;
-}
-
-.dateToButtons {
-    font-size: 18px !important;
-
-}
-
-.title input {
-    font-size: 14px !important;
-}
-
-
-
-.description textarea {
-    height: 50px !important;
-    font-size: 14px !important;
-
-}
-
-.dropdown {
-    font-size: 14px !important;
-    background-position: calc(100% - 20px) calc(1em + 6px), calc(100% - 15px) calc(1em + 6px), calc(100% - 2.5em) 0.5em !important;
-}
-
-
-.dueDate p {
-    margin-top: 20px !important;
-}
-
-.dueDate input {
-    height: 4px !important;
-    font-size: 14px !important;
-
-}
-
-.inputSubtask {
-    font-size: 14px !important;
-}
-
-.addTask {
-    padding-left: 40px !important;
-    padding-right: 40px !important;
-}
-
-.inputFieldSubtask {
-    font-size: 14px !important;
-
-}
-
-*/

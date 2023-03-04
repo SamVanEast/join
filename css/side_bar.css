@@ -228,8 +228,6 @@ body {
         justify-content: space-between;
         flex-direction: unset;
         height: 80px;
-        margin-left: 2.8%;
-        margin-right: 2.8%;
     }
 
     .tab {
@@ -238,7 +236,6 @@ body {
         justify-content: center;
         padding: 8px 0px;
         gap: 10px;
-        width: 80px;
         height: 80px;
         box-sizing: border-box;
     }
@@ -300,8 +297,6 @@ body {
 
 @media (max-width: 360px) {
     .tab {
-        max-width: 80px;
-        width: unset;
         padding: unset;
     }
 }

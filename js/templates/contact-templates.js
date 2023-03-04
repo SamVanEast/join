@@ -92,7 +92,7 @@ function showSingleContactMobileTemplate(i) {
 <div class="contact-information-up">
   <div class="contact-icon">
     <div class="contact-icon-bg" style="background: rgb(${contacts[i]['bgcolor']})">
-      <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('')}</div>
+      <div>${contacts[i]['name'].split(' ').map(word => word[0]).join('').toUpperCase()}</div>
     </div>
   </div>
   <div class="add-task">
