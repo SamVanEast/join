@@ -30,7 +30,7 @@ async function initBoard() {
  */
 
 async function downloadServer() {
-    setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
+    setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
@@ -424,6 +424,7 @@ function addUserToAssignedTo() {
  */
 
 async function editTasks(element) {
+    saveChecked();
     editTaskStatus = false;
     let headline = document.getElementById('editHeadline').value;
     let desc = document.getElementById('editDesc').value;
@@ -431,10 +432,10 @@ async function editTasks(element) {
     let cat = allTasks[element].category;
     let status = allTasks[element].status;
     let subs = allTasks[element].subtask;
-    let prio = allTasks[element].prio;
+    let prio = selectedPriority;
 
     let color = allTasks[element].color;
-    let bgcolor = allTasks[element].bgcolor;
+    let bgcolor = bgContactColor;
 
     const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
     const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);

@@ -289,7 +289,7 @@
     color: #29ABE2;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1439px) {
     .welcome {
         display: none;
     }

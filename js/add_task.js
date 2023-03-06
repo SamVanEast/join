@@ -3,8 +3,8 @@
  * 
  *
  */
-let categoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000'];
-let newCategoryColors = ['#FF65FF', '#00DBC1', '#83A5FF', '#FF0000', '#00D700', '#FF8200', '#F700C4', '#0039FF'];
+let categoryColors = ['#FFACEC', '#aeeeee', '#83A5FF', '#FA8072'];
+let newCategoryColors = ['#FFACEC', '#aeeeee', '#83A5FF', '#FA8072', '#5F9EA0', '#FF9472', '#E847AE', '#80c4de'];
 let categorys = ['Media', 'Backoffice', 'Marketing', 'Design'];
 let colorFromCategory = '#000000';
 let selectedColor = '#000000';
@@ -25,7 +25,7 @@ let taskStatus = 'todo';
  * 
  */
 async function initAddTask() {
-    setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
+    setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     contact = JSON.parse(backend.getItem('contact')) || [];
@@ -268,7 +268,7 @@ function saveChecked() {
     if (checkedContacts.length > 0) {
         for (let i = 0; i < checkedContacts.length; i++) {
             checkContactCheckbox(checkedContacts[i].id);
-            
+
         }
     }
 }
@@ -278,8 +278,8 @@ function saveChecked() {
  * Function that listens for all "div-container" elements and selects the associated checkbox when clicked
  */
 function checkContactCheckbox(inputId) {
-        let arrayElementNumber = inputId.substr(-1, 1)
-        bgContactColor.push(contact[arrayElementNumber].bgcolor);
+    let arrayElementNumber = inputId.substr(-1, 1)
+    bgContactColor.push(contact[arrayElementNumber].bgcolor);
 }
 
 
@@ -384,6 +384,7 @@ function clearFields() {
  * The function first checks the value of the variable "colorFromCategory". If the value of the variable is "#000000", an error message is displayed in the console and the border of the element with the ID "dropdownCategory" is set to red
  * Then the length of the array "bgContactColor" is checked. If the length is less than 1, an error message is displayed in the console and the border of the element with the ID "dropdownAssignedTo" is set red
  * Lastly, the value of the "selectedPriority" variable is checked. If the value is empty, an error message is displayed in the console and the border of the element with the ID "prioButtons" is set to red
+ * if the date is in the past
  * If all conditions are not met, the "submitTask" function is called and "true" is returned. Otherwise "false" is returned
  */
 function checkForm() {
@@ -399,8 +400,43 @@ function checkForm() {
         document.getElementById('prioButtons').style.border = "1px solid red";
         return false;
     }
+    if (compareDate()) {
+        document.getElementById('dueDate').style.border = "1px solid red";
+        return false;
+    }
+    compareDate();
     submitTask();
     return true;
+}
+
+/**
+ * 
+ * @returns if the date is in the past
+ */
+function compareDate() {
+    let date = new Date().getDate();
+    let month = new Date().getMonth() + 1;
+    let year = new Date().getFullYear();
+    let dueDate = document.getElementById('dueDate').value;
+    let reducedDueDate = dueDate.replaceAll('-', '');
+    let todayDate;
+    checkMonthAndDate(date, month, year, todayDate);
+    return reducedDueDate < todayDate;
+}
+
+/**
+ * if month or date to small is put a 0 befor
+ */
+function checkMonthAndDate(date, month, year, todayDate) {
+    if (month < 9) {
+        todayDate = `${year}` + `0${month}` + `${date}`
+    } else {
+        todayDate = `${year}` + `${month}` + `${date}`
+    }
+    if (date < 10) {
+        date = `0${date}`;
+    }
+    return todayDate;
 }
 
 

@@ -965,6 +965,7 @@ input[type=text], input[type=email], input[type=number] {
     display: flex;
     justify-content: center;
     width: 100%;
+    padding-top: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -992,7 +993,6 @@ input[type=text], input[type=email], input[type=number] {
     display: flex !important;
   }
 
-  .mobile-edit-btn {}
 
   .container-right {
     display: none;
@@ -1108,13 +1108,15 @@ input[type=text], input[type=email], input[type=number] {
   }
 
   .container-position {
+    height: 100%;
     box-shadow: none;
     padding-bottom: 80px;
-    padding-top: 164px;
+    padding-bottom: 20px;
   }
 
   .letterbox {
     align-items: flex-start;
+    padding-bottom: 15px;
   }
 
   .contact {
@@ -1229,6 +1231,14 @@ input[type=text], input[type=email], input[type=number] {
   }
 }
 
+@media only screen and (max-width: 770px) {
+  
+  .lightbox-container-right {
+    width: 80%;
+  }
+}
+
+
 @media only screen and (max-width: 500px) {
 
   .lightbox-add-contact,
@@ -1249,6 +1259,10 @@ input[type=text], input[type=email], input[type=number] {
     border-bottom-left-radius: 0px;
     border-top-right-radius: 0px;
     height: 300px;
+  }
+
+  .lightbox-container-right {
+    width: 100%;
   }
 
   .lightbox-img div {
@@ -1316,7 +1330,8 @@ input[type=text], input[type=email], input[type=number] {
   }
 
   .lightbox-mobile-contact {
-
+    align-items: flex-start;
+    padding-left: 12px;
   }
 
   .contact-information {
