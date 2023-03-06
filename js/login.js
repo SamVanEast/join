@@ -6,17 +6,16 @@ let currentUser;
  * Falls auf dem Backend noch nicht currentUser besteht, einen hinzufügen
  */
 async function loginInit() {
-  setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
+  setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
   await downloadFromServer();
   await backend.setItem('currentUser', JSON.stringify(currentUser));
 }
 
 
 async function render() {
-  setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
+  setURL('https://leonardo-vandahl.developerakademie.net/smallest_backend_ever/');
   await downloadFromServer();
   allUser = JSON.parse(backend.getItem('allUser')) || [];
-  loadLoginInfo();
 }
 
 
@@ -26,12 +25,12 @@ function submitUser() {
   let password = document.getElementById('signupPassword').value;
 
   let user = {
-    'name': name,
-    'email': email,
-    'password': password,
+      'name': name,
+      'email': email,
+      'password': password,
   };
 
-  addUser(user);
+  addUser(user);   
   backToLogin();
 }
 
@@ -95,7 +94,7 @@ function sendEmailtoChangePassword() {
         hideForgotScreen();
         document.getElementById("reset").innerHTML = renderResetContainer(i);
       }, 3000); break;
-    } else if (i == allUser.length - 1) {
+    } else if(i==allUser.length - 1) {
       alert("This Email does not exist");
     }
   }
@@ -117,12 +116,11 @@ async function checkLogin() {
     if (email === inputEmail && password === inputPassword) {
       currentUser = [allUser[i]];
       await saveCurrentUser();
-      saveLoginInfo();
       location.replace("../../assets/templates/side_bar.html");
-    } else if (i === allUser.length - 1) {
+    } else if(i === allUser.length - 1)  {
       document.getElementById('loginWrong').innerHTML = 'Wrong email or password';
       clearWarn();
-    }
+    } 
   }
 }
 
@@ -148,10 +146,10 @@ async function saveCurrentUser() {
 /**
  * falls man sich als Guest anmeldet, soll die alten Information überschrieben werden 
  */
-async function saveCurrentUserAsGuest() {
+async function saveCurrentUserAsGuest(){
   currentUser = [];
   await backend.setItem('currentUser', JSON.stringify(currentUser));
-  location.href = '../../assets/templates/side_bar.html';
+  location.href='../../assets/templates/side_bar.html';
 }
 
 
@@ -178,42 +176,8 @@ function showForgotScreen() {
 }
 
 
-function hideForgotScreen() {
+function hideForgotScreen(){
   document.getElementById('lightboxEmail').classList.add('d-none');
   document.getElementById("forgot").classList.add("d-none");
   document.getElementById("reset").classList.remove('d-none');
-}
-
-/**
- * save the login Information in the local Storage
- */
-function saveLoginInfo() {
-  let email = document.getElementById('loginEmail');
-  let password = document.getElementById('loginPassword');
-  let rememberMe = document.getElementById('remember').checked;
-  localStorage.setItem('rememberMe', rememberMe);
-
-  if (rememberMe) {
-    localStorage.setItem('email', email.value);
-    localStorage.setItem('password', password.value);
-  }
-}
-
-/**
- * load the saved login Information
- */
-function loadLoginInfo() {
-  let email = document.getElementById('loginEmail');
-  let password = document.getElementById('loginPassword');
-  let rememberMe = localStorage.getItem('rememberMe');
-
-  if (rememberMe == 'true') {
-    email.value = localStorage.getItem('email')
-    password.value = localStorage.getItem('password')
-    document.getElementById('remember').checked = true;
-  } else {
-    email.value.length = 0;
-    password.value.length = 0;
-    document.getElementById('remember').checked = false;
-  }
 }
