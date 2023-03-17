@@ -73,7 +73,7 @@ body {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     padding: 24px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .addNewTask::-webkit-scrollbar {
@@ -179,6 +179,10 @@ body {
     margin-top: 24px;
     margin-bottom: 24px;
     cursor: pointer;
+}
+
+.taskBoxes:last-child {
+    margin-bottom: 90px;
 }
 
 .popup_to_move_task_mobile {
@@ -364,8 +368,20 @@ body {
     cursor: pointer;
 }
 
+#delete-btn img {
+    text-align: right;
+    width: 25px;
+    cursor: pointer;
+}
+
+.trash-and-close {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
 .dragArea {
-    min-height: 350px;
+    min-height: 60vh;
 }
 
 .dragAreaHighlight {

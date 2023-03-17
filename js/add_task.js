@@ -134,6 +134,18 @@ function addClickEventForColorDot() {
     }
 }
 
+/**
+ * closes dropdown menu 'assigned to' when clicking outside of div
+ */
+
+document.addEventListener('mouseup', function (e) {
+    let container = document.getElementById('dropdownAssignedTo');
+    if (container) {
+        if (!container.contains(e.target)) {
+            renderAssignedToContent()
+        }
+    }
+});
 
 /**
  * Adds the new category to the array and sets the color for the category
