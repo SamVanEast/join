@@ -42,7 +42,7 @@ async function loadContent(wichHtmlPage, statusBoard) {
  * should download the information about the user who has logged in, if you have logged in as guest an empty array should be loaded
  */
 async function loadBackend() {
-    setURL('https://thomas-wagner.developerakademie.net/smallest_backend_ever');
+    setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     currentUser = JSON.parse(backend.getItem('currentUser')) || [];
 }

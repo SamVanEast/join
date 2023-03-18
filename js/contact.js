@@ -3,7 +3,7 @@ let letters = [];
 let contacts;
 
 async function initContacts() {
-    setURL('https://thomas-wagner.developerakademie.net/smallest_backend_ever');
+    setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contact')) || [];  
     sortArray();

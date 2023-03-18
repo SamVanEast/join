@@ -6,14 +6,14 @@ let currentUser;
  * Falls auf dem Backend noch nicht currentUser besteht, einen hinzufügen
  */
 async function loginInit() {
-  setURL('https://thomas-wagner.developerakademie.net/smallest_backend_ever');
+  setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
   await downloadFromServer();
   await backend.setItem('currentUser', JSON.stringify(currentUser));
 }
 
 
 async function render() {
-  setURL('https://thomas-wagner.developerakademie.net/smallest_backend_ever');
+  setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
   await downloadFromServer();
   allUser = JSON.parse(backend.getItem('allUser')) || [];
   loadLoginInfo();
