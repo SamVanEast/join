@@ -147,6 +147,8 @@ document.addEventListener('mouseup', function (e) {
     }
 });
 
+
+
 /**
  * Adds the new category to the array and sets the color for the category
  * 

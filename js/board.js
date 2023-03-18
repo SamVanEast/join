@@ -248,16 +248,18 @@ async function closeOpenTask(idTask) {
  * @param {number} idTask ID of the task
  */
 async function saveSubtasksChecked(idTask) {
-    let idInputCheckbox = allTasks[idTask].subtask[0].idInputCheckbox;
-    idInputCheckbox.length = 0;
-    let subtasks = document.querySelectorAll('#changeSubs input[type="checkbox"]');
-    checkedSubtasksBoard = [...subtasks].filter(s => s.checked);
-    for (let i = 0; i < checkedSubtasksBoard.length; i++) {
-        idInputCheckbox.push(checkedSubtasksBoard[i].id);
-    }
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
-}
+    if (allTasks[idTask]) {
+        let idInputCheckbox = allTasks[idTask].subtask[0].idInputCheckbox;
 
+        idInputCheckbox.length = 0;
+        let subtasks = document.querySelectorAll('#changeSubs input[type="checkbox"]');
+        checkedSubtasksBoard = [...subtasks].filter(s => s.checked);
+        for (let i = 0; i < checkedSubtasksBoard.length; i++) {
+            idInputCheckbox.push(checkedSubtasksBoard[i].id);
+        }
+        await backend.setItem('allTasks', JSON.stringify(allTasks));
+    }
+}
 /**
  * closes the view of 'addTask'
  * 
@@ -798,3 +800,4 @@ function closeMoveToPoppupMobile() {
     filterStatus();
     filterBoard();
 }
+

@@ -18,10 +18,10 @@
 </head>
 
 <body onload="initBoard()">
-    <div id="addOpenTask" class="addOpenTask d-none">
-        <div id="openTask" class="openTask d-none">
+    <div id="addOpenTask" class="addOpenTask d-none" onclick="closeAddTask(); closeOpenTask()">
+        <div id="openTask" class="openTask d-none" onclick="save(event)">
         </div>
-        <div class="addNewTask d-none" id="addNewTask">
+        <div class="addNewTask d-none" id="addNewTask" onclick="save(event)">
         </div>
     </div>
 
