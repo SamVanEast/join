@@ -15,7 +15,7 @@ async function initSummary() {
  * All tasks in the board are loaded into the array allTasks which is defined in board.js 
  */
 async function loadAllTasks() {
-    setURL('https://samuel-haas.developerakademie.net/smallest_backend_ever');
+    setURL('https://thomas-wagner.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
