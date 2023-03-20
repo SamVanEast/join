@@ -257,6 +257,7 @@ function renderAssignedTo() {
     content.innerHTML = showAssignedToHTML();
     renderAssignedToOptions();
     addChecked();
+    document.getElementById('assignedToOptions').addEventListener("click", () => {changedCheckboxAssignedTo = true; console.log(changedCheckboxAssignedTo);});
 }
 
 
@@ -283,7 +284,6 @@ function addChecked() {
     for (let i = 0; i < checkedContacts.length; i++) {
         document.getElementById(checkedContacts[i].id).checked = true;
     }
-
 }
 
 

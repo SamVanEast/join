@@ -11,6 +11,8 @@ let timer;
 let timeIsup = false;
 let editTaskStatus = false;
 let currentTask;
+let checkboxCacheAssignedTo;
+let changedCheckboxAssignedTo;
 
 /**
  * 
@@ -393,7 +395,6 @@ function editInput(element) {
  */
 
 async function editTask(idTask) {
-    console.log(allTasks);
     currentTask = idTask;
     let getStuff = document.getElementById('openTask');
     getStuff.innerHTML = '';
@@ -406,8 +407,7 @@ async function editTask(idTask) {
     renderAssignedTo();
     addUserToAssignedTo();
     const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
-    const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
-    console.log(checkedContacts);
+    checkboxCacheAssignedTo = [...contactCheckboxes].filter(cb => cb.checked);
 }
 
 
@@ -448,6 +448,8 @@ function clearAssignedToCheckBox() {
 }
 
 
+
+
 /**
  * Gets changed input from input fields; saves them in an array.
  * @param {number} element ID of the elements in JSON
@@ -464,11 +466,8 @@ async function editTasks(element) {
 
     let color = allTasks[element].color;
     let bgcolor = bgContactColor;
+    let checkedNames = checkChangedCheckbox();
 
-    const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
-    const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
-    console.log(checkedContacts);
-    const checkedNames = checkedContacts.map(cb => cb.name);
 
     allTasks[element] = {
         'headline': headline,
@@ -483,9 +482,25 @@ async function editTasks(element) {
         'assignedTo': checkedNames,
         'prio': prio
     };
+    console.log(allTasks);
 
     await updateBackend();
     closeEditFunction();
+}
+
+
+function checkChangedCheckbox() {
+    if (changedCheckboxAssignedTo) {
+        const contactCheckboxes = document.querySelectorAll('#assignedToOptions input[type="checkbox"]');
+        const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
+        const checkedNames = checkedContacts.map(cb => cb.name);
+        changedCheckboxAssignedTo = false;
+        return checkedNames;
+    } else {
+        const checkedNames = checkboxCacheAssignedTo.map(cb => cb.name);
+        return checkedNames;
+    }
+
 }
 
 

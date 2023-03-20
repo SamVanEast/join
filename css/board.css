@@ -39,10 +39,12 @@ body {
     border-radius: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 50px;
     min-width: 33%;
     max-width: 90%;
+    overflow-y: auto;
+    max-height: 95%;
+    box-sizing: border-box;
 }
 
 .openTaskCategory {
@@ -601,6 +603,8 @@ body {
         justify-content: flex-start;
         overflow-y: scroll;
         max-width: unset;
+        max-height: unset;
+        box-sizing: unset;
     }
 
     .circleAndName {
