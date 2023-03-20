@@ -298,7 +298,6 @@ function saveChecked() {
     if (checkedContacts.length > 0) {
         for (let i = 0; i < checkedContacts.length; i++) {
             checkContactCheckbox(checkedContacts[i].id);
-
         }
     }
 }
