@@ -11,8 +11,6 @@ let timer;
 let timeIsup = false;
 let editTaskStatus = false;
 let currentTask;
-let checkboxCacheAssignedTo;
-let changedCheckboxAssignedTo;
 
 /**
  * 
@@ -406,8 +404,7 @@ async function editTask(idTask) {
     addStyleForEditMode();
     renderAssignedTo();
     addUserToAssignedTo();
-    const contactCheckboxes = document.querySelectorAll('#assigned input[type="checkbox"]');
-    checkboxCacheAssignedTo = [...contactCheckboxes].filter(cb => cb.checked);
+    saveChecked();
 }
 
 
@@ -466,7 +463,7 @@ async function editTasks(element) {
 
     let color = allTasks[element].color;
     let bgcolor = bgContactColor;
-    let checkedNames = checkChangedCheckbox();
+    const checkedNames = checkedContacts.map(cb => cb.name);
 
 
     allTasks[element] = {
@@ -486,21 +483,6 @@ async function editTasks(element) {
 
     await updateBackend();
     closeEditFunction();
-}
-
-
-function checkChangedCheckbox() {
-    if (changedCheckboxAssignedTo) {
-        const contactCheckboxes = document.querySelectorAll('#assignedToOptions input[type="checkbox"]');
-        const checkedContacts = [...contactCheckboxes].filter(cb => cb.checked);
-        const checkedNames = checkedContacts.map(cb => cb.name);
-        changedCheckboxAssignedTo = false;
-        return checkedNames;
-    } else {
-        const checkedNames = checkboxCacheAssignedTo.map(cb => cb.name);
-        return checkedNames;
-    }
-
 }
 
 
